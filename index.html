@@ -1042,6 +1042,7 @@
             <th style="padding:10px 14px;text-align:right;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">VOL/MESE</th>
             <th style="padding:10px 14px;text-align:right;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">POS GSC</th>
             <th style="padding:10px 14px;text-align:right;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">CPC</th>
+            <th style="padding:10px 14px;text-align:center;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap" title="Keyword Difficulty (0-100). Keyword urgenti: proxy SERP top-10 via DataForSEO Labs. Altre keyword: stima volume/categoria.">KD ⓘ</th>
             <th style="padding:10px 14px;text-align:center;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">INTENT</th>
             <th style="padding:10px 14px;text-align:center;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">PRIORITÀ</th>
             <th style="padding:10px 14px;text-align:left;font-size:10px;color:var(--text-muted);letter-spacing:1px;font-weight:400;white-space:nowrap">AZIONE CONSIGLIATA</th>
@@ -1051,8 +1052,9 @@
       </table>
     </div>
     <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap">
-      <div style="font-size:10px;color:var(--text-muted)">* La posizione GSC è la media del periodo 1 gen – 24 feb 2026</div>
-      <div style="font-size:10px;color:var(--text-muted)">** Il volume mensile DataForSEO si riferisce alla media rolling degli ultimi 12 mesi, Italia</div>
+      <div style="font-size:10px;color:var(--text-muted)">· La posizione GSC è la media del periodo 1 gen – 24 feb 2026</div>
+      <div style="font-size:10px;color:var(--text-muted)">· Il volume mensile DataForSEO si riferisce alla media rolling degli ultimi 12 mesi, Italia</div>
+      <div style="font-size:10px;color:var(--text-muted)">· <strong style="color:var(--gold)">KD</strong>: Keyword Difficulty 0–100. Keyword urgenti: proxy SERP (media DA top-10 competitor via DataForSEO Labs). <em>*Stima</em>: basata su volume e categoria. Senza Ahrefs/Semrush.</div>
     </div>
   </div>
 
@@ -1559,24 +1561,24 @@ new Chart(ctx4, {
 
 // ── Priority Matrix DataForSEO × GSC ─────────────────
 const pmData = [
-  // URGENTI — quick win (pos 4-15 con volume)
-  { kw:'anfibi uomo',                    vol:5400,  pos:7.5,  cpc:'€0.29', intent:'commercial',    prio:'urgente',  azione:'Ottimizza pagina categoria' },
-  { kw:'sneakers eleganti uomo',         vol:6600,  pos:14.5, cpc:'€0.40', intent:'commercial',    prio:'urgente',  azione:'Ottimizza contenuto + link interni' },
-  { kw:'loafers uomo',                   vol:2400,  pos:9.5,  cpc:'—',     intent:'commercial',    prio:'urgente',  azione:'Ottimizza pagina categoria' },
-  { kw:'scarpe impermeabili donna',      vol:1600,  pos:7.1,  cpc:'€0.21', intent:'commercial',    prio:'urgente',  azione:'Ottimizza meta title + H1' },
-  // ALTA PRIORITÀ — alto volume, non posizionati
-  { kw:'stivaletti donna',               vol:74000, pos:2.5,  cpc:'€0.26', intent:'commercial',    prio:'alta',     azione:'Potenzia contenuto (già top 3)' },
-  { kw:'mocassini donna',                vol:40500, pos:null, cpc:'€0.27', intent:'commercial',    prio:'alta',     azione:'Crea pagina categoria dedicata' },
-  { kw:'scarpe eleganti donna',          vol:9900,  pos:null, cpc:'€0.29', intent:'informational', prio:'alta',     azione:'Crea guida stile donna' },
-  { kw:'stivaletti con tacco donna',     vol:2900,  pos:null, cpc:'€0.28', intent:'commercial',    prio:'alta',     azione:'Crea pagina categoria' },
-  // MEDIA PRIORITÀ — opportunità blog/contenuto
-  { kw:'scarpe moda donna',              vol:880,   pos:null, cpc:'€0.43', intent:'commercial',    prio:'media',    azione:'Crea pagina o blog stagionale' },
-  { kw:'come indossare mocassini',       vol:70,    pos:null, cpc:'€0.34', intent:'transactional', prio:'media',    azione:'Blog BOFU con prodotti correlati' },
-  { kw:'come abbinare i texani',         vol:140,   pos:null, cpc:'€0.10', intent:'informational', prio:'media',    azione:'Articolo blog TOFU + interni' },
-  // MONITORAGGIO — top 3, proteggere
-  { kw:'migliori scarpe impermeabili donna', vol:320, pos:2.2, cpc:'€0.18', intent:'transactional', prio:'monitor', azione:'Proteggi + aggiungi FAQ schema' },
-  { kw:'walter violet scarpe',           vol:170,   pos:2.3, cpc:'€0.30', intent:'commercial',    prio:'monitor',  azione:'Brand — mantieni + CRO interna' },
-  { kw:'musto milano',                   vol:390,   pos:1.9, cpc:'€0.42', intent:'navigational',  prio:'monitor',  azione:'Branded — ottimizza homepage' },
+  // URGENTI — quick win (pos 4-15 con volume) | KD = proxy SERP DataForSEO Labs
+  { kw:'anfibi uomo',                    vol:5400,  pos:7.5,  cpc:'€0.29', intent:'commercial',    prio:'urgente',  kd:54, kdSrc:'serp', azione:'Ottimizza pagina categoria' },
+  { kw:'sneakers eleganti uomo',         vol:6600,  pos:14.5, cpc:'€0.40', intent:'commercial',    prio:'urgente',  kd:56, kdSrc:'serp', azione:'Ottimizza contenuto + link interni' },
+  { kw:'loafers uomo',                   vol:2400,  pos:9.5,  cpc:'—',     intent:'commercial',    prio:'urgente',  kd:58, kdSrc:'serp', azione:'Ottimizza pagina categoria' },
+  { kw:'scarpe impermeabili donna',      vol:1600,  pos:7.1,  cpc:'€0.21', intent:'commercial',    prio:'urgente',  kd:53, kdSrc:'serp', azione:'Ottimizza meta title + H1 ⭐ Musto #3!' },
+  // ALTA PRIORITÀ — alto volume, non posizionati | KD = stima volume/categoria
+  { kw:'stivaletti donna',               vol:74000, pos:2.5,  cpc:'€0.26', intent:'commercial',    prio:'alta',     kd:72, kdSrc:'est',  azione:'Potenzia contenuto (già top 3)' },
+  { kw:'mocassini donna',                vol:40500, pos:null, cpc:'€0.27', intent:'commercial',    prio:'alta',     kd:65, kdSrc:'est',  azione:'Crea pagina categoria dedicata' },
+  { kw:'scarpe eleganti donna',          vol:9900,  pos:null, cpc:'€0.29', intent:'informational', prio:'alta',     kd:58, kdSrc:'est',  azione:'Crea guida stile donna' },
+  { kw:'stivaletti con tacco donna',     vol:2900,  pos:null, cpc:'€0.28', intent:'commercial',    prio:'alta',     kd:52, kdSrc:'est',  azione:'Crea pagina categoria' },
+  // MEDIA PRIORITÀ — opportunità blog/contenuto | KD = stima volume/categoria
+  { kw:'scarpe moda donna',              vol:880,   pos:null, cpc:'€0.43', intent:'commercial',    prio:'media',    kd:42, kdSrc:'est',  azione:'Crea pagina o blog stagionale' },
+  { kw:'come indossare mocassini',       vol:70,    pos:null, cpc:'€0.34', intent:'transactional', prio:'media',    kd:32, kdSrc:'est',  azione:'Blog BOFU con prodotti correlati' },
+  { kw:'come abbinare i texani',         vol:140,   pos:null, cpc:'€0.10', intent:'informational', prio:'media',    kd:30, kdSrc:'est',  azione:'Articolo blog TOFU + interni' },
+  // MONITORAGGIO — top 3, proteggere | KD = stima volume/categoria
+  { kw:'migliori scarpe impermeabili donna', vol:320, pos:2.2, cpc:'€0.18', intent:'transactional', prio:'monitor', kd:42, kdSrc:'est',  azione:'Proteggi + aggiungi FAQ schema' },
+  { kw:'walter violet scarpe',           vol:170,   pos:2.3, cpc:'€0.30', intent:'commercial',    prio:'monitor',  kd:22, kdSrc:'est',  azione:'Brand — mantieni + CRO interna' },
+  { kw:'musto milano',                   vol:390,   pos:1.9, cpc:'€0.42', intent:'navigational',  prio:'monitor',  kd:12, kdSrc:'est',  azione:'Branded — ottimizza homepage' },
 ];
 const pmPrioConfig = {
   urgente: { color:'#c0392b', bg:'rgba(192,57,43,0.12)',  label:'URGENTE' },
@@ -1597,11 +1599,21 @@ pmData.forEach(r => {
   const posStr = r.pos !== null ? r.pos.toFixed(1) : '—';
   const posColor = r.pos === null ? 'var(--text-muted)' : r.pos <= 3 ? 'var(--green)' : r.pos <= 10 ? '#e67e22' : 'var(--text-muted)';
   const volFormatted = r.vol >= 1000 ? (r.vol/1000).toFixed(r.vol >= 10000 ? 0 : 1)+'K' : r.vol.toString();
+  const kdColor = r.kd <= 35 ? '#4a9e7a' : r.kd <= 55 ? '#e67e22' : r.kd <= 70 ? '#e05e1e' : '#c0392b';
+  const kdBg   = r.kd <= 35 ? 'rgba(74,158,122,0.12)' : r.kd <= 55 ? 'rgba(230,126,34,0.12)' : r.kd <= 70 ? 'rgba(224,94,30,0.12)' : 'rgba(192,57,43,0.12)';
+  const kdLabel = r.kd <= 35 ? 'BASSA' : r.kd <= 55 ? 'MEDIA' : r.kd <= 70 ? 'MED-ALTA' : 'ALTA';
+  const kdTip = r.kdSrc === 'serp' ? 'Proxy SERP: media DA top-10 competitor (DataForSEO Labs)' : 'Stima basata su volume e categoria';
   pmTbody.innerHTML += `<tr>
     <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);font-size:13px;color:var(--text);border-left:3px solid ${p.color}">${r.kw}</td>
     <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);font-size:14px;color:var(--gold);font-family:'Playfair Display',serif;text-align:right">${volFormatted}</td>
     <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);font-size:14px;color:${posColor};font-family:'Playfair Display',serif;text-align:right">${posStr}</td>
     <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);font-size:12px;color:var(--text-muted);text-align:right">${r.cpc}</td>
+    <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);text-align:center" title="${kdTip}">
+      <div style="display:flex;align-items:center;justify-content:center;gap:5px">
+        <span style="font-size:13px;font-weight:700;color:${kdColor};font-family:'Playfair Display',serif">${r.kd}</span>
+        <span style="background:${kdBg};color:${kdColor};font-size:8px;padding:1px 6px;border-radius:20px;white-space:nowrap">${kdLabel}${r.kdSrc==='est'?'*':''}</span>
+      </div>
+    </td>
     <td style="padding:10px 14px;border-bottom:1px solid rgba(201,169,110,0.06);text-align:center">
       <span style="background:${intentCfg.bg};color:${intentCfg.color};font-size:9px;padding:2px 8px;border-radius:20px;white-space:nowrap">${r.intent}</span>
     </td>
