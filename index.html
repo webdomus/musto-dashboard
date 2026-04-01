@@ -3,1210 +3,1236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Musto Calzature — Dashboard SEO & Paid | Web Domus</title>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Musto Calzature · Report SEO Gen–Mar 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   :root {
-    --bg: #0f0f0f;
-    --surface: #1a1a1a;
-    --surface2: #242424;
-    --border: rgba(255,255,255,0.07);
-    --text: #f0ece4;
-    --text-muted: rgba(240,236,228,0.45);
-    --gold: #c9a96e;
-    --green: #4a9e7a;
-    --green-bg: rgba(74,158,122,0.12);
-    --red: #c0392b;
-    --red-bg: rgba(192,57,43,0.12);
-    --pink: #E20056;
-    --purple: #8553E8;
-    --teal: #0EA0C5;
-    --orange: #F39C12;
-    --paid-search: #0EA0C5;
-    --paid-social: #E20056;
-    --organic: #4a9e7a;
-    --direct: #c9a96e;
+    --bg:           #0d0d0d;
+    --surface:      #181818;
+    --surface-2:    #212121;
+    --border:       rgba(255,255,255,0.09);
+    --border-light: rgba(255,255,255,0.05);
+    --text:         #f5f2ec;
+    --text-muted:   rgba(245,242,236,0.60);
+    --text-dim:     rgba(245,242,236,0.35);
+    --gold:         #c9a96e;
+    --gold-light:   rgba(201,169,110,0.13);
+    --gold-dim:     rgba(201,169,110,0.07);
+    --green:        #52b088;
+    --green-light:  rgba(82,176,136,0.13);
+    --blue:         #6aacde;
+    --blue-light:   rgba(106,172,222,0.13);
+    --radius:       11px;
+    --radius-sm:    6px;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+
   body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     background: var(--bg);
     color: var(--text);
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
+    padding: 44px 36px 72px;
+    max-width: 1080px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
   }
 
-  /* HEADER */
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
+  /* ── HEADER ─────────────────────────────── */
+  .header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    align-items: flex-end;
+    padding-bottom: 28px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 48px;
   }
-  .logo-area { display: flex; align-items: center; gap: 16px; }
-  .logo-wd {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #E20056, #8553E8, #0EA0C5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 1px;
-  }
-  .logo-divider { width: 1px; height: 28px; background: var(--border); }
-  .logo-client { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--gold); letter-spacing: 0.5px; }
-  .header-right { display: flex; align-items: center; gap: 12px; }
-  .badge-period {
-    background: rgba(201,169,110,0.12);
-    border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold);
-    padding: 5px 14px;
-    border-radius: 100px;
-    font-size: 11.5px;
-    font-weight: 500;
-  }
-  .badge-live {
-    background: rgba(74,158,122,0.15);
-    border: 1px solid rgba(74,158,122,0.3);
-    color: #5ec69a;
-    padding: 5px 12px;
-    border-radius: 100px;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .dot-live {
-    width: 7px; height: 7px;
+  .header-brand { display: flex; align-items: center; gap: 18px; }
+  .logo-dot {
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--gold);
     border-radius: 50%;
-    background: #5ec69a;
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
-  }
-  /* NAV */
-  nav {
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-  }
-  nav a {
-    display: block;
-    padding: 13px 16px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  nav a:hover { color: var(--text); border-color: var(--purple); }
-
-  /* HERO */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    padding: 56px 40px 48px;
-    background: var(--surface);
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 80% 30%, rgba(133,83,232,0.14) 0%, transparent 60%),
-      radial-gradient(ellipse at 5% 80%, rgba(226,0,86,0.09) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .gradient-bar { height: 3px; background: linear-gradient(90deg, #E20056, #8553E8, #0EA0C5); border-radius: 2px; margin-bottom: 32px; }
-  .hero h1 {
+    display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 18px; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 600;
+    letter-spacing: -0.3px;
     color: var(--text);
-    margin-bottom: 8px;
   }
-  .hero h1 span {
-    background: linear-gradient(135deg, #c9a96e, #e8c98a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero p { color: var(--text-muted); font-size: 14px; max-width: 520px; }
-  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 5px 13px; border-radius: 100px; font-size: 11.5px; font-weight: 500;
-  }
-  .badge-organic { background: rgba(74,158,122,0.12); border: 1px solid rgba(74,158,122,0.25); color: #5ec69a; }
-  .badge-paid { background: rgba(14,160,197,0.12); border: 1px solid rgba(14,160,197,0.25); color: #3ec9e6; }
-  .badge-new {
-    background: linear-gradient(135deg, rgba(226,0,86,0.15), rgba(133,83,232,0.15));
-    border: 1px solid rgba(133,83,232,0.3); color: #c49cf5;
-  }
-
-  /* LAYOUT */
-  .container { max-width: 1380px; margin: 0 auto; padding: 0 40px; }
-  section { padding: 48px 40px; }
-  .section-title {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  .header-sub {
+    font-size: 13px;
     color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .header-right { text-align: right; }
+  .period-pill {
+    display: inline-block;
+    background: var(--gold-light);
+    border: 0.5px solid rgba(201,169,110,0.3);
+    color: var(--gold);
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    letter-spacing: 0.04em;
     margin-bottom: 6px;
   }
-  .section-heading {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    color: var(--text);
-    margin-bottom: 28px;
-  }
+  .agency-tag { font-size: 12px; color: var(--text-dim); display: block; }
 
-  /* KPI CARDS */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  /* ── SECTION ─────────────────────────────── */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--gold); margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 13px; color: var(--text-muted);
+    margin-bottom: 20px; line-height: 1.7;
+    max-width: 700px;
+  }
+  hr { border: none; border-top: 0.5px solid var(--border); margin: 48px 0; }
+
+  /* ── KPI CARDS ───────────────────────────── */
+  .kpi-grid { display: grid; gap: 12px; }
+  .kpi-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-3 { grid-template-columns: repeat(3, 1fr); }
+  .kpi-2 { grid-template-columns: repeat(2, 1fr); }
+
   .kpi-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 22px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-  .kpi-card.featured::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #E20056, #8553E8, #0EA0C5);
-  }
-  .kpi-card.gold::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #c9a96e, #f0d899, #c9a96e);
-  }
-  .kpi-card.teal::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #0EA0C5, #3ec9e6);
-  }
-  .kpi-card.green::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #4a9e7a, #6dc49a);
-  }
-  .kpi-label { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-  .kpi-value { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.1; }
-  .kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
-  .kpi-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 100px;
-    font-size: 10.5px;
-    font-weight: 600;
-    margin-top: 8px;
-  }
-  .badge-g { background: var(--green-bg); color: #5ec69a; }
-  .badge-r { background: var(--red-bg); color: #e06060; }
-  .badge-info { background: rgba(14,160,197,0.12); color: #3ec9e6; }
-
-  /* CHARTS */
-  .chart-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 20px;
-  }
-  .chart-title { font-family: 'Ubuntu', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 20px; color: var(--text); }
-  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .chart-full { grid-column: 1 / -1; }
-
-  /* PAID SECTION */
-  .paid-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .channel-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
     padding: 22px;
-    position: relative;
+    position: relative; overflow: hidden;
+  }
+  .kpi-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: transparent;
+  }
+  .kpi-card.gold::before  { background: var(--gold); }
+  .kpi-card.green::before { background: var(--green); }
+  .kpi-card.blue::before  { background: var(--blue); }
+
+  .kpi-label {
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 600;
+    color: var(--text); line-height: 1;
+    margin-bottom: 10px;
+  }
+  .kpi-value.gold  { color: var(--gold); }
+  .kpi-value.green { color: var(--green); }
+  .kpi-value.blue  { color: var(--blue); }
+  .kpi-note { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── CHARTS ──────────────────────────────── */
+  .chart-wrap {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .chart-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }
+  .chart-title  { font-size: 14px; font-weight: 500; color: var(--text); }
+  .chart-sub    { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+  .chart-container { position: relative; height: 190px; }
+  .two-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── TABLES ──────────────────────────────── */
+  .table-wrap {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
     overflow: hidden;
   }
-  .channel-icon { font-size: 24px; margin-bottom: 10px; }
-  .channel-name { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-  .channel-sessions { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; }
-  .channel-metrics { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-  .channel-metric { font-size: 11px; color: var(--text-muted); }
-  .channel-metric strong { color: var(--text); }
-  .channel-organic .channel-name { color: var(--organic); }
-  .channel-paid-search .channel-name { color: var(--paid-search); }
-  .channel-paid-social .channel-name { color: var(--paid-social); }
-  .channel-direct .channel-name { color: var(--direct); }
-
-  .alert-box {
-    background: rgba(201,169,110,0.08);
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-top: 16px;
-    font-size: 12.5px;
-    color: rgba(240,236,228,0.75);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .alert-box.info { background: rgba(14,160,197,0.08); border-color: rgba(14,160,197,0.2); }
-  .alert-box.warning { background: rgba(226,0,86,0.08); border-color: rgba(226,0,86,0.2); }
-  .alert-box.success { background: rgba(74,158,122,0.08); border-color: rgba(74,158,122,0.2); }
-
-  /* GSC */
-  .gsc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  @media(max-width: 900px) { .gsc-grid { grid-template-columns: 1fr 1fr; } }
-
-  /* TABLES */
-  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
   table { width: 100%; border-collapse: collapse; }
-  thead tr { background: var(--surface2); }
-  thead th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); white-space: nowrap; }
-  tbody tr { border-top: 1px solid var(--border); transition: background 0.15s; }
-  tbody tr:hover { background: rgba(255,255,255,0.03); }
-  tbody td { padding: 11px 16px; font-size: 12.5px; }
-  .priority-badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 3px 9px; border-radius: 100px; font-size: 10px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.5px;
+  thead th {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-muted);
+    padding: 13px 16px;
+    text-align: left;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--surface-2);
   }
-  .p-urgent { background: rgba(226,0,86,0.15); color: #ff5090; border: 1px solid rgba(226,0,86,0.3); }
-  .p-high { background: rgba(243,156,18,0.15); color: #f5b942; border: 1px solid rgba(243,156,18,0.3); }
-  .p-medium { background: rgba(14,160,197,0.15); color: #3ec9e6; border: 1px solid rgba(14,160,197,0.3); }
-  .p-monitor { background: rgba(74,158,122,0.15); color: #5ec69a; border: 1px solid rgba(74,158,122,0.3); }
+  tbody td {
+    font-size: 14px;
+    padding: 13px 16px;
+    border-bottom: 0.5px solid var(--border-light);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,0.02); }
+  .td-num  { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; }
+  .td-muted{ color: var(--text-muted); font-size: 13px; }
+  .td-path { font-size: 12px; color: var(--text-muted); font-family: monospace; }
 
-  /* BRANDED */
-  .branded-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  @media(max-width:700px){ .branded-grid { grid-template-columns:1fr; } }
-  .branded-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
-  .branded-card h3 { font-family: 'Ubuntu', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 20px; }
-  .branded-stat { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .branded-stat:last-child { border-bottom: none; }
-  .branded-stat-label { font-size: 12px; color: var(--text-muted); }
-  .branded-stat-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; }
+  /* ── BADGES ──────────────────────────────── */
+  .badge {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 9px; border-radius: 4px;
+    letter-spacing: 0.04em; white-space: nowrap;
+  }
+  .badge-gold  { background: var(--gold-light);  color: var(--gold);  border: 0.5px solid rgba(201,169,110,0.25); }
+  .badge-green { background: var(--green-light); color: var(--green); border: 0.5px solid rgba(82,176,136,0.25); }
+  .badge-blue  { background: var(--blue-light);  color: var(--blue);  border: 0.5px solid rgba(106,172,222,0.25); }
+  .badge-gray  { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 0.5px solid var(--border); }
 
-  /* BLOG OPPORTUNITIES */
-  .opp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-  .opp-card {
+  /* ── TOP KEYWORD GRID ────────────────────── */
+  .kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kw-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    transition: transform 0.2s;
-  }
-  .opp-card:hover { transform: translateY(-2px); }
-  .opp-keyword { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
-  .opp-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-  .opp-stat { font-size: 11px; color: var(--text-muted); }
-  .opp-stat span { color: var(--text); font-weight: 500; }
-  .opp-action { font-size: 11.5px; color: var(--gold); font-style: italic; }
-
-  /* SECTION DIVIDER */
-  .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 40px; }
-
-  /* INSIGHT BOXES */
-  .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 20px; }
-  .insight-box {
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 16px 18px;
-    border-left: 3px solid var(--purple);
-    font-size: 12.5px;
-    color: rgba(240,236,228,0.8);
-  }
-  .insight-box.gold { border-left-color: var(--gold); }
-  .insight-box.red { border-left-color: var(--pink); }
-  .insight-box.green { border-left-color: var(--green); }
-  .insight-box.teal { border-left-color: var(--teal); }
-  .insight-icon { font-size: 18px; margin-bottom: 6px; display: block; }
-  .insight-box strong { display: block; margin-bottom: 4px; color: var(--text); font-size: 13px; }
-
-  /* TOP KW */
-  .top-kw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-  .top-kw-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
     padding: 18px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
   }
-  .top-kw-medal { font-size: 24px; }
-  .top-kw-body { flex: 1; }
-  .top-kw-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-  .top-kw-pos { display: inline-block; background: rgba(74,158,122,0.15); border: 1px solid rgba(74,158,122,0.3); color: #5ec69a; border-radius: 100px; font-size: 10px; font-weight: 700; padding: 2px 8px; margin-bottom: 8px; }
-  .top-kw-metrics { font-size: 11px; color: var(--text-muted); }
+  .kw-medal  { font-size: 22px; display: block; margin-bottom: 10px; }
+  .kw-name   { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 12px; line-height: 1.35; }
+  .kw-stats  { display: flex; gap: 14px; }
+  .kw-stat-label { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+  .kw-stat-val   { font-size: 14px; font-weight: 600; color: var(--text); }
 
-  /* FOOTER */
-  footer {
-    background: linear-gradient(135deg, rgba(226,0,86,0.8), rgba(133,83,232,0.8), rgba(14,160,197,0.8));
-    padding: 36px 40px;
-    color: rgba(255,255,255,0.9);
+  /* ── FUNNEL ──────────────────────────────── */
+  .funnel-row {
+    display: flex; align-items: stretch;
+    gap: 0; margin-bottom: 10px;
   }
-  .footer-brand { font-family: 'Ubuntu', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-  .footer-sub { font-size: 12px; opacity: 0.75; }
+  .funnel-step {
+    flex: 1;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .funnel-step + .funnel-step { margin-left: 8px; }
+  .funnel-icon  { font-size: 20px; margin-bottom: 8px; display: block; }
+  .funnel-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.4; }
+  .funnel-val   {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600;
+    color: var(--text); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .funnel-rate  { font-size: 12px; color: var(--text-muted); }
+  .funnel-step.highlight { border-color: rgba(201,169,110,0.3); background: var(--gold-dim); }
+  .funnel-step.highlight .funnel-val { color: var(--gold); }
 
-  @media(max-width: 768px) {
-    section, header, nav { padding-left: 20px; padding-right: 20px; }
-    .chart-grid { grid-template-columns: 1fr; }
-    .gsc-grid { grid-template-columns: 1fr 1fr; }
-    .hero h1 { font-size: 26px; }
-    .kpi-value { font-size: 26px; }
+  /* ── BLOG POSTS ──────────────────────────── */
+  .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .blog-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
   }
+  .blog-tag   { font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+  .blog-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; line-height: 1.45; }
+  .blog-meta  { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* ── AUDIENCE GRID ───────────────────────── */
+  .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .audience-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .audience-title { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 18px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-label { font-size: 13px; color: var(--text); min-width: 70px; }
+  .bar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+  .bar-fill  { height: 100%; border-radius: 4px; }
+  .bar-val   { font-size: 13px; font-weight: 600; color: var(--text); min-width: 36px; text-align: right; }
+
+  /* ── BRANDED ─────────────────────────────── */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .brand-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .brand-card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 18px; }
+  .brand-bar-track  { height: 5px; background: rgba(255,255,255,0.07); border-radius: 3px; margin-bottom: 18px; overflow: hidden; }
+  .brand-bar-fill   { height: 100%; border-radius: 3px; }
+  .brand-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 0.5px solid var(--border-light); }
+  .brand-row:last-child { border-bottom: none; }
+  .brand-row-label  { font-size: 13px; color: var(--text-muted); }
+  .brand-row-val    { font-size: 14px; font-weight: 600; color: var(--text); }
+
+  /* ── AI CARD ─────────────────────────────── */
+  .ai-card {
+    background: var(--gold-dim);
+    border: 0.5px solid rgba(201,169,110,0.22);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex; align-items: flex-start; gap: 18px;
+  }
+  .ai-icon  { font-size: 30px; flex-shrink: 0; margin-top: 2px; }
+  .ai-title { font-size: 15px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
+  .ai-desc  { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+  .ai-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .ai-chip  {
+    font-size: 12px;
+    background: var(--gold-light); border: 0.5px solid rgba(201,169,110,0.25);
+    color: var(--gold); padding: 4px 10px; border-radius: 20px;
+  }
+
+  /* ── LINK BUILDING ───────────────────────── */
+  .lb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .lb-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .lb-source { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.03em; }
+  .lb-title  { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.5; }
+  .lb-url    { font-size: 12px; color: var(--text-muted); word-break: break-all; line-height: 1.4; text-decoration: none; }
+  .lb-url:hover { color: var(--gold); }
+  .lb-tag    { font-size: 11px; background: rgba(255,255,255,0.05); border: 0.5px solid var(--border); border-radius: 4px; padding: 3px 8px; color: var(--text-dim); display: inline-block; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  .footer {
+    text-align: center;
+    font-size: 12px; color: var(--text-dim);
+    padding-top: 32px;
+    border-top: 0.5px solid var(--border);
+    margin-top: 16px;
+    line-height: 2;
+  }
+  .footer strong { color: var(--text-muted); font-weight: 500; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo-area">
-    <span class="logo-wd">WEB DOMUS®</span>
-    <div class="logo-divider"></div>
-    <span class="logo-client">Musto Calzature</span>
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header class="header">
+  <div class="header-brand">
+    <div class="logo-dot">M</div>
+    <div>
+      <div class="header-title">Musto Calzature</div>
+      <div class="header-sub">Report SEO &amp; Analytics · mustocalzature.com</div>
+    </div>
   </div>
   <div class="header-right">
-    <span class="badge-period">Gen – 16 Mar 2026</span>
-    <span class="badge-live"><span class="dot-live"></span>Dati in tempo reale</span>
+    <span class="period-pill">Gennaio – Marzo 2026</span>
+    <span class="agency-tag">Elaborato da Web Domus Digital Agency</span>
   </div>
 </header>
 
-<!-- NAV -->
-<nav>
-  <a href="#kpi">KPI GA4</a>
-  <a href="#paid">Paid vs Organic</a>
-  <a href="#campagne">Campagne (10gg)</a>
-  <a href="#gsc">Search Console</a>
-  <a href="#blog">Blog & Contenuti</a>
-  <a href="#topkw">Top Keyword</a>
-  <a href="#matrix">Priority Matrix</a>
-  <a href="#branded">Branded/Non-Branded</a>
-  <a href="#raccomandazioni">Raccomandazioni</a>
-</nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="gradient-bar"></div>
-  <h1>Report SEO & <span>Performance</span></h1>
-  <p>Analisi completa del traffico organico, paid e performance e-commerce per Musto Calzature — 1 Gennaio → 16 Marzo 2026</p>
-  <div class="hero-badges">
-    <span class="hero-badge badge-organic">🟢 Organico: canale #1 per conversioni</span>
-    <span class="hero-badge badge-paid">🔵 Campagne Ads attive da 10 gg</span>
-    <span class="hero-badge badge-new">✦ Nuova sezione: Paid vs Organic</span>
-  </div>
-</div>
+<!-- ══════════════════════════════════════
+     1 — KPI PRINCIPALI
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Panoramica</div>
+  <div class="section-title">I numeri del trimestre</div>
+  <div class="section-desc">Un quadro generale del sito nel periodo gennaio–marzo 2026: visitatori, sessioni, ordini e fatturato generato online.</div>
 
-<!-- ===== SEZ 1 — KPI GA4 ===== -->
-<section id="kpi">
-  <div class="section-title">Analytics GA4</div>
-  <div class="section-heading">KPI Principali · Gen–Mar 2026</div>
-
-  <div class="kpi-grid">
-    <div class="kpi-card featured">
-      <div class="kpi-label">👤 Utenti Attivi</div>
-      <div class="kpi-value">13.617</div>
-      <div class="kpi-sub">Periodo completo Q1 2026</div>
-      <span class="kpi-badge badge-info">Jan+Feb+Mar parziale</span>
+  <div class="kpi-grid kpi-4">
+    <div class="kpi-card">
+      <div class="kpi-label">Visitatori Unici</div>
+      <div class="kpi-value">19.969</div>
+      <div class="kpi-note">Persone che hanno visitato il sito</div>
     </div>
-    <div class="kpi-card gold">
-      <div class="kpi-label">📊 Sessioni Totali</div>
-      <div class="kpi-value">17.775</div>
-      <div class="kpi-sub">Tutte le sorgenti di traffico</div>
+    <div class="kpi-card">
+      <div class="kpi-label">Sessioni Totali</div>
+      <div class="kpi-value">24.153</div>
+      <div class="kpi-note">Visite complessive, inclusi i ritorni</div>
     </div>
     <div class="kpi-card green">
-      <div class="kpi-label">🛒 Ordini</div>
-      <div class="kpi-value">45</div>
-      <div class="kpi-sub">Conversioni e-commerce tracciate</div>
-      <span class="kpi-badge badge-g">+via organic search</span>
+      <div class="kpi-label">Ordini Online</div>
+      <div class="kpi-value green">54</div>
+      <div class="kpi-note">Acquisti completati sull'e-commerce</div>
     </div>
     <div class="kpi-card gold">
-      <div class="kpi-label">💶 Revenue</div>
-      <div class="kpi-value">€5.916</div>
-      <div class="kpi-sub">Gen €3.086 · Feb €1.947 · Mar €882</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">🔍 Organic Search</div>
-      <div class="kpi-value">8.998</div>
-      <div class="kpi-sub">50,6% del totale sessioni</div>
-      <span class="kpi-badge badge-g">Canale dominante</span>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">💬 Direct</div>
-      <div class="kpi-value">6.179</div>
-      <div class="kpi-sub">34,8% del totale sessioni</div>
-    </div>
-    <div class="kpi-card teal">
-      <div class="kpi-label">📣 Paid (Search+Social)</div>
-      <div class="kpi-value">294</div>
-      <div class="kpi-sub">Paid Search 106 · Paid Social 188</div>
-      <span class="kpi-badge badge-info">Campagne attive 10gg</span>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">📱 Organic Social</div>
-      <div class="kpi-value">479</div>
-      <div class="kpi-sub">2,7% del totale · 0 conversioni</div>
-    </div>
-  </div>
-
-  <!-- Grafico mensile -->
-  <div class="chart-card" style="margin-top:28px;">
-    <div class="chart-title">📈 Andamento Mensile — Utenti, Sessioni, Ordini</div>
-    <canvas id="chartMensile" height="100"></canvas>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== SEZ 2 — PAID VS ORGANIC ===== -->
-<section id="paid">
-  <div class="section-title">Attribuzione Canale</div>
-  <div class="section-heading">Paid vs Organic · Revenue & Conversioni</div>
-
-  <div class="paid-grid">
-    <div class="channel-card channel-organic" style="border-top: 3px solid var(--organic);">
-      <div class="channel-icon">🌿</div>
-      <div class="channel-name" style="color:var(--organic);">Organic Search</div>
-      <div class="channel-sessions" style="color:var(--organic);">8.998</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>27</strong> ordini</div>
-        <div class="channel-metric"><strong>€3.574</strong> revenue</div>
-        <div class="channel-metric"><strong>60,5%</strong> revenue totale</div>
-        <div class="channel-metric"><strong>€132,4</strong> valore/ordine</div>
-      </div>
-    </div>
-    <div class="channel-card channel-direct" style="border-top: 3px solid var(--direct);">
-      <div class="channel-icon">🔗</div>
-      <div class="channel-name" style="color:var(--direct);">Direct</div>
-      <div class="channel-sessions" style="color:var(--direct);">6.179</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>8</strong> ordini</div>
-        <div class="channel-metric"><strong>€1.105</strong> revenue</div>
-        <div class="channel-metric"><strong>18,7%</strong> revenue totale</div>
-        <div class="channel-metric"><strong>€138</strong> valore/ordine</div>
-      </div>
-    </div>
-    <div class="channel-card channel-paid-search" style="border-top: 3px solid var(--paid-search);">
-      <div class="channel-icon">🔵</div>
-      <div class="channel-name" style="color:var(--paid-search);">Paid Search (Google Ads)</div>
-      <div class="channel-sessions" style="color:var(--paid-search);">106</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>0</strong> ordini tracciati</div>
-        <div class="channel-metric"><strong>€0</strong> revenue GA4</div>
-        <div class="channel-metric"><strong>Campagna attiva</strong> 10gg</div>
-        <div class="channel-metric"><strong>~10,6 sess/gg</strong></div>
-      </div>
-    </div>
-    <div class="channel-card channel-paid-social" style="border-top: 3px solid var(--paid-social);">
-      <div class="channel-icon">🔴</div>
-      <div class="channel-name" style="color:var(--paid-social);">Paid Social (Meta Ads)</div>
-      <div class="channel-sessions" style="color:var(--paid-social);">188</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>0</strong> ordini tracciati</div>
-        <div class="channel-metric"><strong>€0</strong> revenue GA4</div>
-        <div class="channel-metric"><strong>Campagna attiva</strong> 10gg</div>
-        <div class="channel-metric"><strong>~18,8 sess/gg</strong></div>
-      </div>
-    </div>
-    <div class="channel-card" style="border-top: 3px solid #6dc49a;">
-      <div class="channel-icon">🛍️</div>
-      <div class="channel-name" style="color:#6dc49a;">Organic Shopping</div>
-      <div class="channel-sessions" style="color:#6dc49a;">259</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>4</strong> ordini</div>
-        <div class="channel-metric"><strong>€553</strong> revenue</div>
-        <div class="channel-metric"><strong>9,4%</strong> revenue totale</div>
-        <div class="channel-metric"><strong>Alto conversion rate</strong></div>
-      </div>
-    </div>
-    <div class="channel-card" style="border-top: 3px solid rgba(255,255,255,0.2);">
-      <div class="channel-icon">📧</div>
-      <div class="channel-name" style="color:rgba(240,236,228,0.6);">Email</div>
-      <div class="channel-sessions" style="color:rgba(240,236,228,0.6);">109</div>
-      <div class="channel-metrics">
-        <div class="channel-metric"><strong>2</strong> ordini</div>
-        <div class="channel-metric"><strong>€198</strong> revenue</div>
-        <div class="channel-metric"><strong>Alto valore/sessione</strong></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="chart-grid" style="margin-top:24px;">
-    <div class="chart-card">
-      <div class="chart-title">🥧 Distribuzione Sessioni per Canale</div>
-      <canvas id="chartCanali" height="180"></canvas>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">💶 Revenue per Canale</div>
-      <canvas id="chartRevenue" height="180"></canvas>
-    </div>
-  </div>
-
-  <div class="insights-grid">
-    <div class="insight-box green">
-      <span class="insight-icon">🏆</span>
-      <strong>Organic Search: campione delle conversioni</strong>
-      Genera il 60,5% della revenue totale con solo il 50,6% delle sessioni. Un tasso di conversione significativamente superiore agli altri canali.
-    </div>
-    <div class="insight-box teal">
-      <span class="insight-icon">⚡</span>
-      <strong>Paid: fase di avvio (10 giorni)</strong>
-      Le campagne Ads e Meta sono attive da soli 10 giorni — ancora presto per valutare le conversioni. Il dato di traffico è incoraggiante: 294 sessioni totali, specialmente Meta con 188 sessioni.
-    </div>
-    <div class="insight-box gold">
-      <span class="insight-icon">🛍️</span>
-      <strong>Organic Shopping sottovalutato</strong>
-      Solo 259 sessioni ma 4 ordini per €553 di revenue. Il tasso di conversione (1,54%) è il più alto di tutti i canali. Merita investimento in ottimizzazione schede prodotto.
-    </div>
-    <div class="insight-box">
-      <span class="insight-icon">⚠️</span>
-      <strong>Paid Social: 0 conversioni GA4</strong>
-      Meta Ads non mostra conversioni in GA4. Verificare: (1) tracciamento pixel Meta vs GA4, (2) customer journey multi-sessione, (3) conversioni view-through non catturate da GA4.
+      <div class="kpi-label">Fatturato Online</div>
+      <div class="kpi-value gold">€7.724</div>
+      <div class="kpi-note">Valore medio per ordine: €143</div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-<!-- ===== SEZ 3 — CAMPAGNE ULTIMI 10GG ===== -->
-<section id="campagne">
-  <div class="section-title">Campagne Attive · 6–16 Marzo 2026</div>
-  <div class="section-heading">Andamento Paid negli Ultimi 10 Giorni</div>
+<!-- ══════════════════════════════════════
+     2 — ANDAMENTO MENSILE
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Andamento</div>
+  <div class="section-title">Come è andato mese per mese</div>
+  <div class="section-desc">Marzo è stato il mese con più visite (+35% rispetto a gennaio), grazie alla stagione primaverile e alle attività promozionali in corso. Gennaio ha registrato il maggior numero di ordini.</div>
 
-  <div class="chart-card chart-full">
-    <div class="chart-title">📅 Sessioni Giornaliere per Canale · 6–16 Marzo 2026</div>
-    <canvas id="chartDays" height="110"></canvas>
+  <div class="two-charts">
+    <div class="chart-wrap">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Visitatori per mese</div>
+          <div class="chart-sub">Utenti unici · Gen–Mar 2026</div>
+        </div>
+      </div>
+      <div class="chart-container"><canvas id="chartUtenti"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Ordini &amp; Fatturato</div>
+          <div class="chart-sub">E-commerce · Gen–Mar 2026</div>
+        </div>
+      </div>
+      <div class="chart-container"><canvas id="chartOrdini"></canvas></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     3 — FUNNEL ACQUISTO
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Comportamento</div>
+  <div class="section-title">Il percorso d'acquisto</div>
+  <div class="section-desc">Quante persone hanno visto un prodotto, quante lo hanno aggiunto al carrello e quante hanno completato l'acquisto. Ogni fase mostra la percentuale di chi prosegue al passo successivo.</div>
+
+  <div class="funnel-row">
+    <div class="funnel-step">
+      <span class="funnel-icon">👀</span>
+      <div class="funnel-label">Visualizzazioni<br>prodotto</div>
+      <div class="funnel-val">24.052</div>
+      <div class="funnel-rate">utenti che hanno sfogliato articoli</div>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-icon">🛒</span>
+      <div class="funnel-label">Aggiunti<br>al carrello</div>
+      <div class="funnel-val">378</div>
+      <div class="funnel-rate">1,57% dei visitatori prodotto</div>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-icon">💳</span>
+      <div class="funnel-label">Checkout<br>avviato</div>
+      <div class="funnel-val">239</div>
+      <div class="funnel-rate">63% di chi aggiunge al carrello</div>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-icon">✅</span>
+      <div class="funnel-label">Pagamento<br>inserito</div>
+      <div class="funnel-val">96</div>
+      <div class="funnel-rate">40% di chi apre il checkout</div>
+    </div>
+    <div class="funnel-step highlight">
+      <span class="funnel-icon">🎉</span>
+      <div class="funnel-label">Acquisti<br>completati</div>
+      <div class="funnel-val">54</div>
+      <div class="funnel-rate">56% di chi inserisce pagamento</div>
+    </div>
   </div>
 
-  <!-- Totali 10gg per canale -->
-  <div class="kpi-grid" style="margin-top:20px;">
-    <div class="kpi-card teal">
-      <div class="kpi-label">🔵 Paid Search (Google) · 10gg</div>
-      <div class="kpi-value">106</div>
-      <div class="kpi-sub">Sessioni totali · media 9,6/gg</div>
-      <span class="kpi-badge badge-info">0 conv. tracciate</span>
-    </div>
-    <div class="kpi-card" style="border-top:3px solid var(--pink);">
-      <div class="kpi-label">🔴 Paid Social (Meta) · 10gg</div>
-      <div class="kpi-value">188</div>
-      <div class="kpi-sub">Sessioni totali · media 17,1/gg</div>
-      <span class="kpi-badge badge-info">0 conv. GA4</span>
-    </div>
-    <div class="kpi-card green">
-      <div class="kpi-label">🌿 Organic Search · 10gg</div>
-      <div class="kpi-value">1.065</div>
-      <div class="kpi-sub">Sessioni organiche stabile · 1 conv. (+€209)</div>
-      <span class="kpi-badge badge-g">Continua a performare</span>
+  <div class="kpi-grid kpi-3" style="margin-top:12px;">
+    <div class="kpi-card">
+      <div class="kpi-label">Ricerche interne al sito</div>
+      <div class="kpi-value blue">981</div>
+      <div class="kpi-note">443 utenti hanno cercato prodotti nel motore interno del sito</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">🌐 Cross-network · 10gg</div>
-      <div class="kpi-value">121</div>
-      <div class="kpi-sub">Traffico display/performance max</div>
-    </div>
-  </div>
-
-  <div class="alert-box info" style="margin-top:20px;">
-    <span style="font-size:18px;">ℹ️</span>
-    <div>
-      <strong style="display:block; margin-bottom:4px; color:var(--text);">Nota sulla maturazione dati Paid</strong>
-      Con soli 10 giorni di attività, le campagne non hanno ancora raggiunto la fase di ottimizzazione algoritmica. Google Ads tipicamente richiede 2–4 settimane per uscire dalla "fase di apprendimento" e Meta almeno 50 conversioni per canale per ottimizzare il delivery. I dati attuali mostrano un buon volume di traffico — la fase valutativa partirà a fine marzo.
-    </div>
-  </div>
-
-  <div class="alert-box warning" style="margin-top:12px;">
-    <span style="font-size:18px;">🔍</span>
-    <div>
-      <strong style="display:block; margin-bottom:4px; color:var(--text);">Azione raccomandata: Verifica tracciamento conversioni Paid</strong>
-      GA4 non registra conversioni da Paid Search e Paid Social. Il team Ads deve verificare: tag di conversione Google Ads attivo su pagina "ordine confermato", evento purchase in GA4 collegato a Google Ads, pixel Meta con evento Purchase configurato correttamente sul sito.
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== SEZ 4 — GSC ===== -->
-<section id="gsc">
-  <div class="section-title">Google Search Console</div>
-  <div class="section-heading">Panoramica Organica · Gen–16 Mar 2026</div>
-
-  <div class="gsc-grid">
-    <div class="kpi-card featured">
-      <div class="kpi-label">👆 Click Totali</div>
-      <div class="kpi-value">10.823</div>
-      <div class="kpi-sub">Traffico organico da GSC</div>
-    </div>
-    <div class="kpi-card gold">
-      <div class="kpi-label">👁️ Impressioni</div>
-      <div class="kpi-value">676.056</div>
-      <div class="kpi-sub">Visualizzazioni nei risultati Google</div>
+      <div class="kpi-label">Interazioni con i moduli</div>
+      <div class="kpi-value">11.256</div>
+      <div class="kpi-note">Form avviati (contatti, filtri, newsletter): 3.718 utenti</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">📊 CTR Medio</div>
-      <div class="kpi-value">1,60%</div>
-      <div class="kpi-sub">Click-through rate globale</div>
-      <span class="kpi-badge badge-r">Opportunità di miglioramento</span>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">📍 Posizione Media</div>
-      <div class="kpi-value">8,6</div>
-      <div class="kpi-sub">Posizionamento medio in SERP</div>
-      <span class="kpi-badge badge-info">Prima pagina</span>
-    </div>
-  </div>
-
-  <div class="insights-grid">
-    <div class="insight-box">
-      <span class="insight-icon">📊</span>
-      <strong>676.000 impression, CTR 1,60%</strong>
-      Con 676K impression c'è un enorme potenziale di traffico. Portare il CTR anche solo al 3% significherebbe raddoppiare i click organici a 20.000+.
-    </div>
-    <div class="insight-box gold">
-      <span class="insight-icon">🎯</span>
-      <strong>Posizione 8,6: quasi nella top 5</strong>
-      La posizione media è già in prima pagina. Spingere le keyword tra posizione 4-10 verso la top 3 avrebbe un impatto esponenziale sui click.
-    </div>
-    <div class="insight-box teal">
-      <span class="insight-icon">🔤</span>
-      <strong>Meta title ottimizzazione urgente</strong>
-      Con CTR 1,60% su 676K impression, riscrivere i meta title delle pagine principali con parole più emotive e call-to-action può incrementare il traffico senza modificare il ranking.
+      <div class="kpi-label">Pagine scorse fino in fondo</div>
+      <div class="kpi-value">5.536</div>
+      <div class="kpi-note">3.738 utenti hanno letto le pagine integralmente</div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-<!-- ===== SEZ 5 — BLOG & CONTENUTI ===== -->
-<section id="blog">
-  <div class="section-title">Strategia Contenuti</div>
-  <div class="section-heading">Opportunità Blog · Keyword ad Alto Potenziale</div>
-
-  <div class="opp-grid">
-    <div class="opp-card">
-      <div class="opp-keyword">🥿 Mocassini uomo — guida completa</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>33.100/mese</span></div>
-        <div class="opp-stat">Trend: <span>↑ Primavera</span></div>
-        <div class="opp-stat">CPC: <span>€0,33</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Come abbinare i mocassini uomo nel 2026"</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-keyword">👡 Sandali donna — guida stagionale</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>40.500/mese</span></div>
-        <div class="opp-stat">Picco: <span>Mag–Lug</span></div>
-        <div class="opp-stat">CPC: <span>€0,24</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Sandali donna 2026: tendenze e consigli di stile"</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-keyword">💎 Kitten heels — trend 2026</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>6.600/mese</span></div>
-        <div class="opp-stat">Trend: <span>↑ Stabile</span></div>
-        <div class="opp-stat">CPC: <span>€0,21</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Kitten heels: come portarli con eleganza"</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-keyword">👞 Scarpe uomo eleganti — guida</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>18.100/mese</span></div>
-        <div class="opp-stat">Picco: <span>Ott–Nov</span></div>
-        <div class="opp-stat">CPC: <span>€0,36</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Scarpe uomo eleganti: la guida per ogni occasione"</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-keyword">👠 Slingback scarpe — primavera</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>1.000/mese</span></div>
-        <div class="opp-stat">Picco: <span>Apr–Giu</span></div>
-        <div class="opp-stat">CPC: <span>€0,21</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Slingback 2026: la scarpa trend della primavera"</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-keyword">🐾 Loafers uomo — Primavera/Estate</div>
-      <div class="opp-stats">
-        <div class="opp-stat">Vol: <span>1.900/mese</span></div>
-        <div class="opp-stat">Trend: <span>↑ Primavera</span></div>
-        <div class="opp-stat">CPC: <span>€0,44</span></div>
-      </div>
-      <div class="opp-action">→ Articolo: "Loafers uomo 2026: dai casual ai formali"</div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== SEZ 6 — TOP KEYWORD ===== -->
-<section id="topkw">
-  <div class="section-title">Google Search Console</div>
-  <div class="section-heading">Top Keyword per Volume &amp; Opportunità</div>
-
-  <div class="top-kw-grid">
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🥇</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">musto calzature</div>
-        <span class="top-kw-pos">Brand — Top 3</span>
-        <div class="top-kw-metrics">Vol: 390/mese · CPC €0,73</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🥈</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">stivaletti donna</div>
-        <span class="top-kw-pos">Posizionamento attivo</span>
-        <div class="top-kw-metrics">Vol: 60.500/mese · CPC €0,27</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🥉</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">mocassini uomo</div>
-        <span class="top-kw-pos">Priorità alta</span>
-        <div class="top-kw-metrics">Vol: 33.100/mese · CPC €0,33</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🏅</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">sandali donna</div>
-        <span class="top-kw-pos">Stagionale — Apr/Mag</span>
-        <div class="top-kw-metrics">Vol: 40.500/mese · picco estivo</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🏅</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">scarpe uomo eleganti</div>
-        <span class="top-kw-pos">Volume elevato</span>
-        <div class="top-kw-metrics">Vol: 18.100/mese · CPC €0,36</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🏅</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">kitten heels</div>
-        <span class="top-kw-pos">In crescita</span>
-        <div class="top-kw-metrics">Vol: 6.600/mese · CPC €0,21</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🏅</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">scarpe donna eleganti</div>
-        <span class="top-kw-pos">Opportunità contenuto</span>
-        <div class="top-kw-metrics">Vol: 9.900/mese · picco Apr/Mag</div>
-      </div>
-    </div>
-    <div class="top-kw-card">
-      <div class="top-kw-medal">🏅</div>
-      <div class="top-kw-body">
-        <div class="top-kw-name">loafers uomo</div>
-        <span class="top-kw-pos">In crescita P/E</span>
-        <div class="top-kw-metrics">Vol: 1.900/mese · CPC €0,44</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== SEZ 7 — PRIORITY MATRIX ===== -->
-<section id="matrix">
-  <div class="section-title">Keyword Strategy</div>
-  <div class="section-heading">Priority Matrix · Azioni Consigliate</div>
+<!-- ══════════════════════════════════════
+     4 — TOP PAGINE
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Contenuti più visitati</div>
+  <div class="section-title">Le 15 pagine più viste del sito</div>
+  <div class="section-desc">Le sezioni del sito che hanno attirato più visitatori nel trimestre. Le collection di prodotti dominano, con la homepage in testa.</div>
 
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th>Keyword</th>
-          <th>Vol/Mese</th>
-          <th>CPC</th>
-          <th>Priorità</th>
-          <th>Intent</th>
-          <th>Azione Consigliata</th>
+          <th>#</th>
+          <th>Pagina</th>
+          <th>Visualizzazioni</th>
+          <th>Visitatori</th>
+          <th>Tempo medio</th>
+          <th>Tipo</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>mocassini uomo</strong></td>
-          <td>33.100</td>
-          <td>€0,33</td>
-          <td><span class="priority-badge p-urgent">🔴 Urgente</span></td>
-          <td>Commercial</td>
-          <td>Ottimizza pagina categoria + articolo blog guida</td>
+          <td class="td-muted">1</td>
+          <td>
+            <div style="font-weight:500;">Homepage</div>
+            <div class="td-path">/</div>
+          </td>
+          <td class="td-num">5.418</td>
+          <td>3.741</td>
+          <td class="td-muted">55 sec</td>
+          <td><span class="badge badge-blue">Homepage</span></td>
         </tr>
         <tr>
-          <td><strong>sandali donna</strong></td>
-          <td>40.500</td>
-          <td>€0,24</td>
-          <td><span class="priority-badge p-urgent">🔴 Urgente</span></td>
-          <td>Transactional</td>
-          <td>Prepara pagina categoria primavera/estate ora</td>
+          <td class="td-muted">2</td>
+          <td>
+            <div style="font-weight:500;">Nuovi Arrivi Donna</div>
+            <div class="td-path">/collections/nuovi-arrivi-donna</div>
+          </td>
+          <td class="td-num">4.065</td>
+          <td>863</td>
+          <td class="td-muted">1 min 47 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>scarpe uomo eleganti</strong></td>
-          <td>18.100</td>
-          <td>€0,36</td>
-          <td><span class="priority-badge p-high">🟠 Alta</span></td>
-          <td>Commercial</td>
-          <td>Ottimizza meta title e H1 pagina categoria</td>
+          <td class="td-muted">3</td>
+          <td>
+            <div style="font-weight:500;">Décolleté Donna</div>
+            <div class="td-path">/collections/decollete-donna</div>
+          </td>
+          <td class="td-num">1.928</td>
+          <td>383</td>
+          <td class="td-muted">2 min 17 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>kitten heels</strong></td>
-          <td>6.600</td>
-          <td>€0,21</td>
-          <td><span class="priority-badge p-high">🟠 Alta</span></td>
-          <td>Informational</td>
-          <td>Articolo blog "Come portare i kitten heels nel 2026"</td>
+          <td class="td-muted">4</td>
+          <td>
+            <div style="font-weight:500;">Donna (categoria principale)</div>
+            <div class="td-path">/collections/donna-1</div>
+          </td>
+          <td class="td-num">1.747</td>
+          <td>303</td>
+          <td class="td-muted">2 min 42 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>stivaletti donna</strong></td>
-          <td>60.500</td>
-          <td>€0,27</td>
-          <td><span class="priority-badge p-high">🟠 Alta</span></td>
-          <td>Transactional</td>
-          <td>Massimo volume — mantieni e ottimizza CTR in GSC</td>
+          <td class="td-muted">5</td>
+          <td>
+            <div style="font-weight:500;">Nuovi Arrivi Uomo</div>
+            <div class="td-path">/collections/nuovi-arrivi-uomo</div>
+          </td>
+          <td class="td-num">1.715</td>
+          <td>412</td>
+          <td class="td-muted">1 min 33 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>loafers uomo</strong></td>
-          <td>1.900</td>
-          <td>€0,44</td>
-          <td><span class="priority-badge p-medium">🔵 Media</span></td>
-          <td>Commercial</td>
-          <td>Articolo guida + ottimizza schede prodotto loafers</td>
+          <td class="td-muted">6</td>
+          <td>
+            <div style="font-weight:500;">Mocassini Uomo</div>
+            <div class="td-path">/collections/uomo-mocassini</div>
+          </td>
+          <td class="td-num">1.463</td>
+          <td>401</td>
+          <td class="td-muted">1 min 44 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>slingback scarpe</strong></td>
-          <td>1.000</td>
-          <td>€0,21</td>
-          <td><span class="priority-badge p-medium">🔵 Media</span></td>
-          <td>Informational</td>
-          <td>Articolo trend primavera · pubblica entro aprile</td>
+          <td class="td-muted">7</td>
+          <td>
+            <div style="font-weight:500;">Ricerca interna</div>
+            <div class="td-path">/search</div>
+          </td>
+          <td class="td-num">1.378</td>
+          <td>416</td>
+          <td class="td-muted">1 min 27 sec</td>
+          <td><span class="badge badge-gray">Ricerca</span></td>
         </tr>
         <tr>
-          <td><strong>scarpe donna eleganti</strong></td>
-          <td>9.900</td>
-          <td>€0,23</td>
-          <td><span class="priority-badge p-medium">🔵 Media</span></td>
-          <td>Commercial</td>
-          <td>Guida abbinamenti donna per eventi</td>
+          <td class="td-muted">8</td>
+          <td>
+            <div style="font-weight:500;">Stivaletti Donna</div>
+            <div class="td-path">/collections/stivaletti-donna</div>
+          </td>
+          <td class="td-num">1.220</td>
+          <td>203</td>
+          <td class="td-muted">2 min 48 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
         <tr>
-          <td><strong>musto calzature</strong></td>
-          <td>390</td>
-          <td>€0,73</td>
-          <td><span class="priority-badge p-monitor">✅ Monitor</span></td>
-          <td>Navigational</td>
-          <td>Già posizionato — monitora CTR e reputation brand</td>
+          <td class="td-muted">9</td>
+          <td>
+            <div style="font-weight:500;">Nuovi Arrivi (tutti)</div>
+            <div class="td-path">/collections/nuovi-arrivi</div>
+          </td>
+          <td class="td-num">1.158</td>
+          <td>360</td>
+          <td class="td-muted">1 min 41 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">10</td>
+          <td>
+            <div style="font-weight:500;">Uomo (categoria principale)</div>
+            <div class="td-path">/collections/uomo</div>
+          </td>
+          <td class="td-num">1.091</td>
+          <td>196</td>
+          <td class="td-muted">2 min 57 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">11</td>
+          <td>
+            <div style="font-weight:500;">Mocassini Donna</div>
+            <div class="td-path">/collections/donna-mocassini</div>
+          </td>
+          <td class="td-num">922</td>
+          <td>205</td>
+          <td class="td-muted">1 min 57 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">12</td>
+          <td>
+            <div style="font-weight:500;">Stringate Uomo</div>
+            <div class="td-path">/collections/uomo-stringate</div>
+          </td>
+          <td class="td-num">813</td>
+          <td>208</td>
+          <td class="td-muted">1 min 43 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">13</td>
+          <td>
+            <div style="font-weight:500;">Bibi Lou</div>
+            <div class="td-path">/collections/bibi-lou</div>
+          </td>
+          <td class="td-num">798</td>
+          <td>288</td>
+          <td class="td-muted">1 min 16 sec</td>
+          <td><span class="badge badge-gray">Brand</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">14</td>
+          <td>
+            <div style="font-weight:500;">Sneakers Uomo</div>
+            <div class="td-path">/collections/uomo-sneakers</div>
+          </td>
+          <td class="td-num">691</td>
+          <td>193</td>
+          <td class="td-muted">1 min 20 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">15</td>
+          <td>
+            <div style="font-weight:500;">Sneakers Donna</div>
+            <div class="td-path">/collections/donna-sneakers</div>
+          </td>
+          <td class="td-num">627</td>
+          <td>121</td>
+          <td class="td-muted">2 min 06 sec</td>
+          <td><span class="badge badge-gold">Collection</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-<!-- ===== SEZ 8 — BRANDED vs NON-BRANDED ===== -->
-<section id="branded">
-  <div class="section-title">Search Console · Segmentazione</div>
-  <div class="section-heading">Query Branded vs Non-Branded</div>
+<!-- ══════════════════════════════════════
+     5 — BLOG TREND E CONSIGLI
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Blog — Trend e Consigli</div>
+  <div class="section-title">Gli articoli più letti</div>
+  <div class="section-desc">Il blog ha generato <strong style="color:var(--text)">1.920 visualizzazioni</strong> da <strong style="color:var(--text)">1.730 lettori unici</strong> nel trimestre. Gli articoli portano visitatori qualificati sul sito, che successivamente esplorano le collezioni di prodotti.</div>
 
-  <div class="branded-grid">
-    <div class="branded-card">
-      <h3 style="color:var(--gold);">🏷️ Query Branded (Musto)</h3>
-      <div class="branded-stat">
-        <span class="branded-stat-label">Click stimati</span>
-        <span class="branded-stat-value" style="color:var(--gold);">~1.200</span>
-      </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">% sul totale click</span>
-        <span class="branded-stat-value">~11%</span>
-      </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">CTR stimato</span>
-        <span class="branded-stat-value">Alto ~20–35%</span>
-      </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">Caratteristica</span>
-        <span class="branded-stat-value" style="font-size:14px; color:var(--text-muted);">Riconoscimento brand</span>
-      </div>
-      <div class="alert-box" style="margin-top:16px;">
-        <span>💡</span>
-        Il volume branded riflette la notorietà di Musto Calzature. Le campagne Ads ora attive contribuiranno ad aumentare le query branded nel medio termine.
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-tag"># 1 · Donna</div>
+      <div class="blog-title">Stivali donna 2025–2026: tendenze moda e stivaletti</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">431 visualizzazioni</span>
+        <span class="badge badge-gray">399 lettori</span>
       </div>
     </div>
-    <div class="branded-card">
-      <h3 style="color:var(--teal);">🔍 Query Non-Branded</h3>
-      <div class="branded-stat">
-        <span class="branded-stat-label">Click stimati</span>
-        <span class="branded-stat-value" style="color:var(--teal);">~9.600</span>
+    <div class="blog-card">
+      <div class="blog-tag"># 2 · Donna</div>
+      <div class="blog-title">Il fascino senza tempo degli stivaletti donna</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">200 visualizzazioni</span>
+        <span class="badge badge-gray">182 lettori</span>
       </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">% sul totale click</span>
-        <span class="branded-stat-value">~89%</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 3 · Uomo</div>
+      <div class="blog-title">Back to work: scarpe uomo da avere in ufficio</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">195 visualizzazioni</span>
+        <span class="badge badge-gray">184 lettori</span>
       </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">CTR medio</span>
-        <span class="branded-stat-value">~1,4%</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 4 · Donna</div>
+      <div class="blog-title">Scarpe da cerimonia per donna: i modelli più chic del momento</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">187 visualizzazioni</span>
+        <span class="badge badge-gray">169 lettori</span>
       </div>
-      <div class="branded-stat">
-        <span class="branded-stat-label">Impressioni</span>
-        <span class="branded-stat-value" style="font-size:14px;">~670K</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 5 · Uomo</div>
+      <div class="blog-title">Sneakers uomo 2025: i modelli eleganti e artigianali da scoprire</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">182 visualizzazioni</span>
+        <span class="badge badge-gray">145 lettori</span>
       </div>
-      <div class="alert-box success" style="margin-top:16px;">
-        <span>🚀</span>
-        Il traffico non-branded è il principale motore di crescita. Migliorare il CTR da 1,4% a 2,5% su 670K impression aggiungerebbe ~7.000 click organici senza modificare i ranking.
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 6 · Donna</div>
+      <div class="blog-title">Scarpe donna impermeabili: consigli per ogni stagione</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">128 visualizzazioni</span>
+        <span class="badge badge-gray">124 lettori</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 7 · Uomo</div>
+      <div class="blog-title">Mocassini uomo 2026: la guida completa</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">84 visualizzazioni</span>
+        <span class="badge badge-gray">70 lettori</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag"># 8 · Donna</div>
+      <div class="blog-title">Slingback donna 2026: eleganza e comfort</div>
+      <div class="blog-meta">
+        <span class="badge badge-gold">43 visualizzazioni</span>
+        <span class="badge badge-gray">34 lettori</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-<!-- ===== SEZ 9 — RACCOMANDAZIONI ===== -->
-<section id="raccomandazioni">
-  <div class="section-title">Action Plan</div>
-  <div class="section-heading">Raccomandazioni Prioritarie · Q1–Q2 2026</div>
+<!-- ══════════════════════════════════════
+     6 — CANALI DI TRAFFICO
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Traffico</div>
+  <div class="section-title">Da dove arrivano i visitatori</div>
+  <div class="section-desc">La ricerca organica su Google è il canale principale: porta il maggior numero di visitatori, ordini e fatturato. Le campagne pubblicitarie sono in fase di avvio e ottimizzazione.</div>
 
-  <div class="insights-grid">
-    <div class="insight-box red">
-      <span class="insight-icon">🔴</span>
-      <strong>URGENTE: Verifica tracciamento conversioni Paid</strong>
-      Zero conversioni su 294 sessioni paid in 10gg è anomalo. Il team Ads deve verificare il tag Google Ads e il pixel Meta sulla pagina thank-you dell'ordine. Priorità assoluta.
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Canale</th>
+          <th>Visitatori</th>
+          <th>Sessioni</th>
+          <th>Ordini</th>
+          <th>Fatturato</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;">Ricerca Organica Google</td>
+          <td class="td-num">8.527</td>
+          <td>10.827</td>
+          <td>30</td>
+          <td>€4.321</td>
+          <td><span class="badge badge-gold">Canale principale</span></td>
+        </tr>
+        <tr>
+          <td>Accesso Diretto</td>
+          <td class="td-num">6.010</td>
+          <td>6.993</td>
+          <td>10</td>
+          <td>€1.472</td>
+          <td><span class="badge badge-gray">Clienti abituali</span></td>
+        </tr>
+        <tr>
+          <td>Social Organico</td>
+          <td class="td-num">1.811</td>
+          <td>1.966</td>
+          <td>0</td>
+          <td>—</td>
+          <td><span class="badge badge-gray">Instagram · Facebook</span></td>
+        </tr>
+        <tr>
+          <td>Campagne Pubblicitarie</td>
+          <td class="td-num">1.792</td>
+          <td>2.063</td>
+          <td>2</td>
+          <td>€424</td>
+          <td><span class="badge badge-blue">ADV in corso</span></td>
+        </tr>
+        <tr>
+          <td>Shopping Organico</td>
+          <td class="td-num">248</td>
+          <td>312</td>
+          <td>5</td>
+          <td>€732</td>
+          <td><span class="badge badge-green">Google Shopping</span></td>
+        </tr>
+        <tr>
+          <td>Email &amp; Referral</td>
+          <td class="td-num">105</td>
+          <td>223</td>
+          <td>2</td>
+          <td>€198</td>
+          <td><span class="badge badge-gray">Newsletter · Link</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     7 — VISIBILITÀ SU GOOGLE (GSC)
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Search Console</div>
+  <div class="section-title">La visibilità su Google</div>
+  <div class="section-desc">Quante volte il sito è apparso nei risultati di ricerca e quante persone hanno cliccato. Con quasi 400.000 visualizzazioni nel trimestre, la presenza organica è solida.</div>
+
+  <div class="kpi-grid kpi-4">
+    <div class="kpi-card">
+      <div class="kpi-label">Clic dal Motore di Ricerca</div>
+      <div class="kpi-value">4.968</div>
+      <div class="kpi-note">Persone che hanno cliccato da Google</div>
     </div>
-    <div class="insight-box gold">
-      <span class="insight-icon">📅</span>
-      <strong>Contenuti stagionali: pubblica ora</strong>
-      Sandali donna (40.500/mese) e slingback iniziano il loro picco ad aprile. Articoli e pagine ottimizzate devono essere live entro fine marzo per indicizzarsi in tempo.
+    <div class="kpi-card">
+      <div class="kpi-label">Visualizzazioni nei Risultati</div>
+      <div class="kpi-value">391.340</div>
+      <div class="kpi-note">Il sito è apparso nelle ricerche</div>
     </div>
-    <div class="insight-box teal">
-      <span class="insight-icon">📝</span>
-      <strong>CTR: ottimizza meta title e description</strong>
-      Con 676K impression e CTR 1,60%, riscrivere i meta delle top 20 pagine per keyword con alta impression ma basso CTR può portare +5.000 click/mese aggiuntivi.
+    <div class="kpi-card gold">
+      <div class="kpi-label">Tasso di Clic (CTR)</div>
+      <div class="kpi-value gold">1,27%</div>
+      <div class="kpi-note">Su 100 volte che appare, ~1 utente clicca</div>
     </div>
-    <div class="insight-box green">
-      <span class="insight-icon">🛍️</span>
-      <strong>Organic Shopping: espandi le schede</strong>
-      Tasso di conversione altissimo (1,54%) su Organic Shopping. Aggiungi foto prodotto, prezzi aggiornati e recensioni al feed Google Merchant Center per aumentare le impression shopping.
-    </div>
-    <div class="insight-box">
-      <span class="insight-icon">📊</span>
-      <strong>Valutazione campagne: fine marzo</strong>
-      Programma una call di analisi approfondita delle campagne Ads per fine marzo (dopo 25 gg). A quel punto Google Ads sarà uscito dalla fase di apprendimento e Meta avrà abbastanza dati per ottimizzare.
-    </div>
-    <div class="insight-box gold">
-      <span class="insight-icon">🔁</span>
-      <strong>Remarketing: targeting blog visitors</strong>
-      Crea audience di remarketing per gli utenti che visitano il blog (alta engagement). Target ideale per Meta Ads con prodotti correlati agli articoli letti.
+    <div class="kpi-card">
+      <div class="kpi-label">Posizione Media</div>
+      <div class="kpi-value">9,3</div>
+      <div class="kpi-note">Media su tutte le parole chiave</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">Web Domus® Digital Agency</div>
-  <div class="footer-sub">Dashboard generata il 16 Marzo 2026 · Dati: Google Analytics 4 · Search Console · DataForSEO<br>
-  Musto Calzature · Periodo: 1 Gennaio – 16 Marzo 2026 · web-domus.net</div>
+
+<!-- ══════════════════════════════════════
+     8 — TOP KEYWORD IN TOP 3
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Risultati SEO</div>
+  <div class="section-title">Parole chiave in prima pagina (posizione 1–3)</div>
+  <div class="section-desc">Per queste ricerche Musto Calzature appare tra i primissimi risultati su Google, con massima visibilità per chi cerca il brand o prodotti specifici.</div>
+
+  <div class="kw-grid">
+    <div class="kw-card">
+      <span class="kw-medal">🥇</span>
+      <div class="kw-name">musto scarpe donna</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">1°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">159</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">60</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥇</span>
+      <div class="kw-name">musto calzature milano</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">1°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">372</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">170</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥇</span>
+      <div class="kw-name">negozi scarpe milano centro</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">1°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">399</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">16</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥈</span>
+      <div class="kw-name">stivali laura biagiotti</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">2°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">1.293</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">2</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥈</span>
+      <div class="kw-name">mocassini camoscio donna</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">2°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">901</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">2</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥈</span>
+      <div class="kw-name">musto milano</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">2°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">712</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">303</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥉</span>
+      <div class="kw-name">walter violet scarpe</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">2°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">384</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">100</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥉</span>
+      <div class="kw-name">stivaletti (termine generico)</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-green">3°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">1.962</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">50</div></div>
+      </div>
+    </div>
+    <div class="kw-card">
+      <span class="kw-medal">🥉</span>
+      <div class="kw-name">musto calzature</div>
+      <div class="kw-stats">
+        <div><div class="kw-stat-label">Posizione</div><div class="kw-stat-val"><span class="badge badge-gold">4°</span></div></div>
+        <div><div class="kw-stat-label">Visualizzazioni</div><div class="kw-stat-val">1.123</div></div>
+        <div><div class="kw-stat-label">Clic</div><div class="kw-stat-val">569</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     9 — CHI CERCA IL BRAND / CHI CERCA IL PRODOTTO
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Ricerche</div>
+  <div class="section-title">Brand e prodotto a confronto</div>
+  <div class="section-desc">Le ricerche si dividono tra chi conosce già Musto e lo cerca per nome, e chi cerca una tipologia di scarpa senza conoscere il brand. Il non-branded porta il volume maggiore.</div>
+
+  <div class="brand-grid">
+    <div class="brand-card">
+      <div class="brand-card-title">🏷 Chi cerca "Musto"</div>
+      <div class="brand-bar-track">
+        <div class="brand-bar-fill" style="width:34.8%; background:var(--gold);"></div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Clic ricevuti</span>
+        <span class="brand-row-val">1.727</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Visualizzazioni</span>
+        <span class="brand-row-val">11.493</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Tasso di clic</span>
+        <span class="brand-row-val" style="color:var(--green);">15%</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Quota del totale</span>
+        <span class="brand-row-val">34,8%</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-card-title">🌐 Chi cerca scarpe / prodotti</div>
+      <div class="brand-bar-track">
+        <div class="brand-bar-fill" style="width:65.2%; background:var(--blue);"></div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Clic ricevuti</span>
+        <span class="brand-row-val">3.241</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Visualizzazioni</span>
+        <span class="brand-row-val">379.847</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Tasso di clic</span>
+        <span class="brand-row-val">0,85%</span>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Quota del totale</span>
+        <span class="brand-row-val">65,2%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     10 — PUBBLICO
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Pubblico</div>
+  <div class="section-title">Chi visita il sito</div>
+  <div class="section-desc">I dati demografici sono disponibili per una parte dei visitatori (la maggioranza non è identificata da Google per ragioni di privacy). Sul campione rilevato, le donne sono la fascia più presente, con una distribuzione di età equilibrata tra 25 e 55 anni.</div>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-title">👤 Genere (campione identificato)</div>
+      <div class="bar-row">
+        <div class="bar-label">Donne</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70.1%; background:var(--gold);"></div></div>
+        <div class="bar-val">70%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Uomini</div>
+        <div class="bar-track"><div class="bar-fill" style="width:29.9%; background:var(--blue);"></div></div>
+        <div class="bar-val">30%</div>
+      </div>
+      <div style="margin-top:16px; padding-top:14px; border-top:0.5px solid var(--border-light); font-size:12px; color:var(--text-muted); line-height:1.6;">
+        Campione: 1.984 utenti identificati su 19.969 totali.<br>Donne: 1.391 · Uomini: 593
+      </div>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-title">🎂 Fascia d'età (campione identificato)</div>
+      <div class="bar-row">
+        <div class="bar-label">45–54</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--gold);"></div></div>
+        <div class="bar-val">449</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">35–44</div>
+        <div class="bar-track"><div class="bar-fill" style="width:98.4%; background:var(--gold);"></div></div>
+        <div class="bar-val">442</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">25–34</div>
+        <div class="bar-track"><div class="bar-fill" style="width:97.8%; background:var(--gold);"></div></div>
+        <div class="bar-val">439</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">55–64</div>
+        <div class="bar-track"><div class="bar-fill" style="width:73.3%; background:rgba(201,169,110,0.45);"></div></div>
+        <div class="bar-val">329</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">18–24</div>
+        <div class="bar-track"><div class="bar-fill" style="width:37.9%; background:rgba(201,169,110,0.35);"></div></div>
+        <div class="bar-val">170</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">65+</div>
+        <div class="bar-track"><div class="bar-fill" style="width:31.2%; background:rgba(201,169,110,0.25);"></div></div>
+        <div class="bar-val">140</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     11 — AI VISIBILITY
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Novità</div>
+  <div class="section-title">Musto sui motori AI</div>
+
+  <div class="ai-card">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <div class="ai-title">Il sito viene già citato da ChatGPT, Gemini e Perplexity</div>
+      <div class="ai-desc">
+        Nei mesi di gennaio–marzo 2026 abbiamo rilevato visite al sito provenienti direttamente da motori di ricerca basati sull'intelligenza artificiale. ChatGPT ha inviato 17 visitatori con una permanenza media di quasi 7 minuti — un segnale che il brand viene menzionato nelle risposte AI. Anche Gemini e Perplexity contribuiscono. Questo è un indicatore positivo per il futuro, in un panorama dove sempre più persone usano l'AI per trovare negozi e prodotti.
+      </div>
+      <div class="ai-chips">
+        <span class="ai-chip">ChatGPT · 17 visitatori · 7 min/visita media</span>
+        <span class="ai-chip">Gemini · 8 visitatori</span>
+        <span class="ai-chip">Perplexity · 4 visitatori</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     12 — LINK BUILDING
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Link Building</div>
+  <div class="section-title">Articoli pubblicati con link al sito</div>
+  <div class="section-desc">Nel trimestre sono stati pubblicati articoli su testate online che includono un link a mustocalzature.com. Questa attività rafforza l'autorevolezza del sito agli occhi di Google nel medio periodo.</div>
+
+  <div class="lb-grid">
+    <div class="lb-card">
+      <div class="lb-source">donnemagazine.it</div>
+      <div class="lb-title">Scarpe artigianali nel cuore di Milano: Musto Calzature racconta il valore del Made in Italy</div>
+      <a class="lb-url" href="https://www.donnemagazine.it/scarpe-artigianali-nel-cuore-di-milano-musto-calzature-racconta-il-valore-del-made-in-italy/" target="_blank">
+        donnemagazine.it/scarpe-artigianali-nel-cuore-di-milano…
+      </a>
+      <div><span class="lb-tag">Moda &amp; Lifestyle</span></div>
+    </div>
+    <div class="lb-card">
+      <div class="lb-source">trattorosa.it</div>
+      <div class="lb-title">Mocassini donna: i migliori brand per qualità, stile e comfort</div>
+      <a class="lb-url" href="https://www.trattorosa.it/stile/moda/accessori/mocassini-donna-i-migliori-brand-per-qualita-stile-e-comfort/" target="_blank">
+        trattorosa.it/stile/moda/accessori/mocassini-donna…
+      </a>
+      <div><span class="lb-tag">Moda</span></div>
+    </div>
+    <div class="lb-card">
+      <div class="lb-source">primamilanoovest.it</div>
+      <div class="lb-title">Musto Calzature: quando la qualità batte gli algoritmi — il caso della boutique di Milano</div>
+      <a class="lb-url" href="https://primamilanoovest.it/rubriche/idee-e-consigli/musto-calzature-quando-la-qualita-batte-gli-algoritmi-il-caso-della-boutique-di-milano/" target="_blank">
+        primamilanoovest.it/rubriche/idee-e-consigli/musto…
+      </a>
+      <div><span class="lb-tag">Lifestyle Milano</span></div>
+    </div>
+    <div class="lb-card">
+      <div class="lb-source">lifestyleblog.it</div>
+      <div class="lb-title">Dal 1978 in Via Dante: la storia di Musto Calzature, icona dello shopping milanese</div>
+      <a class="lb-url" href="https://www.lifestyleblog.it/blog/2026/03/dal-1978-in-via-dante-la-storia-di-musto-calzature-icona-dello-shopping-milanese/" target="_blank">
+        lifestyleblog.it/blog/2026/03/dal-1978-in-via-dante…
+      </a>
+      <div><span class="lb-tag">Lifestyle</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <strong>Musto Calzature · mustocalzature.com</strong><br>
+  Report SEO &amp; Analytics · Gennaio–Marzo 2026<br>
+  Elaborato da <strong>Web Domus Digital Agency</strong> · Dati: Google Analytics 4 · Google Search Console · DataForSEO
 </footer>
 
-<!-- ===== SCRIPTS ===== -->
+
+<!-- ══════════════════════════════════════
+     CHARTS
+══════════════════════════════════════ -->
 <script>
-// PALETTE
-const C = {
-  organic: '#4a9e7a',
-  direct: '#c9a96e',
-  paidSearch: '#0EA0C5',
-  paidSocial: '#E20056',
-  email: '#8553E8',
-  shopping: '#6dc49a',
-  unassigned: 'rgba(255,255,255,0.2)',
-  grid: 'rgba(255,255,255,0.06)',
-  text: 'rgba(240,236,228,0.5)',
-};
+const gold   = '#c9a96e';
+const green  = '#52b088';
+const blue   = '#6aacde';
+const grid   = 'rgba(255,255,255,0.06)';
+const lbl    = 'rgba(245,242,236,0.55)';
+const fontCfg = { family: 'Inter', size: 12 };
 
-const chartDefaults = {
-  plugins: { legend: { labels: { color: C.text, font: { family: 'Poppins', size: 11 } } } },
-  scales: {
-    x: { grid: { color: C.grid }, ticks: { color: C.text, font: { family: 'Poppins', size: 11 } } },
-    y: { grid: { color: C.grid }, ticks: { color: C.text, font: { family: 'Poppins', size: 11 } } },
-  },
-};
-
-// 1. GRAFICO MENSILE
-new Chart(document.getElementById('chartMensile'), {
+// Chart 1 — Visitatori
+new Chart(document.getElementById('chartUtenti'), {
   type: 'bar',
   data: {
-    labels: ['Gennaio 2026', 'Febbraio 2026', 'Marzo 2026 (parz.)'],
-    datasets: [
-      {
-        label: 'Utenti Attivi',
-        data: [6384, 4931, 3302],
-        backgroundColor: 'rgba(74,158,122,0.7)',
-        borderRadius: 6,
-        order: 2,
-      },
-      {
-        label: 'Sessioni',
-        data: [7858, 5993, 3924],
-        backgroundColor: 'rgba(201,169,110,0.5)',
-        borderRadius: 6,
-        order: 3,
-      },
-      {
-        label: 'Ordini',
-        data: [25, 14, 6],
-        type: 'line',
-        borderColor: '#E20056',
-        backgroundColor: 'rgba(226,0,86,0.15)',
-        pointBackgroundColor: '#E20056',
-        pointRadius: 6,
-        tension: 0.4,
-        yAxisID: 'y1',
-        order: 1,
-      },
-    ],
-  },
-  options: {
-    ...chartDefaults,
-    scales: {
-      ...chartDefaults.scales,
-      y1: {
-        position: 'right',
-        grid: { drawOnChartArea: false },
-        ticks: { color: '#E20056', font: { family: 'Poppins', size: 11 } },
-        title: { display: true, text: 'Ordini', color: '#E20056', font: { size: 11 } },
-      },
-    },
-    plugins: {
-      ...chartDefaults.plugins,
-      tooltip: { mode: 'index', intersect: false },
-    },
-  },
-});
-
-// 2. DONUT CANALI
-new Chart(document.getElementById('chartCanali'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Organic Search', 'Direct', 'Unassigned', 'Organic Social', 'Organic Shopping', 'Paid Social', 'Paid Search', 'Cross-network', 'Email', 'Altro'],
+    labels: ['Gennaio', 'Febbraio', 'Marzo'],
     datasets: [{
-      data: [8998, 6179, 1799, 479, 259, 188, 106, 121, 109, 8],
-      backgroundColor: [C.organic, C.direct, 'rgba(255,255,255,0.15)', '#a87df5', C.shopping, C.paidSocial, C.paidSearch, '#F39C12', '#8553E8', 'rgba(255,255,255,0.1)'],
-      borderWidth: 2,
-      borderColor: '#0f0f0f',
-    }],
+      data: [6384, 4931, 8654],
+      backgroundColor: ['rgba(201,169,110,0.22)', 'rgba(201,169,110,0.22)', gold],
+      borderColor:     ['rgba(201,169,110,0.4)',  'rgba(201,169,110,0.4)',  gold],
+      borderWidth: 1, borderRadius: 7, borderSkipped: false
+    }]
   },
   options: {
-    plugins: { legend: { position: 'right', labels: { color: C.text, font: { family: 'Poppins', size: 11 }, boxWidth: 12, padding: 10 } } },
-    cutout: '62%',
-  },
-});
-
-// 3. REVENUE per canale
-new Chart(document.getElementById('chartRevenue'), {
-  type: 'bar',
-  data: {
-    labels: ['Organic\nSearch', 'Direct', 'Organic\nShopping', 'Email', 'Paid\nSearch', 'Paid\nSocial'],
-    datasets: [{
-      label: '€ Revenue',
-      data: [3574, 1105, 553, 198, 0, 0],
-      backgroundColor: [C.organic, C.direct, C.shopping, '#8553E8', C.paidSearch, C.paidSocial],
-      borderRadius: 8,
-    }],
-  },
-  options: {
-    ...chartDefaults,
-    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: ctx => `€ ${ctx.raw.toLocaleString('it-IT')}`,
-        },
-      },
-    },
-  },
-});
-
-// 4. GRAFICO GIORNALIERO 10 GG CAMPAGNE
-const days = ['6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar'];
-
-// Organic Search daily sessions 6-16 Mar
-const organicDaily = [114, 106, 115, 121, 117, 116, 111, 110, 152, 137, 23];
-// Paid Search daily
-const paidSearchDaily = [2, 0, 12, 18, 24, 17, 12, 5, 7, 5, 1];
-// Paid Social daily
-const paidSocialDaily = [0, 0, 6, 4, 9, 9, 25, 39, 38, 33, 26];
-// Direct daily
-const directDaily = [71, 57, 43, 52, 38, 49, 37, 50, 50, 62, 17];
-// Cross-network
-const crossDaily = [3, 8, 9, 11, 9, 15, 18, 4, 11, 26, 1];
-
-new Chart(document.getElementById('chartDays'), {
-  type: 'line',
-  data: {
-    labels: days,
-    datasets: [
-      { label: 'Organic Search', data: organicDaily, borderColor: C.organic, backgroundColor: 'rgba(74,158,122,0.1)', fill: true, tension: 0.4, pointRadius: 4, borderWidth: 2 },
-      { label: 'Direct', data: directDaily, borderColor: C.direct, backgroundColor: 'rgba(201,169,110,0.1)', fill: false, tension: 0.4, pointRadius: 4, borderWidth: 2 },
-      { label: 'Paid Social (Meta)', data: paidSocialDaily, borderColor: C.paidSocial, backgroundColor: 'rgba(226,0,86,0.08)', fill: true, tension: 0.4, pointRadius: 5, borderWidth: 2.5, borderDash: [0] },
-      { label: 'Paid Search (Google)', data: paidSearchDaily, borderColor: C.paidSearch, backgroundColor: 'rgba(14,160,197,0.08)', fill: true, tension: 0.4, pointRadius: 5, borderWidth: 2.5 },
-      { label: 'Cross-network', data: crossDaily, borderColor: '#F39C12', backgroundColor: 'transparent', fill: false, tension: 0.4, pointRadius: 3, borderWidth: 1.5, borderDash: [4,3] },
-    ],
-  },
-  options: {
-    ...chartDefaults,
-    plugins: {
-      ...chartDefaults.plugins,
-      tooltip: { mode: 'index', intersect: false },
-      annotation: {
-        annotations: {
-          launch: {
-            type: 'line',
-            xMin: 0,
-            xMax: 0,
-            borderColor: 'rgba(226,0,86,0.6)',
-            borderWidth: 2,
-            borderDash: [6, 4],
-            label: { content: '▶ Launch Ads', display: true, color: '#ff5090', font: { size: 10 } },
-          },
-        },
-      },
+      tooltip: { callbacks: { label: c => ' ' + c.raw.toLocaleString('it-IT') + ' visitatori' } }
     },
     scales: {
-      x: { grid: { color: C.grid }, ticks: { color: C.text, font: { family: 'Poppins', size: 11 } } },
-      y: { grid: { color: C.grid }, ticks: { color: C.text, font: { family: 'Poppins', size: 11 } }, beginAtZero: true },
-    },
+      x: { grid: { display: false }, ticks: { font: fontCfg, color: lbl } },
+      y: { beginAtZero: true, grid: { color: grid }, ticks: { font: fontCfg, color: lbl } }
+    }
+  }
+});
+
+// Chart 2 — Ordini & Revenue
+new Chart(document.getElementById('chartOrdini'), {
+  type: 'bar',
+  data: {
+    labels: ['Gennaio', 'Febbraio', 'Marzo'],
+    datasets: [
+      {
+        label: 'Ordini',
+        data: [25, 14, 15],
+        backgroundColor: ['rgba(82,176,136,0.28)', 'rgba(82,176,136,0.28)', 'rgba(82,176,136,0.7)'],
+        borderColor: [green, green, green],
+        borderWidth: 1, borderRadius: 7, borderSkipped: false,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Fatturato €',
+        data: [3086, 1947, 2691],
+        type: 'line',
+        borderColor: gold,
+        backgroundColor: 'rgba(201,169,110,0.07)',
+        tension: 0.35, fill: true,
+        pointBackgroundColor: gold, pointRadius: 5, pointHoverRadius: 7,
+        yAxisID: 'y1'
+      }
+    ]
   },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true, position: 'top', align: 'end',
+        labels: { font: fontCfg, color: lbl, boxWidth: 10, padding: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: c => c.dataset.label === 'Fatturato €'
+            ? ' €' + c.raw.toLocaleString('it-IT')
+            : ' ' + c.raw + ' ordini'
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: fontCfg, color: lbl } },
+      y: {
+        beginAtZero: true, grid: { color: grid },
+        ticks: { font: fontCfg, color: lbl },
+        title: { display: true, text: 'Ordini', color: 'rgba(82,176,136,0.6)', font: { size: 11 } }
+      },
+      y1: {
+        beginAtZero: true, position: 'right',
+        grid: { drawOnChartArea: false },
+        ticks: { font: fontCfg, color: lbl, callback: v => '€' + v.toLocaleString('it-IT') }
+      }
+    }
+  }
 });
 </script>
+
 </body>
 </html>
