@@ -435,7 +435,7 @@
 <section class="section">
   <div class="section-label">Panoramica</div>
   <div class="section-title">I numeri del trimestre</div>
-  <div class="section-desc">Un quadro generale del sito nel periodo gennaio–marzo 2026: visitatori, sessioni, ordini e fatturato generato online.</div>
+  <div class="section-desc">Un quadro generale del sito nel periodo gennaio–marzo 2026: visitatori, sessioni, ordini e fatturato generato online. Il fatturato è tratto direttamente da <strong style="color:var(--text)">Shopify</strong>, più preciso di Google Analytics perché non è influenzato dal consenso ai cookie.</div>
 
   <div class="kpi-grid kpi-4">
     <div class="kpi-card">
@@ -458,9 +458,9 @@
     </div>
     <div class="kpi-card gold">
       <div class="kpi-label">Fatturato Online</div>
-      <div class="kpi-value gold">€7.724</div>
-      <div class="kpi-note">Valore medio per ordine: €143</div>
-      <div class="kpi-trend up">↑ +38,2% <span class="trend-label">Mar vs Feb</span></div>
+      <div class="kpi-value gold">€9.879</div>
+      <div class="kpi-note">Valore medio per ordine: €183 · Fonte: Shopify</div>
+      <div class="kpi-trend up">↑ +16,4% <span class="trend-label">Mar vs Feb</span></div>
     </div>
   </div>
 </section>
@@ -1331,7 +1331,7 @@ const metricData = {
   visitatori: { label:'Visitatori',  data:[6384,4931,8658], color:gold,  fmt: v => v.toLocaleString('it-IT')+' visitatori' },
   sessioni:   { label:'Sessioni',    data:[7858,5993,10397],color:blue,  fmt: v => v.toLocaleString('it-IT')+' sessioni'   },
   ordini:     { label:'Ordini',      data:[25,14,15],        color:green, fmt: v => v+' ordini'                              },
-  fatturato:  { label:'Fatturato €', data:[3086,1947,2691],  color:gold,  fmt: v => '€'+v.toLocaleString('it-IT')           }
+  fatturato:  { label:'Fatturato €', data:[4316,2570,2993],  color:gold,  fmt: v => '€'+v.toLocaleString('it-IT')           }
 };
 let currentMetric = 'visitatori';
 let mainChart;
