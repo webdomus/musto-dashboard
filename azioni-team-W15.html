@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raccomandazioni W15 — Musto Calzature (interno)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f0f0f; --surface: #1a1a1a; --surface-light: #222;
+      --border: rgba(255,255,255,0.07); --text: #f0ece4;
+      --text-muted: rgba(240,236,228,0.5);
+      --gold: #c9a96e; --green: #4a9e7a; --red: #c55a4a; --blue: #5b8fb9;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    .header { padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--border); }
+    .header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 8px; }
+    .header .sub { color: var(--text-muted); font-size: 0.9rem; }
+    .header .warning { margin-top: 14px; background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); border-radius: 4px; padding: 10px 14px; font-size: 0.85rem; color: var(--gold); }
+
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 36px 0 16px; color: var(--text); display: flex; align-items: center; gap: 10px; }
+
+    .rec { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 12px; }
+    .rec.urgent { border-left: 3px solid var(--red); }
+    .rec.high { border-left: 3px solid var(--gold); }
+    .rec.medium { border-left: 3px solid var(--blue); }
+
+    .priority { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 2px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+    .priority.urgent { background: rgba(197,90,74,0.2); color: #ff8a78; }
+    .priority.high { background: rgba(201,169,110,0.15); color: var(--gold); }
+    .priority.medium { background: rgba(91,143,185,0.15); color: var(--blue); }
+
+    .rec h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+
+    .page-list { margin-top: 12px; background: rgba(255,255,255,0.02); border-radius: 3px; overflow: hidden; }
+    .page-item { display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .page-item:last-child { border-bottom: none; }
+    .page-url { font-family: monospace; font-size: 0.8rem; color: var(--blue); }
+    .page-metric { text-align: right; color: var(--text-muted); white-space: nowrap; }
+    .page-metric strong { color: var(--text); }
+    .page-action { font-size: 0.82rem; color: var(--gold); font-style: italic; }
+
+    .kw-list { margin-top: 12px; background: rgba(255,255,255,0.02); border-radius: 3px; overflow: hidden; }
+    .kw-item { display: grid; grid-template-columns: 1fr 80px 80px 80px 1fr; gap: 10px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .kw-item:last-child { border-bottom: none; }
+    .kw-item .kw-name { font-weight: 500; }
+    .kw-item .kw-metric { text-align: right; color: var(--text-muted); }
+    .kw-item .kw-metric strong { color: var(--text); }
+    .kw-action { font-size: 0.82rem; color: var(--gold); font-style: italic; }
+
+    .table-header { display: grid; grid-template-columns: 1fr 80px 80px 80px 1fr; gap: 10px; padding: 8px 14px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(255,255,255,0.02); }
+    .table-header-pages { display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 12px; padding: 8px 14px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(255,255,255,0.02); }
+
+    .note { font-size: 0.87rem; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+    .note strong { color: var(--text); }
+
+    .next-steps { background: var(--surface-light); border-radius: 4px; padding: 24px; margin-top: 36px; }
+    .next-steps h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 16px; color: var(--gold); }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; font-size: 0.9rem; }
+    .step-num { min-width: 24px; height: 24px; background: rgba(201,169,110,0.15); color: var(--gold); border-radius: 50%; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .step-text { color: var(--text-muted); line-height: 1.5; }
+    .step-text strong { color: var(--text); }
+
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🎯 Azioni Ottimizzazione — W15</h1>
+    <div class="sub">Musto Calzature · 6–12 Apr 2026 · Documento interno Web Domus</div>
+    <div class="warning">⚠️ Solo per uso interno — non condividere con il cliente</div>
+  </div>
+
+  <!-- SEZIONE 1: COLLECTION -->
+  <div class="section-title">🗂 Collection da Ottimizzare</div>
+
+  <div class="rec urgent">
+    <div class="priority urgent">Urgente</div>
+    <h3>Title tag e meta description sulle collection brand</h3>
+    <p class="note">Le seguenti collection hanno impressioni elevate ma CTR quasi nullo. Intervenire su title + meta è il quick win con il ritorno più alto questa settimana.</p>
+
+    <div class="page-list">
+      <div class="table-header-pages">
+        <span>URL</span><span style="text-align:right">Impr</span><span style="text-align:right">Click</span><span style="text-align:right">Pos</span><span>Azione</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/bibi-lou</span>
+        <span class="page-metric"><strong>1.457</strong></span>
+        <span class="page-metric">14</span>
+        <span class="page-metric">pos <strong>9,3</strong></span>
+        <span class="page-action">Title: "Bibi Lou Scarpe Donna | Collezione 2026 – Musto"</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/brunate</span>
+        <span class="page-metric"><strong>543</strong></span>
+        <span class="page-metric">17</span>
+        <span class="page-metric">pos <strong>7,7</strong></span>
+        <span class="page-action">Title: "Brunate Scarpe Donna | Shop Online – Musto Calzature"</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/[palladium]</span>
+        <span class="page-metric"><strong>396</strong></span>
+        <span class="page-metric">0</span>
+        <span class="page-metric">pos <strong>5,3</strong></span>
+        <span class="page-action">Ottimizzare H1 + title. 0 click su 396 impr = problema di snippet</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/[harris]</span>
+        <span class="page-metric"><strong>285</strong></span>
+        <span class="page-metric">0</span>
+        <span class="page-metric">pos <strong>8,5</strong></span>
+        <span class="page-action">Verificare se la collection è indicizzata; aggiungere H1 "Harris Scarpe"</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/[frau-scarpe]</span>
+        <span class="page-metric"><strong>270</strong></span>
+        <span class="page-metric">0</span>
+        <span class="page-metric">pos <strong>11,3</strong></span>
+        <span class="page-action">Aggiungere testo descrittivo al brand page + interlinking da blog</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/collections/[laura-vita]</span>
+        <span class="page-metric"><strong>479</strong></span>
+        <span class="page-metric">1</span>
+        <span class="page-metric">pos <strong>5,9</strong></span>
+        <span class="page-action">Creare pagina brand dedicata o migliorare contenuto esistente</span>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:14px;"><strong>Formato title consigliato:</strong> <em>[Brand] Scarpe [Categoria] | [Anno] – Musto Calzature</em><br>
+    Per la meta description: includere vantaggi (consegna, reso), stagione e 2-3 modelli popolari del brand.</p>
+  </div>
+
+  <!-- SEZIONE 2: BLOG -->
+  <div class="section-title">📝 Blog — Ottimizzazione Post Esistenti</div>
+
+  <div class="rec high">
+    <div class="priority high">Alta</div>
+    <h3>Blog post con alto traffico ma CTR basso — intervento su title e link interni</h3>
+    <p class="note">I blog generano il 40% dei click organici. I seguenti articoli hanno già volumi alti ma possono crescere ulteriormente.</p>
+
+    <div class="page-list">
+      <div class="table-header-pages">
+        <span>URL</span><span style="text-align:right">Impr</span><span style="text-align:right">Click</span><span style="text-align:right">Pos</span><span>Azione</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/blogs/scarpe-da-cerimonia-per-donna</span>
+        <span class="page-metric"><strong>3.240</strong></span>
+        <span class="page-metric">34</span>
+        <span class="page-metric">pos <strong>9,2</strong></span>
+        <span class="page-action">CTR solo 1,0%: aggiornare title con anno 2026 + CTA; aggiungere FAQ schema</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/blogs/scarpe-cerimonia-uomo</span>
+        <span class="page-metric"><strong>1.843</strong></span>
+        <span class="page-metric">15</span>
+        <span class="page-metric">pos <strong>11,2</strong></span>
+        <span class="page-action">In pos 11: migliorare H2 con keyword longtail, aggiungere immagini prodotto linkate</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/blogs/back-to-work-scarpe-uomo</span>
+        <span class="page-metric"><strong>1.316</strong></span>
+        <span class="page-metric">25</span>
+        <span class="page-metric">pos <strong>7,4</strong></span>
+        <span class="page-action">Aggiornare contenuto per primavera 2026; aggiungere interlinking a collection uomo</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/blogs/mocassini-uomo-2026-guida</span>
+        <span class="page-metric"><strong>849</strong></span>
+        <span class="page-metric">40</span>
+        <span class="page-metric">pos <strong>5,8</strong></span>
+        <span class="page-action">Già in top 6 — push interno da homepage/collection per salire a top 3</span>
+      </div>
+      <div class="page-item">
+        <span class="page-url">/blogs/slingback-donna-2026</span>
+        <span class="page-metric"><strong>810</strong></span>
+        <span class="page-metric">31</span>
+        <span class="page-metric">pos <strong>6,4</strong></span>
+        <span class="page-action">Aggiungere link da /collections/donna-1 e sezione "prodotti correlati"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEZIONE 3: NUOVI CONTENUTI -->
+  <div class="section-title">✍️ Nuovi Contenuti da Creare</div>
+
+  <div class="rec high">
+    <div class="priority high">Alta</div>
+    <h3>Keyword ad alto potenziale senza contenuto dedicato</h3>
+    <p class="note">Query con buone impressioni ma senza una pagina ottimizzata — ogni contenuto nuovo su questi temi dovrebbe posizionarsi entro 4–8 settimane.</p>
+
+    <div class="kw-list">
+      <div class="table-header">
+        <span>Keyword</span><span style="text-align:right">Impr</span><span style="text-align:right">Click</span><span style="text-align:right">Pos</span><span>Contenuto da creare</span>
+      </div>
+      <div class="kw-item">
+        <span class="kw-name">sneakers donna platform</span>
+        <span class="kw-metric"><strong>365</strong></span>
+        <span class="kw-metric">1</span>
+        <span class="kw-metric"><strong>8,2</strong></span>
+        <span class="kw-action">Blog: "Sneakers Donna Platform 2026: i modelli più trendy"</span>
+      </div>
+      <div class="kw-item">
+        <span class="kw-name">scarpe eleganti cerimonia comode</span>
+        <span class="kw-metric"><strong>342</strong></span>
+        <span class="kw-metric">2</span>
+        <span class="kw-metric"><strong>6,3</strong></span>
+        <span class="kw-action">Blog o landing: guida all'eleganza senza sacrificare il comfort</span>
+      </div>
+      <div class="kw-item">
+        <span class="kw-name">scarpe da cerimonia donna</span>
+        <span class="kw-metric"><strong>312</strong></span>
+        <span class="kw-metric">2</span>
+        <span class="kw-metric"><strong>13,8</strong></span>
+        <span class="kw-action">Landing page dedicata o migliora il blog esistente con questa keyword come focus</span>
+      </div>
+      <div class="kw-item">
+        <span class="kw-name">loafers uomo</span>
+        <span class="kw-metric"><strong>361</strong></span>
+        <span class="kw-metric">0</span>
+        <span class="kw-metric"><strong>9,3</strong></span>
+        <span class="kw-action">Blog già presente — ottimizzare title e H1 con "loafers" (non solo "mocassini")</span>
+      </div>
+      <div class="kw-item">
+        <span class="kw-name">birkenstock arizona uomo</span>
+        <span class="kw-metric"><strong>226</strong></span>
+        <span class="kw-metric">0</span>
+        <span class="kw-metric"><strong>8,5</strong></span>
+        <span class="kw-action">Verificare se il prodotto è in catalogo; se sì, ottimizzare la scheda prodotto</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEZIONE 4: CTR BRANDED -->
+  <div class="section-title">🔶 Branded Search — Calo −14,7%</div>
+
+  <div class="rec urgent">
+    <div class="priority urgent">Urgente</div>
+    <h3>Click branded in calo: da 116 → 99 (−14,7%)</h3>
+    <p class="note">Le query contenenti "musto" hanno perso 17 click rispetto alla settimana precedente. Da investigare prima che diventi un trend negativo.</p>
+    <div class="page-list">
+      <div class="page-item" style="grid-template-columns: 1fr;">
+        <span class="page-action" style="font-style:normal; color:var(--text-muted);">
+          <strong style="color:var(--text);">Azioni da verificare:</strong><br><br>
+          1. Controllare GSC se "musto calzature" o "musto scarpe" hanno perso posizioni<br>
+          2. Verificare che homepage e pagine brand siano indicizzate correttamente<br>
+          3. Analizzare i dati di Direct traffic (368 sessioni — +X% WoW?) per capire se parte del branded è migrato lì<br>
+          4. Eventuale push: newsletter + post Instagram questa settimana per stimolare branded search
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSSIMI PASSI -->
+  <div class="next-steps">
+    <h3>📋 Priorità della settimana (entro 19 Apr)</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Collection Palladium, Harris, Frau:</strong> ottimizzare title tag e H1 su queste 3 collection (max 1h di lavoro in wp/shopify)</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Blog cerimonia donna:</strong> aggiornare title e aggiungere FAQ schema su <code>/blogs/scarpe-da-cerimonia-per-donna</code></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Branded search:</strong> monitorare in GSC, e se il calo persiste questa settimana, proporre al cliente una campagna di brand awareness</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Nuovo contenuto:</strong> brief per blog "sneakers donna platform 2026" da inserire nel piano editoriale della prossima settimana</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Bibi Lou collection:</strong> title tag + meta description aggiornati (1.457 impr settimanali, solo 14 click)</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Web Domus Digital Agency · Settimana 15 (6–12 Apr 2026) · Documento riservato uso interno
+  </div>
+
+</div>
+</body>
+</html>
