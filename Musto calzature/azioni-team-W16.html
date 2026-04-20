@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚙️ Azioni Team W16 · USO INTERNO · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0a;--card:#161616;--border:#252525;--text:#e0e0e0;--muted:#777;--gold:#c9a96e;--green:#4a9e7a;--red:#e05c5c;--orange:#e0923a;--blue:#5b8dee}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6}
+  .topbar{background:#1a0a0a;border-bottom:2px solid var(--red);padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .int-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:3px}
+  .topbar-title{font-size:14px;font-weight:600}
+  .topbar-meta{font-size:11px;color:var(--muted)}
+  .container{max-width:1050px;margin:0 auto;padding:28px 24px}
+  .prio{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+  .p-urg{background:rgba(224,92,92,.2);color:var(--red);border:1px solid rgba(224,92,92,.3)}
+  .p-alt{background:rgba(224,146,58,.2);color:var(--orange);border:1px solid rgba(224,146,58,.3)}
+  .p-med{background:rgba(201,169,110,.15);color:var(--gold);border:1px solid rgba(201,169,110,.25)}
+  .section{margin-bottom:36px}
+  .st{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .ac{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 18px;margin-bottom:10px;border-left:3px solid transparent}
+  .ac.urg{border-left-color:var(--red)} .ac.alt{border-left-color:var(--orange)} .ac.med{border-left-color:var(--gold)} .ac.info{border-left-color:var(--blue)}
+  .ah{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+  .at{font-size:13px;font-weight:600;color:#fff;flex:1}
+  .am{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .dl{font-size:10px;color:var(--muted);background:#1e1e1e;padding:2px 8px;border-radius:3px;white-space:nowrap}
+  .dl.soon{color:var(--orange)}
+  .url{font-family:monospace;font-size:11px;color:var(--gold);background:rgba(201,169,110,.08);padding:3px 8px;border-radius:3px;border:1px solid rgba(201,169,110,.15);display:inline-block;margin:4px 0;word-break:break-all}
+  .ab{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .ab strong{color:var(--text)}
+  .dr{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:10px}
+  .dc{background:#1a1a1a;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center}
+  .dc .val{font-size:15px;font-weight:600;color:var(--text);display:block}
+  .dc .lab{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:block;margin-top:2px}
+  .sug{background:#0e1a14;border:1px solid rgba(74,158,122,.2);border-radius:4px;padding:10px 12px;font-size:12px;color:var(--green);margin-top:10px}
+  .sug strong{color:#7fd4b0}
+  .steps{display:flex;flex-direction:column;gap:8px}
+  .step{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:5px;padding:12px 14px}
+  .sn{font-size:11px;font-weight:700;color:var(--gold);min-width:20px;padding-top:1px}
+  .sc{flex:1}
+  .st2{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+  .sd{font-size:11px;color:var(--muted)}
+  .sr{text-align:right;min-width:80px}
+  .ib{background:#0a1020;border:1px solid rgba(91,141,238,.2);border-left:3px solid var(--blue);border-radius:4px;padding:12px 16px;font-size:12px;color:#8ab0e8;margin-bottom:14px}
+  .ib strong{color:#aac8ff}
+  .footer{margin-top:48px;padding:16px 24px;border-top:1px solid var(--border);background:#070707;text-align:center;font-size:11px;color:var(--muted)}
+  code{font-family:monospace;font-size:11px;color:var(--gold)}
+  table.t{width:100%;border-collapse:collapse;font-size:12px}
+  table.t th{text-align:left;padding:6px 8px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+  table.t td{padding:8px 8px;border-bottom:1px solid #1a1a1a}
+  table.t tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="int-badge">⚙️ USO INTERNO</span>
+    <div><div class="topbar-title">Azioni Team · Musto Calzature · W16</div><div class="topbar-meta">Non condividere con il cliente · Web Domus internal</div></div>
+  </div>
+  <div class="topbar-meta">13–19 Apr 2026 · Generato: 20 Apr 2026 · Dati reali GSC + Shopify</div>
+</div>
+
+<div class="container">
+
+  <!-- RIEPILOGO DATI -->
+  <div class="ib" style="margin-bottom:24px">
+    <strong>✅ Tutti i dati confermati questa settimana:</strong> GA4 · GSC (sc-domain:mustocalzature.com) · Shopify CSV<br>
+    Shopify: <strong>10 ordini · €1.261,47 netto · €1.600,20 totale</strong> &nbsp;|&nbsp; GSC: <strong>343 click · 49.791 impr · CTR 0,69% · pos 9,2</strong>
+  </div>
+
+  <!-- 1. URGENTE: CTR CERIMONIA UOMO -->
+  <div class="section">
+    <div class="st">🔴 Priorità Urgente</div>
+
+    <div class="ac urg">
+      <div class="ah">
+        <div class="at">Blog cerimonia uomo: CTR 0,7% con 2.277 impressioni — ottimizzare subito il title</div>
+        <div class="am"><span class="prio p-urg">Urgente</span><span class="dl soon">Entro mar 21 apr</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/scarpe-cerimonia-uomo-eleganza-musto-per-ogni-occasione</div>
+      <div class="dr">
+        <div class="dc"><span class="val">16</span><span class="lab">Click</span></div>
+        <div class="dc"><span class="val">2.277</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">0,7%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">11,5</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="ab" style="margin-top:12px">
+        CTR 0,7% su 2.277 impressioni = circa <strong>14 click persi ogni giorno</strong> rispetto a un CTR del 2%. Siamo in piena stagione cerimonie (Apr–Giu). Ogni settimana di ritardo costa visibilità nei matrimoni.
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Modificare il meta title in Shopify per questo blog post. Proposta title attuale → ottimizzato:<br>
+        <em>Attuale (stimato):</em> "Scarpe Cerimonia Uomo: Eleganza Musto per Ogni Occasione"<br>
+        <em>Proposta:</em> "Scarpe Cerimonia Uomo 2026: Guida agli Abbinamenti Eleganti | Musto Milano"<br>
+        Max 60 caratteri. Includere "2026" e "Milano" per differenziare. Anche aggiornare la meta description con CTA.
+      </div>
+    </div>
+
+    <div class="ac urg">
+      <div class="ah">
+        <div class="at">"musto calzature" in posizione 11,7 — keyword branded fuori dalla top 10</div>
+        <div class="am"><span class="prio p-urg">Urgente</span><span class="dl soon">Analisi immediata</span></div>
+      </div>
+      <div class="ab">
+        La keyword branded <strong>"musto calzature"</strong> ha CTR 13,1% su 160 impressioni in pos 11,7. Questo significa che chi cerca esattamente il brand non trova il sito in prima pagina. Da investigare: forse c'è una concorrenza di terze parti o un problema di snippet.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">21</span><span class="lab">Click</span></div>
+        <div class="dc"><span class="val">160</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--orange)">13,1%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">11,7</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Cercare "musto calzature" su Google incognito e verificare chi compare prima. Se ci sono siti aggregatori o directory che scalzano il brand, valutare link building specifico verso la homepage. Controllare anche se l'homepage ha correttamente il brand nel title tag H1.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ALTA PRIORITÀ: NUOVI ARTICOLI + COLLECTION -->
+  <div class="section">
+    <div class="st">🟠 Alta Priorità</div>
+
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">★ Mocassini uomo 2026 (NUOVO): pos 5,7 con 34 click in settimana 1 — eccellente</div>
+        <div class="am"><span class="prio p-alt">Alta</span><span class="dl">Monitoraggio W17-W18</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/mocassini-uomo-2026-guida</div>
+      <div class="dr">
+        <div class="dc"><span class="val" style="color:var(--green)">34</span><span class="lab">Click W1</span></div>
+        <div class="dc"><span class="val">916</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val">3,7%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">5,7</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="ab" style="margin-top:12px">
+        Prima settimana di vita: 34 click, pos 5,7, CTR 3,7%. Performance eccezionale per un articolo nuovo. La keyword "mocassini uomo 2026" è in posizione 1,8 con 3 click.
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Aggiungere link interno da <code>/collections/donna-1</code> (o collections uomo) → questo articolo. Verificare in W18 se la posizione migliorerà ulteriormente con l'aging della pagina. Potenziale per entrare in top 3 su "mocassini uomo 2026".
+      </div>
+    </div>
+
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">★ Slingback donna 2026 (NUOVO): pos 6,4 con 24 click in settimana 1</div>
+        <div class="am"><span class="prio p-alt">Alta</span><span class="dl">Monitoraggio W17-W18</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/slingback-donna-2026-eleganza-e-comfort</div>
+      <div class="dr">
+        <div class="dc"><span class="val" style="color:var(--green)">24</span><span class="lab">Click W1</span></div>
+        <div class="dc"><span class="val">761</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val">3,2%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">6,4</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Aggiungere link interno da <code>/collections/bibi-lou</code> e dalla pagina collection donna. Il picco stagionale è Mar–Ago, siamo in pieno periodo.
+      </div>
+    </div>
+
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">Collection bibi-lou: 2.508 impressioni, pos 8,0 — opportunità di scalata top 5</div>
+        <div class="am"><span class="prio p-alt">Alta</span><span class="dl">Entro W17</span></div>
+      </div>
+      <div class="url">mustocalzature.com/collections/bibi-lou</div>
+      <div class="dr">
+        <div class="dc"><span class="val">31</span><span class="lab">Click</span></div>
+        <div class="dc"><span class="val">2.508</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--orange)">1,2%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">8,0</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="ab" style="margin-top:12px">
+        2.508 impressioni settimanali su "bibi lou" e varianti (bibi lou scarpe, ballerine bibi lou, ecc.). CTR 1,2% indica che il title/snippet non convince — o che la posizione 8 è troppo bassa. Passare da pos 8 a pos 4-5 raddoppierebbe i click.
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Ottimizzare il title della collection in Shopify.<br>
+        Proposta: <em>"Bibi Lou Scarpe | Collezione Ufficiale Milano | Musto Calzature"</em><br>
+        Aggiungere una descrizione H2 con keyword "bibi lou primavera 2026". Verificare se ci sono altri competitor su questa keyword con schede prodotto più dettagliate.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MEDIA PRIORITÀ -->
+  <div class="section">
+    <div class="st">🟡 Media Priorità</div>
+
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">Blog cerimonia donna: CTR 1,4% su pos 8,7 — margine di miglioramento</div>
+        <div class="am"><span class="prio p-med">Media</span><span class="dl">Entro W18</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento</div>
+      <div class="dr">
+        <div class="dc"><span class="val">55</span><span class="lab">Click</span></div>
+        <div class="dc"><span class="val">3.880</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val">1,4%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">8,7</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="ab" style="margin-top:12px">
+        La keyword "scarpe cerimonia donna" è in pos 10,7 con solo 3 click su 371 impressioni (CTR 0,8%). L'articolo raccoglie traffico da varianti ma la keyword principale è ancora fuori top 10. Aggiornato di recente ma forse non abbastanza ottimizzato sul target principale.
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Verificare che "scarpe cerimonia donna 2026" sia nell'H1 dell'articolo. Aggiungere FAQ in fondo all'articolo con domande tipo "Quali scarpe da cerimonia scegliere per la primavera 2026?". Fare internal linking da homepage e dalla collection donna.
+      </div>
+    </div>
+
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">Collection brunate: CTR 3,1% — buono, ma pos 8,2 da migliorare</div>
+        <div class="am"><span class="prio p-med">Media</span><span class="dl">Ongoing</span></div>
+      </div>
+      <div class="url">mustocalzature.com/collections/brunate</div>
+      <div class="dr">
+        <div class="dc"><span class="val">16</span><span class="lab">Click</span></div>
+        <div class="dc"><span class="val">522</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val">3,1%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">8,2</span><span class="lab">Posizione</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> Il CTR è buono (3,1%) per la posizione. Obiettivo: portare in top 5 con link interni e ottimizzazione della descrizione collection. La keyword "brunate scarpe donna" è già in pos 3,4 con 3 click — buon segnale.
+      </div>
+    </div>
+
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">Sessioni Unassigned al 15,9% — identificare sorgente e aggiungere UTM</div>
+        <div class="am"><span class="prio p-med">Media</span><span class="dl">Entro W17</span></div>
+      </div>
+      <div class="ab">
+        481 sessioni non attribuite (15,9% del totale canali). Valore stimato perso: ~€200 in revenue attribution. Probabile fonte: campagne Meta/email senza parametri UTM.
+      </div>
+      <div class="sug">
+        <strong>Azione:</strong> GA4 → Esplora → Sessioni filtrate per canale Unassigned. Identificare sorgente/medium. Aggiungere UTM a tutti i link nelle newsletter Klaviyo e nei post Instagram swipe-up.
+      </div>
+    </div>
+
+    <div class="ac info">
+      <div class="ah">
+        <div class="at">GSC click -12,7% WoW — flessione stagionale Pasqua, non strutturale</div>
+        <div class="am"><span class="prio p-med">Media</span><span class="dl">Monitorare W17</span></div>
+      </div>
+      <div class="ab">
+        La settimana W16 (13-19 apr) era la settimana di Pasqua. Le flessioni di click organici (-12,7%) e impressioni (-6,2%) sono attese. In W17 ci si aspetta un rimbalzo. Se W17 non recupera, investigare ulteriormente.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. PROSSIMI PASSI PRIORITIZZATI -->
+  <div class="section">
+    <div class="st">🎯 Prossimi Passi · Settimana W17 (21–27 Apr)</div>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">01</div>
+        <div class="sc">
+          <div class="st2">🔴 Ottimizzare title/meta del blog scarpe cerimonia uomo</div>
+          <div class="sd">CTR 0,7% su 2.277 impressioni in peak season = opportunità immediata. URL: <code>/blogs/.../scarpe-cerimonia-uomo-eleganza-musto</code></div>
+        </div>
+        <div class="sr"><span class="prio p-urg">Urgente</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Entro mar 21 apr</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">02</div>
+        <div class="sc">
+          <div class="st2">🔴 Verificare posizione "musto calzature" su Google — branded keyword a pos 11,7</div>
+          <div class="sd">Cercare "musto calzature" in incognito e analizzare i competitor che precedono il sito.</div>
+        </div>
+        <div class="sr"><span class="prio p-urg">Urgente</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Entro mer 22 apr</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">03</div>
+        <div class="sc">
+          <div class="st2">🟠 Aggiungere link interni: collezioni → nuovi articoli mocassini e slingback</div>
+          <div class="sd">Da <code>/collections/donna-1</code> e collection uomo verso i due nuovi blog articoli.</div>
+        </div>
+        <div class="sr"><span class="prio p-alt">Alta</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Entro gio 23 apr</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">04</div>
+        <div class="sc">
+          <div class="st2">🟠 Ottimizzare title della collection bibi-lou</div>
+          <div class="sd">2.508 impressioni settimanali, CTR 1,2%. Proposta: "Bibi Lou Scarpe | Collezione SS2026 | Musto Calzature Milano"</div>
+        </div>
+        <div class="sr"><span class="prio p-alt">Alta</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Entro ven 24 apr</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">05</div>
+        <div class="sc">
+          <div class="st2">🟡 Identificare sorgente sessioni Unassigned e aggiungere UTM</div>
+          <div class="sd">481 sessioni (15,9%) senza attribuzione → GA4 Esplora → filtro canale Unassigned.</div>
+        </div>
+        <div class="sr"><span class="prio p-med">Media</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Entro W17</span></div>
+      </div>
+      <div class="step">
+        <div class="sn">06</div>
+        <div class="sc">
+          <div class="st2">🟡 Monitorare rimbalzo GSC click in W17 — atteso recupero post-Pasqua</div>
+          <div class="sd">Se W17 non recupera almeno 350+ click GSC, investigare cause strutturali (crawl, canonical, ecc.).</div>
+        </div>
+        <div class="sr"><span class="prio p-med">Media</span><br><span style="font-size:10px;color:var(--muted);display:block;margin-top:4px">Fine W17</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. OPPORTUNITÀ NUOVI CONTENUTI -->
+  <div class="section">
+    <div class="st">💡 Opportunità Nuovi Contenuti (GSC Insight)</div>
+    <div class="ac info">
+      <div class="ab">
+        Keyword con buone impressioni ma CTR/posizione da migliorare — candidati per nuovi contenuti o potenziamento esistenti:
+      </div>
+      <table class="t" style="margin-top:12px">
+        <thead><tr><th>Keyword</th><th>Click</th><th>Impr.</th><th>CTR</th><th>Pos.</th><th>Suggerimento</th></tr></thead>
+        <tbody>
+          <tr><td>scarpe cerimonia donna</td><td>3</td><td>371</td><td>0,8%</td><td>10,7</td><td>Potenziare blog con FAQ e schema markup</td></tr>
+          <tr><td>scarpe eleganti cerimonia comode</td><td>7</td><td>351</td><td>2,0%</td><td>5,2</td><td>Ottimizzare snippet per questa variante</td></tr>
+          <tr><td>bibi lou (generico)</td><td>9</td><td>928</td><td>1,0%</td><td>6,4</td><td>Guida brand Bibi Lou? Brand page dedicata?</td></tr>
+          <tr><td>mocassini frau donna</td><td>3</td><td>164</td><td>1,8%</td><td>3,3</td><td>Aggiungere sezione mocassini alla tabella Frau</td></tr>
+          <tr><td>scarpe business casual uomo</td><td>4</td><td>26</td><td>15,4%</td><td>7,9</td><td>Ampliare back-to-work con sezione business casual</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">⚙️ Documento uso interno — Non distribuire al cliente · Web Domus · carmine@webdomus.net · W16 · 20 Aprile 2026</div>
+</body>
+</html>
