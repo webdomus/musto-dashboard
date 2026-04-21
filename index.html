@@ -1,98 +1,113 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musto Calzature — Report SEO &amp; Analytics</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #0f0f0f; --surface: #1a1a1a; --surface-hover: #212121;
-      --border: rgba(255,255,255,0.07); --text: #f0ece4;
-      --text-muted: rgba(240,236,228,0.45);
-      --gold: #c9a96e; --green: #4a9e7a; --blue: #5b8fb9;
-    }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 60px 20px; }
-    .container { max-width: 860px; margin: 0 auto; }
-
-    .header { text-align: center; margin-bottom: 60px; }
-    .header .logo-badge { display: inline-block; background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.2); color: var(--gold); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
-    .header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; line-height: 1.2; margin-bottom: 10px; }
-    .header p { color: var(--text-muted); font-size: 0.95rem; }
-
-    .group { margin-bottom: 44px; }
-    .group-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-
-    .report-card { display: flex; align-items: center; gap: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 18px 22px; margin-bottom: 10px; text-decoration: none; color: var(--text); transition: background 0.15s, border-color 0.15s; }
-    .report-card:hover { background: var(--surface-hover); border-color: rgba(255,255,255,0.12); }
-    .report-card.featured { border-left: 3px solid var(--gold); }
-
-    .rc-icon { font-size: 1.6rem; min-width: 40px; text-align: center; }
-    .rc-body { flex: 1; }
-    .rc-title { font-weight: 500; font-size: 1rem; margin-bottom: 3px; }
-    .rc-meta { font-size: 0.82rem; color: var(--text-muted); }
-    .rc-badge { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
-    .rc-badge.current { background: rgba(74,158,122,0.2); color: var(--green); }
-    .rc-badge.internal { background: rgba(201,169,110,0.12); color: var(--gold); }
-    .rc-badge.archive { background: rgba(255,255,255,0.06); color: var(--text-muted); }
-    .rc-badge.quarterly { background: rgba(91,143,185,0.2); color: var(--blue); }
-
-    .footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musto Calzature · Report SEO · Web Domus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f; --bg2: #141414; --card: #181818; --border: #252525;
+    --text: #e8e8e8; --muted: #777; --gold: #c9a96e; --green: #4a9e7a;
+    --red: #e05c5c; --blue: #5b8dee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+  .header { background: linear-gradient(135deg, #0a0a0a 0%, #1a1409 100%); border-bottom: 1px solid var(--gold); padding: 40px 48px 30px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
+  .brand-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 8px; }
+  .client-name { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #fff; }
+  .client-url { margin-top: 4px; font-size: 12px; color: var(--muted); }
+  .header-right .logo { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
+  .header-right .tagline { margin-top: 4px; font-size: 11px; color: var(--muted); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .section-sub { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+  .reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 48px; }
+  .report-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 22px 24px; text-decoration: none; color: inherit; display: block; position: relative; transition: border-color 0.2s, transform 0.1s; overflow: hidden; }
+  .report-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .report-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+  .report-card.current::before { background: var(--gold); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .week-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; }
+  .card-badge { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; }
+  .badge-current { background: rgba(201,169,110,0.2); color: var(--gold); border: 1px solid rgba(201,169,110,0.3); }
+  .badge-prev { background: #1e1e1e; color: var(--muted); border: 1px solid var(--border); }
+  .card-dates { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+  .card-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .card-kpi { background: #1c1c1c; border: 1px solid var(--border); border-radius: 4px; padding: 8px 10px; text-align: center; }
+  .card-kpi .val { font-size: 14px; font-weight: 700; color: #fff; display: block; line-height: 1.2; }
+  .card-kpi .lab { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); display: block; margin-top: 2px; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+  .card-cta { color: var(--gold); font-weight: 500; font-size: 11px; }
+  .trend { font-size: 10px; font-weight: 600; }
+  .up { color: var(--green); }
+  .info-box { background: #0d1520; border: 1px solid rgba(91,141,238,0.2); border-left: 3px solid var(--blue); border-radius: 4px; padding: 14px 18px; font-size: 12px; color: #8ab0e8; margin-top: 32px; }
+  .info-box strong { color: #aac8ff; }
+  .info-box ul { margin-top: 8px; padding-left: 16px; line-height: 1.8; }
+  .footer { margin-top: 60px; padding: 22px 48px; border-top: 1px solid var(--border); background: #080808; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
+  .footer-info { font-size: 11px; color: var(--muted); text-align: right; }
+</style>
 </head>
 <body>
+<div class="header">
+  <div>
+    <div class="brand-label">Web Domus · SEO Reporting</div>
+    <div class="client-name">Musto Calzature</div>
+    <div class="client-url">mustocalzature.com · Report Settimanali 2026</div>
+  </div>
+  <div class="header-right">
+    <div class="logo">Web Domus</div>
+    <div class="tagline">webdomus.net · carmine@webdomus.net</div>
+  </div>
+</div>
 <div class="container">
+  <div class="section-title">Report Settimanali</div>
+  <div class="section-sub">Archivio report SEO settimanali · GA4 + Search Console · 2026</div>
+  <div class="reports-grid">
 
-  <div class="header">
-    <div class="logo-badge">Web Domus · Report Hub</div>
-    <h1>Musto Calzature</h1>
-    <p>SEO Analytics &amp; Performance Reports</p>
-  </div>
-
-  <!-- REPORT SETTIMANALI -->
-  <div class="group">
-    <div class="group-label">📅 Report Settimanali</div>
-
-    <a class="report-card featured" href="report-settimanale-2026-W15.html">
-      <div class="rc-icon">📊</div>
-      <div class="rc-body">
-        <div class="rc-title">Settimana 15 — 6–12 Aprile 2026</div>
-        <div class="rc-meta">GA4 · GSC · Shopify · Attribuzione per canale</div>
+    <!-- W16 CORRENTE -->
+    <a href="report-settimanale-2026-W16.html" class="report-card current">
+      <div class="card-top">
+        <div class="week-num">W16</div>
+        <span class="card-badge badge-current">● Corrente</span>
       </div>
-      <span class="rc-badge current">Corrente</span>
+      <div class="card-dates">13 – 19 Aprile 2026</div>
+      <div class="card-kpis">
+        <div class="card-kpi"><span class="val">2.635</span><span class="lab">Utenti</span></div>
+        <div class="card-kpi"><span class="val">2.831</span><span class="lab">Sessioni</span></div>
+        <div class="card-kpi"><span class="val">€&nbsp;1.600,20</span><span class="lab">Shopify Totale</span></div>
+      </div>
+      <div class="card-footer">
+        <div><span class="trend up">↑ +19,8%</span> <span style="color:var(--muted);font-size:10px">utenti WoW</span></div>
+        <span class="card-cta">Apri report →</span>
+      </div>
+    </a>
+
+    <!-- W15 -->
+    <a href="report-settimanale-2026-W15.html" class="report-card">
+      <div class="card-top">
+        <div class="week-num">W15</div>
+        <span class="card-badge badge-prev">Precedente</span>
+      </div>
+      <div class="card-dates">6 – 12 Aprile 2026</div>
+      <div class="card-kpis">
+        <div class="card-kpi"><span class="val">2.103</span><span class="lab">Utenti</span></div>
+        <div class="card-kpi"><span class="val">2.384</span><span class="lab">Sessioni</span></div>
+        <div class="card-kpi"><span class="val">€&nbsp;707</span><span class="lab">Revenue GA4</span></div>
+      </div>
+      <div class="card-footer">
+        <div><span style="color:var(--muted);font-size:10px">4 ordini · 6–12 apr 2026</span></div>
+        <span class="card-cta">Apri report →</span>
+      </div>
     </a>
 
   </div>
+</div>
 
-  <!-- DASHBOARD TRIMESTRALI -->
-  <div class="group">
-    <div class="group-label">📈 Dashboard Trimestrali</div>
-
-    <a class="report-card" href="dashboard-trimestrale-Q1-2026.html">
-      <div class="rc-icon">📈</div>
-      <div class="rc-body">
-        <div class="rc-title">Dashboard SEO — Q1 2026</div>
-        <div class="rc-meta">Gennaio–Marzo 2026 · KPI GA4 · GSC · Keyword matrix · Branded</div>
-      </div>
-      <span class="rc-badge quarterly">Trimestrale</span>
-    </a>
-
-    <a class="report-card" href="index16marzo.html">
-      <div class="rc-icon">📁</div>
-      <div class="rc-body">
-        <div class="rc-title">Dashboard SEO — 16 Marzo 2026</div>
-        <div class="rc-meta">Analisi puntuale mid-quarter</div>
-      </div>
-      <span class="rc-badge archive">Archivio</span>
-    </a>
-
-  </div>
-
-  <div class="footer">
-    Elaborato da <strong>Web Domus Digital Agency</strong> · mustocalzature.com · Aggiornato Apr 2026
-  </div>
-
+<div class="footer">
+  <div class="footer-brand">Web Domus</div>
+  <div class="footer-info">Musto Calzature · SEO Reporting 2026<br>Aggiornato: 21 Aprile 2026 · W16</div>
 </div>
 </body>
 </html>
