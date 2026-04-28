@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚙️ Azioni Team W17 · USO INTERNO · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0a;--card:#161616;--border:#252525;--text:#e0e0e0;--muted:#777;--gold:#c9a96e;--green:#4a9e7a;--red:#e05c5c;--orange:#e0923a;--blue:#5b8dee}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:"Inter",sans-serif;font-size:13px;line-height:1.6}
+  .topbar{background:#1a0a0a;border-bottom:2px solid var(--red);padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .int-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:3px}
+  .topbar-title{font-size:14px;font-weight:600}
+  .topbar-meta{font-size:11px;color:var(--muted)}
+  .container{max-width:1050px;margin:0 auto;padding:28px 24px}
+  .prio{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+  .p-urg{background:rgba(224,92,92,.2);color:var(--red);border:1px solid rgba(224,92,92,.3)}
+  .p-alt{background:rgba(224,146,58,.2);color:var(--orange);border:1px solid rgba(224,146,58,.3)}
+  .p-med{background:rgba(201,169,110,.15);color:var(--gold);border:1px solid rgba(201,169,110,.25)}
+  .section{margin-bottom:36px}
+  .st{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .ac{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 18px;margin-bottom:10px;border-left:3px solid transparent}
+  .ac.urg{border-left-color:var(--red)} .ac.alt{border-left-color:var(--orange)} .ac.med{border-left-color:var(--gold)} .ac.info{border-left-color:var(--blue)}
+  .ah{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+  .at{font-size:13px;font-weight:600;color:#fff;flex:1}
+  .am{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .dl{font-size:10px;color:var(--muted);background:#1e1e1e;padding:2px 8px;border-radius:3px;white-space:nowrap}
+  .dl.soon{color:var(--orange)}
+  .url{font-family:monospace;font-size:11px;color:var(--gold);background:rgba(201,169,110,.08);padding:3px 8px;border-radius:3px;border:1px solid rgba(201,169,110,.15);display:inline-block;margin:4px 0;word-break:break-all}
+  .ab{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .ab strong{color:var(--text)}
+  .dr{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:10px}
+  .dc{background:#1a1a1a;border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center}
+  .dc .val{font-size:15px;font-weight:600;color:var(--text);display:block}
+  .dc .lab{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:block;margin-top:2px}
+  .sug{background:#0e1a14;border:1px solid rgba(74,158,122,.2);border-radius:4px;padding:10px 12px;font-size:12px;color:var(--green);margin-top:10px}
+  .sug strong{color:#7fd4b0}
+  .sug.warn{background:#1a100a;border-color:rgba(224,146,58,.2);color:var(--orange)}
+  .sug.warn strong{color:#f0b070}
+  .sug.danger{background:#1a0808;border-color:rgba(224,92,92,.2);color:#e09090}
+  .sug.danger strong{color:#ffb0b0}
+  .ib{background:#0a1020;border:1px solid rgba(91,141,238,.2);border-left:3px solid var(--blue);border-radius:4px;padding:12px 16px;font-size:12px;color:#8ab0e8;margin-bottom:14px}
+  .ib strong{color:#aac8ff}
+  .footer{margin-top:48px;padding:16px 24px;border-top:1px solid var(--border);background:#070707;text-align:center;font-size:11px;color:var(--muted)}
+  code{font-family:monospace;font-size:11px;color:var(--gold)}
+  table.t{width:100%;border-collapse:collapse;font-size:12px}
+  table.t th{text-align:left;padding:6px 8px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+  table.t td{padding:8px 8px;border-bottom:1px solid #1a1a1a}
+  table.t tr:last-child td{border-bottom:none}
+  .steps{display:flex;flex-direction:column;gap:8px}
+  .step{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:5px;padding:12px 14px}
+  .sn{font-size:11px;font-weight:700;color:var(--gold);min-width:20px;padding-top:1px}
+  .sc{flex:1}
+  .st2{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+  .sd{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="int-badge">⚙️ USO INTERNO</span>
+    <div><div class="topbar-title">Azioni Team · Musto Calzature · W17</div><div class="topbar-meta">Non condividere con il cliente · Web Domus internal</div></div>
+  </div>
+  <div class="topbar-meta">20–26 Apr 2026 · Generato: 28 Apr 2026 · GA4 ✅ · Shopify ✅ · GSC ✅</div>
+</div>
+
+<div class="container">
+
+  <!-- RIEPILOGO DATI -->
+  <div class="ib" style="margin-bottom:24px">
+    <strong>📊 Dati completi W17:</strong> GA4 ✅ · Shopify CSV ✅ · GSC ✅ (6 giorni su 7 — Apr 26 in lag normale)<br>
+    Shopify W17: <strong>12 ordini · € 1.788,28 netto · € 2.262,40 totale</strong> &nbsp;|&nbsp; GA4: <strong>2.716 sess · 2.381 utenti · −6,4% WoW</strong><br>
+    GSC W17: <strong>1.140 click · 93.182 impr · CTR 1,22% · Pos. media 8,6</strong> &nbsp;|&nbsp; Click/giorno: <strong>+5,1% WoW</strong>
+  </div>
+
+  <!-- URGENTE -->
+  <div class="section">
+    <div class="st">🔴 Priorità Urgente</div>
+
+    <!-- HTTP vs HTTPS canonical -->
+    <div class="ac urg">
+      <div class="ah">
+        <div class="at">Problema tecnico CRITICO: Google indicizza http:// invece di https:// — 130 click persi sul protocollo sbagliato</div>
+        <div class="am"><span class="prio p-urg">Urgente · Tecnico SEO</span><span class="dl soon">Entro mar 29 apr</span></div>
+      </div>
+      <div class="ab">
+        In questa settimana GSC registra <strong>130 click su <code>http://mustocalzature.com/</code></strong> (HTTP senza SSL) contro soli 59 click su <code>https://mustocalzature.com/</code>.
+        Questo significa che la <strong>homepage HTTP è indicizzata e rankata da Google</strong> come entità separata da quella HTTPS — un problema grave di canonical/redirect.
+        Google dovrebbe ricevere un redirect 301 da HTTP a HTTPS su tutte le URL: se così fosse, non potrebbe registrare 130 click su http://.
+        Il risultato è una <strong>diluzione dell'autorità di dominio</strong> tra due versioni della stessa pagina.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val" style="color:var(--red)">130</span><span class="lab">Click su HTTP</span></div>
+        <div class="dc"><span class="val">59</span><span class="lab">Click su HTTPS</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">2,20×</span><span class="lab">Rapporto HTTP/HTTPS</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">⚠️</span><span class="lab">Canonical assente</span></div>
+      </div>
+      <div class="sug danger">
+        <strong>Azioni da eseguire in ordine:</strong><br>
+        1. <strong>Verificare redirect 301</strong> su server/Shopify: <code>http://mustocalzature.com/</code> deve rispondere con 301 → <code>https://mustocalzature.com/</code><br>
+        2. Su Shopify Admin → Online Store → Domains → verificare che "Redirect to primary domain" sia attivato<br>
+        3. In GSC, aprire la proprietà <code>http://mustocalzature.com/</code> (se presente) e richiedere la rimozione URL o la correzione via Copertura Index<br>
+        4. Aggiungere tag canonical <code>&lt;link rel="canonical" href="https://mustocalzature.com/"&gt;</code> se non presente nella homepage<br>
+        5. Verificare che Shopify non generi link interni con http:// (sito map, metafields, ecc.)<br>
+        6. Dopo la correzione, richiedere re-crawl in GSC → Ispezione URL → Richiedi indicizzazione
+      </div>
+    </div>
+
+    <!-- Blog cerimonia uomo - CTR critico -->
+    <div class="ac urg">
+      <div class="ah">
+        <div class="at">Blog cerimonia uomo: 2.604 impressioni in piena stagione, CTR solo 0,96% — title tag da riscrivere subito</div>
+        <div class="am"><span class="prio p-urg">Urgente · On-Page SEO</span><span class="dl soon">Entro mer 30 apr</span></div>
+      </div>
+      <div class="ab">
+        Il blog "scarpe cerimonia uomo" è al <strong>posizione 11,2 media</strong> con <strong>2.604 impressioni</strong> in W17 — un volume altissimo considerando che siamo nella piena stagione cerimonie (aprile-giugno). Ma genera solo <strong>25 click</strong> con un CTR del <strong>0,96%</strong>. Per confronto, il blog cerimonia donna ha CTR 1,72% a posizione 8,5. Il potenziale è enorme: portare il CTR a 2% significherebbe +27 click/settimana solo da questo contenuto, con crescita organica continua fino a giugno.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">25</span><span class="lab">Click W17</span></div>
+        <div class="dc"><span class="val">2.604</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">0,96%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">11,2</span><span class="lab">Posizione media</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/scarpe-cerimonia-uomo</div>
+      <div class="sug warn">
+        <strong>Azioni SEO on-page immediate:</strong><br>
+        · <strong>Riscrivere il title tag</strong> → proposta: <em>"Scarpe da Cerimonia Uomo 2026: Oxford, Mocassini e Abbinamenti Eleganti | Musto"</em><br>
+        · <strong>Aggiornare la meta description</strong> con call to action esplicita: <em>"Scopri le scarpe da cerimonia uomo più ricercate del 2026. Oxford classici, mocassini eleganti e consigli di stile. Consegna rapida."</em><br>
+        · Verificare H1: deve contenere "scarpe cerimonia uomo 2026"<br>
+        · Aggiungere una sezione "Come abbinare le scarpe al vestito da cerimonia" (query semantica ad alto CTR)<br>
+        · Aggiungere internal link verso la collection cerimonia uomo con anchor text descrittivo<br>
+        · Inserire immagini stagionali 2026 con alt text ottimizzati
+      </div>
+    </div>
+
+    <!-- Paid Social 0 conversioni -->
+    <div class="ac urg">
+      <div class="ah">
+        <div class="at">Paid Social: 473 sessioni, 0 ordini per la 2ª settimana consecutiva — campagne da analizzare o sospendere</div>
+        <div class="am"><span class="prio p-urg">Urgente · Paid</span><span class="dl soon">Entro mer 29 apr</span></div>
+      </div>
+      <div class="ab">
+        Il Paid Social è il secondo canale per volume (17,5% del traffico, 473 sess.) ma ha generato <strong>0 ordini</strong> anche questa settimana — come in W16. Due settimane consecutive senza ROI diretto da campagne a pagamento sui social è un segnale critico. Nel frattempo l'Organic Social (194 sess.) ha generato 1 ordine da € 398 con traffico gratuito.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">473</span><span class="lab">Sessioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">0</span><span class="lab">Ordini (2 sett.)</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">0%</span><span class="lab">Conv. Rate</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">€ 0</span><span class="lab">Revenue diretta</span></div>
+      </div>
+      <div class="sug warn">
+        <strong>Verificare su Meta Ads Manager:</strong><br>
+        · Le campagne attive puntano alle pagine collection o alla homepage? → testare landing page specifiche (es. cerimonia, slingback)<br>
+        · L'audience è retargeting o fredda? → retargeting converte meglio su scarpe premium<br>
+        · Controllare se i pixel Meta e i tag UTM <code>utm_medium=paid social</code> sono correttamente configurati<br>
+        · Valutare di mettere in pausa le campagne a basso ROAS e redirezionare budget verso Paid Search (89 sess → 2 ordini, CTR conv. 2,2%)
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ALTA PRIORITÀ -->
+  <div class="section">
+    <div class="st">🟠 Priorità Alta</div>
+
+    <!-- Slingback keyword opportunity -->
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">Keyword "slingback primavera 2026": pos. 3,7 con CTR 4,81% — spingere in top 3 per massimizzare stagione</div>
+        <div class="am"><span class="prio p-alt">Alta · SEO Keyword</span><span class="dl">Entro ven 2 mag</span></div>
+      </div>
+      <div class="ab">
+        La keyword "slingback primavera 2026" è a <strong>posizione media 3,7</strong> con un CTR del <strong>4,81%</strong> — tra i migliori nella nostra top keyword list. È a un passo dal top 3, dove il CTR medio medio sale all'8–12%. Considerando che "slingback" è tra le tendenze primavera-estate 2026 con alta domanda, portare questa pagina/keyword in posizione 1–3 prima della fine di maggio può generare un incremento significativo di traffico qualificato.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val" style="color:var(--gold)">3,7</span><span class="lab">Posizione media</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">4,81%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">~top 3</span><span class="lab">Obiettivo</span></div>
+        <div class="dc"><span class="val">mag 2026</span><span class="lab">Scadenza stagione</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azioni per la spinta finale in top 3:</strong><br>
+        · Verificare che la pagina target (collection slingback o articolo blog) abbia "slingback primavera 2026" nell'H1 e nel title tag<br>
+        · Aggiungere internal link verso questa pagina da articoli blog correlati (cerimonia donna, look primavera)<br>
+        · Aggiungere contenuto fresco: aggiornare la pagina con "Nuovi arrivi slingback primavera 2026" e descrizione stagionale<br>
+        · Considerare un articolo dedicato: "Slingback 2026: le tendenze primavera-estate da non perdere" con link alla collection
+      </div>
+    </div>
+
+    <!-- Blog cerimonia donna - mantenere performance -->
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">Blog cerimonia donna: 85 click · 4.935 impr · CTR 1,72% — top content della settimana, mantenere e potenziare</div>
+        <div class="am"><span class="prio p-alt">Alta · Content SEO</span><span class="dl">Entro lun 4 mag</span></div>
+      </div>
+      <div class="ab">
+        Il blog "scarpe da cerimonia per donna" è il <strong>contenuto organico con più click in W17</strong> (85 click, posizione media 8,5). Con 4.935 impressioni settimanali e un CTR del 1,72%, è già il nostro contenuto più performante in stagione. Ogni miglioramento di posizione o CTR ha un impatto diretto e misurabile. Siamo in piena stagione: aprile-giugno è il momento di massimizzare questo traffico.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val" style="color:var(--green)">85</span><span class="lab">Click W17</span></div>
+        <div class="dc"><span class="val">4.935</span><span class="lab">Impressioni</span></div>
+        <div class="dc"><span class="val">1,72%</span><span class="lab">CTR</span></div>
+        <div class="dc"><span class="val">8,5</span><span class="lab">Posizione media</span></div>
+      </div>
+      <div class="url">mustocalzature.com/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna</div>
+      <div class="sug">
+        <strong>Azioni per consolidare e crescere:</strong><br>
+        · Aggiungere sezione "Look cerimonia donna maggio 2026" con 3–5 outfit fotografati<br>
+        · Inserire link interno verso prodotti specifici (slingback, décolleté, sandali con tacco) con anchor text descrittivi<br>
+        · Ottimizzare il meta title aggiungendo l'anno: <em>"Scarpe Cerimonia Donna 2026: Tendenze e Consigli di Stile | Musto"</em><br>
+        · Aggiungere una FAQ schema su "cosa portare a un matrimonio come invitata" — può generare featured snippet
+      </div>
+    </div>
+
+    <!-- Organic Social alta conversione -->
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">Organic Social: canale più efficiente (1 ordine da 194 sess, AOV € 398) — aumentare la frequenza di post</div>
+        <div class="am"><span class="prio p-alt">Alta · Social</span><span class="dl">Entro ven 2 mag</span></div>
+      </div>
+      <div class="ab">
+        L'Organic Social ha generato <strong>1 ordine da 194 sessioni</strong> con un valore GA4 di <strong>€ 398</strong> — il ticket medio più alto tra tutti i canali questa settimana. Nel frattempo Paid Social (473 sess.) ha generato 0 ordini. È il canale con il miglior rapporto costo/conversione: zero spesa pubblicitaria, qualità d'acquisto superiore. In W16 aveva mostrato performance simili.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">194</span><span class="lab">Sessioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">1</span><span class="lab">Ordine GA4</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">€ 398</span><span class="lab">AOV GA4</span></div>
+        <div class="dc"><span class="val">€ 128</span><span class="lab">Revenue attribuita</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azioni:</strong><br>
+        · Pubblicare 4–5 post/settimana su Instagram con look cerimonia primavera-estate 2026<br>
+        · Creare Reel con outfit cerimonia uomo e donna: formato ad alto engagement organico<br>
+        · Taggare i prodotti nei post (Instagram Shopping) per ridurre il percorso d'acquisto<br>
+        · Stories con link diretto alla pagina slingback o cerimonia (alta intenzione d'acquisto stagionale)
+      </div>
+    </div>
+
+    <!-- Paid Shopping calo -->
+    <div class="ac alt">
+      <div class="ah">
+        <div class="at">Paid Shopping: −71,9% sessioni WoW · 0 ordini · verificare feed e Merchant Center</div>
+        <div class="am"><span class="prio p-alt">Alta · Paid</span><span class="dl soon">Entro gio 30 apr</span></div>
+      </div>
+      <div class="ab">
+        Paid Shopping ha portato solo 63 sessioni in W17, in calo da 224 in W16 (−71,9%). Nessuna conversione in entrambe le settimane. Il calo così brusco suggerisce un problema tecnico (feed disapprovato, budget esaurito, sospensione account) piuttosto che un calo di demand stagionale.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">63</span><span class="lab">Sessioni W17</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">224</span><span class="lab">Sessioni W16</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">−71,9%</span><span class="lab">WoW</span></div>
+        <div class="dc"><span class="val" style="color:var(--red)">0</span><span class="lab">Ordini</span></div>
+      </div>
+      <div class="sug warn">
+        <strong>Verificare su Google Ads / Merchant Center:</strong><br>
+        · Ci sono disapprovazioni di prodotti questa settimana? (Merchant Center → Prodotti → Problemi)<br>
+        · Il feed è aggiornato con stock, prezzi e immagini corrette?<br>
+        · Il budget giornaliero è stato esaurito anticipatamente o limitato?<br>
+        · Se il feed è OK, valutare di ridirezionare il budget verso Paid Search (2,2% conv. rate) nel breve termine
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MEDIA PRIORITÀ -->
+  <div class="section">
+    <div class="st">🟡 Priorità Media</div>
+
+    <!-- Festivo insight May 1 -->
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">Festivo 25 Apr = 41,7% degli ordini settimanali — pianificare promozione per il 1 Maggio</div>
+        <div class="am"><span class="prio p-med">Media · Promo</span><span class="dl soon">Entro mer 29 apr</span></div>
+      </div>
+      <div class="ab">
+        Il 25 Aprile (festivo) ha generato <strong>5 ordini su 12 totali (41,7%)</strong> e <strong>€ 805,90 su € 2.262,40</strong> di vendite totali (35,6%). I festivi infrasettimanali favoriscono chiaramente gli acquisti online per Musto. Il prossimo festivo è il <strong>1 Maggio</strong> (giovedì), seguito dal weekend 2–3 maggio: un'opportunità di lungo weekend da non perdere.
+      </div>
+      <div class="sug">
+        <strong>Azioni:</strong><br>
+        · Pianificare una newsletter/DEM per il <strong>29 Aprile (mercoledì)</strong> con focus look festivi e primavera<br>
+        · Considerare uno sconto flash o spedizione gratuita per il 30 Apr–1 Mag (lungo weekend)<br>
+        · Post Instagram il 30 Apr sera con look cerimonia/primavera — massima visibilità pre-festivo<br>
+        · Documentare l'effetto festivi nel piano editoriale annuale per prossimi riferimenti (2 Giugno, Ferragosto)
+      </div>
+    </div>
+
+    <!-- Paid Search efficiente -->
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">Paid Search: 2,2% conversion rate (migliore tra tutti i paid) — valutare aumento budget</div>
+        <div class="am"><span class="prio p-med">Media · Paid</span><span class="dl">Entro lun 5 mag</span></div>
+      </div>
+      <div class="ab">
+        Con 89 sessioni e 2 ordini GA4, Paid Search ha il <strong>conversion rate più alto tra tutti i canali a pagamento (2,2%)</strong>. Volume basso (3,3% del traffico) ma qualità elevata. Ha senso aumentare il budget soprattutto su keyword cerimonia/slingback con alta intenzione d'acquisto.
+      </div>
+      <div class="dr">
+        <div class="dc"><span class="val">89</span><span class="lab">Sessioni</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">2</span><span class="lab">Ordini GA4</span></div>
+        <div class="dc"><span class="val" style="color:var(--green)">2,2%</span><span class="lab">Conv. Rate</span></div>
+        <div class="dc"><span class="val">€ 59</span><span class="lab">Revenue attribuita</span></div>
+      </div>
+      <div class="sug">
+        <strong>Azioni:</strong><br>
+        · Aggiungere varianti long-tail in Google Ads: "scarpe cerimonia uomo Milano", "slingback primavera 2026", "mocassini eleganti uomo 2026"<br>
+        · Aumentare del 20–30% il budget su campagne Search che già convertono<br>
+        · Redirezionare parte del budget Paid Social verso Search nel breve termine
+      </div>
+    </div>
+
+    <!-- GSC nota tecnica branded -->
+    <div class="ac med">
+      <div class="ah">
+        <div class="at">GSC: branded queries al 18,8% dei click totali — monitorare la brand awareness</div>
+        <div class="am"><span class="prio p-med">Media · Monitoraggio</span><span class="dl">Report W18</span></div>
+      </div>
+      <div class="ab">
+        Il branded (ricerche con nome brand) rappresenta il <strong>18,8% dei click organici</strong> (74 su 393 query visibili in GSC) con CTR del <strong>6,85%</strong> e posizione media <strong>5,1</strong>. Il non-branded è all'81,2% (319 click, CTR 0,57%, pos 9,7). Il mix è sano ma il CTR branded del 6,85% su pos 5,1 suggerisce che ci sono ricerche brand su cui non siamo in primo risultato — da indagare con GSC avanzato.
+      </div>
+      <div class="sug">
+        <strong>Nota metodologica per W18:</strong><br>
+        · Il totale click GSC è 1.140 (da dimensione data), ma le query visibili sommano solo 393 click — le restanti 747 provengono da long-tail sotto la soglia di privacy GSC. È un dato normale, non un errore di tracciamento.<br>
+        · In W18: verificare se il sito appare in Knowledge Panel per "Musto Calzature" e ottimizzare il profilo Google Business se non già fatto
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROSSIMI PASSI -->
+  <div class="section">
+    <div class="st">📋 Prossimi Passi · Settimana W18 (27 Apr – 3 Mag 2026)</div>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">1</div>
+        <div class="sc">
+          <div class="st2">🔴 Correggere redirect HTTP → HTTPS <span style="color:var(--red);font-size:10px">URGENTE</span></div>
+          <div class="sd">Verificare redirect 301 su Shopify e server. Google indicizza http:// (130 click) separatamente da https:// (59 click) — problema critico di canonical. Entro martedì 29 aprile.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <div class="sc">
+          <div class="st2">🔴 Ottimizzare title tag e meta description blog cerimonia uomo <span style="color:var(--red);font-size:10px">URGENTE</span></div>
+          <div class="sd">2.604 impressioni con CTR 0,96% in piena stagione cerimonie: grande opportunità. Riscrivere title e meta con proposta indicata sopra. Entro mercoledì 30 aprile.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <div class="sc">
+          <div class="st2">🔴 Analizzare Paid Social su Meta Ads Manager <span style="color:var(--red);font-size:10px">URGENTE</span></div>
+          <div class="sd">2 settimane consecutive senza conversioni. Verificare audience, creative, landing page e UTM. Valutare pausa campagne a basso ROAS. Entro mercoledì 29 aprile.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">4</div>
+        <div class="sc">
+          <div class="st2">🟠 Pianificare promozione 1 Maggio / lungo weekend <span style="color:var(--orange);font-size:10px">ALTA</span></div>
+          <div class="sd">Newsletter entro 29 Apr, post Instagram 30 Apr sera. Il festivo 25 Apr ha generato il 41,7% degli ordini W17 — replicare l'effetto per il 1 Maggio.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">5</div>
+        <div class="sc">
+          <div class="st2">🟠 Potenziare blog cerimonia donna + creare blog cerimonia uomo <span style="color:var(--orange);font-size:10px">ALTA</span></div>
+          <div class="sd">Cerimonia donna: aggiornare con look mag 2026, FAQ schema. Nuovo articolo cerimonia uomo: opportunità con 2.604 impr/sett e stagione alle porte. Entro lunedì 4 maggio.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">6</div>
+        <div class="sc">
+          <div class="st2">🟠 Verificare Merchant Center e feed Paid Shopping <span style="color:var(--orange);font-size:10px">ALTA</span></div>
+          <div class="sd">Calo volume −71,9% WoW e 0 conversioni. Controllare disapprovazioni prodotti, stock aggiornato, budget campagne. Entro giovedì 30 aprile.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">7</div>
+        <div class="sc">
+          <div class="st2">🟠 Spingere keyword "slingback primavera 2026" in top 3 <span style="color:var(--orange);font-size:10px">ALTA</span></div>
+          <div class="sd">Già a pos. 3,7 con CTR 4,81%. Aggiungere internal link e contenuto fresco sulla pagina target. Finestra stagionale: entro fine maggio.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  ⚙️ Azioni Team W17 · Musto Calzature · Web Domus internal · Non condividere con il cliente · Generato: 28 Aprile 2026 · GA4 ✅ · Shopify ✅ · GSC ✅
+</div>
+
+</body>
+</html>
