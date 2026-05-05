@@ -1,0 +1,9 @@
+"Giorno","Ordini","Fatturato lordo","Sconti","Resi","Fatturato netto","Costi di spedizione","Dazi","Costi aggiuntivi","Imposte","Vendite totali","Day (previous_period)","Orders (previous_period)","Gross sales (previous_period)","Discounts (previous_period)","Returns (previous_period)","Net sales (previous_period)","Shipping charges (previous_period)","Duties (previous_period)","Additional fees (previous_period)","Taxes (previous_period)","Total sales (previous_period)","Orders (previous_period) ","Gross sales (previous_period) ","Discounts (previous_period) ","Returns (previous_period) ","Net sales (previous_period) ","Shipping charges (previous_period) ","Duties (previous_period) ","Additional fees (previous_period) ","Taxes (previous_period) ","Total sales (previous_period) "
+"2026-04-28",2,233.61,0,0,233.61,17.13,0,0,55.16,305.9,"2026-04-20",0,0,0,0,0,0,0,0,0,0,,,,,,,,,,
+"2026-04-29",2,281.06,0,-331.23,-50.17,9.84,0,0,-7.77,-43.1,"2026-04-21",0,0,0,0,0,0,0,0,0,0,,,,,,,,,,
+"2026-04-30",1,245.08,0,0,245.08,4.1,0,0,54.82,304,"2026-04-22",2,375.4,-10.2,0,365.2,11.48,0,0,82.87,459.55,-50,-34.714,100,,-32.891,-64.285,,,-33.848,-33.848
+"2026-05-01",3,478.68,0,0,478.68,20.62,0,0,104.6,603.9,"2026-04-23",1,326.23,0,0,326.23,4.1,0,0,72.67,403,200,46.73,,,46.73,402.926,,,43.938,49.851
+"2026-05-02",3,527.05,0,0,527.05,13.94,0,0,119.01,660,"2026-04-24",3,289.34,-6.51,0,282.83,12.3,0,0,64.92,360.05,0,82.155,100,,86.348,13.333,,,83.317,83.307
+"2026-05-03",2,260.66,0,0,260.66,9.84,0,0,59.5,330,"2026-04-25",5,633.03,0,0,633.03,28.71,0,0,144.16,805.9,-60,-58.823,,,-58.823,-65.726,,,-58.726,-59.051
+"2026-05-04",3,313.94,0,0,313.94,9.84,0,0,71.22,395,"2026-04-26",1,180.99,0,0,180.99,12.31,0,0,40.6,233.9,200,73.457,,,73.457,-20.064,,,75.418,68.875
+"2026-05-05",0,0,0,0,0,8.12,0,0,1.78,9.9,"2026-04-27",1,105.74,0,0,105.74,4.1,0,0,24.16,134,,,,,,,,,,

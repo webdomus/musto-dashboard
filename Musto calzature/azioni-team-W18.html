@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azioni Team W18 · Musto Calzature · USO INTERNO</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0f0f0f; --gold:#c9a96e; --green:#4a9e7a; --red:#e05c5c; --blue:#5b8dee;
+    --orange:#e08c5b; --text:#e8e8e8; --muted:#888; --border:#2a2a2a; --card:#181818;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+  .header{background:linear-gradient(135deg,#0a0a0a,#100a00);border-bottom:2px solid var(--red);padding:28px 40px 20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+  .internal-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:8px}
+  .header-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff}
+  .header-sub{font-size:12px;color:var(--muted);margin-top:4px}
+  .week-tag{text-align:right}
+  .week-tag .wn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold)}
+  .week-tag .wr{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+  .container{max-width:1100px;margin:0 auto;padding:28px 24px}
+  .section{margin-bottom:36px}
+  .section-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--gold);margin-bottom:14px;padding-bottom:7px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+  .section-title .dot{width:6px;height:6px;background:var(--gold);border-radius:50%}
+  .action-list{display:flex;flex-direction:column;gap:14px}
+  .action{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;border-left:3px solid var(--border)}
+  .action.urgente{border-left-color:var(--red)}
+  .action.alta{border-left-color:var(--orange)}
+  .action.media{border-left-color:#5b8dee}
+  .action-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .action-title{font-weight:600;font-size:14px;color:#fff}
+  .priority{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap}
+  .priority.urgente{background:rgba(224,92,92,.2);color:var(--red)}
+  .priority.alta{background:rgba(224,140,91,.2);color:var(--orange)}
+  .priority.media{background:rgba(91,141,238,.2);color:var(--blue)}
+  .action-url{font-size:11px;color:var(--blue);font-family:monospace;margin-bottom:8px;word-break:break-all}
+  .action-data{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+  .action-stat{background:#1e1e1e;border-radius:4px;padding:5px 10px;font-size:11px}
+  .action-stat span{color:var(--muted)}
+  .action-stat strong{color:var(--gold)}
+  .action-desc{font-size:13px;color:var(--muted);line-height:1.6}
+  .action-desc strong{color:var(--text)}
+  .action-deadline{margin-top:10px;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+  .action-deadline strong{color:var(--orange)}
+  .keyword-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+  .keyword-table th{text-align:left;padding:6px 10px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+  .keyword-table td{padding:8px 10px;border-bottom:1px solid #1a1a1a}
+  .keyword-table tr:last-child td{border-bottom:none}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .prio-block{background:#111;border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:12px}
+  .prio-block-header{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  .prio-block-header.urgente{color:var(--red)}
+  .prio-block-header.alta{color:var(--orange)}
+  .prio-block-header.media{color:var(--blue)}
+  .prio-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px}
+  .prio-item:last-child{margin-bottom:0}
+  .prio-num{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);min-width:22px}
+  .footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
+  .footer-info{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="internal-badge">🔒 USO INTERNO — Non condividere col cliente</div>
+    <div class="header-title">Azioni Team · Musto Calzature</div>
+    <div class="header-sub">Settimana W18 · 27 Aprile – 3 Maggio 2026 · Web Domus</div>
+  </div>
+  <div class="week-tag">
+    <div class="wn">W18</div>
+    <div class="wr">Generato 5 Maggio 2026</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── CONTESTO SETTIMANA ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Contesto Settimana</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;font-size:13px;color:var(--muted)">
+      <p><strong style="color:var(--text)">Situazione generale:</strong> W18 mostra una crescita importante del traffico (+37,5% utenti, +34,8% sessioni) trainata principalmente da Paid Social (+33,7% sessioni) e Organic Search. Le vendite Shopify registrano 14 ordini per €1.800,65 netto, ma con un reso significativo il 29/4 (€331,23) che ha abbassato la media.</p>
+      <p style="margin-top:8px"><strong style="color:var(--text)">Attenzione GSC:</strong> Clicks organici –5,7% e Impressioni –13,4% rispetto a W17. Alcune keyword in top 3 con 0 click (problema CTR/snippet). La posizione media migliora comunque da 9,47 → 9,22.</p>
+      <p style="margin-top:8px"><strong style="color:var(--text)">Revenue:</strong> Shopify conferma €1.800,65 netto. Fatturato lordo €2.131,88. Ricontrollare la motivazione del reso di €331,23 del 29/4.</p>
+    </div>
+  </div>
+
+  <!-- ── COLLECTIONS DA OTTIMIZZARE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Collection da Ottimizzare</div>
+    <div class="action-list">
+
+      <div class="action urgente">
+        <div class="action-header">
+          <div class="action-title">Mocassino Scamosciato Donna — 0 click in top 3</div>
+          <span class="priority urgente">URGENTE</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/collections/mocassini-donna</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Posizione: </span><strong>2,12</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>117</strong></div>
+          <div class="action-stat"><span>Click: </span><strong style="color:var(--red)">0</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong style="color:var(--red)">0,0%</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Problema critico:</strong> In posizione 2,12 con 117 impressioni ma 0 click. Lo snippet non convince il clic. <br>
+          <strong>Azione:</strong> Aggiornare il title tag con keyword commerciale e numero prodotti. Riscrivere la meta description con un call-to-action chiaro e differenziante ("Spedizione gratuita", "Nuovi arrivi SS26").<br>
+          <strong>Title consigliato:</strong> <em>"Mocassini Scamosciati Donna | Nuovi Arrivi 2026 | Musto Calzature"</em><br>
+          <strong>Meta description:</strong> <em>"Scopri la collezione mocassini scamosciati donna primavera 2026. Marchi selezionati, spedizione rapida. Acquista online su Musto Calzature Milano."</em>
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro Venerdì 8 Maggio 2026</div>
+      </div>
+
+      <div class="action alta">
+        <div class="action-header">
+          <div class="action-title">Sandali Bibi Lou — alto volume, CTR da migliorare</div>
+          <span class="priority alta">ALTA</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/collections/bibi-lou</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Posizione: </span><strong>2,61</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>84</strong></div>
+          <div class="action-stat"><span>Click: </span><strong style="color:var(--red)">0</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong style="color:var(--red)">0,0%</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Situazione:</strong> "sandali bibi lou" è anche la query non-branded con più click (13) ma la collection/landing ha 0 click con 84 impressioni in top 3. <br>
+          <strong>Azione:</strong> Verificare URL corretto nel GSC. Aggiornare title tag specificando "Estate 2026", aggiungere review snippet (structured data) per migliorare CTR.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 12 Maggio 2026</div>
+      </div>
+
+      <div class="action alta">
+        <div class="action-header">
+          <div class="action-title">Inuovo Ballerine — posizione 2,37, solo 2 click</div>
+          <span class="priority alta">ALTA</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/collections/inuovo</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Posizione: </span><strong>2,37</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>94</strong></div>
+          <div class="action-stat"><span>Click: </span><strong>2</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong>2,1%</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Situazione:</strong> CTR del 2,1% in posizione 2 è ancora basso — benchmark atteso ≥ 15%.<br>
+          <strong>Azione:</strong> Title tag con modello specifico e stagione ("Inuovo Ballerine Donna SS26"), meta description con prezzo entry-level o disponibilità taglie. Aggiungere breadcrumb structured data.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 12 Maggio 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BLOG DA MIGLIORARE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Blog da Migliorare</div>
+    <div class="action-list">
+
+      <div class="action alta">
+        <div class="action-header">
+          <div class="action-title">Scarpe da Cerimonia Donna — posizione 8,4, ottimizzazione possibile</div>
+          <span class="priority alta">ALTA</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/blogs/news/scarpe-da-cerimonia-donna</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Click: </span><strong>82</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>4.176</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong>2,0%</strong></div>
+          <div class="action-stat"><span>Posizione: </span><strong>8,4</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Opportunità:</strong> 82 click è il secondo articolo più cliccato. Posizione 8,4 → con un aggiornamento si può puntare top 5.<br>
+          <strong>Azione:</strong> Aggiornare data articolo a Maggio 2026 (segnala freshness), aggiungere paragrafo "Tendenze cerimonia estate 2026", inserire 3-5 link interni a collection (décolleté, sandali eleganti), aggiornare le immagini con alt text ottimizzato.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 15 Maggio 2026</div>
+      </div>
+
+      <div class="action media">
+        <div class="action-header">
+          <div class="action-title">Sandali Flat Donna 2026 — ottimo CTR, migliorare posizione</div>
+          <span class="priority media">MEDIA</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/blogs/news/sandali-flat-donna-2026</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Click: </span><strong>79</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>2.916</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong>2,7%</strong></div>
+          <div class="action-stat"><span>Posizione: </span><strong>7,9</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Opportunità:</strong> CTR 2,7% buono per la posizione. Con posizione <5 potrebbe raddoppiare i click.<br>
+          <strong>Azione:</strong> Rafforzare heading H2 con long-tail ("sandali flat estate 2026 tendenze"), aggiungere FAQ structured data con le domande più cercate, link interni a collection sandali.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 20 Maggio 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── NUOVI CONTENUTI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Nuovi Contenuti da Creare</div>
+    <div class="action-list">
+
+      <div class="action alta">
+        <div class="action-header">
+          <div class="action-title">Articolo: "Bibi Lou 2026 — Le Collezioni Estate" (keyword gap)</div>
+          <span class="priority alta">ALTA</span>
+        </div>
+        <div class="action-data">
+          <div class="action-stat"><span>Query target: </span><strong>bibi lou</strong></div>
+          <div class="action-stat"><span>Click ora: </span><strong>13</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>964</strong></div>
+          <div class="action-stat"><span>Posizione: </span><strong>5,9</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Opportunità:</strong> "bibi lou" è la keyword non-branded con più click (13) ma con 964 impressioni in posizione 5,9 c'è enorme potenziale. Un articolo blog dedicato al brand + guida alle collezioni SS26 potrebbe catturare traffico intento d'acquisto.<br>
+          <strong>Formato:</strong> Articolo guida ~1.200 parole + gallery prodotti + link collection. Target URL: <em>/blogs/news/bibi-lou-2026-estate</em>
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 19 Maggio 2026</div>
+      </div>
+
+      <div class="action media">
+        <div class="action-header">
+          <div class="action-title">Homepage — migliorare posizione da 4,3</div>
+          <span class="priority media">MEDIA</span>
+        </div>
+        <div class="action-url">https://mustocalzature.com/</div>
+        <div class="action-data">
+          <div class="action-stat"><span>Click: </span><strong>147</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>11.237</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong>1,3%</strong></div>
+          <div class="action-stat"><span>Posizione: </span><strong>4,3</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Nota:</strong> La homepage è la pagina con più click organici (147) ma il CTR dell'1,3% in posizione 4,3 è sotto-ottimale. <br>
+          <strong>Azione:</strong> Rivedere title tag homepage (includere "Milano", "Scarpe Donna Uomo") e meta description con USP chiara. Verificare Core Web Vitals su mobile — un punteggio migliore può migliorare la posizione.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 22 Maggio 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CTR/BRANDED ANOMALIE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Anomalie CTR &amp; Branded</div>
+    <div class="action-list">
+
+      <div class="action urgente">
+        <div class="action-header">
+          <div class="action-title">Reso 29 Aprile — verificare motivazione</div>
+          <span class="priority urgente">URGENTE</span>
+        </div>
+        <div class="action-data">
+          <div class="action-stat"><span>Importo reso: </span><strong style="color:var(--red)">€331,23</strong></div>
+          <div class="action-stat"><span>Data: </span><strong>29 Aprile 2026</strong></div>
+          <div class="action-stat"><span>Impatto: </span><strong>–18,4% sul netto W18</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Azione:</strong> Verificare in Shopify la motivazione del reso di €331,23. Era taglia sbagliata? Prodotto difettoso? Questa info è utile sia per la customer experience che per l'analisi del prodotto più reso. Aggiornare il team clienti.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Immediata</div>
+      </div>
+
+      <div class="action media">
+        <div class="action-header">
+          <div class="action-title">"musto calzature" — posizione 5,1, CTR 25,6% (può migliorare)</div>
+          <span class="priority media">MEDIA</span>
+        </div>
+        <div class="action-data">
+          <div class="action-stat"><span>Click: </span><strong>21</strong></div>
+          <div class="action-stat"><span>Impressioni: </span><strong>82</strong></div>
+          <div class="action-stat"><span>CTR: </span><strong>25,6%</strong></div>
+          <div class="action-stat"><span>Posizione: </span><strong>5,1</strong></div>
+        </div>
+        <div class="action-desc">
+          <strong>Osservazione:</strong> La keyword branded principale "musto calzature" è in posizione 5,1 invece che in top 3. Presenza di sitelink o Google My Business può aiutare.<br>
+          <strong>Azione:</strong> Ottimizzare Google Business Profile (foto aggiornate, categorie corrette, post settimanale). Verificare che la homepage abbia il brand name in H1 e title. Aggiungere structured data Organization/LocalBusiness.
+        </div>
+        <div class="action-deadline"><strong>Deadline:</strong> Entro 15 Maggio 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── PROSSIMI PASSI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Prossimi Passi — Piano Prioritizzato</div>
+
+    <div class="prio-block">
+      <div class="prio-block-header urgente">🔴 URGENTE — Entro 8 Maggio 2026</div>
+      <div class="prio-item"><div class="prio-num">1.</div><div>Ottimizzare title + meta description di <strong>Mocassini Scamosciati Donna</strong> per risolvere 0-click in top 3 (117 impressioni perse)</div></div>
+      <div class="prio-item"><div class="prio-num">2.</div><div>Verificare con il team la motivazione del <strong>reso €331,23</strong> del 29/4 e adottare azioni preventive</div></div>
+    </div>
+
+    <div class="prio-block">
+      <div class="prio-block-header alta">🟠 ALTA — Entro 15 Maggio 2026</div>
+      <div class="prio-item"><div class="prio-num">3.</div><div>Ottimizzare snippet di <strong>Sandali Bibi Lou</strong> e <strong>Inuovo Ballerine</strong> (entrambe in top 3, entrambe con CTR < 3%)</div></div>
+      <div class="prio-item"><div class="prio-num">4.</div><div>Aggiornare articolo <strong>Scarpe da Cerimonia Donna</strong> con contenuto SS26 e link interni per scalare da pos 8,4 a top 5</div></div>
+      <div class="prio-item"><div class="prio-num">5.</div><div>Creare articolo <strong>"Bibi Lou 2026 Estate"</strong> per capitalizzare le 964 impressioni della keyword non-branded con più click</div></div>
+    </div>
+
+    <div class="prio-block">
+      <div class="prio-block-header media">🔵 MEDIA — Entro 22 Maggio 2026</div>
+      <div class="prio-item"><div class="prio-num">6.</div><div>Rafforzare <strong>Sandali Flat Donna 2026</strong> con FAQ structured data e heading H2 ottimizzati</div></div>
+      <div class="prio-item"><div class="prio-num">7.</div><div>Revisionare <strong>title + meta description Homepage</strong> e verificare Core Web Vitals mobile</div></div>
+      <div class="prio-item"><div class="prio-num">8.</div><div>Aggiornare <strong>Google Business Profile</strong> (foto, post, categorie) per migliorare "musto calzature" da pos 5,1</div></div>
+      <div class="prio-item"><div class="prio-num">9.</div><div>Investigare canale <strong>Unassigned</strong> (200 sess, €98 attribuiti) — configurare UTM per le campagne non tracciate</div></div>
+    </div>
+
+  </div>
+
+  <!-- ── NOTE TECNICHE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> Note Tecniche</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;font-size:12px;color:var(--muted)">
+      <p><strong style="color:var(--text)">Fonte dati:</strong> GA4 (Musto) + Shopify CSV W18 (28 Apr–5 Mag 2026) + Google Search Console (sc-domain:mustocalzature.com)</p>
+      <p style="margin-top:6px"><strong style="color:var(--text)">Attribuzione revenue:</strong> Fatturato netto Shopify €1.800,65 distribuito per sessioni GA4. GA4 registra €1.459 (sottostima ~19% per cookie banner).</p>
+      <p style="margin-top:6px"><strong style="color:var(--text)">GSC:</strong> 5.918 query analizzate, 3.099 pagine. Branded definito come query contenente "musto".</p>
+      <p style="margin-top:6px"><strong style="color:var(--text)">CSV Shopify:</strong> Include dato Apr 27 (da CSV precedente consumato) + Apr 28–Mag 3 dal CSV corrente. File CSV W18 rinominato in -consumato dopo elaborazione.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>
+    <div class="footer-brand">Web Domus</div>
+    <div class="footer-info">Solo uso interno · Non inviare al cliente</div>
+  </div>
+  <div class="footer-info" style="text-align:right">
+    Azioni Team W18 · Musto Calzature<br>
+    5 Maggio 2026
+  </div>
+</div>
+
+</body>
+</html>
