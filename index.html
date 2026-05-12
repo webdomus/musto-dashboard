@@ -41,6 +41,19 @@
   .footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:40px}
   .footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
   .footer-info{font-size:11px;color:var(--muted)}
+  .intro-box{background:#141209;border:1px solid rgba(201,169,110,.2);border-radius:10px;padding:22px 26px;margin-bottom:30px;font-size:13px;line-height:1.8;color:#aaa}
+  .intro-box .intro-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--gold);margin-bottom:12px}
+  .intro-box strong{color:var(--text)}
+  .intro-box .stat{color:var(--gold-light);font-weight:600}
+  .report-card.featured::before{background:linear-gradient(90deg,var(--gold),var(--green))}
+  .report-card.featured{border-color:rgba(74,158,122,.3)}
+  .card-week.lb{color:var(--green);font-size:18px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:.02em}
+  .badge-lb{display:inline-block;background:rgba(74,158,122,.15);color:var(--green);border:1px solid rgba(74,158,122,.3);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+  .badge-adv{display:inline-block;background:rgba(91,155,213,.15);color:#5B9BD5;border:1px solid rgba(91,155,213,.3);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+  .report-card.adv::before{background:#5B9BD5}
+  .report-card.adv{border-color:rgba(91,155,213,.25)}
+  .card-week.adv{color:#5B9BD5;font-size:18px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:.02em}
+  .ext-link-note{font-size:10px;color:var(--muted);margin-top:3px}
 </style>
 </head>
 <body>
@@ -48,27 +61,78 @@
 <div class="header">
   <div class="brand-label">Web Domus · Report SEO</div>
   <div class="client-name">Musto Calzature</div>
-  <div class="client-sub">Archivio Report Settimanali &mdash; mustocalzature.com</div>
+  <div class="client-sub">Report SEO &mdash; Settimanali &amp; Tematici &mdash; mustocalzature.com</div>
 </div>
 
 <div class="container">
+
+  <div class="section-title">Report Tematici</div>
+
+  <div class="report-grid" style="margin-bottom:36px">
+
+    <!-- Link Building Bimestre 1 -->
+    <a class="report-card featured" href="report-link-building-2026-bimestre1.html">
+      <div class="card-left">
+        <div class="card-week lb">LB<br>B1</div>
+        <div class="card-info">
+          <div class="card-date">Link Building · Bimestre 1/2026 (Feb – Apr)</div>
+          <div class="card-meta">5/8 link live · 2 casi confermati · Clic YoY +104% · Impressioni YoY +213%</div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge-lb">✦ Link Building</span>
+        <a href="report-link-building-2026-bimestre1.html" class="btn-view primary">Apri Report →</a>
+      </div>
+    </a>
+
+    <!-- ADV Report -->
+    <a class="report-card adv" href="https://docs.google.com/presentation/d/1wkEyv5949FndCVLnozdd0IGZWZ6S95SPoLPbVIciq-8/edit?usp=sharing" target="_blank" rel="noopener">
+      <div class="card-left">
+        <div class="card-week adv">ADV<br></div>
+        <div class="card-info">
+          <div class="card-date">Report Campagne ADV · 2026</div>
+          <div class="card-meta">Performance campagne pubblicitarie · analisi canali paid · risultati e ottimizzazioni</div>
+          <div class="ext-link-note">↗ Documento esterno · si apre in Google Slides</div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge-adv">✦ ADV</span>
+        <span class="btn-view" style="border-color:rgba(91,155,213,.4);color:#5B9BD5">Apri Presentazione →</span>
+      </div>
+    </a>
+
+  </div>
 
   <div class="section-title">Report Settimanali</div>
 
   <div class="report-grid">
 
-    <!-- W18 — CORRENTE -->
-    <a class="report-card current" href="report-settimanale-2026-W18.html">
+    <!-- W19 — CORRENTE -->
+    <a class="report-card current" href="report-settimanale-2026-W19.html">
       <div class="card-left">
-        <div class="card-week">W18</div>
+        <div class="card-week">W19</div>
+        <div class="card-info">
+          <div class="card-date">4 – 10 Maggio 2026</div>
+          <div class="card-meta">GA4: 3.535 utenti &middot; Shopify: 17 ordini, €1.742 netto &middot; GSC: 556 click</div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge-current">✦ Corrente</span>
+        <a href="report-settimanale-2026-W19.html" class="btn-view primary">Apri Report →</a>
+      </div>
+    </a>
+
+    <!-- W18 -->
+    <a class="report-card" href="report-settimanale-2026-W18.html">
+      <div class="card-left">
+        <div class="card-week old">W18</div>
         <div class="card-info">
           <div class="card-date">27 Aprile – 3 Maggio 2026</div>
           <div class="card-meta">GA4: 3.399 utenti &middot; Shopify: 14 ordini, €1.801 netto &middot; GSC: 465 click</div>
         </div>
       </div>
       <div class="card-right">
-        <span class="badge-current">✦ Corrente</span>
-        <a href="report-settimanale-2026-W18.html" class="btn-view primary">Apri Report →</a>
+        <a href="report-settimanale-2026-W18.html" class="btn-view">Apri Report →</a>
       </div>
     </a>
 
@@ -114,7 +178,7 @@
     <div class="footer-info">webdomus.net &middot; carmine@webdomus.net</div>
   </div>
   <div class="footer-info" style="text-align:right">
-    Aggiornato il 5 Maggio 2026
+    Aggiornato il 12 Maggio 2026
   </div>
 </div>
 

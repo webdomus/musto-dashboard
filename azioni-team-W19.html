@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azioni Team W19 — USO INTERNO — Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0f0f0f; --gold:#c9a96e; --green:#4a9e7a; --red:#e05c5c;
+    --blue:#5b8dee; --orange:#e08c5b; --text:#e8e8e8; --muted:#888; --border:#2a2a2a; --card:#181818;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+  .header{background:linear-gradient(135deg,#0a0a0a 0%,#120a1a 100%);border-bottom:2px solid var(--red);padding:28px 40px 22px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+  .internal-badge{display:inline-block;background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:8px}
+  .title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff}
+  .subtitle{color:var(--muted);font-size:12px;margin-top:4px}
+  .container{max-width:1000px;margin:0 auto;padding:28px 24px}
+  .section{margin-bottom:36px}
+  .section-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .dot{width:6px;height:6px;background:var(--gold);border-radius:50%}
+  .action-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:12px;position:relative;overflow:hidden}
+  .action-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+  .action-card.urgente::before{background:var(--red)}
+  .action-card.alta::before{background:var(--orange)}
+  .action-card.media::before{background:var(--gold)}
+  .priority-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:8px}
+  .priority-badge.urgente{background:rgba(224,92,92,.2);color:var(--red)}
+  .priority-badge.alta{background:rgba(224,140,91,.2);color:var(--orange)}
+  .priority-badge.media{background:rgba(201,169,110,.15);color:var(--gold)}
+  .action-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px}
+  .action-body{font-size:12px;color:var(--muted);line-height:1.75}
+  .action-body strong{color:var(--text)}
+  .action-body code{font-family:monospace;background:#1e1e1e;padding:2px 6px;border-radius:3px;font-size:11px;color:var(--blue)}
+  .action-body ol,.action-body ul{margin-left:18px;margin-top:6px}
+  .action-body li{margin-bottom:3px}
+  .action-meta{margin-top:10px;display:flex;gap:16px;flex-wrap:wrap}
+  .meta-item{font-size:10px;color:var(--muted)}
+  .meta-item span{color:var(--text);font-weight:500}
+  .data-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #1a1a1a}
+  .data-item .label{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+  .data-item .val{color:#fff;font-weight:600;font-size:13px}
+  .prossimi{display:flex;flex-direction:column;gap:10px}
+  .prossimi-item{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px 18px;display:flex;align-items:flex-start;gap:14px}
+  .prossimi-priority{min-width:72px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 0;text-align:center;border-radius:3px}
+  .prossimi-priority.urgente{background:rgba(224,92,92,.2);color:var(--red)}
+  .prossimi-priority.alta{background:rgba(224,140,91,.2);color:var(--orange)}
+  .prossimi-priority.media{background:rgba(201,169,110,.15);color:var(--gold)}
+  .prossimi-content{flex:1}
+  .prossimi-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+  .prossimi-desc{font-size:11px;color:var(--muted)}
+  .prossimi-deadline{font-size:10px;color:var(--muted);margin-top:4px}
+  .prossimi-deadline strong{color:var(--text)}
+  .footer{border-top:1px solid var(--border);padding:22px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
+  .footer-info{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="internal-badge">⚠ Solo Uso Interno — Non Condividere</div>
+    <div class="title">Azioni Team — W19</div>
+    <div class="subtitle">Musto Calzature · 4–10 Maggio 2026 · Generato 12 Maggio 2026</div>
+  </div>
+  <div style="text-align:right">
+    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);font-weight:700">W19</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px">Web Domus SEO Team</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── CTR / IMPRESSIONI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> 🚨 Anomalia CTR — Impressioni +25% ma Click Stabili</div>
+
+    <div class="action-card urgente">
+      <div class="priority-badge urgente">🚨 URGENTE</div>
+      <div class="action-title">Impressioni +25,3% WoW ma CTR crolla 0,77% → 0,62%</div>
+      <div class="action-body">
+        Il sito compare su <strong>+18.200 query in più</strong> rispetto a W18 (90.112 vs 71.912 impressioni) ma i click restano praticamente invariati (556 vs 557). Questo è il segnale più critico della settimana: Google ci sta mostrando molto di più, ma i risultati non vengono cliccati.
+        <br><br>
+        <strong>Cause principali da investigare:</strong>
+        <ul>
+          <li><strong>Title tag non persuasivi</strong> su pagine con alta visibilità — vedi "negozio scarpe milano" (128 impr., CTR 2,3%) e "scarpe sportive eleganti uomo" (117 impr., CTR 0,9%)</li>
+          <li><strong>Posizione media peggiorata</strong> da 9,40 → 9,74: molte nuove query sono in fondo alla seconda pagina</li>
+          <li>Possibile <strong>espansione involontaria delle query</strong> per aggiornamento algoritmo Google (settimana 4–10 Maggio coincide con update noto)</li>
+        </ul>
+        <br>
+        <strong>Azione immediata:</strong> Identificare le 10 pagine con più impressioni e CTR &lt; 1,5% e ottimizzare title + meta description entro 7 giorni.
+      </div>
+      <div class="data-row">
+        <div class="data-item"><div class="label">Impressioni W19</div><div class="val">90.112</div></div>
+        <div class="data-item"><div class="label">Impressioni W18</div><div class="val">71.912</div></div>
+        <div class="data-item"><div class="label">CTR W19</div><div class="val" style="color:var(--red)">0,62%</div></div>
+        <div class="data-item"><div class="label">CTR W18</div><div class="val" style="color:var(--green)">0,77%</div></div>
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 16 Maggio 2026</span></div>
+        <div class="meta-item">👤 Responsabile: <span>SEO Team</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COLLECTION DA OTTIMIZZARE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> 🏷️ Collection da Ottimizzare (Dati GSC W19 Reali)</div>
+
+    <div class="action-card urgente">
+      <div class="priority-badge urgente">🚨 URGENTE</div>
+      <div class="action-title">"negozio scarpe milano" — pos 2,85, 128 impr, CTR 2,3%</div>
+      <div class="action-body">
+        Keyword ad alto valore commerciale in posizione 2,85 con CTR bassissimo (2,3%). Un competitor in pos. 3 con snippet più attraente sta rubando click. <strong>Questa è la keyword di maggiore urgenza commerciale.</strong>
+        <div class="data-row">
+          <div class="data-item"><div class="label">Keyword</div><div class="val">negozio scarpe milano</div></div>
+          <div class="data-item"><div class="label">Posizione</div><div class="val" style="color:var(--green)">2,85</div></div>
+          <div class="data-item"><div class="label">Impressioni</div><div class="val">128</div></div>
+          <div class="data-item"><div class="label">CTR</div><div class="val" style="color:var(--red)">2,3%</div></div>
+          <div class="data-item"><div class="label">Click</div><div class="val">3</div></div>
+        </div>
+        <br>
+        <strong>URL da ottimizzare:</strong> <code>mustocalzature.com/</code> (Homepage) o pagina dedicata negozio<br><br>
+        <strong>Title tag consigliato:</strong><br>
+        <code>Negozio Scarpe Milano | Marchi Selezionati & Consulenza Personalizzata – Musto</code><br><br>
+        <strong>Meta description consigliata:</strong><br>
+        <em>"Musto Calzature a Milano: oltre 30 brand di scarpe donna e uomo. Visita il nostro showroom in Via [indirizzo] o acquista online con spedizione gratuita sopra €100."</em><br><br>
+        <strong>Aggiungere:</strong> schema LocalBusiness con indirizzo, orari e reviews per aumentare la visibilità rich snippet.
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 15 Maggio 2026</span></div>
+        <div class="meta-item">📍 Sezione: <span>Shopify Admin → Online Store → Preferences → Homepage SEO</span></div>
+      </div>
+    </div>
+
+    <div class="action-card alta">
+      <div class="priority-badge alta">⬆ ALTA</div>
+      <div class="action-title">"scarpe sportive eleganti uomo" — pos 2,98, 117 impr, CTR 0,9%</div>
+      <div class="action-body">
+        Terza posizione assoluta per questa keyword ma CTR quasi zero (0,9% = ~1 click su 117 impressioni). Alta probabilità che il title tag sia troppo generico o che la pagina di atterraggio non corrisponda all'intenzione di ricerca.
+        <div class="data-row">
+          <div class="data-item"><div class="label">Keyword</div><div class="val">scarpe sportive eleganti uomo</div></div>
+          <div class="data-item"><div class="label">Posizione</div><div class="val" style="color:var(--green)">2,98</div></div>
+          <div class="data-item"><div class="label">Impressioni</div><div class="val">117</div></div>
+          <div class="data-item"><div class="label">CTR</div><div class="val" style="color:var(--red)">0,9%</div></div>
+        </div>
+        <br>
+        <strong>URL probabile:</strong> <code>/collections/sneakers-uomo</code> o collection uomo<br><br>
+        <strong>Title tag consigliato:</strong><br>
+        <code>Scarpe Sportive Eleganti Uomo | Sneakers & Derby 2026 – Musto Calzature</code><br><br>
+        <strong>Azione aggiuntiva:</strong> Verificare che la collection includa prodotti "smart casual" (sneakers bianche, loafer sportivi) non solo scarpe formali.
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 16 Maggio 2026</span></div>
+      </div>
+    </div>
+
+    <div class="action-card alta">
+      <div class="priority-badge alta">⬆ ALTA</div>
+      <div class="action-title">Collection Bibi Lou — 3.593 impr, CTR 1,1%, pos 7,9</div>
+      <div class="action-body">
+        La collection Bibi Lou ha <strong>3.593 impressioni settimanali</strong> con CTR 1,1% e posizione 7,9. La keyword "bibi lou" da sola genera 1.137 impressioni con CTR 0,6% in pos. 6,9. Con 38 click è la 6ª pagina per volume organico.
+        <div class="data-row">
+          <div class="data-item"><div class="label">URL</div><div class="val">/collections/bibi-lou</div></div>
+          <div class="data-item"><div class="label">Click</div><div class="val">38</div></div>
+          <div class="data-item"><div class="label">Impressioni</div><div class="val">3.593</div></div>
+          <div class="data-item"><div class="label">CTR</div><div class="val" style="color:var(--red)">1,1%</div></div>
+          <div class="data-item"><div class="label">Pos.</div><div class="val">7,9</div></div>
+        </div>
+        <br>
+        <strong>Title tag consigliato:</strong><br>
+        <code>Bibi Lou Scarpe 2026 | Collezione Completa Donna – Musto Calzature Milano</code><br><br>
+        <strong>Azione contenuto:</strong> Aggiungere paragrafo introduttivo (~80 parole) sulla filosofia del brand Bibi Lou e i modelli più richiesti della stagione P/E 2026.
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 19 Maggio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BLOG DA MIGLIORARE ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> 📝 Blog da Migliorare (Dati GSC W19)</div>
+
+    <div class="action-card alta">
+      <div class="priority-badge alta">⬆ ALTA</div>
+      <div class="action-title">"Scarpe cerimonia uomo" — 4.285 impr, CTR 1,4%, pos 10,6 → portare in pag. 1</div>
+      <div class="action-body">
+        L'articolo sulla cerimonia uomo ha <strong>4.285 impressioni</strong> settimanali ma è in posizione 10,6 (fine prima pagina / inizio seconda). Con una spinta SEO moderata può entrare stabilmente in top 5-7 e quasi triplicare i click.
+        <div class="data-row">
+          <div class="data-item"><div class="label">URL</div><div class="val">/blogs/…/scarpe-cerimonia-uomo-eleganza-musto</div></div>
+          <div class="data-item"><div class="label">Click W19</div><div class="val">61</div></div>
+          <div class="data-item"><div class="label">Impressioni</div><div class="val">4.285</div></div>
+          <div class="data-item"><div class="label">Pos.</div><div class="val" style="color:var(--orange)">10,6</div></div>
+        </div>
+        <br>
+        <strong>Azioni specifiche:</strong>
+        <ul>
+          <li>Aggiornare H1 con "2026" e variante keyword "scarpe cerimonia uomo eleganti"</li>
+          <li>Aggiungere sezione FAQ (5-6 domande tipo "Cosa indossare a un matrimonio formale")</li>
+          <li>Aggiungere link interni verso collection décolleté, derby eleganti, Oxford</li>
+          <li>Inserire 3-4 foto di prodotto con alt tag ottimizzati</li>
+          <li>Schema markup Article con dateModified aggiornato al 2026</li>
+        </ul>
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 23 Maggio 2026</span></div>
+        <div class="meta-item">👤 Responsabile: <span>Copywriter SEO</span></div>
+      </div>
+    </div>
+
+    <div class="action-card alta">
+      <div class="priority-badge alta">⬆ ALTA</div>
+      <div class="action-title">"Back-to-work scarpe uomo" — 3,0% CTR, pos 7,2 — ottima performance, consolidare</div>
+      <div class="action-body">
+        Con CTR 3,0% e 63 click questa è la pagina blog con la migliore performance relativa. La posizione 7,2 può essere portata in top 5 con interventi mirati.
+        <div class="data-row">
+          <div class="data-item"><div class="label">Click W19</div><div class="val" style="color:var(--green)">63</div></div>
+          <div class="data-item"><div class="label">Impressioni</div><div class="val">2.097</div></div>
+          <div class="data-item"><div class="label">CTR</div><div class="val" style="color:var(--green)">3,0%</div></div>
+          <div class="data-item"><div class="label">Pos.</div><div class="val">7,2</div></div>
+        </div>
+        <br>
+        <strong>Azioni:</strong>
+        <ul>
+          <li>Aggiungere sezione "Scarpe da ufficio estate 2026" per catturare keyword stagionale</li>
+          <li>Link interni verso mocassini uomo (2026 guida) e collection uomo</li>
+          <li>Aggiungere 2-3 backlink interni da articoli correlati esistenti</li>
+        </ul>
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 23 Maggio 2026</span></div>
+      </div>
+    </div>
+
+    <div class="action-card media">
+      <div class="priority-badge media">◆ MEDIA</div>
+      <div class="action-title">"Mocassini uomo 2026 guida" — 4,7% CTR eccellente, pos 5,6 → puntare top 3</div>
+      <div class="action-body">
+        La pagina guida mocassini uomo 2026 ha il <strong>miglior CTR tra le top pagine (4,7%)</strong> e riceve 61 click con 1.304 impressioni. La keyword principale "mocassini uomo estate 2026" è in pos. 2,20 con CTR 8,8% e già genera 13 click — una delle poche pagine che converte il traffico organico in modo efficace.
+        <br><br>
+        <strong>Azione:</strong> Non toccare il title tag (funziona bene). Aggiungere contenuto fresco per la stagione estate 2026 (modelli nuovi in catalogo, tendenze colori). Richiedere 1-2 link esterni da fashion blog italiani che trattano moda maschile.
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 30 Maggio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NUOVI CONTENUTI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> ✍️ Nuovi Contenuti Consigliati</div>
+
+    <div class="action-card media">
+      <div class="priority-badge media">◆ MEDIA</div>
+      <div class="action-title">Pagina dedicata: "Walter Violet Scarpe" — 23,7% CTR, pos 1,9</div>
+      <div class="action-body">
+        La keyword "walter violet scarpe" genera <strong>9 click con CTR 23,7%</strong> in posizione 1,9. Il brand Walter Violet ha alta domanda. Se non esiste già una collection dedicata, crearla aumenterebbe i click e supporterebbe le conversioni.
+        <br><br>
+        <strong>URL consigliato:</strong> <code>/collections/walter-violet</code><br>
+        <strong>Title:</strong> <code>Walter Violet Scarpe | Nuovi Modelli 2026 – Musto Calzature</code><br>
+        <strong>Contenuto:</strong> Paragrafo introduttivo brand + grid prodotti + cross-sell con altri brand simili.
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 30 Maggio 2026</span></div>
+        <div class="meta-item">📊 CTR attuale: <span style="color:var(--green)">23,7%</span></div>
+      </div>
+    </div>
+
+    <div class="action-card media">
+      <div class="priority-badge media">◆ MEDIA</div>
+      <div class="action-title">Articolo: "Scarpe da ufficio donna estate 2026" — keyword stagionale a bassa competizione</div>
+      <div class="action-body">
+        Keyword con stagionalità estiva e intento di acquisto chiaro. La pagina "scarpe-da-cerimonia-per-donna" già genera 79 click con 5.285 impressioni — un articolo analogo per il contesto ufficio/lavoro intercetterebbe un pubblico professionale.
+        <br><br>
+        <strong>Keyword primaria:</strong> "scarpe da lavoro donna estate 2026"<br>
+        <strong>Keyword correlate:</strong> "décolleté estiva ufficio", "sandali eleganti lavoro", "scarpe comode ufficio estate"<br>
+        <strong>Lunghezza:</strong> 900–1.200 parole · Link interni verso collection décolleté, sandali bassi, mocassini donna<br>
+        <strong>Usare:</strong> skill <code>musto-copywriter-seo</code> per la stesura ottimizzata
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 30 Maggio 2026</span></div>
+        <div class="meta-item">👤 Responsabile: <span>Copywriter SEO</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ANALISI CANALI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> 📊 Analisi Anomalie Canali</div>
+
+    <div class="action-card alta">
+      <div class="priority-badge alta">⬆ ALTA</div>
+      <div class="action-title">Direct +40,3% WoW (752 vs 536 sess.) — Indagare Causa</div>
+      <div class="action-body">
+        Il traffico Direct è cresciuto in modo anomalo del +40,3%. Le ipotesi principali:
+        <ul>
+          <li>Comunicazione email/SMS/WhatsApp ai clienti nella settimana 4–10 Maggio <strong>senza parametri UTM</strong></li>
+          <li>Link da Instagram Stories o bio non tracciato</li>
+          <li>Ricerca branded su Google classificata come Direct da GA4 (raro ma possibile)</li>
+        </ul>
+        <strong>Azione:</strong> Verificare i log di comunicazione clienti per la settimana. Se confermato, aggiungere UTM a tutte le comunicazioni future (utm_source=email&amp;utm_medium=crm&amp;utm_campaign=W19).
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 15 Maggio 2026</span></div>
+        <div class="meta-item">📊 W19: <span>752 sess.</span></div>
+        <div class="meta-item">📊 W18: <span>536 sess.</span></div>
+      </div>
+    </div>
+
+    <div class="action-card media">
+      <div class="priority-badge media">◆ MEDIA</div>
+      <div class="action-title">Paid Social –11,2% WoW — Efficienza bassa (2 tx su 1.097 sess.)</div>
+      <div class="action-body">
+        Paid Social scende da 1.235 a 1.097 sessioni (–11,2%) e genera solo 2 transazioni GA4 su 1.097 sessioni (tasso 0,18%). La spesa pubblicitaria non si sta convertendo in vendite in proporzione.
+        <br><br>
+        <strong>Controllare su Meta Ads Manager:</strong>
+        <ul>
+          <li>Budget speso vs piano nella settimana 4–10 Maggio</li>
+          <li>Frequenza degli annunci (se &gt;3 inizia a peggiorare l'efficienza)</li>
+          <li>Pagine di atterraggio: sono ottimizzate per la conversione mobile?</li>
+          <li>Audience: provare a escludere chi ha già acquistato negli ultimi 30 gg</li>
+        </ul>
+      </div>
+      <div class="action-meta">
+        <div class="meta-item">⏰ Deadline: <span>Entro 16 Maggio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROSSIMI PASSI ── -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span> 🎯 Prossimi Passi — Priorità W20</div>
+    <div class="prossimi">
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority urgente">🚨 URGENTE</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Ottimizzare title tag "negozio scarpe milano" — homepage/pagina negozio</div>
+          <div class="prossimi-desc">Keyword ad alto valore commerciale in pos. 2,85 con CTR 2,3%. Title persuasivo può portare CTR al 5-8%.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>15 Maggio 2026</strong> · Responsabile: SEO Team</div>
+        </div>
+      </div>
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority urgente">🚨 URGENTE</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Audit title tag top 10 pagine per impressioni con CTR &lt; 1,5%</div>
+          <div class="prossimi-desc">Impressioni +25% ma click stabili = CTR collassato. Revisione sistematica dei meta tag è la priorità numero uno di questa settimana.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>16 Maggio 2026</strong> · Responsabile: SEO Team</div>
+        </div>
+      </div>
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority alta">⬆ ALTA</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Investigare Direct +40,3% e aggiungere UTM alle comunicazioni clienti</div>
+          <div class="prossimi-desc">Controllare log email/SMS. Se confermato, implementare tracking UTM standard su tutti i canali di comunicazione.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>15 Maggio 2026</strong> · Responsabile: Carmine</div>
+        </div>
+      </div>
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority alta">⬆ ALTA</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Aggiornare articolo "Scarpe cerimonia uomo" (4.285 impr, pos 10,6)</div>
+          <div class="prossimi-desc">Aggiornamento con FAQ, link interni e schema markup. Alto potenziale di saltare dalla pos. 10 alla pos. 5-7.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>23 Maggio 2026</strong> · Responsabile: Copywriter SEO</div>
+        </div>
+      </div>
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority alta">⬆ ALTA</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Verificare/creare collection Walter Violet (CTR 23,7%, pos 1,9)</div>
+          <div class="prossimi-desc">Brand con domanda elevata già in posizione top. Se manca la collection dedicata, crearla subito.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>19 Maggio 2026</strong> · Responsabile: Carmine / Monica</div>
+        </div>
+      </div>
+
+      <div class="prossimi-item">
+        <div class="prossimi-priority media">◆ MEDIA</div>
+        <div class="prossimi-content">
+          <div class="prossimi-title">Nuovo articolo "Scarpe da lavoro donna estate 2026"</div>
+          <div class="prossimi-desc">Keyword stagionale a bassa competizione. Usare skill musto-copywriter-seo.</div>
+          <div class="prossimi-deadline">⏰ Deadline: <strong>30 Maggio 2026</strong> · Responsabile: Copywriter SEO</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>
+    <div class="footer-brand">Web Domus — Uso Interno</div>
+    <div class="footer-info">webdomus.net · carmine@webdomus.net</div>
+  </div>
+  <div class="footer-info" style="text-align:right">
+    Generato automaticamente il 12 Maggio 2026 · W19 Musto Calzature
+  </div>
+</div>
+
+</body>
+</html>
