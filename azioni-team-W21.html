@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚙️ Azioni Team W21 — USO INTERNO — Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0a; --gold:#c9a96e; --gold-light:#e0c898; --green:#4a9e7a;
+    --red:#e05c5c; --orange:#f0a04a; --blue:#5b9bd5; --text:#e8e8e8; --muted:#888;
+    --border:#2a2a2a; --card:#141414; --card2:#111;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.7}
+  /* HEADER */
+  .header{background:#100808;border-bottom:2px solid var(--red);padding:28px 36px 22px}
+  .internal-badge{display:inline-block;background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:8px}
+  .client-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff}
+  .report-meta{font-size:12px;color:var(--muted);margin-top:6px}
+  /* CONTAINER */
+  .container{max-width:920px;margin:0 auto;padding:30px 22px}
+  /* SECTION */
+  .section{margin-bottom:36px}
+  .section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+  /* PRIORITY BADGES */
+  .prio{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .prio.urgente{background:var(--red);color:#fff}
+  .prio.alta{background:var(--orange);color:#0f0f0f}
+  .prio.media{background:rgba(201,169,110,.2);color:var(--gold);border:1px solid rgba(201,169,110,.3)}
+  /* ACTION CARDS */
+  .action-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:12px;position:relative}
+  .action-card.urgente{border-left:3px solid var(--red)}
+  .action-card.alta{border-left:3px solid var(--orange)}
+  .action-card.media{border-left:3px solid var(--gold)}
+  .action-title{font-weight:600;color:var(--text);margin-bottom:8px;font-size:14px}
+  .action-url{font-size:11px;color:var(--blue);margin-bottom:6px;word-break:break-all}
+  .action-url a{color:var(--blue);text-decoration:none}
+  .action-url a:hover{color:var(--gold-light)}
+  .action-detail{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .action-do{font-size:12px;color:var(--text);background:rgba(74,158,122,.06);border:1px solid rgba(74,158,122,.15);border-radius:5px;padding:8px 12px;margin-top:8px}
+  .action-do strong{color:var(--green)}
+  /* DATA CHIPS */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+  .chip{display:inline-block;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--muted)}
+  .chip strong{color:var(--text)}
+  /* SHOPIFY ANOMALIES */
+  .anomaly-table{width:100%;border-collapse:collapse;font-size:12px}
+  .anomaly-table th{text-align:left;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:7px 10px;border-bottom:1px solid var(--border)}
+  .anomaly-table td{padding:9px 10px;border-bottom:1px solid rgba(42,42,42,.5)}
+  .anomaly-table tr:last-child td{border-bottom:none}
+  .status-pending{color:var(--orange);font-weight:600;font-size:11px}
+  .status-unfulfilled{color:var(--red);font-weight:600;font-size:11px}
+  /* NEXT STEPS */
+  .steps-list{display:flex;flex-direction:column;gap:10px}
+  .step-row{display:flex;align-items:flex-start;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:7px;padding:14px 16px}
+  .step-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--border);min-width:28px;line-height:1}
+  .step-content{}
+  .step-title{font-weight:600;color:var(--text);font-size:13px;margin-bottom:3px}
+  .step-desc{font-size:12px;color:var(--muted)}
+  .deadline{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.5px;color:var(--red);background:rgba(224,92,92,.08);border:1px solid rgba(224,92,92,.2);border-radius:3px;padding:1px 7px;margin-left:6px}
+  .deadline.ok{color:var(--green);background:rgba(74,158,122,.08);border-color:rgba(74,158,122,.2)}
+  /* FOOTER */
+  .footer{border-top:1px solid var(--border);padding:20px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:30px}
+  .footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
+  .footer-info{font-size:11px;color:var(--muted)}
+  .note-box{background:#100c04;border:1px solid rgba(201,169,110,.2);border-radius:6px;padding:12px 16px;font-size:11px;color:var(--muted);margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="internal-badge">🔒 Documento Interno — Non Condividere con il Cliente</div>
+  <div class="client-name">Azioni Team · Musto Calzature · W21</div>
+  <div class="report-meta">Settimana 18–24 Maggio 2026 · Preparato da Web Domus · 26 Maggio 2026</div>
+</div>
+
+<div class="container">
+
+  <div class="note-box">
+    <strong style="color:var(--gold-light)">Dati di riferimento W21:</strong> GA4: 3.105 utenti / 3.458 sessioni · Shopify: 16 ordini / €2.228,10 revenue · GSC: 1.775 click / 142.665 impr / pos. media 7,7
+  </div>
+
+  <!-- ─────────────── COLLECTIONS DA OTTIMIZZARE ─────────────── -->
+  <div class="section">
+    <div class="section-title">🗂️ Collections da Ottimizzare</div>
+
+    <div class="action-card alta">
+      <div class="action-title"><span class="prio alta">ALTA</span> Collection Bibi Lou — CTR troppo basso rispetto alle impressioni</div>
+      <div class="action-url"><a href="https://mustocalzature.com/collections/bibi-lou" target="_blank">https://mustocalzature.com/collections/bibi-lou</a></div>
+      <div class="chips">
+        <span class="chip"><strong>49</strong> click</span>
+        <span class="chip"><strong>4.183</strong> impr</span>
+        <span class="chip"><strong>1,17%</strong> CTR</span>
+        <span class="chip"><strong>pos. 6,4</strong></span>
+      </div>
+      <div class="action-detail">4.183 impressioni ma solo 49 click. Il CTR all'1,17% è ben al di sotto della media organica. La keyword "bibi lou" ha 12 click su 1.339 impressioni (CTR 0,9%). Il title tag attuale non spinge abbastanza al click.</div>
+      <div class="action-do"><strong>Azione:</strong> Riscrivere title tag → "Scarpe Bibi Lou Milano | Tutti i modelli 2026 | Musto Calzature". Aggiungere meta description con parola chiave "bibi lou scarpe" e descrizione della collection con link interni verso blog e prodotti top.</div>
+    </div>
+
+    <div class="action-card alta">
+      <div class="action-title"><span class="prio alta">ALTA</span> Collection Cerimonia Donna — Alta impressione, poca conversione click</div>
+      <div class="action-url"><a href="https://mustocalzature.com/collections/donna-occasioni-cerimonia" target="_blank">https://mustocalzature.com/collections/donna-occasioni-cerimonia</a></div>
+      <div class="chips">
+        <span class="chip"><strong>11</strong> click</span>
+        <span class="chip"><strong>1.197</strong> impr</span>
+        <span class="chip"><strong>0,92%</strong> CTR</span>
+        <span class="chip"><strong>pos. 13,1</strong></span>
+      </div>
+      <div class="action-detail">La keyword "scarpe cerimonia donna" genera 4 click su 359 impr (CTR 1,1%, pos. 9,2). Con primavera/estate avanzata la domanda cerimonia è ancora alta. Posizione media 13 va migliorata.</div>
+      <div class="action-do"><strong>Azione:</strong> Ottimizzare title → "Scarpe Cerimonia Donna 2026 | Eleganti e Comode | Musto Calzature". Aggiungere FAQ schema sulla pagina. Inserire link interno dal blog cerimonia verso questa collection.</div>
+    </div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Collection Ecco — Alta impressione, CTR quasi zero</div>
+      <div class="action-url"><a href="https://mustocalzature.com/collections/ecco" target="_blank">https://mustocalzature.com/collections/ecco</a></div>
+      <div class="chips">
+        <span class="chip"><strong>9</strong> click</span>
+        <span class="chip"><strong>1.930</strong> impr</span>
+        <span class="chip"><strong>0,47%</strong> CTR</span>
+        <span class="chip"><strong>pos. 8,8</strong></span>
+      </div>
+      <div class="action-do"><strong>Azione:</strong> Rivedere title tag e meta description con focus su "scarpe Ecco Milano". Verificare che i prodotti siano aggiornati per la stagione estiva 2026.</div>
+    </div>
+  </div>
+
+  <!-- ─────────────── BLOG DA MIGLIORARE ─────────────── -->
+  <div class="section">
+    <div class="section-title">✍️ Blog da Migliorare</div>
+
+    <div class="action-card alta">
+      <div class="action-title"><span class="prio alta">ALTA</span> Sandali flat donna 2026 — Primo blog per click, posizione da spingere</div>
+      <div class="action-url"><a href="https://mustocalzature.com/blogs/trend-e-consigli/sandali-flat-donna-2026" target="_blank">https://mustocalzature.com/blogs/trend-e-consigli/sandali-flat-donna-2026</a></div>
+      <div class="chips">
+        <span class="chip"><strong>187</strong> click</span>
+        <span class="chip"><strong>6.431</strong> impr</span>
+        <span class="chip"><strong>2,91%</strong> CTR</span>
+        <span class="chip"><strong>pos. 7,2</strong></span>
+      </div>
+      <div class="action-detail">Seconda pagina per click su tutto il sito (dopo homepage). La keyword "sandali bassi estate 2026" è in pos. 8,2 con 12 click e 542 impr. "sandali flat 2026" è in pos. 3,1 con 5 click. Alta potenzialità di crescita se si sale da pos. 7 a 4–5.</div>
+      <div class="action-do"><strong>Azione:</strong> Aggiornare H1 e intro con keyword "sandali flat donna estate 2026". Aggiungere sezione FAQ con domande tipo "quali sandali flat vanno di moda estate 2026" (6 click, 23 impr, pos. 2,5 — già in alto, consolidare). Aggiungere link interni ai prodotti sandali flat in shop. Inserire schema FAQ.</div>
+    </div>
+
+    <div class="action-card alta">
+      <div class="action-title"><span class="prio alta">ALTA</span> Scarpe cerimonia donna — Alta impressione, posizione 8,5 da migliorare</div>
+      <div class="action-url"><a href="https://mustocalzature.com/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento" target="_blank">https://mustocalzature.com/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna</a></div>
+      <div class="chips">
+        <span class="chip"><strong>69</strong> click</span>
+        <span class="chip"><strong>4.402</strong> impr</span>
+        <span class="chip"><strong>1,57%</strong> CTR</span>
+        <span class="chip"><strong>pos. 8,5</strong></span>
+      </div>
+      <div class="action-detail">"scarpe eleganti da cerimonia comode" in pos. 7,8 con 7 click e 333 impr. "scarpe cerimonia donna" in pos. 9,2 con 4 click e 359 impr. La stagione cerimonia (matrimoni giugno-luglio) è picco adesso.</div>
+      <div class="action-do"><strong>Azione:</strong> Aggiornare articolo con sezione "Estate 2026: i modelli più richiesti" con prodotti attuali dal catalogo. Aggiungere schema HowTo o FAQ. Inserire CTA con link diretto alla collection cerimonia. Target posizione: 5–6.</div>
+    </div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Mocassini uomo 2026 — Buone performance, CTR da ottimizzare</div>
+      <div class="action-url"><a href="https://mustocalzature.com/blogs/trend-e-consigli/mocassini-uomo-2026-guida" target="_blank">https://mustocalzature.com/blogs/trend-e-consigli/mocassini-uomo-2026-guida</a></div>
+      <div class="chips">
+        <span class="chip"><strong>47</strong> click</span>
+        <span class="chip"><strong>1.218</strong> impr</span>
+        <span class="chip"><strong>3,86%</strong> CTR</span>
+        <span class="chip"><strong>pos. 4,5</strong></span>
+      </div>
+      <div class="action-detail">"mocassini uomo estate 2026" è in pos. 2,2 con 6 click. Un ulteriore push verso pos. 1-2 porterebbe click significativi. "mocassino uomo estate 2026" in pos. 2,0 con 3 click.</div>
+      <div class="action-do"><strong>Azione:</strong> Aggiungere sezione "mocassini estate 2026" con focus su modelli estivi in pelle traforata e camoscio. Inserire link a prodotti (JP/DAVID e KEBO venduti questa settimana). Inserire immagini ottimizzate con alt text mirato.</div>
+    </div>
+  </div>
+
+  <!-- ─────────────── NUOVI CONTENUTI ─────────────── -->
+  <div class="section">
+    <div class="section-title">🆕 Nuovi Contenuti Consigliati</div>
+
+    <div class="action-card alta">
+      <div class="action-title"><span class="prio alta">ALTA</span> Nuovo articolo: "Sandali donna estate 2026: i modelli di tendenza"</div>
+      <div class="chips">
+        <span class="chip"><strong>"sandali donna estate 2026"</strong>: 6 click · 288 impr · pos. 11,0</span>
+        <span class="chip"><strong>"sandali estate 2026 comodi"</strong>: 3 click · 91 impr · pos. 9,5</span>
+        <span class="chip"><strong>"sandali donna moda 2026"</strong>: 3 click · 45 impr · pos. 9,8</span>
+        <span class="chip"><strong>"tendenza sandali estate 2026"</strong>: 4 click · 205 impr · pos. 10,0</span>
+      </div>
+      <div class="action-detail">Cluster "sandali donna 2026" totalizza circa 20 click ma oltre 800 impressioni con posizioni 9-11. Un articolo dedicato e aggiornato può portare queste keyword in top 5 nel picco estate.</div>
+      <div class="action-do"><strong>Formato:</strong> Articolo blog 1.200 parole. Keyword principale: "sandali donna estate 2026". Includere: trend colori, modelli (flat, con tacco, mule), link a collections Bibi Lou, Les Tropeziennes, Bruno Premi. Schema FAQ.</div>
+    </div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Guida: "Stivaletti estivi donna — sì o no? Come abbinarli"</div>
+      <div class="chips">
+        <span class="chip"><strong>"stivaletti estivi donna"</strong>: 4 click · 32 impr · pos. 3,1</span>
+        <span class="chip"><strong>"stivali donna 2025-2026"</strong>: 26 click · 1.073 impr · pos. 7,9</span>
+      </div>
+      <div class="action-detail">La keyword "stivaletti estivi donna" è già in pos. 3,1 — ottimo punto di partenza. Un articolo dedicato consolida e amplia il traffico stagionale primavera-estate.</div>
+      <div class="action-do"><strong>Formato:</strong> Articolo blog 900 parole. Ottimizzato su "stivaletti estivi donna 2026". Link interni a collections. Aggiornamento entro prima settimana di giugno.</div>
+    </div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Contenuto: "Scarpe donna per matrimonio 2026 — comfort e stile"</div>
+      <div class="chips">
+        <span class="chip"><strong>"scarpe da cerimonia donna 2026"</strong>: 7 click · 44 impr · pos. 3,2 (W20 +CTR)</span>
+        <span class="chip"><strong>"scarpe cerimonia donna"</strong>: 4 click · 359 impr · pos. 9,2</span>
+      </div>
+      <div class="action-detail">La keyword "scarpe da cerimonia donna 2026" è già in pos. 3,2 con 7 click nel W20 (segnale forte). Il picco cerimonia è adesso. Opportunità di consolidare e intercettare traffico elevato.</div>
+      <div class="action-do"><strong>Formato:</strong> Articolo dedicato "matrimonio 2026" con focus su modelli comodi, slingback, decolleté. Link a collection cerimonia e prodotti top (BIBI LOU, BRUNO PREMI). Urgente: entro questa settimana.</div>
+    </div>
+  </div>
+
+  <!-- ─────────────── CTR / BRANDED ANOMALIE ─────────────── -->
+  <div class="section">
+    <div class="section-title">🏷️ Anomalie CTR e Branded</div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Branded W21 vs W20: calo click branded</div>
+      <div class="action-detail">
+        W20: "musto calzature" = 21 click (pos. 6,2), "musto milano" = 25 click (pos. 1,0)<br>
+        W21: "musto calzature" = 16 click (pos. 3,5), "musto milano" = 21 click (pos. 2,0)<br>
+        La keyword "musto calzature" è scesa di 5 click nonostante una posizione migliore (3,5 vs 6,2). Possibile CTR anomalo: la SERP potrebbe mostrare un competitor o box Knowledge Panel che distrae il click.
+      </div>
+      <div class="action-do"><strong>Azione:</strong> Verificare la SERP di "musto calzature" in modalità anonima da browser italiano. Controllare se Google My Business è aggiornato e mostra le informazioni corrette. Ottimizzare snippet (meta description) per "musto calzature".</div>
+    </div>
+
+    <div class="action-card media">
+      <div class="action-title"><span class="prio media">MEDIA</span> Kamo Gutsu — Sito inglese ottimizzare</div>
+      <div class="chips">
+        <span class="chip"><strong>"kamo gutsu"</strong>: 3 click · 227 impr · pos. 8,7</span>
+        <span class="chip"><strong>"kamo gutsu shoes"</strong>: 3 click · 58 impr · pos. 6,6</span>
+      </div>
+      <div class="action-detail">Le keyword Kamo Gutsu arrivano quasi tutte in lingua inglese (URL /en/collections/kamo-gutsu riceve 10 click). La versione inglese del sito ha spazio per crescere.</div>
+      <div class="action-do"><strong>Azione:</strong> Ottimizzare la pagina /en/collections/kamo-gutsu con copy in inglese aggiornato per estate 2026. Verificare hreflang. Aggiungere prodotti della stagione.</div>
+    </div>
+  </div>
+
+  <!-- ─────────────── ANOMALIE SHOPIFY ─────────────── -->
+  <div class="section">
+    <div class="section-title">⚠️ Anomalie Shopify — Ordini da Verificare</div>
+
+    <table class="anomaly-table">
+      <thead>
+        <tr>
+          <th>Ordine</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Importo</th>
+          <th>Status Pagamento</th>
+          <th>Fulfillment</th>
+          <th>Prodotto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>#1487</strong></td>
+          <td>LAURA PUTZU</td>
+          <td>19 Mag 23:26</td>
+          <td>€ 153,90</td>
+          <td><span class="status-pending">⚠️ PENDING</span></td>
+          <td>FULFILLED</td>
+          <td>BIBI LOU Mocassini GUAVA LOAFER 973Z60IN</td>
+        </tr>
+        <tr>
+          <td><strong>#1482</strong></td>
+          <td>Giuseppina Villino</td>
+          <td>18 Mag 12:11</td>
+          <td>€ 145,90</td>
+          <td><span class="status-pending">⚠️ PENDING</span></td>
+          <td>FULFILLED</td>
+          <td>LAURA VITA Sneakers pelle e tessuto BURTON 05</td>
+        </tr>
+        <tr>
+          <td><strong>#1493</strong></td>
+          <td>Silvia Emmy Berty Erhardt</td>
+          <td>21 Mag 23:40</td>
+          <td>€ 99,00</td>
+          <td>PAID</td>
+          <td><span class="status-unfulfilled">🔴 UNFULFILLED</span></td>
+          <td>NEROGIARDINI Sneakers Pelle E306371D</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:12px;padding:12px 14px;background:#100a04;border:1px solid rgba(240,160,74,.2);border-radius:6px;font-size:11px;color:var(--muted)">
+      <strong style="color:var(--orange)">Note:</strong>
+      <ul style="margin-top:6px;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+        <li>Ordini <strong>#1487 e #1482</strong> sono stati evasi (FULFILLED) ma il pagamento risulta PENDING — verificare con il gestore pagamenti (possibile bonifico in attesa o problema gateway).</li>
+        <li>Ordine <strong>#1493</strong> (Silvia Erhardt) è PAID ma non ancora evaso — verificare disponibilità prodotto NEROGIARDINI E306371D in magazzino o stato spedizione.</li>
+        <li>I 2 ordini PENDING (totale €299,80) sono stati inclusi nel revenue settimanale: €2.228,10. Se non si incassano, il revenue netto è €1.928,30.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─────────────── PROSSIMI PASSI ─────────────── -->
+  <div class="section">
+    <div class="section-title">🎯 Prossimi Passi — Lista Prioritizzata</div>
+    <div class="steps-list">
+
+      <div class="step-row" style="border-left:3px solid var(--red)">
+        <div class="step-num" style="color:var(--red)">1</div>
+        <div class="step-content">
+          <div class="step-title">Verificare ordini PENDING #1487 e #1482 <span class="deadline">URGENTE · entro 26/05</span></div>
+          <div class="step-desc">Contattare il responsabile pagamenti. Se il pagamento non arriva entro 48h attivare procedura di recupero ordine.</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--red)">
+        <div class="step-num" style="color:var(--red)">2</div>
+        <div class="step-content">
+          <div class="step-title">Evadere ordine #1493 (Silvia Erhardt — NEROGIARDINI E306371D) <span class="deadline">URGENTE · entro 27/05</span></div>
+          <div class="step-desc">Verificare disponibilità in magazzino. Se esaurito: contattare cliente e proporre alternativa (NEROGIARDINI E343000DE è stato venduto stessa settimana).</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--orange)">
+        <div class="step-num" style="color:var(--orange)">3</div>
+        <div class="step-content">
+          <div class="step-title">Ottimizzare blog cerimonia donna per picco stagionale <span class="deadline">ALTA · entro 30/05</span></div>
+          <div class="step-desc">Aggiornare /blogs/…/scarpe-da-cerimonia-per-donna con prodotti estate 2026, FAQ schema, CTA alla collection. Opportunità alta: stagione matrimoni giugno-luglio.</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--orange)">
+        <div class="step-num" style="color:var(--orange)">4</div>
+        <div class="step-content">
+          <div class="step-title">Creare articolo "Sandali donna estate 2026" <span class="deadline">ALTA · entro 02/06</span></div>
+          <div class="step-desc">Cluster "sandali donna 2026" ha >800 impressioni con posizioni 9-11. Articolo dedicato può portare 50-80 click/settimana. Formato: 1.200 parole, schema FAQ, link collections.</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--orange)">
+        <div class="step-num" style="color:var(--orange)">5</div>
+        <div class="step-content">
+          <div class="step-title">Ottimizzare title tag /collections/bibi-lou e /collections/ecco <span class="deadline">ALTA · entro 03/06</span></div>
+          <div class="step-desc">4.183 impr bibi-lou con CTR 1,17%. Nuovo title: "Scarpe Bibi Lou Milano | Modelli 2026 | Musto Calzature". Meta description aggiornata con keyword principali.</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--gold)">
+        <div class="step-num" style="color:var(--gold)">6</div>
+        <div class="step-content">
+          <div class="step-title">Aggiornare blog mocassini uomo con modelli estate <span class="deadline">MEDIA · entro 06/06</span></div>
+          <div class="step-desc">JP/DAVID e KEBO entrambi venduti questa settimana. Aggiornare /blogs/…/mocassini-uomo-2026-guida con nuova sezione "estate 2026" e link ai prodotti.</div>
+        </div>
+      </div>
+
+      <div class="step-row" style="border-left:3px solid var(--gold)">
+        <div class="step-num" style="color:var(--gold)">7</div>
+        <div class="step-content">
+          <div class="step-title">Ottimizzare sito inglese /en/collections/kamo-gutsu <span class="deadline">MEDIA · entro 10/06</span></div>
+          <div class="step-desc">10 click sulla versione EN del sito. Copy aggiornato, hreflang verificato, prodotti estate 2026 aggiunti.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <div>
+    <div class="footer-brand">Web Domus — Uso Interno</div>
+    <div class="footer-info">🔒 Non condividere con il cliente</div>
+  </div>
+  <div class="footer-info" style="text-align:right">
+    Azioni Team W21 · Generato 26 Maggio 2026
+  </div>
+</div>
+
+</body>
+</html>
