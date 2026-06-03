@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azioni Team · W22 · Solo Uso Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0d;--gold:#c9a96e;--gold-light:#e0c898;--green:#4a9e7a;--red:#e05c5c;--orange:#e0923c;--text:#e8e8e8;--muted:#888;--border:#2a2a2a;--card:#161616;--bg2:#111}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6}
+.header{background:#0a0a0a;border-bottom:2px solid var(--red);padding:28px 36px}
+.header .tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.header h1{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff}
+.header .sub{color:var(--muted);font-size:12px;margin-top:4px}
+.internal-badge{display:inline-block;background:rgba(224,92,92,.15);color:var(--red);border:1px solid rgba(224,92,92,.3);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:3px;margin-left:12px;vertical-align:middle}
+.container{max-width:960px;margin:0 auto;padding:32px 24px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:24px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.section-header h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--gold)}
+.section-header .count{font-size:11px;background:rgba(201,169,110,.12);color:var(--gold);border:1px solid rgba(201,169,110,.2);padding:2px 8px;border-radius:3px;font-weight:600}
+/* Priority */
+.priority{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-right:6px}
+.p-alta{background:rgba(224,92,92,.15);color:var(--red);border:1px solid rgba(224,92,92,.3)}
+.p-media{background:rgba(224,146,60,.12);color:var(--orange);border:1px solid rgba(224,146,60,.25)}
+/* Action items */
+.action-item{border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin-bottom:12px;background:#131313}
+.action-item:last-child{margin-bottom:0}
+.action-url{font-family:monospace;font-size:11px;color:var(--gold-light);background:rgba(201,169,110,.08);padding:3px 8px;border-radius:3px;display:inline-block;margin-bottom:8px}
+.action-desc{font-size:12px;color:#c0b8a8;line-height:1.7;margin-bottom:10px}
+.action-desc strong{color:var(--text)}
+.action-meta{display:flex;gap:16px;flex-wrap:wrap}
+.meta-tag{font-size:10px;color:var(--muted)}
+.meta-tag strong{color:var(--text)}
+.action-box{background:rgba(74,158,122,.06);border:1px solid rgba(74,158,122,.2);border-radius:6px;padding:10px 14px;margin-top:10px;font-size:12px;color:#a0c8b8}
+.action-box strong{color:var(--green);display:block;margin-bottom:4px;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+/* Steps list */
+.steps{padding-left:16px;margin-top:6px}
+.steps li{margin-bottom:5px;font-size:12px;color:#b0a898}
+/* KW opportunity table */
+.opp-table{width:100%;border-collapse:collapse}
+.opp-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.opp-table td{font-size:12px;padding:9px 10px;border-bottom:1px solid rgba(42,42,42,.4);color:var(--text)}
+.opp-table tr:last-child td{border-bottom:none}
+.opp-table td.num{text-align:right;color:var(--muted)}
+.opp-table td.pos{text-align:right;font-weight:600;color:var(--orange)}
+/* Next steps */
+.next-steps{list-style:none;padding:0;margin:0}
+.next-steps li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.next-steps li:last-child{border-bottom:none}
+.step-num{font-size:11px;font-weight:700;color:var(--gold);min-width:24px;margin-top:1px}
+.step-body .step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.step-body .step-detail{font-size:11px;color:var(--muted);line-height:1.6}
+.step-meta{margin-left:auto;display:flex;gap:8px;align-items:center;flex-shrink:0}
+.deadline{font-size:10px;color:var(--muted);white-space:nowrap}
+/* Shopify anomalies */
+.anomaly-table{width:100%;border-collapse:collapse}
+.anomaly-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.anomaly-table td{font-size:12px;padding:9px 10px;border-bottom:1px solid rgba(42,42,42,.4);color:var(--text)}
+.anomaly-table tr:last-child td{border-bottom:none}
+.status-pending{display:inline-block;background:rgba(224,146,60,.12);color:var(--orange);font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px}
+.status-unfulfilled{display:inline-block;background:rgba(91,155,213,.12);color:#5b9bd5;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px}
+/* CTR anomaly */
+.anomaly-box{background:rgba(224,146,60,.06);border:1px solid rgba(224,146,60,.2);border-radius:8px;padding:16px 18px;margin-bottom:12px}
+.anomaly-box h4{font-size:12px;font-weight:600;color:var(--orange);margin-bottom:8px}
+.anomaly-box p{font-size:12px;color:#b0a898;line-height:1.7}
+/* Footer */
+.footer{border-top:1px solid var(--border);padding:20px 24px;text-align:center;margin-top:40px}
+.footer p{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">⚠ Solo Uso Interno — Non Condividere con il Cliente</div>
+  <h1>Azioni Team · W22 <span class="internal-badge">INTERNO</span></h1>
+  <div class="sub">Musto Calzature · 25–31 Maggio 2026 · mustocalzature.com · Generato automaticamente</div>
+</div>
+
+<div class="container">
+
+  <!-- COLLECTIONS DA OTTIMIZZARE -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Collection da Ottimizzare</h2>
+      <span class="count">6 opportunità</span>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-url">mustocalzature.com/collections/gioseppo</div>
+      <div class="action-desc">Impressioni alte (<strong>3.770</strong>) ma CTR bassissimo (<strong>0,13%</strong>) e posizione media 9,9. La collection ha visibilità ma non converte in clic — title tag e meta description probabilmente non allineati all'intento di ricerca.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>3.770</strong></div>
+        <div class="meta-tag">Clic: <strong>5</strong></div>
+        <div class="meta-tag">CTR: <strong>0,13%</strong></div>
+        <div class="meta-tag">Posizione: <strong>9,9</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Title tag consigliato: "Scarpe Gioseppo Donna e Uomo | Calzature Comode 2026 | Musto Milano"<br>
+        Aggiornare anche meta description enfatizzando comfort, stile e disponibilità taglia. Aggiungere H1 con keyword "scarpe Gioseppo" e testo introduttivo di almeno 100 parole sulla collection.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-url">mustocalzature.com/collections/nero-giardini</div>
+      <div class="action-desc">2.021 impressioni, CTR 0,45%, posizione 9,1. Brand noto con alto volume di ricerca — la collection è indicizzata ma non compete bene in SERP.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>2.021</strong></div>
+        <div class="meta-tag">Clic: <strong>9</strong></div>
+        <div class="meta-tag">CTR: <strong>0,45%</strong></div>
+        <div class="meta-tag">Posizione: <strong>9,1</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Title tag: "Nero Giardini Scarpe | Shop Ufficiale Milano | Musto Calzature"<br>
+        Verificare che la collection abbia H1 ottimizzato, testo con keyword e almeno 6-8 prodotti attivi con immagini ottimizzate.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-media">MEDIA</span>
+      <div class="action-url">mustocalzature.com/collections/ecco</div>
+      <div class="action-desc">1.808 impressioni, CTR 0,33%, posizione 10,2. Poco sopra la soglia del seconda pagina — piccola spinta può portare in top 10.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>1.808</strong></div>
+        <div class="meta-tag">Clic: <strong>6</strong></div>
+        <div class="meta-tag">CTR: <strong>0,33%</strong></div>
+        <div class="meta-tag">Posizione: <strong>10,2</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Title: "Scarpe ECCO Donna e Uomo | Comfort Scandinavo | Musto Milano". Aggiungere link interni da articoli blog al brand.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-media">MEDIA</span>
+      <div class="action-url">mustocalzature.com/collections/alma-en-pena</div>
+      <div class="action-desc">1.738 impressioni, CTR 0,46%, posizione 7,8 — bel potenziale ma risultati sotto media.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>1.738</strong></div>
+        <div class="meta-tag">Clic: <strong>8</strong></div>
+        <div class="meta-tag">CTR: <strong>0,46%</strong></div>
+        <div class="meta-tag">Posizione: <strong>7,8</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Verificare testo collection. Title tag: "Alma en Pena Scarpe | Stile Spagnolo Artigianale | Musto Calzature Milano". Aggiungere testo categoria con keyword brand.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-media">MEDIA</span>
+      <div class="action-url">mustocalzature.com/collections/mephisto</div>
+      <div class="action-desc">912 impressioni, CTR 0,44%, posizione 9,8 — brand premium con alta fidelizzazione utente.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>912</strong></div>
+        <div class="meta-tag">Clic: <strong>4</strong></div>
+        <div class="meta-tag">CTR: <strong>0,44%</strong></div>
+        <div class="meta-tag">Posizione: <strong>9,8</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Title: "Mephisto Scarpe | Calzature Comodissime Made in Europe | Musto Milano". Aggiungere 2-3 link interni da blog comfort/walking.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-url">mustocalzature.com/collections/bibi-lou</div>
+      <div class="action-desc">74 clic, 4.629 impressioni, CTR 1,60%, posizione 6,5. Collection già performante — ma il gap tra impressioni e CTR indica margine di miglioramento concreto del titolo SERP.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Impressioni: <strong>4.629</strong></div>
+        <div class="meta-tag">Clic: <strong>74</strong></div>
+        <div class="meta-tag">CTR: <strong>1,60%</strong></div>
+        <div class="meta-tag">Posizione: <strong>6,5</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione</strong>
+        Title: "Bibi Lou Scarpe Donna | Sandali, Décolleté e Ballerine | Musto Milano 2026"<br>
+        Arricchire testo collection con keyword "sandali bibi lou", "bibi lou estate". È il brand più venduto nelle ultime 4 settimane — la collection deve essere la più forte in SERP.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG DA MIGLIORARE -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Blog da Migliorare</h2>
+      <span class="count">3 post prioritari</span>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-url">mustocalzature.com/blogs/trend-e-consigli/sandali-flat-donna-2026</div>
+      <div class="action-desc">Il post più cliccato del sito con <strong>687 clic</strong> e 16.898 impressioni — CTR 4,07% ottimo. Posizione media 6,3 ma potenziale per top 5. Con questo volume, anche mezzo punto di miglioramento vale +100 clic/settimana.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Clic: <strong>687</strong></div>
+        <div class="meta-tag">Impressioni: <strong>16.898</strong></div>
+        <div class="meta-tag">Posizione: <strong>6,3</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione SEO</strong>
+        1. Aggiungere sezione "Novità estate 2026" con 3-4 prodotti Bibi Lou / Les Tropéziennes (link interni diretti a scheda prodotto)<br>
+        2. Verificare che H2 includa varianti "sandali piatti donna estate 2026" e "flat sandals donna"<br>
+        3. Aggiungere FAQ strutturata con schema JSON-LD (2-3 domande tipo "Quali sandali flat sono di moda nel 2026?")<br>
+        4. Aggiornare la data di modifica del post
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-url">mustocalzature.com/blogs/trend-e-consigli/mocassini-uomo-eleganza-senza-tempo-per-ogni-occasione</div>
+      <div class="action-desc">Solo 18 clic ma 3.298 impressioni — CTR 0,55% molto basso per un post ben posizionato (media 5,9). Il titolo SEO non è abbastanza orientato alla conversione.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Clic: <strong>18</strong></div>
+        <div class="meta-tag">Impressioni: <strong>3.298</strong></div>
+        <div class="meta-tag">Posizione: <strong>5,9</strong></div>
+        <div class="meta-tag">CTR: <strong>0,55%</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione SEO</strong>
+        Modificare title tag: "Mocassini Uomo 2026: i Modelli Più Eleganti da Avere | Musto Milano"<br>
+        Aggiornare meta description con call-to-action: "Scopri la selezione Musto: mocassini in pelle, camoscio e intrecciato per ogni occasione."<br>
+        Aggiungere 4-5 link interni ai prodotti MUSTO, KAMO-GUTSU, FRAU disponibili a magazzino.
+      </div>
+    </div>
+
+    <div class="action-item">
+      <span class="priority p-media">MEDIA</span>
+      <div class="action-url">mustocalzature.com/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento</div>
+      <div class="action-desc">78 clic, 4.431 impressioni, CTR 1,76%, posizione 7,0 — stagione cerimonie in corso, post strategico per il periodo.</div>
+      <div class="action-meta">
+        <div class="meta-tag">Clic: <strong>78</strong></div>
+        <div class="meta-tag">Impressioni: <strong>4.431</strong></div>
+        <div class="meta-tag">Posizione: <strong>7,0</strong></div>
+      </div>
+      <div class="action-box">
+        <strong>Azione SEO</strong>
+        Aggiungere sezione "Scarpe da cerimonia estate 2026" con prodotti BIBI LOU, BRUNATE, GIO+ con foto e link acquisto.<br>
+        Verificare schema Article e aggiornare dateModified.
+      </div>
+    </div>
+  </div>
+
+  <!-- NUOVI CONTENUTI -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Nuovi Contenuti da Creare</h2>
+      <span class="count">keyword con alto potenziale</span>
+    </div>
+
+    <table class="opp-table">
+      <thead>
+        <tr>
+          <th>Keyword Target</th>
+          <th style="text-align:right">Impressioni</th>
+          <th style="text-align:right">Clic</th>
+          <th style="text-align:right">Pos.</th>
+          <th>Formato Consigliato</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>sandali donna estate 2026</strong></td>
+          <td class="num">1.272</td>
+          <td class="num">37</td>
+          <td class="pos">7,1</td>
+          <td>Guida blog "I sandali donna più belli dell'estate 2026" — include prodotti Bibi Lou, Les Tropéziennes, Laura Vita</td>
+        </tr>
+        <tr>
+          <td><strong>bibi lou</strong></td>
+          <td class="num">1.513</td>
+          <td class="num">26</td>
+          <td class="pos">6,3</td>
+          <td>Post brand focus "Bibi Lou: lo stile spagnolo che conquista Milano" — moda + link collection</td>
+        </tr>
+        <tr>
+          <td><strong>les tropeziennes sandali</strong></td>
+          <td class="num">512</td>
+          <td class="num">18</td>
+          <td class="pos">5,1</td>
+          <td>Post brand "Les Tropéziennes: i sandali di Cannes arrivano a Milano" — estate, lifestyle, link collection</td>
+        </tr>
+        <tr>
+          <td><strong>sandali bassi estate 2026</strong></td>
+          <td class="num">873</td>
+          <td class="num">20</td>
+          <td class="pos">6,0</td>
+          <td>Hub content che colleghi il post sandali flat già esistente (espansione H2)</td>
+        </tr>
+        <tr>
+          <td><strong>bibi lou scarpe</strong></td>
+          <td class="num">733</td>
+          <td class="num">9</td>
+          <td class="pos">5,7</td>
+          <td>Ottimizzare collection /collections/bibi-lou (vedi sezione sopra)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="action-item" style="margin-top:14px">
+      <span class="priority p-alta">ALTA</span>
+      <div class="action-desc">Priorità assoluta: creare post "Sandali Donna Estate 2026 — La Selezione Musto" che copra le keyword sandali estate, sandali flat, sandali bassi in un unico hub. Collegare alle collection Bibi Lou, Les Tropéziennes, Laura Vita, con schema Product e BreadcrumbList.</div>
+    </div>
+  </div>
+
+  <!-- CTR ANOMALIE -->
+  <div class="section">
+    <div class="section-header">
+      <h2>CTR &amp; Anomalie Branded</h2>
+    </div>
+
+    <div class="anomaly-box">
+      <h4>📊 CTR Non-Branded molto basso (1,00%)</h4>
+      <p>Il CTR non-branded è all'1,00% contro un CTR branded del 10,64%. Il gap è fisiologico ma il valore assoluto del CTR non-branded è migliorabile: la media di settore per e-commerce di moda è intorno all'1,5-2%. Le priorità di ottimizzazione sui title tag (specialmente collection) possono avere impatto diretto su questo dato nelle prossime 4-8 settimane.</p>
+    </div>
+
+    <div class="anomaly-box" style="background:rgba(74,158,122,.05);border-color:rgba(74,158,122,.2)">
+      <h4 style="color:var(--green)">✅ Posizione Media in Miglioramento (+0,50 punti WoW)</h4>
+      <p>La posizione media GSC è passata da 7,72 (W21) a 7,22 (W22). Miglioramento costante confermato nelle ultime settimane. Continuare la strategia di ottimizzazione on-page e link building già in corso.</p>
+    </div>
+  </div>
+
+  <!-- NOTE SHOPIFY -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Note Shopify — Riepilogo Ordini con Status Anomalo</h2>
+      <span class="count" style="background:rgba(224,146,60,.12);color:var(--orange);border-color:rgba(224,146,60,.2)">3 ordini</span>
+    </div>
+
+    <table class="anomaly-table">
+      <thead>
+        <tr>
+          <th>Ordine</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Importo</th>
+          <th>Financial Status</th>
+          <th>Fulfillment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>#1507</strong></td>
+          <td>Gloria Patrizia Termini</td>
+          <td>27/05/2026</td>
+          <td>€123,90</td>
+          <td><span class="status-pending">PENDING</span></td>
+          <td>FULFILLED</td>
+        </tr>
+        <tr>
+          <td><strong>#1506</strong></td>
+          <td>Davis Palomino</td>
+          <td>27/05/2026</td>
+          <td>€154,90</td>
+          <td><span class="status-pending">PENDING</span></td>
+          <td>FULFILLED</td>
+        </tr>
+        <tr>
+          <td><strong>#1498</strong></td>
+          <td>Federica Pascale</td>
+          <td>25/05/2026</td>
+          <td>€80,00</td>
+          <td>PAID</td>
+          <td><span class="status-unfulfilled">UNFULFILLED</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:12px;background:#111;border:1px solid rgba(42,42,42,.8);border-radius:6px;padding:12px 16px;font-size:11px;color:var(--muted)">
+      <strong style="color:var(--text)">Nota:</strong> Rilevati automaticamente per completezza del dato. La gestione operativa degli ordini è di competenza del cliente. I due ordini PENDING (#1506, #1507) per un totale di €278,80 sono stati inclusi nel calcolo del fatturato settimanale (€2.160,75) come da regola di reportistica (esclusi solo VOIDED/REFUNDED). L'ordine #1498 UNFULFILLED è regolarmente pagato ma non ancora spedito.
+    </div>
+  </div>
+
+  <!-- PROSSIMI PASSI -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Prossimi Passi SEO · Priorità W23</h2>
+    </div>
+
+    <ul class="next-steps">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <div class="step-title"><span class="priority p-alta">ALTA</span> Ottimizzare title tag collection Gioseppo, Nero Giardini, Bibi Lou</div>
+          <div class="step-detail">Modificare title tag + aggiungere testo description su 3 collection prioritarie. Bibi Lou è il brand #1 per vendite — la sua collection deve essere la più forte in SERP per keyword brand.</div>
+        </div>
+        <div class="step-meta"><span class="deadline">Entro: 10 Giu 2026</span></div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <div class="step-title"><span class="priority p-alta">ALTA</span> Aggiornare post /sandali-flat-donna-2026 con sezione prodotti estate</div>
+          <div class="step-detail">Aggiungere 4-5 prodotti in trend estate (Bibi Lou, Les Tropéziennes), FAQ schema markup, aggiornare data modifica. Il post genera 687 clic/settimana — ogni ottimizzazione ha alto ROI.</div>
+        </div>
+        <div class="step-meta"><span class="deadline">Entro: 10 Giu 2026</span></div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <div class="step-title"><span class="priority p-alta">ALTA</span> Creare nuovo post hub "Sandali Donna Estate 2026 — Selezione Musto"</div>
+          <div class="step-detail">Keyword target: "sandali donna estate 2026" (1.272 impr., pos. 7,1) e varianti. Struttura: intro stile + 5-6 sezioni per tipologia (sandali flat, con tacco, comodi, cerimonia), link ai brand collection e prodotti.</div>
+        </div>
+        <div class="step-meta"><span class="deadline">Entro: 17 Giu 2026</span></div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <div class="step-title"><span class="priority p-media">MEDIA</span> Ottimizzare title/meta post mocassini uomo eleganza</div>
+          <div class="step-detail">CTR solo 0,55% con 3.298 impressioni — cambiare title tag e meta description per aumentare il click-through. Aggiungere link interni a prodotti MUSTO, KAMO-GUTSU, FRAU.</div>
+        </div>
+        <div class="step-meta"><span class="deadline">Entro: 17 Giu 2026</span></div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <div class="step-title"><span class="priority p-media">MEDIA</span> Aggiungere link interni da blog verso collection Gioseppo ed Ecco</div>
+          <div class="step-detail">Le due collection sono in posizione 9-10 con buone impressioni — link interni da post blog tematici possono dare la spinta necessaria per entrare in top 8.</div>
+        </div>
+        <div class="step-meta"><span class="deadline">Entro: 24 Giu 2026</span></div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Documento interno Web Domus · Musto Calzature · W22 · 25–31 Maggio 2026</p>
+  <p style="margin-top:4px">carmine@webdomus.net · Non condividere con il cliente</p>
+</div>
+
+</body>
+</html>

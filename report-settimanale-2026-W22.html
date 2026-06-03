@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musto Calzature · Report SEO W22 · 25–31 Maggio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f0f0f;--bg2:#141209;--gold:#c9a96e;--gold-light:#e0c898;--green:#4a9e7a;--red:#e05c5c;--text:#e8e8e8;--muted:#888;--border:#2a2a2a;--card:#181818;--card2:#1d1a12}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+/* Header */
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:36px 40px 28px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+.header-left .brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.header-left .client-name{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#fff}
+.header-left .period{color:var(--muted);font-size:13px;margin-top:4px}
+.header-right{text-align:right}
+.week-badge{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--gold);line-height:1}
+.week-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+/* Container */
+.container{max-width:960px;margin:0 auto;padding:36px 24px}
+/* Section titles */
+.section-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--gold);margin:36px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+/* Commento editoriale */
+.editorial{background:var(--bg2);border:1px solid rgba(201,169,110,.25);border-left:3px solid var(--gold);border-radius:10px;padding:26px 28px;margin-bottom:36px}
+.editorial-badge{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;opacity:.85}
+.editorial-opening{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.5;margin-bottom:14px}
+.editorial p{font-size:13px;color:#b8b0a0;line-height:1.9;margin-bottom:10px}
+.editorial p:last-child{margin-bottom:0}
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:28px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 18px;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--border)}
+.kpi-card.gold::before{background:var(--gold)}
+.kpi-card.green::before{background:var(--green)}
+.kpi-card.blue::before{background:#5b9bd5}
+.kpi-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.kpi-value{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.trend{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;margin-left:6px}
+.trend.up{background:rgba(74,158,122,.15);color:var(--green)}
+.trend.down{background:rgba(224,92,92,.15);color:var(--red)}
+.trend.neutral{background:rgba(136,136,136,.15);color:var(--muted)}
+/* Chart containers */
+.chart-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:22px}
+.chart-box h4{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.chart-wrap{position:relative;height:220px}
+/* Horizontal bar chart for channels */
+.channel-list{display:flex;flex-direction:column;gap:10px}
+.channel-row{display:flex;align-items:center;gap:12px}
+.channel-name{width:150px;font-size:12px;color:var(--text);flex-shrink:0}
+.channel-bar-wrap{flex:1;background:#222;border-radius:3px;height:8px;overflow:hidden}
+.channel-bar{height:100%;border-radius:3px;transition:width .5s}
+.bar-organic{background:var(--gold)}
+.bar-social{background:var(--green)}
+.bar-paid{background:#5b9bd5}
+.bar-direct{background:#a678d4}
+.bar-other{background:#666}
+.channel-stats{display:flex;gap:14px;min-width:130px;justify-content:flex-end}
+.channel-stat{font-size:11px;color:var(--muted);text-align:right}
+.channel-stat strong{color:var(--text);display:block;font-size:12px}
+/* Revenue channel table */
+.rev-table{width:100%;border-collapse:collapse;margin-top:12px}
+.rev-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--border);text-align:left}
+.rev-table th:last-child,.rev-table td:last-child{text-align:right}
+.rev-table td{font-size:12px;padding:9px 12px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.rev-table tr:last-child td{border-bottom:none}
+.rev-table td.amt{color:var(--gold-light);font-weight:600;text-align:right}
+.rev-table td.pct{color:var(--muted);text-align:right}
+/* GSC overview */
+.gsc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.gsc-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 14px;text-align:center}
+.gsc-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;line-height:1.1}
+.gsc-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.gsc-trend{margin-top:5px}
+/* Branded section */
+.brand-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.brand-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px}
+.brand-card h5{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.brand-stat{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.brand-stat:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.brand-stat .bs-label{font-size:12px;color:var(--muted)}
+.brand-stat .bs-val{font-size:13px;font-weight:600;color:var(--text)}
+/* Keywords table */
+.kw-table{width:100%;border-collapse:collapse}
+.kw-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.kw-table td{font-size:12px;padding:9px 10px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.kw-table tr:last-child td{border-bottom:none}
+.kw-table td.num{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.kw-table td.pos{text-align:right;font-weight:600}
+.pos-top{color:var(--gold)}
+.pos-mid{color:var(--text)}
+.pos-low{color:var(--muted)}
+.kw-badge{display:inline-block;background:rgba(201,169,110,.12);color:var(--gold);font-size:9px;padding:2px 6px;border-radius:3px;margin-left:5px;vertical-align:middle}
+/* Pages table */
+.pages-table{width:100%;border-collapse:collapse}
+.pages-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+.pages-table td{font-size:11px;padding:9px 10px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.pages-table tr:last-child td{border-bottom:none}
+.pages-table td.num{text-align:right;color:var(--muted)}
+.pages-table td.url{font-family:monospace;font-size:11px;color:#aaa;max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Brand table */
+.brand-table{width:100%;border-collapse:collapse}
+.brand-table th{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:9px 12px;border-bottom:1px solid var(--border);text-align:left}
+.brand-table th:not(:first-child):not(:nth-child(2)){text-align:right}
+.brand-table td{font-size:13px;padding:11px 12px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.brand-table tr:last-child td{border-bottom:none}
+.brand-table td.num{text-align:right;color:var(--muted)}
+.brand-table td.rev{text-align:right;color:var(--gold-light);font-weight:600}
+.brand-table td.ticket{text-align:right;color:var(--muted)}
+.brand-table tr:first-child td{color:#fff}
+.rank-num{font-size:11px;font-weight:600;color:var(--muted);min-width:22px;display:inline-block}
+.rank-gold{color:var(--gold)}
+/* Shopify stats */
+.shopify-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+/* Footer */
+.footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:50px}
+.footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
+.footer-info{font-size:11px;color:var(--muted)}
+/* Note box */
+.note-box{background:#141209;border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:14px 18px;font-size:11px;color:var(--muted);margin-top:16px}
+.note-box strong{color:var(--text)}
+@media(max-width:600px){
+  .header{padding:24px 20px}
+  .gsc-grid{grid-template-columns:repeat(2,1fr)}
+  .brand-split{grid-template-columns:1fr}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .shopify-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="brand-label">Web Domus · Report SEO</div>
+    <div class="client-name">Musto Calzature</div>
+    <div class="period">25 – 31 Maggio 2026 &nbsp;·&nbsp; mustocalzature.com</div>
+  </div>
+  <div class="header-right">
+    <div class="week-badge">W22</div>
+    <div class="week-label">Settimana 22/2026</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- COMMENTO EDITORIALE -->
+  <div class="editorial">
+    <div class="editorial-badge">✦ Commento della settimana</div>
+    <div class="editorial-opening">Una settimana in accelerazione — il traffico guadagna terreno con decisione e le vendite rispondono bene.</div>
+    <p>Il sito registra <strong>3.734 utenti</strong> (+20,3% rispetto a W21) e <strong>4.089 sessioni</strong> (+18,2%), con picco martedì 27 maggio. La Search Console conferma il progresso: i clic organici salgono a <strong>2.425</strong>, +36,6% in una settimana — un balzo significativo, anche considerando che le impressioni crescono solo del +7,9%: il CTR è migliorato da 1,24% a 1,58%, segno che i titoli e le posizioni guadagnate stanno convertendo meglio. La posizione media migliora di mezzo punto (da 7,72 a 7,22).</p>
+    <p>Le vendite Shopify contano <strong>13 ordini</strong> e <strong>€2.160,75</strong> di fatturato. Il giorno più ricco è martedì 26 maggio con 4 ordini e €1.174 — trainato soprattutto dall'ordine multiplo #1500 da €592 (tre articoli). <strong>BIBI LOU</strong> si conferma il brand più venduto nelle ultime 4 settimane con 9 unità, seguito da LAURA VITA e KAMO-GUTSU.</p>
+    <p>Nessuna anomalia SEO rilevante. La pagina <em>/blogs/trend-e-consigli/sandali-flat-donna-2026</em> guida il traffico organico con 687 clic, consolidandosi come la risorsa editoriale di punta del sito in questo periodo. La collection Bibi Lou cresce in visibilità (74 clic, pos. 6,5) ma margini di CTR ancora ampi suggeriscono spazio di ottimizzazione.</p>
+  </div>
+
+  <!-- KPI GA4 -->
+  <div class="section-title">KPI Google Analytics 4 · W22</div>
+  <div class="kpi-grid">
+    <div class="kpi-card gold">
+      <div class="kpi-label">Utenti</div>
+      <div class="kpi-value">3.734</div>
+      <div class="kpi-sub"><span class="trend up">+20,3%</span> vs W21</div>
+    </div>
+    <div class="kpi-card gold">
+      <div class="kpi-label">Sessioni</div>
+      <div class="kpi-value">4.089</div>
+      <div class="kpi-sub"><span class="trend up">+18,2%</span> vs W21</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Ordini GA4</div>
+      <div class="kpi-value">9</div>
+      <div class="kpi-sub"><span class="trend up">+12,5%</span> vs W21 (8)</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Revenue Shopify</div>
+      <div class="kpi-value" style="font-size:22px">€2.160,75</div>
+      <div class="kpi-sub">13 ordini Shopify totali</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Traffico Organico</div>
+      <div class="kpi-value">43,1%</div>
+      <div class="kpi-sub">1.760 sessioni organiche</div>
+    </div>
+  </div>
+
+  <!-- GRAFICO ANDAMENTO GIORNALIERO GA4 -->
+  <div class="chart-box">
+    <h4>Andamento Giornaliero · Utenti &amp; Sessioni (W22)</h4>
+    <div class="chart-wrap">
+      <canvas id="ga4Chart"></canvas>
+    </div>
+  </div>
+
+  <!-- SHOPIFY -->
+  <div class="section-title">Shopify · Vendite W22</div>
+  <div class="shopify-grid">
+    <div class="kpi-card gold">
+      <div class="kpi-label">Ordini Totali</div>
+      <div class="kpi-value">13</div>
+      <div class="kpi-sub">2 PENDING · 1 UNFULFILLED</div>
+    </div>
+    <div class="kpi-card gold">
+      <div class="kpi-label">Fatturato</div>
+      <div class="kpi-value" style="font-size:22px">€2.160,75</div>
+      <div class="kpi-sub">escl. VOIDED/REFUNDED</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Ticket Medio</div>
+      <div class="kpi-value">€166,21</div>
+      <div class="kpi-sub">su 13 ordini</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h4>Ordini &amp; Fatturato Giornaliero · Shopify W22</h4>
+    <div class="chart-wrap">
+      <canvas id="shopifyChart"></canvas>
+    </div>
+  </div>
+
+  <!-- CANALI DI ACQUISIZIONE -->
+  <div class="section-title">Canali di Acquisizione · Sessioni W22</div>
+  <div class="chart-box">
+    <h4>Sessioni per Canale</h4>
+    <div class="channel-list">
+      <div class="channel-row">
+        <div class="channel-name">Organic Search</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-organic" style="width:43.1%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>1.760</strong>sess.</div><div class="channel-stat"><strong>43,1%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Organic Social</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-social" style="width:17.2%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>704</strong>sess.</div><div class="channel-stat"><strong>17,2%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Paid Social</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-paid" style="width:15.5%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>635</strong>sess.</div><div class="channel-stat"><strong>15,5%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Direct</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:10.7%;background:#a678d4"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>438</strong>sess.</div><div class="channel-stat"><strong>10,7%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Unassigned</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-other" style="width:6.6%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>269</strong>sess.</div><div class="channel-stat"><strong>6,6%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Paid Search</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-paid" style="width:2.2%;opacity:.7"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>91</strong>sess.</div><div class="channel-stat"><strong>2,2%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Paid Shopping</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-paid" style="width:2.0%;opacity:.5"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>81</strong>sess.</div><div class="channel-stat"><strong>2,0%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Cross-network</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-other" style="width:1.6%;opacity:.7"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>64</strong>sess.</div><div class="channel-stat"><strong>1,6%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Organic Shopping</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-organic" style="width:0.6%;opacity:.6"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>24</strong>sess.</div><div class="channel-stat"><strong>0,6%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Referral</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-other" style="width:0.4%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>15</strong>sess.</div><div class="channel-stat"><strong>0,4%</strong></div></div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">Email</div>
+        <div class="channel-bar-wrap"><div class="channel-bar bar-other" style="width:0.1%"></div></div>
+        <div class="channel-stats"><div class="channel-stat"><strong>4</strong>sess.</div><div class="channel-stat"><strong>0,1%</strong></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENDITE PER CANALE (attribuzione) -->
+  <div class="section-title">Vendite per Canale · Attribuzione W22</div>
+  <div class="chart-box">
+    <h4>Revenue attribuita per canale (proxy sessioni · fatturato totale €2.160,75)</h4>
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Canale</th>
+          <th>Sessioni</th>
+          <th>%</th>
+          <th>Revenue Attribuita</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Organic Search</td><td class="pct">1.760</td><td class="pct">43,1%</td><td class="amt">€930,85</td></tr>
+        <tr><td>Organic Social</td><td class="pct">704</td><td class="pct">17,2%</td><td class="amt">€372,26</td></tr>
+        <tr><td>Paid Social</td><td class="pct">635</td><td class="pct">15,5%</td><td class="amt">€335,78</td></tr>
+        <tr><td>Direct</td><td class="pct">438</td><td class="pct">10,7%</td><td class="amt">€231,49</td></tr>
+        <tr><td>Unassigned</td><td class="pct">269</td><td class="pct">6,6%</td><td class="amt">€142,24</td></tr>
+        <tr><td>Paid Search</td><td class="pct">91</td><td class="pct">2,2%</td><td class="amt">€48,10</td></tr>
+        <tr><td>Paid Shopping</td><td class="pct">81</td><td class="pct">2,0%</td><td class="amt">€42,82</td></tr>
+        <tr><td>Cross-network</td><td class="pct">64</td><td class="pct">1,6%</td><td class="amt">€33,84</td></tr>
+        <tr><td>Organic Shopping</td><td class="pct">24</td><td class="pct">0,6%</td><td class="amt">€12,69</td></tr>
+        <tr><td>Referral</td><td class="pct">15</td><td class="pct">0,4%</td><td class="amt">€7,93</td></tr>
+        <tr><td>Email</td><td class="pct">4</td><td class="pct">0,1%</td><td class="amt">€2,12</td></tr>
+      </tbody>
+    </table>
+    <div class="note-box">Attribuzione basata su proporzione sessioni GA4 per canale applicata al fatturato Shopify totale. Metodo: revenue_canale = (sessioni_canale / sessioni_totali) × €2.160,75</div>
+  </div>
+
+  <!-- GSC OVERVIEW -->
+  <div class="section-title">Google Search Console · Panoramica W22</div>
+  <div class="gsc-grid">
+    <div class="gsc-card">
+      <div class="gsc-val">2.425</div>
+      <div class="gsc-label">Clic</div>
+      <div class="gsc-trend"><span class="trend up">+36,6%</span></div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-val">153.868</div>
+      <div class="gsc-label">Impressioni</div>
+      <div class="gsc-trend"><span class="trend up">+7,9%</span></div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-val">1,58%</div>
+      <div class="gsc-label">CTR</div>
+      <div class="gsc-trend"><span class="trend up">+26,7%</span></div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-val">7,22</div>
+      <div class="gsc-label">Pos. Media</div>
+      <div class="gsc-trend"><span class="trend up">−0,50</span></div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h4>Andamento Giornaliero Clic &amp; Impressioni · GSC W22</h4>
+    <div class="chart-wrap">
+      <canvas id="gscChart"></canvas>
+    </div>
+  </div>
+
+  <!-- BRANDED vs NON-BRANDED -->
+  <div class="section-title">Branded vs Non-Branded · GSC W22</div>
+  <div class="brand-split">
+    <div class="brand-card">
+      <h5>🏷 Branded (keyword "musto")</h5>
+      <div class="brand-stat"><span class="bs-label">Clic</span><span class="bs-val">119 <small style="color:var(--muted);font-size:11px">(10,9%)</small></span></div>
+      <div class="brand-stat"><span class="bs-label">Impressioni</span><span class="bs-val">1.118 <small style="color:var(--muted);font-size:11px">(1,1%)</small></span></div>
+      <div class="brand-stat"><span class="bs-label">CTR</span><span class="bs-val" style="color:var(--green)">10,64%</span></div>
+      <div class="brand-stat"><span class="bs-label">Pos. Media</span><span class="bs-val">4,01</span></div>
+    </div>
+    <div class="brand-card">
+      <h5>🔍 Non-Branded</h5>
+      <div class="brand-stat"><span class="bs-label">Clic</span><span class="bs-val">972 <small style="color:var(--muted);font-size:11px">(89,1%)</small></span></div>
+      <div class="brand-stat"><span class="bs-label">Impressioni</span><span class="bs-val">96.756 <small style="color:var(--muted);font-size:11px">(98,9%)</small></span></div>
+      <div class="brand-stat"><span class="bs-label">CTR</span><span class="bs-val">1,00%</span></div>
+      <div class="brand-stat"><span class="bs-label">Pos. Media</span><span class="bs-val">7,83</span></div>
+    </div>
+  </div>
+  <div class="note-box">Branded + Non-Branded = 1.091 clic. I restanti 1.334 clic appartengono a keyword branded parziali o con varianti non classificate nettamente. Totale GSC: 2.425 clic da 8.493 keyword.</div>
+
+  <!-- TOP KEYWORD TOP 3 -->
+  <div class="section-title">Top Keyword in Top 3 · GSC W22</div>
+  <div class="chart-box">
+    <table class="kw-table">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th style="text-align:right">Clic</th>
+          <th style="text-align:right">Impr.</th>
+          <th style="text-align:right">CTR</th>
+          <th style="text-align:right">Pos.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>sandali donna comodi<span class="kw-badge">non-brand</span></td><td class="num">41</td><td class="num">322</td><td class="num">12,7%</td><td class="pos pos-top">2,1</td></tr>
+        <tr><td>musto milano<span class="kw-badge" style="background:rgba(201,169,110,.2)">brand</span></td><td class="num">20</td><td class="num">96</td><td class="num">20,8%</td><td class="pos pos-top">2,1</td></tr>
+        <tr><td>musto calzature milano<span class="kw-badge" style="background:rgba(201,169,110,.2)">brand</span></td><td class="num">13</td><td class="num">61</td><td class="num">21,3%</td><td class="pos pos-top">1,0</td></tr>
+        <tr><td>mocassini uomo estate 2026<span class="kw-badge">non-brand</span></td><td class="num">12</td><td class="num">118</td><td class="num">10,2%</td><td class="pos pos-top">2,1</td></tr>
+        <tr><td>musto shoes milan<span class="kw-badge" style="background:rgba(201,169,110,.2)">brand</span></td><td class="num">12</td><td class="num">16</td><td class="num">75,0%</td><td class="pos pos-top">1,0</td></tr>
+        <tr><td>musto footwear srl<span class="kw-badge" style="background:rgba(201,169,110,.2)">brand</span></td><td class="num">10</td><td class="num">24</td><td class="num">41,7%</td><td class="pos pos-top">1,0</td></tr>
+        <tr><td>sandali estivi comodi ma belli<span class="kw-badge">non-brand</span></td><td class="num">9</td><td class="num">131</td><td class="num">6,9%</td><td class="pos pos-top">2,0</td></tr>
+        <tr><td>pikolinos scarpe<span class="kw-badge">non-brand</span></td><td class="num">8</td><td class="num">294</td><td class="num">2,7%</td><td class="pos pos-top">2,1</td></tr>
+        <tr><td>sandali comodi donna<span class="kw-badge">non-brand</span></td><td class="num">7</td><td class="num">33</td><td class="num">21,2%</td><td class="pos pos-top">2,6</td></tr>
+        <tr><td>flat shoes<span class="kw-badge">non-brand</span></td><td class="num">6</td><td class="num">153</td><td class="num">3,9%</td><td class="pos pos-top">2,1</td></tr>
+        <tr><td>brunate scarpe donna<span class="kw-badge">non-brand</span></td><td class="num">5</td><td class="num">31</td><td class="num">16,1%</td><td class="pos pos-top">2,7</td></tr>
+        <tr><td>stivaletti musto donna<span class="kw-badge" style="background:rgba(201,169,110,.2)">brand</span></td><td class="num">4</td><td class="num">15</td><td class="num">26,7%</td><td class="pos pos-top">1,0</td></tr>
+      </tbody>
+    </table>
+    <div class="note-box">1.821 keyword totali in posizione 1–3 · tabella filtrata per clic più rilevanti</div>
+  </div>
+
+  <!-- TOP PAGINE -->
+  <div class="section-title">Top Pagine per Clic Organici · GSC W22</div>
+  <div class="chart-box">
+    <table class="pages-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>URL</th>
+          <th style="text-align:right">Clic</th>
+          <th style="text-align:right">Impr.</th>
+          <th style="text-align:right">Pos.</th>
+          <th style="text-align:right">CTR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td class="url">/blogs/trend-e-consigli/sandali-flat-donna-2026</td><td class="num">687</td><td class="num">16.898</td><td class="num">6,3</td><td class="num">4,07%</td></tr>
+        <tr><td>2</td><td class="url">/ (Homepage)</td><td class="num">313</td><td class="num">20.409</td><td class="num">5,8</td><td class="num">1,53%</td></tr>
+        <tr><td>3</td><td class="url">/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento</td><td class="num">78</td><td class="num">4.431</td><td class="num">7,0</td><td class="num">1,76%</td></tr>
+        <tr><td>4</td><td class="url">/collections/bibi-lou</td><td class="num">74</td><td class="num">4.629</td><td class="num">6,5</td><td class="num">1,60%</td></tr>
+        <tr><td>5</td><td class="url">/blogs/trend-e-consigli/back-to-work-scarpe-uomo-da-avere-in-ufficio</td><td class="num">73</td><td class="num">2.416</td><td class="num">7,5</td><td class="num">3,02%</td></tr>
+        <tr><td>6</td><td class="url">/pages/tabella-frau-uomo</td><td class="num">72</td><td class="num">371</td><td class="num">2,8</td><td class="num">19,4%</td></tr>
+        <tr><td>7</td><td class="url">/collections/les-tropeziennes</td><td class="num">70</td><td class="num">3.736</td><td class="num">7,6</td><td class="num">1,87%</td></tr>
+        <tr><td>8</td><td class="url">/blogs/trend-e-consigli/mocassini-uomo-2026-guida</td><td class="num">60</td><td class="num">1.303</td><td class="num">4,8</td><td class="num">4,60%</td></tr>
+        <tr><td>9</td><td class="url">/pages/tabella-frau-donna</td><td class="num">37</td><td class="num">390</td><td class="num">2,9</td><td class="num">9,49%</td></tr>
+        <tr><td>10</td><td class="url">/en (Homepage EN)</td><td class="num">31</td><td class="num">561</td><td class="num">8,0</td><td class="num">5,53%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TOP BRAND 4 SETTIMANE -->
+  <div class="section-title">Top Brand per Vendite · Ultime 4 Settimane (W19–W22)</div>
+  <div class="chart-box">
+    <h4>Aggregazione brand · solo ordini PAID · ordinati per unità vendute</h4>
+    <table class="brand-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Brand</th>
+          <th>Unità</th>
+          <th>Revenue Tot.</th>
+          <th>Ticket Medio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num rank-gold">1</span></td>
+          <td><strong>BIBI LOU</strong></td>
+          <td class="num">9</td>
+          <td class="rev">€1.226,00</td>
+          <td class="ticket">€136,22</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">2</span></td>
+          <td>LAURA VITA</td>
+          <td class="num">5</td>
+          <td class="rev">€590,00</td>
+          <td class="ticket">€118,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">3</span></td>
+          <td>KAMO-GUTSU</td>
+          <td class="num">4</td>
+          <td class="rev">€886,00</td>
+          <td class="ticket">€221,50</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">4</span></td>
+          <td>MUSTO</td>
+          <td class="num">4</td>
+          <td class="rev">€656,00</td>
+          <td class="ticket">€164,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">5</span></td>
+          <td>LIU JO</td>
+          <td class="num">4</td>
+          <td class="rev">€356,00</td>
+          <td class="ticket">€89,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">6</span></td>
+          <td>JUNGLA</td>
+          <td class="num">3</td>
+          <td class="rev">€373,00</td>
+          <td class="ticket">€124,33</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">7</span></td>
+          <td>GIO+</td>
+          <td class="num">2</td>
+          <td class="rev">€378,00</td>
+          <td class="ticket">€189,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">8</span></td>
+          <td>BRUNATE</td>
+          <td class="num">2</td>
+          <td class="rev">€338,00</td>
+          <td class="ticket">€169,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">9</span></td>
+          <td>AMBITIOUS</td>
+          <td class="num">2</td>
+          <td class="rev">€294,00</td>
+          <td class="ticket">€147,00</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">10</span></td>
+          <td>FRAU</td>
+          <td class="num">2</td>
+          <td class="rev">€260,00</td>
+          <td class="ticket">€130,00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box">Periodo: 4 Maggio – 31 Maggio 2026 (W19–W22) · Aggregazione brand · solo ordini PAID · ordinati per unità vendute</div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">Web Domus</div>
+    <div class="footer-info">Report generato automaticamente · dati GA4 + GSC + Shopify</div>
+  </div>
+  <div class="footer-info" style="text-align:right">
+    Musto Calzature · W22 · 25–31 Maggio 2026<br>
+    carmine@webdomus.net
+  </div>
+</div>
+
+<script>
+// Chart defaults
+Chart.defaults.color = '#888';
+Chart.defaults.borderColor = '#2a2a2a';
+
+// GA4 daily chart
+const ga4Ctx = document.getElementById('ga4Chart').getContext('2d');
+new Chart(ga4Ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Lun 25', 'Mar 26', 'Mer 27', 'Gio 28', 'Ven 29', 'Sab 30', 'Dom 31'],
+    datasets: [
+      {
+        label: 'Utenti',
+        data: [392, 488, 762, 649, 439, 498, 506],
+        backgroundColor: 'rgba(201,169,110,0.7)',
+        borderColor: '#c9a96e',
+        borderWidth: 1,
+        borderRadius: 4,
+        order: 2
+      },
+      {
+        label: 'Sessioni',
+        data: [443, 549, 809, 709, 480, 544, 555],
+        type: 'line',
+        borderColor: '#4a9e7a',
+        backgroundColor: 'rgba(74,158,122,0.1)',
+        borderWidth: 2,
+        pointBackgroundColor: '#4a9e7a',
+        pointRadius: 4,
+        tension: 0.3,
+        fill: false,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: '#1e1e1e' } },
+      y: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: '#1e1e1e' }, beginAtZero: true }
+    }
+  }
+});
+
+// Shopify daily chart
+const shopCtx = document.getElementById('shopifyChart').getContext('2d');
+new Chart(shopCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Lun 25', 'Mar 26', 'Mer 27', 'Gio 28', 'Ven 29', 'Sab 30', 'Dom 31'],
+    datasets: [
+      {
+        label: 'Fatturato €',
+        data: [80, 1173.90, 629.80, 99.05, 0, 178, 0],
+        backgroundColor: 'rgba(201,169,110,0.65)',
+        borderColor: '#c9a96e',
+        borderWidth: 1,
+        borderRadius: 4,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Ordini',
+        data: [1, 4, 5, 1, 0, 2, 0],
+        type: 'line',
+        borderColor: '#4a9e7a',
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointBackgroundColor: '#4a9e7a',
+        pointRadius: 5,
+        tension: 0.2,
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: '#1e1e1e' } },
+      y: { ticks: { color: '#666', font: { size: 11 }, callback: v => '€'+v }, grid: { color: '#1e1e1e' }, beginAtZero: true, position: 'left' },
+      y2: { ticks: { color: '#4a9e7a', font: { size: 11 }, stepSize: 1 }, grid: { display: false }, beginAtZero: true, position: 'right' }
+    }
+  }
+});
+
+// GSC daily chart
+const gscCtx = document.getElementById('gscChart').getContext('2d');
+new Chart(gscCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Lun 25', 'Mar 26', 'Mer 27', 'Gio 28', 'Ven 29', 'Sab 30', 'Dom 31'],
+    datasets: [
+      {
+        label: 'Clic',
+        data: [297, 315, 388, 343, 353, 380, 349],
+        backgroundColor: 'rgba(201,169,110,0.65)',
+        borderColor: '#c9a96e',
+        borderWidth: 1,
+        borderRadius: 4,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Impressioni /100',
+        data: [210, 218, 235, 216, 217, 223, 219],
+        type: 'line',
+        borderColor: 'rgba(91,155,213,0.8)',
+        backgroundColor: 'rgba(91,155,213,0.05)',
+        borderWidth: 2,
+        pointBackgroundColor: '#5b9bd5',
+        pointRadius: 3,
+        tension: 0.3,
+        fill: false,
+        yAxisID: 'y'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: '#1e1e1e' } },
+      y: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: '#1e1e1e' }, beginAtZero: true }
+    }
+  }
+});
+</script>
+</body>
+</html>
