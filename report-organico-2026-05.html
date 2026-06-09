@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musto Calzature · Report Organico — Maggio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --bg:#0f0f0f; --surface:#1a1a1a; --surface2:#202020;
+  --border:rgba(255,255,255,0.07); --text:#f0ece4; --text-muted:rgba(240,236,228,0.45);
+  --gold:#c9a96e; --green:#4a9e7a; --red:#c0392b; --blue:#5b8fb0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--gold);text-decoration:none}
+
+/* Header */
+header{border-bottom:1px solid var(--border);padding:42px 0 34px;background:linear-gradient(180deg,#141414,#0f0f0f)}
+.topnav{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;margin-bottom:30px;flex-wrap:wrap;gap:10px}
+.topnav .crumbs a{color:var(--text-muted);transition:color .2s}
+.topnav .crumbs a:hover{color:var(--gold)}
+.topnav .links a{margin-left:18px;color:var(--gold)}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-family:'Playfair Display',serif;font-weight:700;font-size:2.7rem;line-height:1.1}
+.sub{color:var(--text-muted);margin-top:10px;font-size:1.02rem}
+.period-badge{display:inline-block;margin-top:18px;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;font-size:.78rem;letter-spacing:.05em}
+
+section{padding:44px 0;border-bottom:1px solid var(--border)}
+.sec-label{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.7rem;margin-bottom:8px}
+.sec-intro{color:var(--text-muted);max-width:760px;margin-bottom:26px;font-size:.96rem}
+
+/* Synthesis */
+.synthesis{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:26px 30px}
+.synthesis p{font-size:1.04rem;color:#e7e2d8}
+.synthesis p+p{margin-top:14px}
+
+/* KPI grid */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px}
+.kpi .val{font-family:'Playfair Display',serif;font-size:2.05rem;font-weight:600;line-height:1}
+.kpi .lab{color:var(--text-muted);font-size:.82rem;margin-top:10px}
+.kpi .delta{display:inline-block;margin-top:12px;font-size:.78rem;font-weight:500;padding:3px 9px;border-radius:20px}
+.up{color:var(--green);background:rgba(74,158,122,.12)}
+.down{color:var(--red);background:rgba(192,57,43,.12)}
+.flat{color:var(--text-muted);background:rgba(255,255,255,.05)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h3{font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;margin-bottom:4px}
+.card .note{color:var(--text-muted);font-size:.85rem;margin-bottom:16px}
+.chartbox{position:relative;height:300px}
+.chartbox.tall{height:330px}
+
+/* Insight boxes */
+.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
+.insight{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.insight .h{font-weight:600;color:var(--gold);font-size:.92rem;margin-bottom:6px}
+.insight .t{font-size:.88rem;color:#d8d3c9}
+
+/* Orders split */
+.splitwrap{display:grid;grid-template-columns:300px 1fr;gap:30px;align-items:center}
+@media(max-width:820px){.splitwrap{grid-template-columns:1fr}}
+.splitlegend li{list-style:none;display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.splitlegend .dot{width:11px;height:11px;border-radius:3px;flex-shrink:0;position:relative;top:1px}
+.splitlegend .n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;margin-left:auto}
+.splitlegend .pct{color:var(--text-muted);font-size:.8rem;width:46px;text-align:right}
+
+/* Keyword table */
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--border)}
+th{color:var(--text-muted);font-weight:500;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+td .pos{display:inline-block;min-width:30px;text-align:center;font-weight:600;border-radius:6px;padding:3px 7px;font-size:.82rem}
+.p1{background:rgba(201,169,110,.18);color:var(--gold)}
+.p2{background:rgba(74,158,122,.14);color:var(--green)}
+.p3{background:rgba(91,143,176,.14);color:var(--blue)}
+.tag{font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);border-radius:20px;padding:2px 9px}
+
+/* ADV recap */
+.advgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.adv{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px}
+.adv .v{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600}
+.adv .l{color:var(--text-muted);font-size:.8rem;margin-top:6px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:.82rem}
+footer .logo{font-family:'Playfair Display',serif;color:var(--text);font-size:1.05rem;letter-spacing:.02em;margin-bottom:8px}
+footer a{margin:0 10px}
+.fnote{font-size:.76rem;color:var(--text-muted);margin-top:14px;max-width:740px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topnav">
+      <div class="crumbs"><a href="https://dashboard.mustocalzature.com/">← Dashboard principale</a></div>
+      <div class="links">
+        <a href="https://dashboard.mustocalzature.com/report-settimanale-2026-W23.html">Report settimanale →</a>
+      </div>
+    </div>
+    <div class="eyebrow">Report Mensile · Focus Organico</div>
+    <h1>Musto Calzature</h1>
+    <div class="sub">Traffico e risultati organici — analisi SEO, visibilità e contributo dei canali al fatturato dello store</div>
+    <span class="period-badge">Maggio 2026 · 01/05 – 31/05</span>
+  </div>
+</header>
+
+<!-- SINTESI -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Sintesi del mese</div>
+    <div class="synthesis">
+      <p>Maggio è stato il mese organico più forte dell'anno. La ricerca organica si conferma il primo motore di traffico dello store con <strong>6.219 sessioni</strong> (+44% sul mese precedente), mentre la Search Console registra <strong>8.060 click organici</strong> (+53%) su oltre <strong>621.000 impressioni</strong> (+51%), con la posizione media che migliora da 8,2 a <strong>7,9</strong> — chiudendo il mese intorno a 6,8.</p>
+      <p>La crescita di visibilità è confermata dai dati storici DataForSEO: il valore stimato del traffico organico sale a <strong>€4.976</strong> (+36% sul mese precedente) e le keyword posizionate in top 10 passano da 163 a <strong>192</strong>. Lo store mantiene posizioni di vertice sulle ricerche locali ("negozio scarpe a Milano", 1ª posizione) e su categorie chiave come cerimonia donna e sandali.</p>
+      <p>Sul risultato complessivo, lo store ha generato <strong>66 ordini per €8.672</strong> (+267% ordini e +258% fatturato anno su anno). La maggior parte degli ordini arriva da ricerca organica e traffico diretto, mentre le campagne advertising hanno aggiunto nuovi clienti e awareness: i due canali si rafforzano a vicenda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISULTATO COMPLESSIVO -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Risultato complessivo dello store</div>
+    <h2>Organico e Advertising, un unico motore di crescita</h2>
+    <p class="sec-intro">Il fatturato dello store nasce dall'incontro di due forze: l'advertising che porta nuovi clienti e costruisce notorietà, e il canale organico/diretto che intercetta e converte la domanda generata. A maggio hanno lavorato insieme per un risultato record.</p>
+
+    <div class="kpis" style="margin-bottom:28px">
+      <div class="kpi"><div class="val">66</div><div class="lab">Ordini totali store (Shopify)</div><span class="delta up">▲ +267% vs maggio 2025</span></div>
+      <div class="kpi"><div class="val">€8.672</div><div class="lab">Fatturato totale store</div><span class="delta up">▲ +258% vs maggio 2025</span></div>
+      <div class="kpi"><div class="val">~52</div><div class="lab">Ordini da organico &amp; diretto</div><span class="delta flat">79% del totale</span></div>
+      <div class="kpi"><div class="val">14</div><div class="lab">Ordini da advertising</div><span class="delta flat">21% del totale</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Da dove arrivano gli ordini di maggio</h3>
+      <div class="note">66 ordini totali. Fonte advertising: 14 ordini attribuiti alle campagne (5 Google + 9 Meta). I restanti 52 ordini provengono da ricerca organica, traffico diretto e ritorno clienti.</div>
+      <div class="splitwrap">
+        <div class="chartbox" style="height:240px"><canvas id="ordersDonut"></canvas></div>
+        <ul class="splitlegend">
+          <li><span class="dot" style="background:var(--gold)"></span> Organico &amp; Diretto <span class="pct">79%</span><span class="n">52</span></li>
+          <li><span class="dot" style="background:var(--blue)"></span> Advertising (Meta + Google) <span class="pct">21%</span><span class="n">14</span></li>
+          <li><span class="dot" style="background:transparent"></span> <span style="color:var(--text-muted);font-size:.85rem">Totale ordini store</span><span class="pct"></span><span class="n">66</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insights">
+      <div class="insight"><div class="h">L'organico è la base</div><div class="t">Quasi 4 ordini su 5 maturano su ricerca organica e traffico diretto: è il patrimonio di visibilità costruito nel tempo a sostenere il fatturato.</div></div>
+      <div class="insight"><div class="h">L'advertising accende la domanda</div><div class="t">Le campagne portano nuovi clienti e notorietà (371 nuovi follower, 139 chiamate al negozio): domanda che spesso si converte poi via brand e diretto.</div></div>
+      <div class="insight"><div class="h">Effetto combinato</div><div class="t">Insieme i canali hanno prodotto +267% di ordini anno su anno — un risultato che nessuno dei due otterrebbe da solo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAFFICO ORGANICO -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Traffico organico</div>
+    <h2>Andamento della ricerca organica</h2>
+    <p class="sec-intro">Dati Google Search Console (click e impressioni dalle ricerche Google) e GA4 (sessioni e conversioni del canale Organic Search) per il dominio mustocalzature.com.</p>
+
+    <div class="kpis" style="margin-bottom:28px">
+      <div class="kpi"><div class="val">8.060</div><div class="lab">Click organici (GSC)</div><span class="delta up">▲ +53% vs aprile</span></div>
+      <div class="kpi"><div class="val">621.148</div><div class="lab">Impressioni (GSC)</div><span class="delta up">▲ +51% vs aprile</span></div>
+      <div class="kpi"><div class="val">7,9</div><div class="lab">Posizione media</div><span class="delta up">▲ da 8,2 (fine mese 6,8)</span></div>
+      <div class="kpi"><div class="val">6.219</div><div class="lab">Sessioni organiche (GA4)</div><span class="delta up">▲ +44% vs aprile</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Click e impressioni organiche · gennaio–maggio 2026</h3>
+      <div class="note">Barre: click organici per mese · Linea: posizione media (asse invertito, più in alto = meglio).</div>
+      <div class="chartbox tall"><canvas id="gscChart"></canvas></div>
+    </div>
+
+    <div class="insights">
+      <div class="insight"><div class="h">+1,5× rispetto ad aprile</div><div class="t">I click organici passano da 5.263 a 8.060 in un mese: l'accelerazione più marcata dell'anno, trainata da più keyword posizionate e da posizioni migliori.</div></div>
+      <div class="insight"><div class="h">Posizione in salita</div><div class="t">La posizione media migliora costantemente nelle ultime settimane di maggio, chiudendo intorno a 6,8: significa comparire più in alto e più spesso in prima pagina.</div></div>
+      <div class="insight"><div class="h">Domanda in crescita</div><div class="t">Le impressioni superano i 621k (+51%): il sito viene mostrato a un bacino di utenti molto più ampio rispetto ai mesi precedenti.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIBILITA DATAFORSEO -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Crescita della visibilità</div>
+    <h2>Storico visibilità organica · DataForSEO</h2>
+    <p class="sec-intro">Stima indipendente (DataForSEO, Google Italia) del numero di keyword posizionate e del valore equivalente del traffico organico — utile per leggere il trend al netto delle oscillazioni giornaliere.</p>
+
+    <div class="kpis" style="margin-bottom:28px">
+      <div class="kpi"><div class="val">€4.976</div><div class="lab">Valore stimato traffico organico (ETV)</div><span class="delta up">▲ +36% vs aprile</span></div>
+      <div class="kpi"><div class="val">776</div><div class="lab">Keyword posizionate totali</div><span class="delta up">▲ +29% vs aprile (600)</span></div>
+      <div class="kpi"><div class="val">192</div><div class="lab">Keyword in top 10</div><span class="delta up">▲ +18% vs aprile (163)</span></div>
+      <div class="kpi"><div class="val">40</div><div class="lab">Keyword in top 3</div><span class="delta up">▲ da 24 di aprile</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Valore traffico organico e keyword posizionate · 2026</h3>
+      <div class="note">Barre: keyword posizionate · Linea: valore stimato del traffico organico (€).</div>
+      <div class="chartbox tall"><canvas id="dfsChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP KEYWORD -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Dove siamo forti</div>
+    <h2>Le keyword organiche di punta</h2>
+    <p class="sec-intro">Un mix sano tra ricerche locali, di categoria prodotto e di brand. Su molte di queste lo store presidia già le primissime posizioni di Google.</p>
+    <div class="card" style="padding:6px 24px 14px">
+      <table>
+        <thead><tr><th>Keyword</th><th>Pos.</th><th>Volume/mese</th><th>Tipo</th></tr></thead>
+        <tbody>
+          <tr><td>negozio scarpe a milano</td><td><span class="pos p1">1</span></td><td>2.900</td><td><span class="tag">Locale</span></td></tr>
+          <tr><td>negozi scarpe milano</td><td><span class="pos p2">2</span></td><td>2.900</td><td><span class="tag">Locale</span></td></tr>
+          <tr><td>musto milano</td><td><span class="pos p2">2</span></td><td>—</td><td><span class="tag">Brand</span></td></tr>
+          <tr><td>scarpe da cerimonia donna</td><td><span class="pos p3">3</span></td><td>2.900</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>musto</td><td><span class="pos p3">3</span></td><td>2.900</td><td><span class="tag">Brand</span></td></tr>
+          <tr><td>harris scarpe</td><td><span class="pos p3">3</span></td><td>1.300</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>scarpe per cerimonia donna</td><td><span class="pos p3">4</span></td><td>1.900</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>bibi lou scarpe</td><td><span class="pos p3">4</span></td><td>2.400</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>les tropeziennes</td><td><span class="pos p3">6</span></td><td>1.900</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>calzature</td><td><span class="pos p3">8</span></td><td>14.800</td><td><span class="tag">Generica</span></td></tr>
+          <tr><td>bibi lou</td><td><span class="pos p3">9</span></td><td>5.400</td><td><span class="tag">Brand prodotto</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insights">
+      <div class="insight"><div class="h">Leadership locale</div><div class="t">Prima posizione su "negozio scarpe a Milano" e vertice sulle varianti locali: il presidio territoriale alimenta sia l'e-commerce sia le visite in negozio.</div></div>
+      <div class="insight"><div class="h">Brand di nicchia che rendono</div><div class="t">Bibi Lou e Les Tropéziennes — tra i best seller di maggio su Shopify — sono già forti anche in organico: la strategia sui brand emergenti trova riscontro nelle ricerche.</div></div>
+      <div class="insight"><div class="h">Cerimonia presidiata</div><div class="t">Posizioni 3-4 su tutto il cluster "scarpe da cerimonia donna": una categoria ad alta intenzione d'acquisto saldamente coperta.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADV RECAP -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Contributo advertising</div>
+    <h2>Sintesi del report Advertising · maggio</h2>
+    <p class="sec-intro">Estratto dei risultati delle campagne a pagamento (Meta Ads + Google Ads), per completare la lettura del mese. Fonte: report Advertising di maggio del team campagne.</p>
+    <div class="advgrid">
+      <div class="adv"><div class="v">€2.015</div><div class="l">Investito (Google €1.010 + Meta €1.005)</div></div>
+      <div class="adv"><div class="v">14</div><div class="l">Ordini e-commerce · CPA €75</div></div>
+      <div class="adv"><div class="v">−73%</div><div class="l">CPA vs aprile (da €279 a €75)</div></div>
+      <div class="adv"><div class="v">139</div><div class="l">Chiamate al negozio · +64% vs aprile</div></div>
+      <div class="adv"><div class="v">+371</div><div class="l">Nuovi follower IG · +47% vs aprile</div></div>
+      <div class="adv"><div class="v">680k</div><div class="l">Impression totali Google + Meta</div></div>
+    </div>
+    <div class="insights">
+      <div class="insight"><div class="h">Efficienza in netto miglioramento</div><div class="t">Il costo per acquisizione crolla del 73% rispetto ad aprile: le campagne maturano e diventano sempre più sostenibili.</div></div>
+      <div class="insight"><div class="h">Traffico verso il negozio fisico</div><div class="t">139 click-to-call (+64%) dalle campagne Local: l'advertising porta domanda concreta anche allo store fisico di Milano.</div></div>
+      <div class="insight"><div class="h">Brand awareness che alimenta l'organico</div><div class="t">+371 follower e 680k impression costruiscono notorietà: domanda di brand che ritroviamo poi nelle ricerche dirette e organiche.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Web Domus · Digital Agency</div>
+    <div>Elaborato da Web Domus · Dati: GA4 · Search Console · DataForSEO · Shopify · Report Advertising</div>
+    <div style="margin-top:14px">
+      <a href="https://dashboard.mustocalzature.com/">Dashboard principale</a> ·
+      <a href="https://dashboard.mustocalzature.com/report-settimanale-2026-W23.html">Ultimo report settimanale</a>
+    </div>
+    <div class="fnote">Note metodologiche: gli ordini e il fatturato totali sono dati Shopify (fonte di verità dello store). L'attribuzione degli ordini all'advertising (14) è quella del report campagne; il tracciamento UTM su Shopify ne rileva 9 con link diretto. GA4 può sottostimare il fatturato a causa del consenso cookie. I dati DataForSEO sono stime indipendenti su Google Italia.</div>
+  </div>
+</footer>
+
+<script>
+const gold='#c9a96e', green='#4a9e7a', blue='#5b8fb0', muted='rgba(240,236,228,0.45)', grid='rgba(255,255,255,0.06)', text='#f0ece4';
+Chart.defaults.color=muted; Chart.defaults.font.family='Inter';
+const itNum=v=>v.toLocaleString('it-IT');
+
+// Orders donut
+new Chart(document.getElementById('ordersDonut'),{
+  type:'doughnut',
+  data:{labels:['Organico & Diretto','Advertising'],datasets:[{data:[52,14],backgroundColor:[gold,blue],borderColor:'#1a1a1a',borderWidth:3}]},
+  options:{cutout:'66%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw} ordini`}}}}
+});
+
+// GSC chart: clicks bars + position line (reversed)
+new Chart(document.getElementById('gscChart'),{
+  data:{labels:['Gen','Feb','Mar','Apr','Mag'],
+    datasets:[
+      {type:'bar',label:'Click organici',data:[5131,3790,4360,5263,8060],backgroundColor:gold,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Posizione media',data:[8.87,8.35,8.10,8.15,7.89],borderColor:blue,backgroundColor:blue,tension:.35,pointRadius:4,pointBackgroundColor:blue,yAxisID:'y1',order:1}
+    ]},
+  options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?` Posizione: ${c.raw.toString().replace('.',',')}`:` Click: ${itNum(c.raw)}`}}},
+    scales:{
+      y:{position:'left',grid:{color:grid},ticks:{callback:v=>itNum(v)},title:{display:true,text:'Click organici'}},
+      y1:{position:'right',reverse:true,min:6,max:10,grid:{drawOnChartArea:false},title:{display:true,text:'Posizione (↑ meglio)'}},
+      x:{grid:{display:false}}
+    }}
+});
+
+// DataForSEO chart: keyword count bars + ETV line
+new Chart(document.getElementById('dfsChart'),{
+  data:{labels:['Gen','Feb','Mar','Apr','Mag'],
+    datasets:[
+      {type:'bar',label:'Keyword posizionate',data:[920,807,743,600,776],backgroundColor:'rgba(91,143,176,.55)',borderColor:blue,borderWidth:1,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Valore traffico organico (€)',data:[4899,4388,4813,3655,4976],borderColor:gold,backgroundColor:gold,tension:.35,pointRadius:4,pointBackgroundColor:gold,yAxisID:'y1',order:1}
+    ]},
+  options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?` Valore: €${itNum(c.raw)}`:` Keyword: ${itNum(c.raw)}`}}},
+    scales:{
+      y:{position:'left',grid:{color:grid},title:{display:true,text:'Keyword posizionate'}},
+      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>'€'+itNum(v)},title:{display:true,text:'Valore traffico (€)'}},
+      x:{grid:{display:false}}
+    }}
+});
+</script>
+</body>
+</html>
