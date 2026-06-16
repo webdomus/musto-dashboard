@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔒 Azioni Team · W24 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f;--bg2:#111;--gold:#c9a96e;--green:#4a9e7a;--red:#c0392b;
+  --amber:#e8a020;--blue:#5B9BD5;--text:#e8e8e8;--muted:#888;
+  --border:#222;--card:#181818;--card2:#1e1c15;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6}
+.top-bar{background:#1a0808;border-bottom:2px solid var(--red);padding:10px 28px;display:flex;align-items:center;gap:12px}
+.top-bar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e07b6e}
+.top-bar-info{font-size:12px;color:var(--muted)}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:24px 28px 18px}
+.header-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.header-sub{font-size:12px;color:var(--muted)}
+.container{max-width:900px;margin:0 auto;padding:28px 20px}
+.section-title{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:16px}
+.action-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(34,34,34,.7)}
+.action-item:last-child{border-bottom:none}
+.action-num{min-width:24px;height:24px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.3);border-radius:4px;font-size:10px;font-weight:700;color:var(--gold);display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+.action-body{}
+.action-title{font-weight:600;color:#fff;margin-bottom:3px;font-size:13px}
+.action-detail{font-size:12px;color:#aaa;line-height:1.5}
+.action-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.tag-seo{background:rgba(74,158,122,.1);color:var(--green);border:1px solid rgba(74,158,122,.25)}
+.tag-content{background:rgba(201,169,110,.1);color:var(--gold);border:1px solid rgba(201,169,110,.25)}
+.tag-shopify{background:rgba(91,155,213,.1);color:var(--blue);border:1px solid rgba(91,155,213,.25)}
+.tag-urgente{background:rgba(232,160,32,.1);color:var(--amber);border:1px solid rgba(232,160,32,.25)}
+.tag-monitor{background:rgba(136,136,136,.1);color:var(--muted);border:1px solid rgba(136,136,136,.2)}
+.anomaly-table{width:100%;border-collapse:collapse;font-size:12px}
+.anomaly-table th{text-align:left;padding:8px 12px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.anomaly-table td{padding:9px 12px;border-bottom:1px solid rgba(34,34,34,.6)}
+.anomaly-table tr:last-child td{border-bottom:none}
+.status-pending{color:var(--amber);font-weight:600}
+.status-voided{color:var(--red);font-weight:600;text-decoration:line-through}
+.status-refunded{color:#e07b6e;font-weight:600;text-decoration:line-through}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:640px){.insight-grid{grid-template-columns:1fr}}
+.insight-card{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:14px 16px}
+.insight-label{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.insight-val{font-size:20px;font-weight:700;color:#fff;margin-bottom:2px}
+.insight-note{font-size:11px;color:var(--muted)}
+.kw-opportunity{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.kw-name{font-weight:600;color:var(--gold);font-size:13px;margin-bottom:3px}
+.kw-detail{font-size:11px;color:#999}
+.separator{border:none;border-top:1px solid var(--border);margin:28px 0}
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--muted);margin-top:10px}
+.redbox{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.2);border-radius:6px;padding:10px 14px;font-size:11px;color:#e07b6e;margin-top:10px}
+.priority-high{border-left:3px solid var(--red)}
+.priority-medium{border-left:3px solid var(--amber)}
+.priority-low{border-left:3px solid var(--border)}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="top-bar-label">🔒 Documento Interno</span>
+  <span class="top-bar-info">Non condividere con il cliente · Web Domus Team · W24 · Musto Calzature</span>
+</div>
+
+<div class="header">
+  <div class="header-title">Azioni Team · Musto Calzature W24 · 8–14 Giugno 2026</div>
+  <div class="header-sub">Documento interno con azioni concrete, anomalie Shopify e opportunità SEO da lavorare questa settimana</div>
+</div>
+
+<div class="container">
+
+  <!-- STATO SETTIMANA -->
+  <div class="section-title">Sintesi Operativa W24</div>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-label">Sessioni GA4</div>
+      <div class="insight-val">3.947</div>
+      <div class="insight-note" style="color:var(--green)">▲ +2,0% vs W23</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Revenue Shopify</div>
+      <div class="insight-val">€ 1.634,80</div>
+      <div class="insight-note" style="color:#e07b6e">▼ -18,1% vs W23</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Ordini validi</div>
+      <div class="insight-val">9</div>
+      <div class="insight-note">5 PAID · 4 PENDING · 2 esclusi</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Click GSC</div>
+      <div class="insight-val">2.005</div>
+      <div class="insight-note" style="color:#e07b6e">▼ -6,7% vs W23</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Posizione Media</div>
+      <div class="insight-val">7,27</div>
+      <div class="insight-note" style="color:var(--green)">▲ Migliorata da 7,41</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Traffico Organico</div>
+      <div class="insight-val">36,7%</div>
+      <div class="insight-note">1.449 sessioni organiche</div>
+    </div>
+  </div>
+
+  <!-- ANOMALIE SHOPIFY -->
+  <div class="section-title">Anomalie Shopify · Ordini W24</div>
+  <div class="card">
+    <table class="anomaly-table">
+      <thead>
+        <tr><th>#Ordine</th><th>Data</th><th>Importo</th><th>Stato</th><th>Tipo anomalia</th><th>Azione richiesta</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#1525</td><td>08 Giu</td><td>€ 110,00</td>
+          <td class="status-voided">VOIDED</td>
+          <td>Ordine annullato prima del pagamento</td>
+          <td>Nessuna. Escluso dal conteggio revenue.</td>
+        </tr>
+        <tr>
+          <td>#1530</td><td>12 Giu</td><td>€ 76,00</td>
+          <td class="status-refunded">REFUNDED</td>
+          <td>Rimborso completo post-vendita</td>
+          <td>Verificare motivazione con cliente. Escluso revenue.</td>
+        </tr>
+        <tr>
+          <td>#1524</td><td>08 Giu</td><td>€ 119,90</td>
+          <td class="status-pending">PENDING</td>
+          <td>Pagamento non confermato</td>
+          <td>Verificare stato pagamento con cliente entro 48h.</td>
+        </tr>
+        <tr>
+          <td>#1526</td><td>09 Giu</td><td>€ 119,90</td>
+          <td class="status-pending">PENDING</td>
+          <td>Pagamento non confermato</td>
+          <td>Verificare stato pagamento con cliente entro 48h.</td>
+        </tr>
+        <tr>
+          <td>#1527</td><td>11 Giu</td><td>€ 79,00</td>
+          <td class="status-pending">PENDING</td>
+          <td>Pagamento non confermato</td>
+          <td>Verificare stato pagamento con cliente entro 48h.</td>
+        </tr>
+        <tr>
+          <td>#1531</td><td>12 Giu</td><td>€ 160,00</td>
+          <td class="status-pending">PENDING</td>
+          <td>Pagamento non confermato</td>
+          <td>Verificare stato pagamento con cliente entro 48h.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box">
+      ⚠ <strong>4 ordini PENDING</strong> per € 478,80 totali inclusi nella revenue W24 ma non ancora confermati. Se restano PENDING &gt; 5 giorni, segnalare a Monica per verifica operativa. Il #1530 REFUNDED (€76) potrebbe indicare un problema di reso: chiedere se ricorrente con quel prodotto/brand.
+    </div>
+  </div>
+
+  <!-- AZIONI SEO PRIORITARIE -->
+  <hr class="separator">
+  <div class="section-title">Azioni SEO Prioritarie · W25 (settimana corrente)</div>
+
+  <div class="card priority-high">
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Ottimizzare title/meta Nero Giardini — alta visibilità, CTR basso</div>
+        <div class="action-detail">
+          La collection /collections/nero-giardini ha registrato <strong>4.150 impressioni</strong> in W24 con solo <strong>32 click</strong> = CTR 0,77%. È la pagina con il più alto potenziale di miglioramento immediato. Azione: riscrivere title tag includendo un beneficio o stagionalità (es: "Scarpe Nero Giardini | Nuova Collezione Estate 2026 – Musto Calzature Milano") e meta description con CTA emozionale. Stimato recupero: +15–25 click/settimana.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO On-page</span>
+          <span class="tag tag-urgente">Alta Priorità</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Ottimizzare title/meta Les Tropéziennes — CTR 1,08% su 2.960 impressioni</div>
+        <div class="action-detail">
+          La collection /collections/les-tropeziennes ha 2.960 impressioni e 32 click = CTR 1,08%. Azione: aggiornare title inserendo "sandali" e stagionalità 2026. Esempio: "Les Tropéziennes Sandali | Collezione Estate 2026 – Musto Calzature Milano". Meta description: evidenziare modelli iconici o materiali naturali.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO On-page</span>
+          <span class="tag tag-urgente">Alta Priorità</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-medium">
+    <div class="action-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Potenziare l'articolo "Mocassini uomo estate 2026" — pos. 1,47 con CTR 9,9%</div>
+        <div class="action-detail">
+          Keyword "mocassini uomo estate 2026" è in pos. 1,47 ma genera 8 click su 81 impressioni. Controllare se il breadcrumb schema è attivo. Aggiungere keyword correlate nell'articolo: "mocassini uomo 2026 in pelle", "mocassini estivi eleganti". Piccola cura può portare +20–30% click.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-content">Content</span>
+          <span class="tag tag-seo">SEO</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <div class="action-title">Monitorare calo click GSC (-6,7%) — stagionalità o problema tecnico?</div>
+        <div class="action-detail">
+          I click sono scesi da 2.148 (W23) a 2.005 (W24). La posizione è migliorata (7,27 da 7,41), il che suggerisce stagionalità piuttosto che problema tecnico. Monitorare per 2 settimane: se il trend scende sotto 1.900 click, fare audit delle pagine perdenti. Per ora nessuna azione urgente.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-monitor">Monitoraggio</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">5</div>
+      <div class="action-body">
+        <div class="action-title">Nuovo articolo: "Sandali flat con tacco basso — le scarpe più comode dell'estate 2026"</div>
+        <div class="action-detail">
+          Il cluster "sandali flat" è il principale driver di traffico (413 click). Creare un secondo articolo correlato per espandere il cluster: "sandali flat con tacco basso", "sandali flat eleganti donna", "sandali flat estate 2026 bianche". Obiettivo: coprire l'intent informazionale complementare senza cannibalizzare il post esistente. Lunghezza target: 1.200–1.500 parole.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-content">Nuovo Contenuto</span>
+          <span class="tag tag-seo">SEO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-low">
+    <div class="action-item">
+      <div class="action-num">6</div>
+      <div class="action-body">
+        <div class="action-title">Canale AI Assistant: 36 sessioni — monitorare crescita</div>
+        <div class="action-detail">
+          GA4 registra 36 sessioni da "AI Assistant" (probabilmente ChatGPT, Perplexity). Nessuna azione immediata, ma da tracciare nel tempo. Se supera 100 sessioni/settimana, valutare ottimizzazione GEO: FAQ schema, risposte "zero-click" per query di tipo "migliori scarpe brand X a Milano".
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-monitor">Monitoraggio</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">7</div>
+      <div class="action-body">
+        <div class="action-title">Schema markup: aggiungere BreadcrumbList alle collection pages principali</div>
+        <div class="action-detail">
+          Le collection pages non mostrano breadcrumb nei SERP. Aggiungere schema JSON-LD BreadcrumbList in Shopify Liquid (theme.liquid o collection.liquid). Costo tecnico basso, impatto potenziale su CTR e rich results. Da fare in un'unica sessione tecnica per tutte le collection principali (Nero Giardini, Les Tropéziennes, Bibi Lou, Pikolinos).
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">Technical SEO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPPORTUNITÀ KEYWORD -->
+  <hr class="separator">
+  <div class="section-title">Opportunità Keyword da Lavorare</div>
+
+  <div class="kw-opportunity">
+    <div class="kw-name">negozi scarpe milano</div>
+    <div class="kw-detail">Pos. 2,73 · 8 click · 180 impressioni · CTR 4,4% — keyword ad alto intento locale. Ottimizzare la homepage per questa query (H1, meta, Google Business Profile). Alta concorrenza ma Musto è già in top 3.</div>
+  </div>
+  <div class="kw-opportunity">
+    <div class="kw-name">sandali donna comodi</div>
+    <div class="kw-detail">Pos. 2,15 · 11 click · 161 impressioni · CTR 6,8% — keyword informazionale con alto volume. Valutare landing "sandali donna comodi estate 2026" separata dalla collection generica, oppure potenziare l'articolo esistente con questa keyword primaria.</div>
+  </div>
+  <div class="kw-opportunity">
+    <div class="kw-name">scarpe da cerimonia per donna</div>
+    <div class="kw-detail">Blog post già in pos. ~7,5 con 76 click. Con un aggiornamento dell'articolo (stagionalità 2026, nuovi modelli, FAQ schema) può salire a pos. 5–6 e raddoppiare i click. Costo: aggiornamento 30 minuti.</div>
+  </div>
+
+  <!-- NOTE AGGIUNTIVE BRAND RANKING -->
+  <hr class="separator">
+  <div class="section-title">Note Operative · Brand Ranking W21–W24</div>
+  <div class="card">
+    <p style="margin-bottom:12px;color:#bbb;font-size:12px">Ranking basato su 4 settimane (18 Mag–14 Giu 2026), solo ordini PAID. Osservazioni operative:</p>
+    <div class="action-item">
+      <div class="action-num">·</div>
+      <div class="action-body">
+        <div class="action-title">BIBI LOU domina con 9 unità — coerenza SEO/vendite</div>
+        <div class="action-detail">Ticket medio €138,78. La collection ha 100 click organici in W24 (rank #3 top pages). Segnale positivo: presidiare le keyword di brand Bibi Lou e mantenere il contenuto della collection aggiornato con nuovi modelli stagionali.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">·</div>
+      <div class="action-body">
+        <div class="action-title">NEROGIARDINI: vendite OK ma CTR collection basso — opportunità</div>
+        <div class="action-detail">3 unità PAID in 4 settimane, ma la collection page ha CTR 0,77% su 4.150 impressioni. Ottimizzare il title tag (azione #1) potrebbe incrementare le vendite direttamente aumentando il traffico qualificato alla collection.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">·</div>
+      <div class="action-body">
+        <div class="action-title">JP/DAVID e KAMO-GUTSU: ticket alto, traffico organico da verificare</div>
+        <div class="action-detail">Entrambi con ticket medio €229–239. Verificare se hanno collection page ottimizzata in Shopify o se le vendite avvengono solo via canali paid. Se non hanno pagina dedicata, crearla e ottimizzarla è un'opportunità rapida.</div>
+      </div>
+    </div>
+    <div class="redbox">
+      ⚠ Il #1530 REFUNDED (€76) è un rimborso completo. Se associato a un brand o modello specifico, segnalarlo a Monica — potrebbe indicare un problema di taglia/qualità su quel prodotto.
+    </div>
+  </div>
+
+  <!-- CHECKLIST W25 -->
+  <hr class="separator">
+  <div class="section-title">Checklist Team · Da Completare in W25</div>
+  <div class="card">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[SEO · Alta]</strong> Riscrivere title/meta Nero Giardini collection</span></label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[SEO · Alta]</strong> Riscrivere title/meta Les Tropéziennes collection</span></label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[Shopify]</strong> Verificare 4 ordini PENDING (#1524, #1526, #1527, #1531)</span></label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[Shopify]</strong> Chiedere a Monica motivazione rimborso #1530</span></label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[Content]</strong> Pianificare articolo "sandali flat con tacco basso estate 2026"</span></label>
+      <label style="display:flex;align-items:flex-start;gap=10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[Monitor]</strong> Alert se click GSC &lt; 1.900 in W25</span></label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer"><input type="checkbox" style="margin-top:2px;accent-color:var(--gold)"><span><strong>[Technical]</strong> Schema BreadcrumbList sulle collection pages principali</span></label>
+    </div>
+    <div class="note-box" style="margin-top:14px">Report generato automaticamente · W24 · Musto Calzature · uso interno Web Domus · Non condividere con il cliente</div>
+  </div>
+
+</div>
+</body>
+</html>
