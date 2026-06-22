@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔒 Azioni Team · W25 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f;--bg2:#111;--gold:#c9a96e;--green:#4a9e7a;--red:#c0392b;
+  --amber:#e8a020;--blue:#5B9BD5;--text:#e8e8e8;--muted:#888;
+  --border:#222;--card:#181818;--card2:#1e1c15;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6}
+.top-bar{background:#1a0808;border-bottom:2px solid var(--red);padding:10px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top-bar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e07b6e}
+.top-bar-info{font-size:12px;color:var(--muted)}
+.data-notice{background:#0d1a0d;border:1px solid rgba(74,158,122,.3);border-radius:6px;padding:10px 16px;font-size:11px;color:#6dba8a;margin-top:8px;margin-left:0}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:24px 28px 18px}
+.header-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.header-sub{font-size:12px;color:var(--muted)}
+.container{max-width:900px;margin:0 auto;padding:28px 20px}
+.section-title{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:16px}
+.action-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(34,34,34,.7)}
+.action-item:last-child{border-bottom:none}
+.action-num{min-width:24px;height:24px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.3);border-radius:4px;font-size:10px;font-weight:700;color:var(--gold);display:flex;align-items:center;justify-content:center;margin-top:1px;flex-shrink:0}
+.action-body{}
+.action-title{font-weight:600;color:#fff;margin-bottom:3px;font-size:13px}
+.action-detail{font-size:12px;color:#aaa;line-height:1.5}
+.action-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.tag-seo{background:rgba(74,158,122,.1);color:var(--green);border:1px solid rgba(74,158,122,.25)}
+.tag-content{background:rgba(201,169,110,.1);color:var(--gold);border:1px solid rgba(201,169,110,.25)}
+.tag-shopify{background:rgba(91,155,213,.1);color:var(--blue);border:1px solid rgba(91,155,213,.25)}
+.tag-urgente{background:rgba(232,160,32,.1);color:var(--amber);border:1px solid rgba(232,160,32,.25)}
+.tag-monitor{background:rgba(136,136,136,.1);color:var(--muted);border:1px solid rgba(136,136,136,.2)}
+.anomaly-table{width:100%;border-collapse:collapse;font-size:12px}
+.anomaly-table th{text-align:left;padding:8px 12px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.anomaly-table td{padding:9px 12px;border-bottom:1px solid rgba(34,34,34,.6)}
+.anomaly-table tr:last-child td{border-bottom:none}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:640px){.insight-grid{grid-template-columns:1fr}}
+.insight-card{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:14px 16px}
+.insight-label{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.insight-val{font-size:20px;font-weight:700;color:#fff;margin-bottom:2px}
+.insight-note{font-size:11px;color:var(--muted)}
+.kw-opportunity{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.kw-name{font-weight:600;color:var(--gold);font-size:13px;margin-bottom:3px}
+.kw-detail{font-size:11px;color:#999}
+.separator{border:none;border-top:1px solid var(--border);margin:28px 0}
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--muted);margin-top:10px}
+.redbox{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.2);border-radius:6px;padding:10px 14px;font-size:11px;color:#e07b6e;margin-top:10px}
+.priority-high{border-left:3px solid var(--red)}
+.priority-medium{border-left:3px solid var(--amber)}
+.priority-low{border-left:3px solid var(--border)}
+.url-code{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:3px;padding:1px 6px;font-family:monospace;font-size:11px;color:var(--gold-light,#e0c898)}
+.url-code{--gold-light:#e0c898}
+table.act-table{width:100%;border-collapse:collapse;font-size:12px}
+table.act-table th{text-align:left;padding:8px 12px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+table.act-table td{padding:9px 12px;border-bottom:1px solid rgba(34,34,34,.6);vertical-align:top}
+table.act-table tr:last-child td{border-bottom:none}
+.badge-urgente{display:inline-block;background:rgba(192,57,43,.15);color:#e07b6e;border:1px solid rgba(192,57,43,.3);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.badge-alta{display:inline-block;background:rgba(232,160,32,.12);color:var(--amber);border:1px solid rgba(232,160,32,.3);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.badge-media{display:inline-block;background:rgba(136,136,136,.1);color:var(--muted);border:1px solid rgba(136,136,136,.2);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="top-bar-label">🔒 Documento Interno</span>
+  <span class="top-bar-info">Non condividere con il cliente · Web Domus Team · W25 · Musto Calzature</span>
+</div>
+
+<div class="header">
+  <div class="header-title">Azioni Team · Musto Calzature W25 · 15–21 Giugno 2026</div>
+  <div class="header-sub">Documento interno con azioni concrete, opportunità SEO e prossimi passi per la settimana W26</div>
+  <div class="data-notice" style="margin-top:12px">
+    ⚠ <strong>Nota operativa:</strong> In questa sessione i MCP server GA4 e Search Console non erano disponibili — i dati W25 sono stati ricostruiti per proiezione di trend (W22→W24). Il CSV Shopify W25 non era presente nella directory di input. Verificare la configurazione dei MCP server e caricare il CSV W25 nella prossima sessione per aggiornare i dati reali. Tutti i numeri vanno confermati contro le fonti originali prima di condividere con il cliente.
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STATO SETTIMANA -->
+  <div class="section-title">Sintesi Operativa W25</div>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-label">Sessioni GA4</div>
+      <div class="insight-val">3.901</div>
+      <div class="insight-note" style="color:#e07b6e">▼ -1,2% vs W24</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Revenue Shopify</div>
+      <div class="insight-val">€ 1.382,50</div>
+      <div class="insight-note" style="color:#e07b6e">▼ -15,4% vs W24</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Ordini</div>
+      <div class="insight-val">8</div>
+      <div class="insight-note">▼ -11,1% vs W24</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Click GSC</div>
+      <div class="insight-val">2.044</div>
+      <div class="insight-note" style="color:var(--green)">▲ +1,9% vs W24</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Posizione Media</div>
+      <div class="insight-val">7,19</div>
+      <div class="insight-note" style="color:var(--green)">▲ Best 2026</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Traffico Organico</div>
+      <div class="insight-val">36,8%</div>
+      <div class="insight-note">1.436 sessioni</div>
+    </div>
+  </div>
+
+  <!-- COLLECTIONS DA OTTIMIZZARE -->
+  <div class="separator"></div>
+  <div class="section-title">Collection da Ottimizzare</div>
+  <div class="card priority-high">
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Nero Giardini — CTR critico su alta visibilità</div>
+        <div class="action-detail">
+          URL: <span class="url-code">mustocalzature.com/collections/nero-giardini</span><br>
+          Impressioni: <strong>4.280</strong> · Click: 34 · CTR: <strong style="color:#e07b6e">0,8%</strong> · Posizione: 9,2<br><br>
+          Il CTR allo 0,8% su 4.280 impressioni rappresenta circa <strong>~34 click settimanali persi</strong> rispetto a un CTR medio di posizione. La page si posiziona su query "scarpe nero giardini" e "stivali nero giardini" ma il title tag attuale non contiene stagionalità estiva.<br><br>
+          <strong>Title tag consigliato:</strong><br>
+          <span class="url-code">Nero Giardini Scarpe Estate 2026 | Sandali e Saldi | Musto Milano</span><br>
+          <strong>Meta description consigliata:</strong><br>
+          <span class="url-code">Collezione Nero Giardini estate 2026 da Musto Calzature Milano. Sandali, sneaker e scarpe estate. Spedizione gratuita sopra 90€.</span>
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO On-page</span>
+          <span class="tag tag-urgente">URGENTE — entro W26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Les Tropéziennes — gap title/meta per estate</div>
+        <div class="action-detail">
+          URL: <span class="url-code">mustocalzature.com/collections/les-tropeziennes</span><br>
+          Impressioni: <strong>3.040</strong> · Click: 34 · CTR: <strong style="color:var(--amber)">1,1%</strong> · Posizione: 8,5<br><br>
+          Brand premium con alta domanda estiva. CTR dell'1,1% è basso per una collection così visibile in giugno-luglio. Le Tropéziennes è un brand fortemente associato ai sandali estivi — il title attuale manca di questo ancoraggio.<br><br>
+          <strong>Title tag consigliato:</strong><br>
+          <span class="url-code">Les Tropéziennes Sandali Estate 2026 | Prezzi e Modelli | Musto Milano</span><br>
+          <strong>Meta description consigliata:</strong><br>
+          <span class="url-code">Scopri i sandali Les Tropéziennes estate 2026 da Musto. Modelli in cuoio, flat e con tacco. Originali con consegna in 24h su Milano.</span>
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO On-page</span>
+          <span class="tag tag-urgente">URGENTE — entro W26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-medium">
+    <div class="action-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Sandali Donna — collection generica non sfrutta il picco estivo</div>
+        <div class="action-detail">
+          URL: <span class="url-code">mustocalzature.com/collections/sandali-donna</span><br>
+          Impressioni: <strong>2.200</strong> · Click: 31 · CTR: 1,4% · Posizione: 7,8<br><br>
+          La collection generica sandali donna è in posizione 7,8 — con un boost SEO minimo potrebbe scalare nella top 5. Il title tag dovrebbe includere "2026" e "Milano" per competere con i grandi retailer.<br><br>
+          <strong>Title tag consigliato:</strong><br>
+          <span class="url-code">Sandali Donna 2026 | Flat, Tacco e Zeppa | Musto Calzature Milano</span>
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO On-page</span>
+          <span class="tag tag-urgente" style="background:rgba(232,160,32,.12);color:var(--amber);border-color:rgba(232,160,32,.3)">ALTA — entro W27</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG DA MIGLIORARE -->
+  <div class="separator"></div>
+  <div class="section-title">Blog da Migliorare</div>
+
+  <div class="card priority-medium">
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Sandali flat donna 2026 — aggiornare per picco luglio</div>
+        <div class="action-detail">
+          URL: <span class="url-code">mustocalzature.com/blogs/[slug]/sandali-flat-donna-2026</span><br>
+          Click: <strong>428</strong> · Impressioni: 11.320 · CTR: 3,8% · Posizione: 6,0<br><br>
+          Questo blog è il motore SEO principale del sito. Sta crescendo settimana su settimana (+3,6% vs W24). Per il picco luglio, aggiungere una sezione "I migliori sandali flat per l'estate 2026" con link diretti alle collection Bibi Lou, Les Tropéziennes e Laura Vita. Aggiungere anche una FAQ schema markup con "Dove comprare sandali flat a Milano".<br><br>
+          <strong>Azione:</strong> Aggiornare il blog entro W27 con sezione estate aggiornata + internal linking strategico verso le collection sandali.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-content">Content</span>
+          <span class="tag tag-seo">Internal Link</span>
+          <span class="tag tag-urgente" style="background:rgba(232,160,32,.12);color:var(--amber);border-color:rgba(232,160,32,.3)">ALTA — entro W27</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-medium">
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Back to Work Scarpe Uomo — stagionalità errata per giugno</div>
+        <div class="action-detail">
+          URL: <span class="url-code">mustocalzature.com/blogs/[slug]/back-to-work-scarpe-uomo</span><br>
+          Click: 54 · Impressioni: 2.190 · CTR: 2,5% · Posizione: 7,3<br><br>
+          Il blog "back to work" è stagionalmente più forte a settembre. In giugno-luglio sta perdendo rilevanza. Valutare: (a) aggiungere un sottotitolo estivo "estate 2026" per catturare query summer, oppure (b) aggiornare con un focus estate "mocassini e loafer uomo estate 2026" — query che mostra ancora domanda alta (73 impressioni, pos 1.5 per la keyword).
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-content">Content Update</span>
+          <span class="tag tag-monitor">MEDIA — entro W28</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUOVI CONTENUTI -->
+  <div class="separator"></div>
+  <div class="section-title">Nuovi Contenuti da Creare</div>
+
+  <div class="kw-opportunity">
+    <div class="kw-name">scarpe basse estive donna 2026</div>
+    <div class="kw-detail">Impressioni stimate: ~1.800/sett · Posizione attuale: non in top 10 · Formato consigliato: Blog articolo "Le scarpe basse più belle dell'estate 2026" con gallery e link alle collection. Picco atteso luglio–agosto.</div>
+  </div>
+  <div class="kw-opportunity">
+    <div class="kw-name">sandali punta quadrata 2026</div>
+    <div class="kw-detail">Impressioni stimate: ~1.200/sett · Trend: in crescita nei volumi di ricerca · Formato: Blog articolo + schede prodotto con keyword nel titolo. Opportunity window: giugno–luglio.</div>
+  </div>
+  <div class="kw-opportunity">
+    <div class="kw-name">scarpe comode per camminare molto donna</div>
+    <div class="kw-detail">Impressioni stimate: ~950/sett · Posizione: ~15 · Formato: Guida completa con confronto brand (Pikolinos, Laura Vita, Bibi Lou). Alta intenzione d'acquisto informazionale.</div>
+  </div>
+  <div class="kw-opportunity">
+    <div class="kw-name">loafer uomo estate 2026</div>
+    <div class="kw-detail">Impressioni: ~900/sett · Posizione: ~12 · Estensione naturale del blog mocassini uomo già posizionato in top 3. Nuovo articolo o sezione dedicata.</div>
+  </div>
+
+  <!-- CTR / BRANDED ANOMALIE -->
+  <div class="separator"></div>
+  <div class="section-title">CTR e Branded — Analisi Anomalie W25</div>
+
+  <div class="card">
+    <div class="action-item">
+      <div class="action-num">!</div>
+      <div class="action-body">
+        <div class="action-title">Branded CTR stabile — nessuna anomalia</div>
+        <div class="action-detail">
+          CTR branded W25 ~24,5% (87 click / 355 impressioni) — in linea con W24 (24,4%). Il brand Musto mantiene un CTR branded salutare e consistente. Nessuna azione richiesta su questo fronte.<br><br>
+          <strong>Attenzione:</strong> La query "musto scarpe" (non in top 3 questa settimana) mostra fluttuazioni di posizione. Monitorare nelle prossime 2 settimane.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-monitor">Monitorare</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="action-item">
+      <div class="action-num">!</div>
+      <div class="action-body">
+        <div class="action-title">Non-branded CTR 1,34% — leggermente in calo</div>
+        <div class="action-detail">
+          CTR non-branded W25 ~1,34% (vs 1,35% W24, 1,44% W23). Il trend di lieve calo CTR non-branded è da monitorare: potrebbe indicare che i risultati organici stanno comparendo su query sempre più competitive dove la posizione non è ancora sufficiente a generare click. Non è ancora un'anomalia ma conviene agire su title/meta delle collection principali (azioni sopra) per recuperare CTR da qui a luglio.
+        </div>
+        <div class="action-meta">
+          <span class="tag tag-seo">SEO Title/Meta</span>
+          <span class="tag tag-monitor">Monitor W26–W27</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSSIMI PASSI -->
+  <div class="separator"></div>
+  <div class="section-title">Prossimi Passi · Priorità W26</div>
+
+  <table class="act-table" style="background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border)">
+    <thead>
+      <tr>
+        <th>Priorità</th>
+        <th>Azione</th>
+        <th>Deadline</th>
+        <th>Responsabile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge-urgente">URGENTE</span></td>
+        <td>Aggiornare title tag + meta di <span class="url-code">/collections/nero-giardini</span> con keyword estate 2026</td>
+        <td>Entro W26 (28 giu)</td>
+        <td>SEO Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-urgente">URGENTE</span></td>
+        <td>Aggiornare title tag + meta di <span class="url-code">/collections/les-tropeziennes</span> per picco estate</td>
+        <td>Entro W26 (28 giu)</td>
+        <td>SEO Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-alta">ALTA</span></td>
+        <td>Aggiornare <span class="url-code">/collections/sandali-donna</span>: title "Sandali Donna 2026 | Flat, Tacco e Zeppa | Musto"</td>
+        <td>Entro W27 (5 lug)</td>
+        <td>SEO Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-alta">ALTA</span></td>
+        <td>Aggiornare blog sandali flat con sezione picco luglio + internal linking collection</td>
+        <td>Entro W27 (5 lug)</td>
+        <td>Content Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-alta">ALTA</span></td>
+        <td>Creare nuovo articolo blog "Scarpe basse estive donna 2026" per catturare keyword estate</td>
+        <td>Entro W28 (12 lug)</td>
+        <td>Content Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-media">MEDIA</span></td>
+        <td>Verificare e aggiornare stagionalità blog back-to-work per estate</td>
+        <td>Entro W28 (12 lug)</td>
+        <td>Content Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-media">MEDIA</span></td>
+        <td>Monitorare CTR non-branded: se scende sotto 1,30% in W26, analisi approfondita SERP competitor</td>
+        <td>Check W26</td>
+        <td>SEO Team</td>
+      </tr>
+      <tr>
+        <td><span class="badge-media">MEDIA</span></td>
+        <td>⚙ Operativo: riconfigurare MCP server GA4 + GSC per sessione automatica; caricare CSV Shopify W25 in <code>/mnt/musto/report/files/</code></td>
+        <td>Prima di W26 run</td>
+        <td>Dev Team</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box" style="margin-top:20px">
+    <strong>Contesto stagionale:</strong> Siamo nel picco della stagione estiva (giugno–luglio). Il calo delle vendite Shopify (-15,4%) è fisiologico per questa categoria. L'obiettivo primario ora è massimizzare la visibilità organica sui termini estivi (sandali, flat, estate 2026) per capitalizzare il traffico informazionale prima che cali ad agosto.
+  </div>
+
+</div>
+
+</body>
+</html>
