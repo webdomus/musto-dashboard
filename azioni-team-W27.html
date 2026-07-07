@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚠️ INTERNO – Azioni Team W27 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f; --card:#181818; --border:#2a2a2a;
+  --text:#e8e8e8; --muted:#888;
+  --gold:#c9a96e; --gold-light:#e0c898;
+  --green:#4a9e7a; --red:#c0392b; --amber:#e8a020;
+  --blue:#5B9BD5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;padding:0}
+
+.internal-banner{background:#1a0a0a;border-bottom:2px solid var(--red);padding:10px 30px;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e07b6e}
+.header{background:#111;border-bottom:1px solid var(--border);padding:28px 36px}
+.h-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.h-title{font-size:22px;font-weight:700;color:#fff}
+.h-meta{font-size:12px;color:var(--muted);margin-top:6px}
+
+.container{max-width:860px;margin:0 auto;padding:32px 24px}
+
+.section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+.priority-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+@media(max-width:600px){.priority-grid{grid-template-columns:1fr}}
+
+.priority-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.p-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:10px}
+.p-badge.urgent{background:rgba(192,57,43,.15);color:#e07b6e;border:1px solid rgba(192,57,43,.3)}
+.p-badge.medium{background:rgba(232,160,32,.12);color:var(--amber);border:1px solid rgba(232,160,32,.25)}
+.p-badge.low{background:rgba(74,158,122,.1);color:var(--green);border:1px solid rgba(74,158,122,.2)}
+.p-badge.info{background:rgba(91,155,213,.1);color:var(--blue);border:1px solid rgba(91,155,213,.2)}
+.p-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px}
+.p-who{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.p-body{font-size:12.5px;color:#bbb;line-height:1.7}
+.p-body strong{color:var(--text)}
+
+.detail-block{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:22px}
+.db-title{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:12px}
+.db-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(42,42,42,.6)}
+.db-row:last-child{border-bottom:none}
+.db-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.db-content{flex:1;font-size:12.5px;color:#bbb;line-height:1.6}
+.db-content strong{color:var(--text)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+@media(max-width:600px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+.kpi-mini{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center}
+.kpi-mini-val{font-size:18px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.kpi-mini-lbl{font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.kpi-mini-delta{font-size:10px;margin-top:3px}
+
+.warn-box{background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.2);border-left:3px solid var(--amber);border-radius:6px;padding:12px 16px;font-size:12.5px;color:#ccc;margin:14px 0}
+.warn-box strong{color:var(--amber)}
+
+.ok-box{background:rgba(74,158,122,.06);border:1px solid rgba(74,158,122,.2);border-left:3px solid var(--green);border-radius:6px;padding:12px 16px;font-size:12.5px;color:#ccc;margin:14px 0}
+.ok-box strong{color:var(--green)}
+
+.order-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+.order-table th{text-align:left;padding:8px 12px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.order-table td{padding:9px 12px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.order-table tr:last-child td{border-bottom:none}
+.status-paid{color:var(--green);font-weight:600;font-size:10px}
+.status-pending{color:var(--amber);font-weight:600;font-size:10px}
+
+.divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.checklist{list-style:none;margin:10px 0}
+.checklist li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:12.5px;color:#bbb;border-bottom:1px solid rgba(42,42,42,.4)}
+.checklist li:last-child{border-bottom:none}
+.chk{width:16px;height:16px;border:1px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:2px;background:rgba(255,255,255,.03)}
+
+.footer{border-top:1px solid var(--border);padding:16px 36px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<div class="internal-banner">
+  ⚠️ &nbsp;USO INTERNO WEB DOMUS — NON CONDIVIDERE CON IL CLIENTE
+</div>
+
+<div class="header">
+  <div class="h-tag">Report Interno · Team SEO</div>
+  <div class="h-title">Azioni Team · W27 2026</div>
+  <div class="h-meta">Settimana 29 Giugno – 5 Luglio 2026 · Generato automaticamente il 7 luglio 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- SNAPSHOT NUMERI CHIAVE -->
+  <div class="section-label">Snapshot Numeri Chiave</div>
+  <div class="kpi-row">
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">3.654</div>
+      <div class="kpi-mini-lbl">Utenti GA4</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ +27,7% WoW</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">1.603</div>
+      <div class="kpi-mini-lbl">Click GSC</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ +15,6% WoW</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">€ 1.565</div>
+      <div class="kpi-mini-lbl">Revenue Shopify</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">10 ordini validi</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">7,95</div>
+      <div class="kpi-mini-lbl">Pos. media GSC</div>
+      <div class="kpi-mini-delta" style="color:#e07b6e">▼ da 7,58 W26</div>
+    </div>
+  </div>
+
+  <!-- AZIONI PRIORITARIE -->
+  <div class="section-label">Azioni Prioritarie W27 → W28</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 Urgente</div>
+      <div class="p-title">Ordine PENDING #1552 da verificare</div>
+      <div class="p-who">Responsabile: Team Shopify / Monica</div>
+      <div class="p-body">L'ordine <strong>#1552</strong> (€ 165,90 · 3 luglio) risulta ancora <strong>PENDING</strong>. Verificare stato pagamento con Shopify Payments: se non si chiude entro 48h, contattare il cliente. Non esporre il nome acquirente nel report cliente.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 SEO</div>
+      <div class="p-title">Ottimizzare /collections/nero-giardini</div>
+      <div class="p-who">Responsabile: SEO Copywriter</div>
+      <div class="p-body">7.512 impressioni, CTR <strong>0,41%</strong>, pos. media <strong>10,78</strong>. Title tag attuale probabilmente generico. Proposta: riscrivere con keyword "scarpe NeroGiardini [stagione/anno]" e aggiungere meta description con call-to-action. Obiettivo: CTR al 2% → +~120 click/settimana potenziali.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 SEO</div>
+      <div class="p-title">Title e meta /collections/les-tropeziennes</div>
+      <div class="p-who">Responsabile: SEO Copywriter</div>
+      <div class="p-body">6.593 impressioni, CTR <strong>1,23%</strong>, pos <strong>8,93</strong>. Già nella top-3 pagine per click (81/settimana) ma con ampi margini: entrare in pos. 6–7 può aumentare il CTR. Revisionare title/meta per W28.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 Contenuto</div>
+      <div class="p-title">Nuovo articolo blog: Nerogiardini autunno</div>
+      <div class="p-who">Responsabile: SEO Copywriter</div>
+      <div class="p-body">Nerogiardini è il brand top-seller 4W (4 unità). Pianificare un articolo di approfondimento "Scarpe NeroGiardini autunno 2026: le novità" per rafforzare sia la collection SEO che la conversione diretta. Linkarsi a /collections/nero-giardini.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge low">🟢 Opportunità</div>
+      <div class="p-title">Capitalizzare keyword mocassini uomo</div>
+      <div class="p-who">Responsabile: SEO Strategist</div>
+      <div class="p-body">Tre keyword in top-3 su questo cluster: "mocassini uomo estate 2026" (pos. 1,0, 6 click), "mocassini uomo 2026" (pos. 1,1), "mocassini uomo estivi 2026" (pos. 1,5). Aggiungere internal linking da homepage e da articoli collegati per consolidare il ranking.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 Monitoring</div>
+      <div class="p-title">Posizione media GSC in risalita</div>
+      <div class="p-who">Da monitorare in W28</div>
+      <div class="p-body">La pos. media è passata da 7,58 (W26) a 7,95 (W27). Nota: l'aumento delle impressioni (+11%) ha portato in lista keyword a bassa pos. — effetto statistico. Monitorare W28: se resta sopra 8,0 senza aumento impressioni, approfondire.</div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- DETTAGLIO ORDINI W27 -->
+  <div class="section-label">Dettaglio Ordini Shopify W27 (riservato)</div>
+  <div class="detail-block">
+    <div class="db-title">Tutti gli ordini W27 · 29 Giu – 5 Lug 2026</div>
+    <div class="warn-box"><strong>Privacy:</strong> Nel report cliente non vengono mai mostrati nomi o cognomi degli acquirenti. Solo il numero ordine (#XXXX).</div>
+    <table class="order-table">
+      <thead>
+        <tr><th>#Ordine</th><th>Data</th><th>€</th><th>Status</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>#1546</td><td>29 Giu</td><td style="color:var(--red)">€ 209,00</td><td><span class="status-pending" style="color:#e07b6e">REFUNDED</span></td><td style="font-size:11px;color:var(--muted)">Escluso dal fatturato</td></tr>
+        <tr><td>#1547</td><td>30 Giu</td><td>€ 209,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1548</td><td>30 Giu</td><td>€ 70,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1549</td><td>02 Lug</td><td>€ 134,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1550</td><td>02 Lug</td><td>€ 105,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1551</td><td>03 Lug</td><td>€ 126,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1552</td><td>03 Lug</td><td style="color:var(--amber)">€ 165,90</td><td><span class="status-pending">PENDING ⚠️</span></td><td style="font-size:11px;color:var(--amber)"><strong>Da verificare urgentemente</strong></td></tr>
+        <tr><td>#1553</td><td>03 Lug</td><td>€ 74,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1554</td><td>04 Lug</td><td>€ 463,00</td><td><span class="status-paid">PAID</span></td><td style="font-size:11px;color:var(--gold)">Ordine più alto settimana</td></tr>
+        <tr><td>#1555</td><td>05 Lug</td><td>€ 134,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+        <tr><td>#1556</td><td>05 Lug</td><td>€ 84,00</td><td><span class="status-paid">PAID</span></td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="ok-box" style="margin-top:14px"><strong>Totale valido:</strong> €&nbsp;1.564,90 · 9 PAID (€&nbsp;1.399,00) + 1 PENDING (€&nbsp;165,90) · #1546 REFUNDED escluso · Ticket medio € 156,49</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ANALISI SEO INTERNA -->
+  <div class="section-label">Analisi SEO Dettagliata (uso interno)</div>
+
+  <div class="detail-block">
+    <div class="db-title">🔍 Pagine ad alto potenziale non sfruttato</div>
+    <div class="db-row">
+      <div class="db-icon">📊</div>
+      <div class="db-content"><strong>/collections/nero-giardini</strong> — 7.512 imp · 31 click · CTR 0,41% · pos 10,78<br>
+      Potenziale: se il CTR salisse a 2% → ~150 click/settimana (+120). Action: riscrivere title con keyword principale + anno. Verificare se il tag h1 della collection è ottimizzato per "scarpe NeroGiardini".</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">📊</div>
+      <div class="db-content"><strong>/collections/les-tropeziennes</strong> — 6.593 imp · 81 click · CTR 1,23% · pos 8,93<br>
+      Seconda collection per impressioni. Il CTR è accettabile ma con pos. 8,93 c'è margine per scalare. Valutare una pagina blog su "Le Tropéziennes sandali 2026" per acquisire anchor text e spingere la collection.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">📊</div>
+      <div class="db-content"><strong>/pages/tabella-bibi-lou</strong> — 123 imp · 23 click · CTR <strong>18,7%</strong> · pos 2,41<br>
+      CTR eccellente. Pagina già in top-3 con intenzione informativa precisa. Suggerire internal link dalla collection Bibi Lou verso questa pagina per aumentare le sessioni interne.</div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="db-title">🏷️ Branded vs Non-Branded</div>
+    <div class="db-row">
+      <div class="db-icon">✦</div>
+      <div class="db-content"><strong>Branded (keyword con "musto"):</strong> ~97 click · ~814 imp · CTR ~11,9%<br>
+      Top branded: "musto calzature milano" (pos. 1,0, 19 click), "musto milano" (pos. 1,0, 12 click). Brand strength solida.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">→</div>
+      <div class="db-content"><strong>Non-Branded:</strong> ~1.506 click · ~140.517 imp · CTR ~1,07%<br>
+      Il 94% dei click arriva da keyword generiche: buona penetrazione su audience nuova. Top performer non-branded: bibi lou sito ufficiale (8 click), negozi scarpe milano (8 click), pikolinos scarpe donna (6 click).</div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="db-title">📋 Canali di acquisizione · Attenzione operativa</div>
+    <div class="db-row">
+      <div class="db-icon">⚡</div>
+      <div class="db-content"><strong>Paid Social (27,9% sessioni · 1.116)</strong>: secondo canale per sessioni. Monitorare ROAS nelle prossime settimane. Revenue attribuita proporzionalmente: ~€ 436. Verificare con Monica se le campagne social sono attive e con quali creatività.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">🤖</div>
+      <div class="db-content"><strong>AI Assistant (37 sessioni · 0,9%)</strong>: canale emergente. Traffic da ChatGPT/Perplexity/Gemini. Non era presente nei report W25-W26 con questo volume. Da monitorare come segnale di brand awareness su LLM.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">⚠️</div>
+      <div class="db-content"><strong>Unassigned (216 sessioni · 5,4%)</strong>: traffico non classificato. Possibile UTM mancante su campagne o link senza parametri. Segnalare a Monica di verificare i link nelle newsletter/social per aggiungere UTM.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHECKLIST W28 -->
+  <div class="section-label">Checklist Settimana W28</div>
+  <div class="detail-block">
+    <div class="db-title">To-do prima della prossima generazione report</div>
+    <ul class="checklist">
+      <li><div class="chk"></div><span>Verificare e chiudere ordine #1552 PENDING (€ 165,90)</span></li>
+      <li><div class="chk"></div><span>Riscrivere title e meta description di /collections/nero-giardini</span></li>
+      <li><div class="chk"></div><span>Pianificare articolo blog su Nerogiardini autunno 2026</span></li>
+      <li><div class="chk"></div><span>Aggiungere internal link da /collections/bibi-lou → /pages/tabella-bibi-lou</span></li>
+      <li><div class="chk"></div><span>Verificare UTM sui link social/newsletter per ridurre Unassigned</span></li>
+      <li><div class="chk"></div><span>Monitorare posizione media GSC W28 (soglia attenzione: > 8,0 senza crescita impressioni)</span></li>
+      <li><div class="chk"></div><span>Verificare con Monica stato campagne Paid Social e creatività attive</span></li>
+    </ul>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <span>⚠️ DOCUMENTO RISERVATO · Web Domus · Uso interno</span>
+  <span>Musto Calzature · W27 2026 · Generato il 7 luglio 2026</span>
+</div>
+
+</body>
+</html>
