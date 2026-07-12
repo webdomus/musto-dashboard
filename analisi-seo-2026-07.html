@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚠️ INTERNO – Analisi SEO &amp; Roadmap · Luglio 2026 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f; --card:#181818; --border:#2a2a2a;
+  --text:#e8e8e8; --muted:#888;
+  --gold:#c9a96e; --gold-light:#e0c898;
+  --green:#4a9e7a; --red:#c0392b; --amber:#e8a020;
+  --blue:#5B9BD5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;padding:0}
+
+.internal-banner{background:#1a0a0a;border-bottom:2px solid var(--red);padding:10px 30px;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e07b6e}
+.header{background:#111;border-bottom:1px solid var(--border);padding:28px 36px}
+.h-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.h-title{font-size:22px;font-weight:700;color:#fff}
+.h-meta{font-size:12px;color:var(--muted);margin-top:6px}
+
+.container{max-width:860px;margin:0 auto;padding:32px 24px}
+
+.section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+.priority-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+@media(max-width:600px){.priority-grid{grid-template-columns:1fr}}
+
+.priority-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.p-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:10px;margin-right:6px}
+.p-badge.urgent{background:rgba(192,57,43,.15);color:#e07b6e;border:1px solid rgba(192,57,43,.3)}
+.p-badge.medium{background:rgba(232,160,32,.12);color:var(--amber);border:1px solid rgba(232,160,32,.25)}
+.p-badge.low{background:rgba(74,158,122,.1);color:var(--green);border:1px solid rgba(74,158,122,.2)}
+.p-badge.info{background:rgba(91,155,213,.1);color:var(--blue);border:1px solid rgba(91,155,213,.2)}
+.p-badge.neutral{background:rgba(136,136,136,.1);color:var(--muted);border:1px solid rgba(136,136,136,.25)}
+.p-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px}
+.p-who{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.p-body{font-size:12.5px;color:#bbb;line-height:1.7}
+.p-body strong{color:var(--text)}
+.p-body em{color:var(--gold-light);font-style:normal}
+
+.detail-block{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:22px}
+.db-title{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:12px}
+.db-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(42,42,42,.6)}
+.db-row:last-child{border-bottom:none}
+.db-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.db-content{flex:1;font-size:12.5px;color:#bbb;line-height:1.6}
+.db-content strong{color:var(--text)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+@media(max-width:600px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+.kpi-mini{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center}
+.kpi-mini-val{font-size:18px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.kpi-mini-lbl{font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.kpi-mini-delta{font-size:10px;margin-top:3px}
+
+.warn-box{background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.2);border-left:3px solid var(--amber);border-radius:6px;padding:12px 16px;font-size:12.5px;color:#ccc;margin:14px 0}
+.warn-box strong{color:var(--amber)}
+
+.ok-box{background:rgba(74,158,122,.06);border:1px solid rgba(74,158,122,.2);border-left:3px solid var(--green);border-radius:6px;padding:12px 16px;font-size:12.5px;color:#ccc;margin:14px 0}
+.ok-box strong{color:var(--green)}
+
+.order-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+.order-table th{text-align:left;padding:8px 12px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.order-table td{padding:9px 12px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.order-table tr:last-child td{border-bottom:none}
+
+.divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.footer{border-top:1px solid var(--border);padding:16px 36px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* Aggiunte specifiche roadmap */
+.tag-status{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.tag-status.confirmed{background:rgba(74,158,122,.12);color:var(--green);border:1px solid rgba(74,158,122,.25)}
+.tag-status.tocheck{background:rgba(136,136,136,.12);color:var(--muted);border:1px solid rgba(136,136,136,.25)}
+.legend-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="internal-banner">
+  ⚠️ &nbsp;USO INTERNO WEB DOMUS — NON CONDIVIDERE CON IL CLIENTE
+</div>
+
+<div class="header">
+  <div class="h-tag">Documento Interno · Team SEO</div>
+  <div class="h-title">Analisi SEO &amp; Roadmap Prioritizzata · mustocalzature.com</div>
+  <div class="h-meta">Luglio 2026 · Basata su dati report W15–W27 + report organico maggio + audit on-page del 12 luglio 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- IL CLIENTE IN SINTESI -->
+  <div class="section-label">Il Cliente in Sintesi</div>
+  <div class="detail-block">
+    <div class="db-row">
+      <div class="db-icon">🏪</div>
+      <div class="db-content"><strong>Musto Calzature</strong> — boutique multimarca di scarpe donna e uomo in Via Dante a Milano, dal 1977. E-commerce <strong>Shopify</strong> su mustocalzature.com. Brand di punta: NeroGiardini, Bibi Lou, Pikolinos, Les Tropéziennes, Frau, Pons Quintana.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">📍</div>
+      <div class="db-content"><strong>Doppia anima:</strong> presidio local fortissimo ("negozio scarpe a milano" pos. 1, "negozi scarpe milano" pos. 2,7) + e-commerce nazionale trainato dalle collection brand e dal blog. Il <strong>94% dei click</strong> arriva da ricerche non-branded: il sito intercetta domanda nuova, non solo chi conosce già Musto.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">📈</div>
+      <div class="db-content"><strong>Trend:</strong> maggio 2026 miglior mese organico di sempre (8.060 click, +53% MoM); giugno in fisiologico calo stagionale, W27 in netta ripresa (+27,7% utenti WoW). Il pattern con maggior CTR del sito sono le <strong>pagine informative "tabella taglie"</strong> (CTR 17–19%) e le <strong>guide blog</strong> (CTR 2–4,4%).</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">🎯</div>
+      <div class="db-content"><strong>Keyword target</strong> (da intake skill): stivaletti donna, loafers uomo, anfibi uomo, scarpe impermeabili donna, musto milano, walter violet scarpe. Cluster già vinti: mocassini uomo (3 kw in top-3), cerimonia donna (pos. 3), local Milano (pos. 1–3).</div>
+    </div>
+  </div>
+
+  <!-- SNAPSHOT KPI -->
+  <div class="section-label">Snapshot KPI · W27 + Maggio 2026</div>
+  <div class="kpi-row">
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">1.603</div>
+      <div class="kpi-mini-lbl">Click GSC W27</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ +15,6% WoW</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">141.331</div>
+      <div class="kpi-mini-lbl">Impressioni W27</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ +11,0% WoW</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">1,13%</div>
+      <div class="kpi-mini-lbl">CTR medio W27</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ da 1,09%</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">7,95</div>
+      <div class="kpi-mini-lbl">Pos. media W27</div>
+      <div class="kpi-mini-delta" style="color:#e07b6e">▼ da 7,58 W26</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">776</div>
+      <div class="kpi-mini-lbl">KW posizionate</div>
+      <div class="kpi-mini-delta" style="color:var(--muted)">DataForSEO · Mag</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">40</div>
+      <div class="kpi-mini-lbl">KW in Top 3</div>
+      <div class="kpi-mini-delta" style="color:var(--muted)">192 in Top 10</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">€ 4.976</div>
+      <div class="kpi-mini-lbl">ETV organico</div>
+      <div class="kpi-mini-delta" style="color:var(--green)">▲ +36% MoM · Mag</div>
+    </div>
+    <div class="kpi-mini">
+      <div class="kpi-mini-val">5/8</div>
+      <div class="kpi-mini-lbl">Link building live</div>
+      <div class="kpi-mini-delta" style="color:var(--muted)">Bimestre 1</div>
+    </div>
+  </div>
+
+  <!-- METODOLOGIA -->
+  <div class="section-label">Metodologia e Fonti</div>
+  <div class="detail-block">
+    <div class="db-row">
+      <div class="db-icon">📂</div>
+      <div class="db-content"><strong>Dati storici dal repository report:</strong> settimanali W15–W27 (GA4 + GSC + Shopify), report organico maggio 2026 (DataForSEO), dashboard trimestrale Q1, report link building bimestre 1, changelog on-page aprile (<em>musto_aggiornamenti_seo_aprile2026.md</em>), check migrazione HTTPS (<em>check-https-2026-04-28.md</em>).</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">🔍</div>
+      <div class="db-content"><strong>Audit on-page live del 12 luglio 2026</strong> (crawl esterno): homepage, /collections/nero-giardini, /collections/les-tropeziennes, pagina prodotto campione (BUENO Sandali Pelle N5112), /pages/tabella-bibi-lou, articolo blog /blogs/trend-e-consigli/mocassini-uomo-2026-guida. Verificati: title, meta description, H1, JSON-LD, canonical, alt immagini, link interni.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">⚠️</div>
+      <div class="db-content"><strong>Limiti:</strong> GA4/GSC live e Shopify Admin non consultati in questa sessione — gli item marcati <span class="tag-status tocheck">Da confermare</span> richiedono una verifica in admin o su un campione più ampio prima dell'esecuzione. Core Web Vitals non misurati in questo audit.</div>
+    </div>
+  </div>
+
+  <!-- COME LEGGERE -->
+  <div class="section-label">Come Leggere la Roadmap</div>
+  <div class="detail-block">
+    <div class="db-row">
+      <div class="db-icon">🧭</div>
+      <div class="db-content"><strong>Priorità:</strong> P0 = subito (entro 2 settimane) · P1 = entro 1 mese · P2 = 1–3 mesi · P3 = backlog/opportunità. Ordinamento per rapporto impatto/effort, non solo per gravità.</div>
+    </div>
+    <div class="db-row">
+      <div class="db-icon">⚖️</div>
+      <div class="db-content"><strong>Effort:</strong> XS = &lt;1h · S = mezza giornata · M = 1–3 giorni · L = progetto continuativo. <strong>Stato:</strong> <span class="tag-status confirmed">Confermato</span> = evidenza diretta (audit live o repo) · <span class="tag-status tocheck">Da confermare</span> = ipotesi solida da verificare prima di agire.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- P0 -->
+  <div class="section-label">P0 · Interventi Immediati (entro 2 settimane)</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 P0 · Rischio</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">1 · Rating "sintetico" nel Product schema: verificare e rimuovere</div>
+      <div class="p-who">Responsabile: Team Shopify + SEO Strategist · Effort S</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> la pagina prodotto campione (BUENO Sandali Pelle N5112) espone in JSON-LD <em>aggregateRating 4,5 con reviewCount 100</em> e array <em>review</em> vuoto, su un prodotto senza recensioni visibili e out-of-stock. Se il pattern è replicato su tutto il catalogo, è markup di recensioni non verificabili: <strong>violazione delle policy Google sui dati strutturati</strong> → rischio azione manuale e perdita dei rich result per tutto il sito.<br><br><strong>Come farlo su Shopify:</strong> Admin → Negozio online → Temi → Modifica codice → cercare "aggregateRating" in <em>snippets/</em> e <em>sections/</em> (tipicamente un file product-schema/structured-data.liquid); controllare anche le app installate di recensioni. Rimuovere il blocco finché non ci sono recensioni reali (vedi item 18).<br><br><strong>Impatto atteso:</strong> difensivo ma alto — protegge i rich result di prezzo/disponibilità già attivi.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 P0 · SEO</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">2 · Title e meta di /collections/les-tropeziennes</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort XS</div>
+      <div class="p-body"><strong>Evidenza:</strong> W27: 6.593 impressioni · 81 click · CTR 1,23% · pos. 8,93 (terza pagina del sito per click). Audit 12/7: title live ancora generico — <em>"Les Tropeziennes | Musto Calzature – Musto Calzature srl"</em> — senza keyword di prodotto né stagione; copy collection di ~230 caratteri.<br><br><strong>Come farlo su Shopify:</strong> Admin → Prodotti → Collezioni → Les Tropeziennes → "Anteprima risultati del motore di ricerca" → Modifica SEO. Proposta title: <em>"Sandali Les Tropéziennes Donna | Estate 2026 – Musto Milano"</em> (≤60 caratteri); meta description ≤160 con CTA. Replicare esattamente lo schema già applicato a nero-giardini.<br><br><strong>Impatto atteso:</strong> CTR da 1,23% a ~2,5% ≈ <strong>+80 click/settimana</strong> su impressioni già acquisite.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 P0 · SEO</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">3 · Tabelle taglie: internal linking bidirezionale + meta</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort S</div>
+      <div class="p-body"><strong>Evidenza:</strong> /pages/tabella-bibi-lou è la pagina con il miglior CTR del sito (18,7%, pos. 2,41 W27; tabella-frau-uomo 17,7%). Audit 12/7: <strong>meta description vuota</strong>, title povero ("Tabella Bibi Lou"), <strong>nessun link contestuale</strong> nel corpo verso /collections/bibi-lou; la collection a sua volta non linka la tabella. Azione già segnalata in azioni-team W27 e mai chiusa.<br><br><strong>Come farlo su Shopify:</strong> Admin → Negozio online → Pagine → Tabella Bibi Lou: (a) title SEO <em>"Guida Taglie Bibi Lou | Tabella di Conversione – Musto Calzature"</em> + meta description; (b) CTA nel corpo "Scopri la collezione Bibi Lou →"; (c) nella descrizione della collection, link "Consulta la guida taglie". Idem per tabella-frau-uomo.<br><br><strong>Impatto atteso:</strong> converte traffico informativo caldo in sessioni di acquisto + trasferisce autorità alla collection (128 click/sett).</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge urgent">🔴 P0 · Tecnico</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">4 · Chiudere i residui della migrazione HTTPS</div>
+      <div class="p-who">Responsabile: Carmine · Effort XS</div>
+      <div class="p-body"><strong>Evidenza (repo):</strong> il check post-migrazione del 28 aprile (<em>check-https-2026-04-28.md</em>) prescriveva un re-check al 20 maggio e la conferma dell'aggiornamento URL sul Google Business Profile: <strong>nessuno dei due risulta documentato come eseguito</strong>.<br><br><strong>Cosa fare:</strong> rifare i controlli del documento (curl: http→https 301 unico hop, canonical https, GSC senza anomalie di copertura) e verificare che il GBP punti a https://mustocalzature.com. Documentare l'esito nel repo.<br><br><strong>Impatto atteso:</strong> igiene tecnica + il GBP alimenta direttamente il presidio local ("negozio scarpe a milano" pos. 1) — un URL http residuo lì è un attrito inutile.</div>
+    </div>
+
+  </div>
+
+  <!-- P1 -->
+  <div class="section-label">P1 · Alta Priorità (entro 1 mese)</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · Local SEO</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">5 · Schema LocalBusiness/ShoeStore su home o contatti</div>
+      <div class="p-who">Responsabile: Team Shopify · Effort S</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> la home espone solo JSON-LD <em>WebSite</em> + <em>Organization</em>: per una boutique fisica in Via Dante dal 1977 con "negozio scarpe a milano" in pos. 1 <strong>manca del tutto il markup local</strong>.<br><br><strong>Come farlo su Shopify:</strong> snippet Liquid in theme.liquid (o sezione contatti) con JSON-LD <em>ShoeStore</em>: name, address (Via Dante, Milano), geo, openingHoursSpecification, telephone, sameAs (GBP, Instagram, Facebook), image.<br><br><strong>Impatto atteso:</strong> consolida il cluster local (227 impressioni/settimana solo su "negozi scarpe milano"), rafforza l'eligibilità al knowledge panel.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · Monitoring</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">6 · Nero Giardini: monitorare il CTR post-riscrittura</div>
+      <div class="p-who">Responsabile: SEO Strategist · Effort XS</div>
+      <div class="p-body"><strong>Evidenza:</strong> l'azione urgente W27 è <strong>già stata eseguita</strong> — l'audit 12/7 trova il title live riscritto: <em>"Scarpe NeroGiardini Donna | Nuova Collezione 2026 – Musto Milano"</em>. Baseline da battere (W27): 7.512 impressioni · 31 click · CTR 0,41% · pos. 10,78.<br><br><strong>Cosa fare:</strong> tracciare il CTR della pagina nei report W28→W32. Obiettivo: <strong>CTR ≥2% entro 4–6 settimane</strong> (~150 click/settimana). Se non migliora: rivedere H1 e copy della collection (237 prodotti, testo descrittivo minimo) e anticipare l'articolo di supporto autunno (item 9).<br><br><strong>Impatto atteso:</strong> +120 click/settimana potenziali già stimati in azioni-team W27.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · On-page</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">7 · Alt text immagini home e collection</div>
+      <div class="p-who">Responsabile: Team Shopify · Effort M</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> <strong>13 immagini senza alt</strong> sulla sola homepage. Le pagine prodotto campione invece sono a posto (6/6 con alt).<br><br><strong>Come farlo su Shopify:</strong> per le immagini del tema: Admin → Negozio online → Temi → Personalizza → sezioni home (ogni immagine ha campo "testo alternativo"); per le immagini di collection: Admin → Prodotti → Collezioni → immagine → alt. Standard: <em>"[brand] [modello] [colore] – [categoria] donna/uomo Milano"</em>.<br><br><strong>Impatto atteso:</strong> visibilità su Google Immagini (rilevante per il settore moda) + accessibilità.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · Contenuti</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">8 · Testi descrittivi per le collection principali</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort M</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> les-tropeziennes ha ~230 caratteri di copy; pattern presumibilmente diffuso sulle altre collection brand.<br><br><strong>Cosa fare:</strong> 150–300 parole per le 6–8 collection top per impressioni (nero-giardini, les-tropeziennes, bibi-lou, pikolinos, frau…): keyword principale + varianti, tono boutique, link interno a tabella taglie e articolo blog correlato. Su Shopify: Admin → Prodotti → Collezioni → Descrizione.<br><br><strong>Impatto atteso:</strong> rilevanza semantica delle pagine che generano il grosso delle impressioni non-branded; supporta la risalita della posizione media (7,95 → obiettivo &lt;7,5).</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · Contenuti</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">9 · Articolo "NeroGiardini autunno 2026" + cluster mocassini</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort M</div>
+      <div class="p-body"><strong>Evidenza:</strong> il blog è il formato che funziona — l'audit 12/7 conferma che la guida mocassini è tecnicamente perfetta (BlogPosting schema, FAQ, H2 strutturati, link a collection; CTR 4,41%, pos. 4,2). Il cluster mocassini ha 3 keyword in top-3 ("mocassini uomo estate 2026" pos. 1,0). NeroGiardini è il brand top-seller delle ultime 4 settimane.<br><br><strong>Cosa fare:</strong> replicare il formato guida per <em>"Scarpe NeroGiardini autunno 2026: le novità"</em> con link a /collections/nero-giardini (già pianificato in azioni-team W27, da calendarizzare per fine agosto); aggiungere link interni dalla home al cluster mocassini per consolidare le pos. 1.<br><br><strong>Impatto atteso:</strong> presidio stagionale autunno con il formato a maggior CTR del sito.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge medium">🟡 P1 · Sito-wide</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">10 · Suffisso title duplicato "– Musto Calzature srl"</div>
+      <div class="p-who">Responsabile: SEO Strategist + Team Shopify · Effort S (rischio M)</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> Shopify appende il nome negozio a ogni title: dove il title SEO contiene già il brand si ottiene la doppia menzione — es. <em>"Les Tropeziennes | Musto Calzature <strong>– Musto Calzature srl</strong>"</em> — title oltre i 60 caratteri, troncati in SERP, con "srl" in bella vista.<br><br><strong>Cosa fare:</strong> (a) regola redazionale: nei title SEO delle pagine non ripetere "Musto Calzature" (il suffisso lo aggiunge Shopify); (b) valutare la rinomina del negozio da "Musto Calzature srl" a "Musto Calzature" (Admin → Impostazioni → Generali → Nome negozio). <strong>Attenzione:</strong> la rinomina cambia i title di tutto il sito in un colpo: farla in settimana a basso traffico e monitorare GSC per 2 settimane.<br><br><strong>Impatto atteso:</strong> title più leggibili in SERP su tutte le pagine → micro-guadagno di CTR diffuso.</div>
+    </div>
+
+  </div>
+
+  <!-- P2 -->
+  <div class="section-label">P2 · Medio Termine (1–3 mesi)</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 P2 · Tecnico</div><span class="tag-status tocheck">Da confermare</span>
+      <div class="p-title">11 · Canonical e paginazione delle collection</div>
+      <div class="p-who">Responsabile: SEO Strategist · Effort S</div>
+      <div class="p-body"><strong>Ipotesi:</strong> nero-giardini ha 237 prodotti → molte pagine ?page=N; verificare che le pagine paginate abbiano canonical corretto e che gli URL filtrati per tag (/collections/x/tag) non generino duplicazione indicizzabile.<br><br><strong>Cosa fare:</strong> crawl campione con Screaming Frog (o site: query mirate) su 3 collection grandi; correzione eventuale nel tema.<br><br><strong>Impatto atteso:</strong> igiene di crawl budget e consolidamento segnali sulle collection principali.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 P2 · Performance</div><span class="tag-status tocheck">Da confermare</span>
+      <div class="p-title">12 · Passata Core Web Vitals + viewport</div>
+      <div class="p-who">Responsabile: Team Shopify · Effort M</div>
+      <div class="p-body"><strong>Stato:</strong> CWV <strong>non misurati in questo audit</strong>. Nota già certa (audit 12/7): il tema emette 3 meta viewport duplicati con <em>user-scalable=no</em> — lo zoom è disabilitato su mobile: problema di accessibilità e segnale UX negativo.<br><br><strong>Cosa fare:</strong> PageSpeed Insights su home, una collection e un prodotto; fix del viewport duplicato nel tema; ottimizzazioni immagini/script secondo esito.<br><br><strong>Impatto atteso:</strong> esperienza mobile (la maggioranza del traffico moda) + ranking factor page experience.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 P2 · Contenuti</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">13 · Calendario editoriale stagionale formalizzato</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort M continuativo</div>
+      <div class="p-body"><strong>Evidenza:</strong> il changelog di aprile mostra che i refresh stagionali funzionano ma vengono decisi ad-hoc. Il refresh di <em>"back-to-work scarpe uomo"</em> (picco di ricerche a settembre) va fatto <strong>ad agosto</strong>; le keyword target autunnali (stivaletti donna, anfibi uomo) vanno preparate entro settembre.<br><br><strong>Cosa fare:</strong> adottare il calendario editoriale proposto nella pagina <em>suggerimenti-team-seo.html</em> (luglio–ottobre) e rinnovarlo a ogni trimestre.<br><br><strong>Impatto atteso:</strong> arrivare in anticipo sui picchi stagionali invece che inseguirli.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 P2 · Dati strutturati</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">14 · GTIN/MPN nel Product schema</div>
+      <div class="p-who">Responsabile: Team Shopify · Effort M</div>
+      <div class="p-body"><strong>Evidenza (audit 12/7):</strong> il Product schema è completo (brand, prezzo, disponibilità, sku, BreadcrumbList) ma <strong>senza GTIN/MPN</strong>.<br><br><strong>Cosa fare:</strong> popolare il campo "Codice a barre (ISBN, UPC, GTIN)" dei prodotti dove il dato è disponibile dai listini fornitori (Admin → Prodotti → variante → Codice a barre); il tema lo esporrà nello schema.<br><br><strong>Impatto atteso:</strong> matching più forte su Google Shopping/Merchant listings e idoneità a più rich result. Non urgente: fare a lotti, partendo dai brand top-seller.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge info">🔵 P2 · Contenuti</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">15 · Replicare il modello "tabella taglie" sugli altri brand</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort M</div>
+      <div class="p-body"><strong>Evidenza:</strong> le due tabelle esistenti (Bibi Lou, Frau) sono le pagine a più alto CTR del sito (17–19%) con query navigazionali precise ("frau guida alle taglie" CTR 50%).<br><br><strong>Cosa fare:</strong> creare le guide taglie per NeroGiardini, Pikolinos e Les Tropéziennes — questa volta con title/meta ottimizzati <em>fin dal lancio</em> e link bidirezionali con le rispettive collection (lo standard dell'item 3).<br><br><strong>Impatto atteso:</strong> traffico informativo ad altissimo CTR che alimenta le collection; asset difficilmente replicabile dai competitor non-rivenditori.</div>
+    </div>
+
+  </div>
+
+  <!-- P3 -->
+  <div class="section-label">P3 · Backlog e Opportunità</div>
+  <div class="priority-grid">
+
+    <div class="priority-card">
+      <div class="p-badge low">🟢 P3 · Emergente</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">16 · Presidio motori AI (ChatGPT, Perplexity, Gemini)</div>
+      <div class="p-who">Responsabile: SEO Strategist · Effort S</div>
+      <div class="p-body"><strong>Evidenza:</strong> canale "AI Assistant" emerso in W27 con 37 sessioni (0,9%); il trimestrale traccia già visite da ChatGPT (17), Gemini (8), Perplexity (4) con ~7 min di permanenza media.<br><br><strong>Cosa fare:</strong> estendere il formato FAQ (già presente nelle guide blog) alle pagine chiave; verificare che robots.txt del sito non blocchi GPTBot/PerplexityBot/Google-Extended (scelta da confermare con il cliente); mantenere la sezione "Musto sui motori AI" nel trimestrale.<br><br><strong>Impatto atteso:</strong> posizionamento precoce su un canale in crescita a costo marginale.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge low">🟢 P3 · Authority</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">17 · Link building bimestre 2: puntare le collection</div>
+      <div class="p-who">Responsabile: SEO Strategist · Effort L</div>
+      <div class="p-body"><strong>Evidenza:</strong> bimestre 1 chiuso con 5/8 link live e clic YoY +104%; le uscite puntavano prevalentemente su home/brand.<br><br><strong>Cosa fare:</strong> nelle prossime uscite orientare le anchor verso le collection deep in risalita (nero-giardini, les-tropeziennes) e le guide taglie, mantenendo il profilo anchor prudente del B1 (60% brand / 20% prodotto / 20% commerciale). Completare i 3 link mancanti del B1.<br><br><strong>Impatto atteso:</strong> spinta di authority esattamente sulle pagine dei P0.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge low">🟢 P3 · Trust</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">18 · Recensioni prodotto reali + Review schema</div>
+      <div class="p-who">Responsabile: Carmine + Team Shopify · Effort L</div>
+      <div class="p-body"><strong>Contesto:</strong> è il complemento costruttivo dell'item 1 — una volta rimosso il rating sintetico, il sito resta senza stelle in SERP.<br><br><strong>Cosa fare:</strong> valutare un'app recensioni (Judge.me, Loox…: costi/benefici e markup emesso), attivare l'email post-acquisto di richiesta recensione, ripristinare l'aggregateRating <em>solo</em> con dati reali.<br><br><strong>Impatto atteso:</strong> stelle legittime in SERP → CTR sulle pagine prodotto; social proof in conversione.</div>
+    </div>
+
+    <div class="priority-card">
+      <div class="p-badge low">🟢 P3 · Keyword</div><span class="tag-status confirmed">Confermato</span>
+      <div class="p-title">19 · "bibi lou sito ufficiale": riorientare l'intento</div>
+      <div class="p-who">Responsabile: SEO Copywriter · Effort XS</div>
+      <div class="p-body"><strong>Evidenza:</strong> "bibi lou sito ufficiale" porta 8 click/settimana a pos. 3,4 (241 impressioni W27), ma l'intento "sito ufficiale" non è vincibile da un rivenditore: il sito ufficiale del brand vincerà sempre.<br><br><strong>Cosa fare:</strong> non inseguire la pos. 1; ottimizzare la collection su <em>"rivenditore ufficiale Bibi Lou online"</em> e chiarirlo nel copy ("Musto è rivenditore autorizzato Bibi Lou a Milano") per massimizzare il CTR di chi cerca dove comprare.<br><br><strong>Impatto atteso:</strong> CTR migliore sulla quota di intento acquisibile, zero effort sprecato.</div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- TABELLA RIEPILOGATIVA -->
+  <div class="section-label">Tabella Riepilogativa</div>
+  <div class="detail-block">
+    <table class="order-table">
+      <thead>
+        <tr><th>#</th><th>Intervento</th><th>Priorità</th><th>Effort</th><th>Impatto</th><th>Responsabile</th><th>Stato verifica</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Rimozione rating sintetico Product schema</td><td style="color:#e07b6e">P0</td><td>S</td><td>Alto (difensivo)</td><td>Team Shopify + Strategist</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>2</td><td>Title/meta les-tropeziennes</td><td style="color:#e07b6e">P0</td><td>XS</td><td>Alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>3</td><td>Tabelle taglie: link bidirezionali + meta</td><td style="color:#e07b6e">P0</td><td>S</td><td>Alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>4</td><td>Residui migrazione HTTPS + GBP</td><td style="color:#e07b6e">P0</td><td>XS</td><td>Medio</td><td>Carmine</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>5</td><td>Schema LocalBusiness/ShoeStore</td><td style="color:var(--amber)">P1</td><td>S</td><td>Alto (local)</td><td>Team Shopify</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>6</td><td>Monitoraggio CTR nero-giardini</td><td style="color:var(--amber)">P1</td><td>XS</td><td>Alto</td><td>SEO Strategist</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>7</td><td>Alt text home/collection</td><td style="color:var(--amber)">P1</td><td>M</td><td>Medio</td><td>Team Shopify</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>8</td><td>Testi descrittivi collection</td><td style="color:var(--amber)">P1</td><td>M</td><td>Medio-alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>9</td><td>Articolo NeroGiardini autunno + cluster mocassini</td><td style="color:var(--amber)">P1</td><td>M</td><td>Medio-alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>10</td><td>Suffisso title "– Musto Calzature srl"</td><td style="color:var(--amber)">P1</td><td>S</td><td>Medio (diffuso)</td><td>Strategist + Team Shopify</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>11</td><td>Canonical/paginazione collection</td><td style="color:var(--blue)">P2</td><td>S</td><td>Medio</td><td>SEO Strategist</td><td><span class="tag-status tocheck">Da confermare</span></td></tr>
+        <tr><td>12</td><td>Core Web Vitals + viewport</td><td style="color:var(--blue)">P2</td><td>M</td><td>Medio</td><td>Team Shopify</td><td><span class="tag-status tocheck">Da confermare</span></td></tr>
+        <tr><td>13</td><td>Calendario editoriale stagionale</td><td style="color:var(--blue)">P2</td><td>M</td><td>Medio-alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>14</td><td>GTIN/MPN nel Product schema</td><td style="color:var(--blue)">P2</td><td>M</td><td>Medio</td><td>Team Shopify</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>15</td><td>Nuove tabelle taglie (NeroGiardini, Pikolinos…)</td><td style="color:var(--blue)">P2</td><td>M</td><td>Medio-alto</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>16</td><td>Presidio motori AI</td><td style="color:var(--green)">P3</td><td>S</td><td>Medio (prospettico)</td><td>SEO Strategist</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>17</td><td>Link building B2 verso collection</td><td style="color:var(--green)">P3</td><td>L</td><td>Alto (lento)</td><td>SEO Strategist</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>18</td><td>Recensioni reali + Review schema</td><td style="color:var(--green)">P3</td><td>L</td><td>Alto</td><td>Carmine + Team Shopify</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+        <tr><td>19</td><td>Riorientare "bibi lou sito ufficiale"</td><td style="color:var(--green)">P3</td><td>XS</td><td>Basso</td><td>SEO Copywriter</td><td><span class="tag-status confirmed">Confermato</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RISCHI -->
+  <div class="section-label">Rischi e Dipendenze</div>
+  <div class="warn-box"><strong>Backup tema:</strong> prima di qualsiasi modifica Liquid (item 1, 5, 12, 14) duplicare il tema attivo (Admin → Temi → Azioni → Duplica) e lavorare sulla copia.</div>
+  <div class="warn-box"><strong>Handle URL intoccabili:</strong> non rinominare mai gli handle di collection e pagine (/collections/nero-giardini, /pages/tabella-bibi-lou…): i link building live del bimestre 1 puntano lì e Shopify non fa redirect automatici affidabili sui vecchi handle già linkati.</div>
+  <div class="warn-box"><strong>Tempi di ricrawl:</strong> Google impiega 2–6 settimane a riflettere title/meta/schema nuovi: valutare gli effetti degli interventi solo dopo almeno un mese, sui report settimanali.</div>
+  <div class="warn-box"><strong>App e doppio markup:</strong> prima di aggiungere JSON-LD via tema (item 5, 18), verificare cosa emettono già le app installate per evitare schema duplicati.</div>
+  <div class="ok-box"><strong>Sequenza consigliata:</strong> item 2 e 4 subito (effort XS); item 1 e 3 nella stessa settimana; poi P1 in ordine 5 → 10 → 7/8/9 in parallelo tra copywriter e team Shopify.</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <span>⚠️ DOCUMENTO RISERVATO · Web Domus · Uso interno</span>
+  <span>Musto Calzature · Analisi SEO Luglio 2026 · Redatto il 12 luglio 2026</span>
+</div>
+
+</body>
+</html>
