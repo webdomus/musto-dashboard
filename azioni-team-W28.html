@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚠️ INTERNO – Azioni Team W28 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f;--gold:#c9a96e;--gold-light:#e0c898;
+  --green:#4a9e7a;--red:#c0392b;--text:#e8e8e8;--muted:#888;
+  --border:#2a2a2a;--card:#181818;--amber:#e8a020;--blue:#5B9BD5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+
+/* INTERNAL BANNER */
+.internal-banner{background:#7b0000;border-bottom:3px solid #ff3333;padding:12px 32px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100}
+.internal-banner-icon{font-size:22px}
+.internal-banner-text{font-weight:700;font-size:13px;color:#fff;letter-spacing:.3px}
+.internal-banner-sub{font-size:11px;color:rgba(255,255,255,.75);margin-top:1px}
+
+/* HEADER */
+.header{background:#0a0a0a;border-bottom:1px solid var(--gold);padding:28px 32px}
+.header-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.header-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff}
+.header-meta{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* CONTENT */
+.container{max-width:980px;margin:0 auto;padding:28px 24px}
+
+/* SECTION */
+.section-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.section-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+
+/* ALERT */
+.alert-box{background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.4);border-left:4px solid var(--red);border-radius:8px;padding:16px 20px;margin-bottom:20px}
+.alert-title{font-size:12px;font-weight:700;color:#e07b6e;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.alert-body{font-size:12.5px;color:#ccc;line-height:1.6}
+
+/* KPI ROW */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.kpi-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.kpi-value{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.kpi-pill{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:4px}
+.kpi-pill.up{background:rgba(74,158,122,.15);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.kpi-pill.down{background:rgba(192,57,43,.13);color:#e07b6e;border:1px solid rgba(192,57,43,.3)}
+.kpi-pill.neutral{background:rgba(136,136,136,.12);color:var(--muted);border:1px solid rgba(136,136,136,.25)}
+.kpi-pill.amber{background:rgba(232,160,32,.12);color:var(--amber);border:1px solid rgba(232,160,32,.3)}
+
+/* TABLES */
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.tbl-header{padding:14px 18px 0;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.tbl-header-title{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.tbl-header-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
+.badge-red{background:rgba(192,57,43,.2);color:#e07b6e;border:1px solid rgba(192,57,43,.35)}
+.badge-green{background:rgba(74,158,122,.15);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.badge-amber{background:rgba(232,160,32,.15);color:var(--amber);border:1px solid rgba(232,160,32,.3)}
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.data-table th{text-align:left;padding:9px 14px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:9px 14px;border-bottom:1px solid rgba(42,42,42,.5);color:var(--text)}
+.data-table tr:last-child td{border-bottom:none}
+.tbl-footer{padding:9px 14px 12px;font-size:10.5px;color:var(--muted)}
+.tr-pending{background:rgba(232,160,32,.05)}
+.tr-pending td{color:#ddd}
+
+/* STATUS */
+.st-pagato{color:var(--green);font-weight:700;font-size:11px}
+.st-attesa{color:var(--amber);font-weight:700;font-size:11px}
+
+/* PLAIN BOX */
+.info-box{background:rgba(91,155,213,.05);border:1px solid rgba(91,155,213,.2);border-left:3px solid var(--blue);border-radius:7px;padding:14px 18px;margin:16px 0;font-size:12.5px;color:#bbb;line-height:1.7}
+.warn-box{background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.2);border-left:3px solid var(--amber);border-radius:7px;padding:14px 18px;margin:16px 0;font-size:12.5px;color:#bbb;line-height:1.7}
+
+/* AZIONI */
+.azioni-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.azione-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start}
+.azione-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);min-width:26px;line-height:1}
+.azione-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
+.azione-body{font-size:12px;color:#999;line-height:1.55}
+.priority-high{border-left:3px solid var(--red)}
+.priority-med{border-left:3px solid var(--amber)}
+.priority-low{border-left:3px solid var(--green)}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
+
+/* GOLD */
+.gold-val{color:var(--gold-light);font-weight:600}
+
+/* DAILY */
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:12px}
+.day-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center}
+.day-name{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px}
+.day-date{font-size:10px;color:#aaa;margin-bottom:6px}
+.day-rev{font-size:13px;font-weight:700;color:var(--gold-light)}
+.day-orders{font-size:10px;color:var(--muted);margin-top:2px}
+.day-best{border-color:rgba(201,169,110,.5);background:rgba(201,169,110,.05)}
+.day-best .day-name{color:var(--gold)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:32px}
+.footer-label{font-size:10px;color:var(--muted)}
+.footer-internal{font-size:10px;font-weight:700;color:#e07b6e;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<!-- INTERNAL BANNER -->
+<div class="internal-banner">
+  <div class="internal-banner-icon">🔒</div>
+  <div>
+    <div class="internal-banner-text">DOCUMENTO INTERNO – NON CONDIVIDERE CON IL CLIENTE</div>
+    <div class="internal-banner-sub">Uso esclusivo team Web Domus · Contiene ordini IN ATTESA DI PAGAMENTO e dati operativi</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-label">⚙️ Azioni Team – W28 2026</div>
+  <div class="header-title">Musto Calzature · 6–12 Luglio 2026</div>
+  <div class="header-meta">Documento interno generato il 14 luglio 2026 · Dati: GA4, Shopify, Search Console</div>
+</div>
+
+<div class="container">
+
+<!-- ALERT PENDING -->
+<div class="alert-box">
+  <div class="alert-title">⚠️ 4 ordini IN ATTESA DI PAGAMENTO – verificare stato su Shopify</div>
+  <div class="alert-body">
+    Gli ordini #1560, #1566, #1570, #1576 risultano ancora in stato "IN ATTESA DI PAGAMENTO" al momento della generazione del report. Verificare se il pagamento è arrivato, se si tratta di bonifici da attendere, o se è necessario un sollecito. Valore totale in attesa: <strong style="color:var(--amber)">€455,60</strong>.
+  </div>
+</div>
+
+<!-- KPI DELLA SETTIMANA -->
+<div class="section-eyebrow">Riepilogo W28</div>
+<div class="section-title">Numeri chiave della settimana</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">Utenti GA4</div>
+    <div class="kpi-value">3.307</div>
+    <div class="kpi-sub">sessioni: 3.623</div>
+    <span class="kpi-pill down">▼ −12,2% vs W27</span>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Ordini Totali (Shopify)</div>
+    <div class="kpi-value">21</div>
+    <div class="kpi-sub">17 PAGATI · 4 IN ATTESA</div>
+    <span class="kpi-pill up">▲ settimana forte</span>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Fatturato PAGATI</div>
+    <div class="kpi-value">€2.620</div>
+    <div class="kpi-sub">spesa media: €154,14</div>
+    <span class="kpi-pill up">▲ +87,3% vs W27</span>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Valore IN ATTESA</div>
+    <div class="kpi-value">€455</div>
+    <div class="kpi-sub">4 ordini da verificare</div>
+    <span class="kpi-pill amber">⚠ da monitorare</span>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Click GSC</div>
+    <div class="kpi-value">1.736</div>
+    <div class="kpi-sub">pos. media 7,8</div>
+    <span class="kpi-pill up">▲ +8,3% vs W27</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ORDINI COMPLETI -->
+<div class="section-eyebrow">Shopify · Tutti gli ordini W28</div>
+<div class="section-title">Dettaglio completo ordini – PAGATI e IN ATTESA</div>
+
+<div class="warn-box">
+  <strong>Ordini IN ATTESA (evidenziati in arancio)</strong>: #1560 (lun 6 lug, €123,90), #1566 (ven 10 lug, €113,90), #1570 (ven 10 lug, €93,90), #1576 (dom 12 lug, €123,90). Totale in sospeso: <strong>€455,60</strong>. Verificare su Shopify il metodo di pagamento e lo stato aggiornato.
+</div>
+
+<div class="tbl-wrap">
+  <div class="tbl-header">
+    <div class="tbl-header-title">Tutti gli ordini W28 · 6–12 luglio 2026</div>
+    <span class="tbl-header-badge badge-green">17 PAGATI</span>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Ordine #</th>
+        <th>Data</th>
+        <th>Giorno</th>
+        <th style="text-align:right">Importo</th>
+        <th>Stato finanziario</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="gold-val">#1557</span></td><td>06/07</td><td>Lunedì</td><td style="text-align:right">€160,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1558</span></td><td>06/07</td><td>Lunedì</td><td style="text-align:right">€70,55</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1559</span></td><td>06/07</td><td>Lunedì</td><td style="text-align:right">€104,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr class="tr-pending"><td><strong style="color:var(--amber)">#1560</strong></td><td>06/07</td><td>Lunedì</td><td style="text-align:right">€123,90</td><td><span class="st-attesa">IN ATTESA</span></td><td style="font-size:10px;color:var(--amber)">⚠ Verificare</td></tr>
+      <tr><td><span class="gold-val">#1561</span></td><td>06/07</td><td>Lunedì</td><td style="text-align:right">€133,90</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1562</span></td><td>07/07</td><td>Martedì</td><td style="text-align:right">€61,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1563</span></td><td>08/07</td><td>Mercoledì</td><td style="text-align:right">€74,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1564</span></td><td>09/07</td><td>Giovedì</td><td style="text-align:right">€179,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1565</span></td><td>09/07</td><td>Giovedì</td><td style="text-align:right">€196,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr class="tr-pending"><td><strong style="color:var(--amber)">#1566</strong></td><td>10/07</td><td>Venerdì</td><td style="text-align:right">€113,90</td><td><span class="st-attesa">IN ATTESA</span></td><td style="font-size:10px;color:var(--amber)">⚠ Verificare</td></tr>
+      <tr><td><span class="gold-val">#1567</span></td><td>10/07</td><td>Venerdì</td><td style="text-align:right">€101,05</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1568</span></td><td>10/07</td><td>Venerdì</td><td style="text-align:right">€233,90</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1569</span></td><td>10/07</td><td>Venerdì</td><td style="text-align:right">€54,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr class="tr-pending"><td><strong style="color:var(--amber)">#1570</strong></td><td>10/07</td><td>Venerdì</td><td style="text-align:right">€93,90</td><td><span class="st-attesa">IN ATTESA</span></td><td style="font-size:10px;color:var(--amber)">⚠ Verificare</td></tr>
+      <tr><td><span class="gold-val">#1571</span></td><td>11/07</td><td>Sabato ⭐</td><td style="text-align:right">€145,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1572</span></td><td>11/07</td><td>Sabato ⭐</td><td style="text-align:right">€84,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1573</span></td><td>11/07</td><td>Sabato ⭐</td><td style="text-align:right">€184,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr><td><span class="gold-val">#1574</span></td><td>11/07</td><td>Sabato ⭐</td><td style="text-align:right">€557,00</td><td><span class="st-pagato">PAGATO</span></td><td style="font-size:10px;color:var(--gold)">3× MUSTO (€199+€199+€159)</td></tr>
+      <tr><td><span class="gold-val">#1575</span></td><td>11/07</td><td>Sabato ⭐</td><td style="text-align:right">€74,00</td><td><span class="st-pagato">PAGATO</span></td><td></td></tr>
+      <tr class="tr-pending"><td><strong style="color:var(--amber)">#1576</strong></td><td>12/07</td><td>Domenica</td><td style="text-align:right">€123,90</td><td><span class="st-attesa">IN ATTESA</span></td><td style="font-size:10px;color:var(--amber)">⚠ Verificare</td></tr>
+      <tr><td><span class="gold-val">#1577</span></td><td>12/07</td><td>Domenica</td><td style="text-align:right">€209,00</td><td><span class="st-pagato">PAGATO</span></td><td>MUSTO mocassino</td></tr>
+    </tbody>
+  </table>
+  <div class="tbl-footer">
+    Totale: 21 ordini &nbsp;|&nbsp; PAGATI: 17 → <strong style="color:var(--green)">€2.620,40</strong> &nbsp;|&nbsp; IN ATTESA: 4 → <strong style="color:var(--amber)">€455,60</strong> &nbsp;|&nbsp; Esclusi: 0 &nbsp;|&nbsp; ⭐ Sabato = giorno migliore: €1.044 (5 ordini)
+  </div>
+</div>
+
+<hr>
+
+<!-- RIEPILOGO GIORNALIERO -->
+<div class="section-eyebrow">Shopify · Andamento</div>
+<div class="section-title">Incasso giornaliero (solo PAGATI)</div>
+
+<div class="day-grid">
+  <div class="day-card">
+    <div class="day-name">Lun</div>
+    <div class="day-date">6 lug</div>
+    <div class="day-rev">€468</div>
+    <div class="day-orders">4 ord.</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Mar</div>
+    <div class="day-date">7 lug</div>
+    <div class="day-rev">€61</div>
+    <div class="day-orders">1 ord.</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Mer</div>
+    <div class="day-date">8 lug</div>
+    <div class="day-rev">€74</div>
+    <div class="day-orders">1 ord.</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Gio</div>
+    <div class="day-date">9 lug</div>
+    <div class="day-rev">€375</div>
+    <div class="day-orders">2 ord.</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Ven</div>
+    <div class="day-date">10 lug</div>
+    <div class="day-rev">€389</div>
+    <div class="day-orders">3 ord.</div>
+  </div>
+  <div class="day-card day-best">
+    <div class="day-name">🏆 Sab</div>
+    <div class="day-date">11 lug</div>
+    <div class="day-rev">€1.044</div>
+    <div class="day-orders">5 ord.</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Dom</div>
+    <div class="day-date">12 lug</div>
+    <div class="day-rev">€209</div>
+    <div class="day-orders">1 ord.</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>Sabato 11 luglio</strong> è stato il giorno migliore: 5 ordini pagati per €1.044. L'ordine #1574 da solo ha portato €557 (3 mocassini MUSTO). Questo pattern weekend-heavy è ricorrente — vale considerare campagne social concentrate il venerdì-sabato.
+</div>
+
+<hr>
+
+<!-- GA4 DATI INTERNI -->
+<div class="section-eyebrow">Google Analytics 4 · Dati completi</div>
+<div class="section-title">Traffico giornaliero W28</div>
+
+<div class="tbl-wrap">
+  <table class="data-table">
+    <thead>
+      <tr><th>Giorno</th><th style="text-align:right">Utenti</th><th style="text-align:right">Sessioni</th><th style="text-align:right">WoW note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Lunedì 6 lug</td><td style="text-align:right">414</td><td style="text-align:right">457</td><td style="text-align:right;color:var(--muted)">–</td></tr>
+      <tr><td>Martedì 7 lug</td><td style="text-align:right">461</td><td style="text-align:right">512</td><td style="text-align:right;color:var(--muted)">–</td></tr>
+      <tr><td>Mercoledì 8 lug</td><td style="text-align:right">471</td><td style="text-align:right">506</td><td style="text-align:right;color:var(--muted)">–</td></tr>
+      <tr><td>Giovedì 9 lug</td><td style="text-align:right">487</td><td style="text-align:right">536</td><td style="text-align:right;color:var(--muted)">–</td></tr>
+      <tr><td>Venerdì 10 lug</td><td style="text-align:right;color:var(--gold-light)">517</td><td style="text-align:right;color:var(--gold-light)">562</td><td style="text-align:right;font-size:10px;color:var(--gold)">giorno picco traffico</td></tr>
+      <tr><td>Sabato 11 lug</td><td style="text-align:right">473</td><td style="text-align:right">516</td><td style="text-align:right;font-size:10px;color:var(--green)">picco vendite</td></tr>
+      <tr><td>Domenica 12 lug</td><td style="text-align:right">484</td><td style="text-align:right">534</td><td style="text-align:right;color:var(--muted)">–</td></tr>
+    </tbody>
+  </table>
+  <div class="tbl-footer">Totale settimana: 3.307 utenti · 3.623 sessioni · WoW: −12,2% utenti, −9,8% sessioni vs W27</div>
+</div>
+
+<hr>
+
+<!-- CANALI TOP INTERNI -->
+<div class="section-eyebrow">GA4 · Canali di acquisizione</div>
+<div class="section-title">Dettaglio canali W28</div>
+
+<div class="tbl-wrap">
+  <table class="data-table">
+    <thead>
+      <tr><th>Canale</th><th style="text-align:right">Sessioni</th><th style="text-align:right">% totale</th><th style="text-align:right">Incasso attribuito</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Organic Search (Google)</td><td style="text-align:right">1.298</td><td style="text-align:right">35,9%</td><td style="text-align:right">€940</td></tr>
+      <tr><td>Paid Social</td><td style="text-align:right">664</td><td style="text-align:right">18,4%</td><td style="text-align:right">€481</td></tr>
+      <tr><td>Direct</td><td style="text-align:right">612</td><td style="text-align:right">16,9%</td><td style="text-align:right">€443</td></tr>
+      <tr><td>Paid Shopping</td><td style="text-align:right">350</td><td style="text-align:right">9,7%</td><td style="text-align:right">€254</td></tr>
+      <tr><td>Unassigned</td><td style="text-align:right">294</td><td style="text-align:right">8,1%</td><td style="text-align:right">€213</td></tr>
+      <tr><td>Organic Social</td><td style="text-align:right">136</td><td style="text-align:right">3,8%</td><td style="text-align:right">€99</td></tr>
+      <tr><td>Paid Search</td><td style="text-align:right">98</td><td style="text-align:right">2,7%</td><td style="text-align:right">€71</td></tr>
+      <tr><td>Cross-network</td><td style="text-align:right">93</td><td style="text-align:right">2,6%</td><td style="text-align:right">€67</td></tr>
+      <tr><td>Referral AI (ChatGPT…)</td><td style="text-align:right">32</td><td style="text-align:right">0,9%</td><td style="text-align:right">€23</td></tr>
+      <tr><td>Altro</td><td style="text-align:right">38</td><td style="text-align:right">1,0%</td><td style="text-align:right">€29</td></tr>
+    </tbody>
+  </table>
+  <div class="tbl-footer">Totale sessioni: 3.615 (GA4) · Incasso attribuito proporzionalmente su €2.620,40 Shopify PAGATI</div>
+</div>
+
+<hr>
+
+<!-- GSC DATI INTERNI -->
+<div class="section-eyebrow">Google Search Console</div>
+<div class="section-title">Andamento GSC giornaliero W28</div>
+
+<div class="tbl-wrap">
+  <table class="data-table">
+    <thead>
+      <tr><th>Data</th><th style="text-align:right">Click</th><th style="text-align:right">Impressioni</th><th style="text-align:right">CTR</th><th style="text-align:right">Posizione</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Lun 6 lug</td><td style="text-align:right">293</td><td style="text-align:right">20.965</td><td style="text-align:right">1,40%</td><td style="text-align:right">7,77</td></tr>
+      <tr><td>Mar 7 lug</td><td style="text-align:right">252</td><td style="text-align:right">20.332</td><td style="text-align:right">1,24%</td><td style="text-align:right">7,82</td></tr>
+      <tr><td>Mer 8 lug</td><td style="text-align:right">238</td><td style="text-align:right">20.222</td><td style="text-align:right">1,18%</td><td style="text-align:right">7,95</td></tr>
+      <tr><td>Gio 9 lug</td><td style="text-align:right">239</td><td style="text-align:right">19.095</td><td style="text-align:right">1,25%</td><td style="text-align:right">7,50</td></tr>
+      <tr><td>Ven 10 lug</td><td style="text-align:right">250</td><td style="text-align:right">18.657</td><td style="text-align:right">1,34%</td><td style="text-align:right">7,63</td></tr>
+      <tr><td>Sab 11 lug</td><td style="text-align:right">256</td><td style="text-align:right">20.471</td><td style="text-align:right">1,25%</td><td style="text-align:right">7,99</td></tr>
+      <tr><td>Dom 12 lug</td><td style="text-align:right">208</td><td style="text-align:right">19.407</td><td style="text-align:right">1,07%</td><td style="text-align:right">7,85</td></tr>
+    </tbody>
+  </table>
+  <div class="tbl-footer">Totale W28: 1.736 click · 139.149 impressioni · CTR medio 1,25% · Posizione media 7,79</div>
+</div>
+
+<div class="info-box">
+  <strong>Nota per il team:</strong> La posizione media 7,79 di W28 vs 7,95 di W27 conferma una lieve tendenza positiva. Le impression sono però calate di ~1,5%: potrebbe essere l'inizio dell'effetto luglio (ricerche fashion più basse d'estate). Monitorare W29 prima di agire. Il CTR 1,25% è sopra alla media delle ultime 4 settimane, segno che i titoli/meta sono pertinenti.
+</div>
+
+<hr>
+
+<!-- AZIONI PRIORITARIE -->
+<div class="section-eyebrow">Azioni W29 – 13–19 luglio</div>
+<div class="section-title">Checklist priorità team</div>
+
+<div class="azioni-list">
+  <div class="azione-item priority-high">
+    <div class="azione-num">!</div>
+    <div>
+      <div class="azione-title">🔴 URGENTE · Verificare i 4 ordini IN ATTESA DI PAGAMENTO</div>
+      <div class="azione-body">Ordini #1560, #1566, #1570, #1576 — totale €455,60. Aprire Shopify → Ordini → filtrare per "In attesa di pagamento" → verificare metodo pagamento e aggiornare stato. Se bonifico: attendere conferma entro 3–5 giorni lavorativi. Se pagamento con carta fallito: contattare il cliente.</div>
+    </div>
+  </div>
+  <div class="azione-item priority-med">
+    <div class="azione-num">1</div>
+    <div>
+      <div class="azione-title">Ottimizzazione pagine mocassini MUSTO</div>
+      <div class="azione-body">MUSTO è primo brand con 7 paia vendute in 4 settimane (€1.345). Ottimizzare le pagine collezione MUSTO con testi H1 e meta che includano "mocassini uomo Milano" e "scarpe uomo Musto". Target posizionamento entro W31.</div>
+    </div>
+  </div>
+  <div class="azione-item priority-med">
+    <div class="azione-num">2</div>
+    <div>
+      <div class="azione-title">Aggiornamento articolo "Sandali flat donna 2026"</div>
+      <div class="azione-body">L'articolo ha 33 click in W28 ma è in posizione 7,9 media. Aggiungere: (1) immagini prodotto con alt tag descrittivi, (2) paragrafo su "sandali flat estate 2026 tendenze", (3) link interno a Les Tropéziennes e Bibi Lou. Obiettivo: salire a posizione 5–6.</div>
+    </div>
+  </div>
+  <div class="azione-item priority-low">
+    <div class="azione-num">3</div>
+    <div>
+      <div class="azione-title">Analisi stagionalità luglio (confronto con luglio 2025)</div>
+      <div class="azione-body">Il calo traffico −12,2% di W28 rispetto a W27 potrebbe essere stagionale. Verificare GA4 con range luglio 2025 per capire se il calo è normale. Usare questo dato per contestualizzare il report cliente di W29 e non allarmare il cliente.</div>
+    </div>
+  </div>
+  <div class="azione-item priority-low">
+    <div class="azione-num">4</div>
+    <div>
+      <div class="azione-title">Note su AI referral (32 sessioni da ChatGPT/AI)</div>
+      <div class="azione-body">32 sessioni classificate come "Referral AI" nella settimana — una fonte ancora piccola ma crescente nel settore moda. Non è richiesta un'azione immediata, ma vale monitorare nel tempo e valutare se strutturare contenuti ottimizzati per LLM (FAQ, dati strutturati) in Q4 2026.</div>
+    </div>
+  </div>
+</div>
+
+<div class="warn-box">
+  <strong>Reminder per il report W29:</strong> Il prossimo report settimanale coprirà W29 (13–19 luglio 2026). Verifica che gli ordini IN ATTESA siano stati aggiornati su Shopify prima della generazione, così la situazione sarà già risolta nel prossimo report cliente.
+</div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-label">Web Domus · Documento interno · Musto Calzature W28 2026</div>
+  <div class="footer-internal">🔒 INTERNO – NON CONDIVIDERE</div>
+</div>
+
+</body>
+</html>
