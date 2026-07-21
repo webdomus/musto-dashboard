@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musto Calzature · Report Organico — Giugno 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --bg:#0f0f0f; --surface:#1a1a1a; --surface2:#202020;
+  --border:rgba(255,255,255,0.07); --text:#f0ece4; --text-muted:rgba(240,236,228,0.45);
+  --gold:#c9a96e; --green:#4a9e7a; --red:#c0392b; --blue:#5b8fb0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--gold);text-decoration:none}
+
+/* Header */
+header{border-bottom:1px solid var(--border);padding:42px 0 34px;background:linear-gradient(180deg,#141414,#0f0f0f)}
+.topnav{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;margin-bottom:30px;flex-wrap:wrap;gap:10px}
+.topnav .crumbs a{color:var(--text-muted);transition:color .2s}
+.topnav .crumbs a:hover{color:var(--gold)}
+.topnav .links a{margin-left:18px;color:var(--gold)}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-family:'Playfair Display',serif;font-weight:700;font-size:2.7rem;line-height:1.1}
+.sub{color:var(--text-muted);margin-top:10px;font-size:1.02rem}
+.period-badge{display:inline-block;margin-top:18px;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;font-size:.78rem;letter-spacing:.05em}
+
+section{padding:44px 0;border-bottom:1px solid var(--border)}
+.sec-label{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.7rem;margin-bottom:8px}
+.sec-intro{color:var(--text-muted);max-width:760px;margin-bottom:26px;font-size:.96rem}
+
+/* Synthesis */
+.synthesis{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:26px 30px}
+.synthesis p{font-size:1.04rem;color:#e7e2d8}
+.synthesis p+p{margin-top:14px}
+
+/* KPI grid */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px}
+.kpi .val{font-family:'Playfair Display',serif;font-size:2.05rem;font-weight:600;line-height:1}
+.kpi .lab{color:var(--text-muted);font-size:.82rem;margin-top:10px}
+.kpi .delta{display:inline-block;margin-top:12px;font-size:.78rem;font-weight:500;padding:3px 9px;border-radius:20px}
+.up{color:var(--green);background:rgba(74,158,122,.12)}
+.down{color:var(--red);background:rgba(192,57,43,.12)}
+.flat{color:var(--text-muted);background:rgba(255,255,255,.05)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h3{font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;margin-bottom:4px}
+.card .note{color:var(--text-muted);font-size:.85rem;margin-bottom:16px}
+.chartbox{position:relative;height:300px}
+.chartbox.tall{height:330px}
+
+/* Insight boxes */
+.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
+.insight{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.insight .h{font-weight:600;color:var(--gold);font-size:.92rem;margin-bottom:6px}
+.insight .t{font-size:.88rem;color:#d8d3c9}
+
+/* Keyword table */
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--border)}
+th{color:var(--text-muted);font-weight:500;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+td .pos{display:inline-block;min-width:30px;text-align:center;font-weight:600;border-radius:6px;padding:3px 7px;font-size:.82rem}
+.p1{background:rgba(201,169,110,.18);color:var(--gold)}
+.p2{background:rgba(74,158,122,.14);color:var(--green)}
+.p3{background:rgba(91,143,176,.14);color:var(--blue)}
+.tag{font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);border-radius:20px;padding:2px 9px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--text-muted);font-size:.82rem}
+footer .logo{font-family:'Playfair Display',serif;color:var(--text);font-size:1.05rem;letter-spacing:.02em;margin-bottom:8px}
+footer a{margin:0 10px}
+.fnote{font-size:.76rem;color:var(--text-muted);margin-top:14px;max-width:760px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topnav">
+      <div class="crumbs"><a href="https://dashboard.mustocalzature.com/">← Dashboard principale</a></div>
+      <div class="links">
+        <a href="https://dashboard.mustocalzature.com/report-settimanale-2026-W28.html">Report settimanale →</a>
+      </div>
+    </div>
+    <div class="eyebrow">Report Mensile · Focus Organico</div>
+    <h1>Musto Calzature</h1>
+    <div class="sub">Traffico e risultati organici — analisi SEO e visibilità dello store su Google</div>
+    <span class="period-badge">Giugno 2026 · 01/06 – 30/06</span>
+  </div>
+</header>
+
+<!-- SINTESI -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Sintesi del mese</div>
+    <div class="synthesis">
+      <p>Dopo il record di maggio, giugno segna una fisiologica normalizzazione che resta però saldamente sopra la media dei mesi precedenti. La Search Console registra <strong>7.486 click organici</strong> (-7% su maggio, comunque quasi il doppio di febbraio) su <strong>585.636 impressioni</strong> (-6%), con la posizione media che continua a migliorare a <strong>7,4</strong> (da 7,9), pur chiudendo il mese a 8,1. Le sessioni organiche su GA4 si attestano a <strong>5.678</strong> (-9%): la ricerca organica si conferma il primo canale del sito, davanti a social a pagamento e traffico diretto.</p>
+      <p>Il dato più significativo del mese arriva dalla visibilità strutturale: mentre il traffico "misurato" rallenta leggermente rispetto al picco di maggio, la base di posizionamenti accelera. Il valore stimato del traffico organico sale a <strong>€5.380</strong> (+19%), le keyword posizionate salgono a <strong>805</strong> (+32%) e quelle in top 3 quasi raddoppiano, da 29 a <strong>45</strong> (+55%), con le top 10 che passano da 175 a 200. È il segnale che il patrimonio di parole chiave presidiate si sta ampliando, con benefici attesi sul traffico nei mesi a venire.</p>
+      <p>Resta solida la leadership locale ("negozio scarpe a Milano" in 1ª posizione) e cresce la spinta stagionale estiva: sandali e Les Tropéziennes tra le ricerche in aumento, con <strong>Bibi Lou</strong> come parola chiave non-brand più cliccata del mese. Tra le new entry di rilievo, lo store entra in top 10 su <strong>"nero giardini"</strong>, uno dei termini di calzature più cercati in Italia (decine di migliaia di ricerche al mese): un presidio ad altissimo potenziale su cui costruire nei prossimi mesi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAFFICO ORGANICO -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Traffico organico</div>
+    <h2>Andamento della ricerca organica</h2>
+    <p class="sec-intro">Dati Google Search Console (click e impressioni dalle ricerche Google) e GA4 (sessioni del canale Organic Search) per il dominio mustocalzature.com. La posizione media mensile è ponderata sui click.</p>
+
+    <div class="kpis" style="margin-bottom:28px">
+      <div class="kpi"><div class="val">7.486</div><div class="lab">Click organici (GSC)</div><span class="delta down">▼ -7% vs maggio</span></div>
+      <div class="kpi"><div class="val">585.636</div><div class="lab">Impressioni (GSC)</div><span class="delta down">▼ -6% vs maggio</span></div>
+      <div class="kpi"><div class="val">7,4</div><div class="lab">Posizione media</div><span class="delta up">▲ da 7,9 (fine mese 8,1)</span></div>
+      <div class="kpi"><div class="val">5.678</div><div class="lab">Sessioni organiche (GA4)</div><span class="delta down">▼ -9% vs maggio</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Click e impressioni organiche · febbraio–giugno 2026</h3>
+      <div class="note">Barre: click organici per mese · Linea: posizione media (asse invertito, più in alto = meglio).</div>
+      <div class="chartbox tall"><canvas id="gscChart"></canvas></div>
+    </div>
+
+    <div class="insights">
+      <div class="insight"><div class="h">Flessione fisiologica dopo il record</div><div class="t">Maggio è stato il mese organico più forte dell'anno; giugno normalizza (-7% click) restando comunque quasi il doppio di febbraio.</div></div>
+      <div class="insight"><div class="h">Posizione media in miglioramento</div><div class="t">La media del mese scende a 7,4 (da 7,9): lo store compare più spesso più in alto in SERP, con qualche oscillazione solo nell'ultima settimana.</div></div>
+      <div class="insight"><div class="h">Base di visibilità ampia</div><div class="t">Le impressioni restano sopra 585k, un bacino di utenti molto più esteso rispetto all'inizio dell'anno (248k a febbraio).</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIBILITA DATAFORSEO -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Crescita della visibilità</div>
+    <h2>Storico visibilità organica · DataForSEO</h2>
+    <p class="sec-intro">Stima indipendente (DataForSEO, Google Italia) del numero di keyword posizionate e del valore equivalente del traffico organico — utile per leggere il trend al netto delle oscillazioni giornaliere.</p>
+
+    <div class="kpis" style="margin-bottom:28px">
+      <div class="kpi"><div class="val">€5.380</div><div class="lab">Valore stimato traffico organico (ETV)</div><span class="delta up">▲ +19% vs maggio</span></div>
+      <div class="kpi"><div class="val">805</div><div class="lab">Keyword posizionate totali</div><span class="delta up">▲ +32% vs maggio (611)</span></div>
+      <div class="kpi"><div class="val">200</div><div class="lab">Keyword in top 10</div><span class="delta up">▲ +14% vs maggio (175)</span></div>
+      <div class="kpi"><div class="val">45</div><div class="lab">Keyword in top 3</div><span class="delta up">▲ +55% vs maggio (29)</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Valore traffico organico e keyword posizionate · 2026</h3>
+      <div class="note">Barre: keyword posizionate · Linea: valore stimato del traffico organico (€).</div>
+      <div class="chartbox tall"><canvas id="dfsChart"></canvas></div>
+    </div>
+
+    <div class="insights">
+      <div class="insight"><div class="h">La base cresce del 32%</div><div class="t">Da 611 a 805 keyword posizionate in un mese: si ampliano i termini su cui il sito compare, la premessa per il traffico dei mesi successivi.</div></div>
+      <div class="insight"><div class="h">Sempre più in prima pagina</div><div class="t">45 keyword in top 3 (da 29) e 200 in top 10 (da 175): non solo più visibilità, ma visibilità nelle posizioni che generano click.</div></div>
+      <div class="insight"><div class="h">Valore in accelerazione</div><div class="t">Il valore stimato del traffico organico torna a salire a €5.380 (+19%): il massimo dei mesi analizzati nel 2026, sostenuto dalla domanda estiva.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP KEYWORD -->
+<section>
+  <div class="wrap">
+    <div class="sec-label">Dove siamo forti</div>
+    <h2>Le keyword organiche di punta</h2>
+    <p class="sec-intro">Un mix sano tra ricerche locali, di categoria prodotto e di brand. Su molte di queste lo store presidia già le primissime posizioni di Google. Posizioni rilevate a fine periodo (DataForSEO, Google Italia).</p>
+    <div class="card" style="padding:6px 24px 14px">
+      <table>
+        <thead><tr><th>Keyword</th><th>Pos.</th><th>Volume/mese</th><th>Tipo</th></tr></thead>
+        <tbody>
+          <tr><td>negozio scarpe a milano</td><td><span class="pos p1">1</span></td><td>2.900</td><td><span class="tag">Locale</span></td></tr>
+          <tr><td>bibi lou</td><td><span class="pos p2">2</span></td><td>5.400</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>negozi scarpe milano</td><td><span class="pos p2">2</span></td><td>2.900</td><td><span class="tag">Locale</span></td></tr>
+          <tr><td>pikolinos scarpe</td><td><span class="pos p2">2</span></td><td>1.000</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>scarpe da cerimonia donna</td><td><span class="pos p3">3</span></td><td>2.900</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>les tropeziennes</td><td><span class="pos p3">3</span></td><td>1.900</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>scarpe per cerimonia donna</td><td><span class="pos p3">4</span></td><td>2.900</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>scarpe ecco donna</td><td><span class="pos p3">4</span></td><td>1.900</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>ecco scarpe</td><td><span class="pos p3">7</span></td><td>2.900</td><td><span class="tag">Brand prodotto</span></td></tr>
+          <tr><td>scarpe nero giardini</td><td><span class="pos p3">8</span></td><td>6.600</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>nerogiardini scarpe donna</td><td><span class="pos p3">9</span></td><td>9.900</td><td><span class="tag">Prodotto</span></td></tr>
+          <tr><td>nero giardini</td><td><span class="pos p3">9</span></td><td>49.500</td><td><span class="tag">Prodotto</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insights">
+      <div class="insight"><div class="h">Leadership locale confermata</div><div class="t">Prima posizione su "negozio scarpe a Milano" e vertice sulle varianti locali: il presidio territoriale alimenta sia l'e-commerce sia le visite in negozio.</div></div>
+      <div class="insight"><div class="h">Nero Giardini, presidio ad alto potenziale</div><div class="t">Ingresso in top 10 su "nero giardini" (una delle ricerche di calzature più cercate in Italia) e sulla variante donna: margini di crescita importanti su termini generici ad altissimo volume.</div></div>
+      <div class="insight"><div class="h">Bibi Lou ed estate</div><div class="t">Bibi Lou è la keyword non-brand più cliccata del mese (2ª posizione); crescono sandali e Les Tropéziennes, coerenti con la domanda estiva.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Web Domus · Digital Agency</div>
+    <div>Elaborato da Web Domus · Dati: GA4 · Search Console · DataForSEO</div>
+    <div style="margin-top:14px">
+      <a href="https://dashboard.mustocalzature.com/">Dashboard principale</a> ·
+      <a href="https://dashboard.mustocalzature.com/report-settimanale-2026-W28.html">Ultimo report settimanale</a>
+    </div>
+    <div class="fnote">Note metodologiche: click, impressioni e posizione media (ponderata sui click) provengono da Google Search Console; le sessioni organiche da GA4. I dati DataForSEO sono stime indipendenti su Google Italia e possono essere rivisti retroattivamente dal fornitore rispetto ai valori pubblicati nei report dei mesi precedenti. Il dato ordini/fatturato Shopify e il report Advertising di giugno non erano disponibili al momento della generazione automatica di questo report (connettore Shopify da riautorizzare, report ADV di giugno non ancora pubblicato): la sezione sul risultato complessivo dello store sarà integrata appena i dati saranno disponibili.</div>
+  </div>
+</footer>
+
+<script>
+const gold='#c9a96e', green='#4a9e7a', blue='#5b8fb0', muted='rgba(240,236,228,0.45)', grid='rgba(255,255,255,0.06)', text='#f0ece4';
+Chart.defaults.color=muted; Chart.defaults.font.family='Inter';
+const itNum=v=>v.toLocaleString('it-IT');
+
+// GSC chart: clicks bars + position line (reversed)
+new Chart(document.getElementById('gscChart'),{
+  data:{labels:['Feb','Mar','Apr','Mag','Giu'],
+    datasets:[
+      {type:'bar',label:'Click organici',data:[3790,4360,5263,8060,7486],backgroundColor:gold,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Posizione media',data:[8.35,8.10,8.16,7.90,7.41],borderColor:blue,backgroundColor:blue,tension:.35,pointRadius:4,pointBackgroundColor:blue,yAxisID:'y1',order:1}
+    ]},
+  options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?` Posizione: ${c.raw.toString().replace('.',',')}`:` Click: ${itNum(c.raw)}`}}},
+    scales:{
+      y:{position:'left',grid:{color:grid},ticks:{callback:v=>itNum(v)},title:{display:true,text:'Click organici'}},
+      y1:{position:'right',reverse:true,min:6,max:10,grid:{drawOnChartArea:false},title:{display:true,text:'Posizione (↑ meglio)'}},
+      x:{grid:{display:false}}
+    }}
+});
+
+// DataForSEO chart: keyword count bars + ETV line
+new Chart(document.getElementById('dfsChart'),{
+  data:{labels:['Feb','Mar','Apr','Mag','Giu'],
+    datasets:[
+      {type:'bar',label:'Keyword posizionate',data:[859,811,662,611,805],backgroundColor:'rgba(91,143,176,.55)',borderColor:blue,borderWidth:1,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Valore traffico organico (€)',data:[4898,4672,4802,4512,5380],borderColor:gold,backgroundColor:gold,tension:.35,pointRadius:4,pointBackgroundColor:gold,yAxisID:'y1',order:1}
+    ]},
+  options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?` Valore: €${itNum(c.raw)}`:` Keyword: ${itNum(c.raw)}`}}},
+    scales:{
+      y:{position:'left',grid:{color:grid},title:{display:true,text:'Keyword posizionate'}},
+      y1:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>'€'+itNum(v)},title:{display:true,text:'Valore traffico (€)'}},
+      x:{grid:{display:false}}
+    }}
+});
+</script>
+</body>
+</html>
