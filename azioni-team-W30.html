@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USO INTERNO · Azioni Team W30 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f; --bg2:#141209; --gold:#c9a96e; --gold-light:#e0c898;
+  --green:#4a9e7a; --red:#c0392b; --text:#e8e8e8; --muted:#888;
+  --border:#2a2a2a; --card:#181818; --amber:#e8a020; --blue:#5B9BD5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+
+.banner-interno{background:rgba(192,57,43,.16);border-bottom:2px solid var(--red);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.banner-label{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#e07b6e}
+.banner-desc{font-size:11px;color:#bbb}
+
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:30px 40px 24px;position:relative;overflow:hidden}
+.header::after{content:'W30';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:100px;font-weight:700;color:rgba(201,169,110,.07)}
+.brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.client-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
+.header-period{color:var(--muted);font-size:13px;margin-top:8px}
+
+.container{max-width:1020px;margin:0 auto;padding:32px 24px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--gold);margin:32px 0 6px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.section-title:first-of-type{margin-top:0}
+.section-desc{font-size:12.5px;color:#999;margin-bottom:16px}
+
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:11px;margin-bottom:8px}
+.mini-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+.mini-lbl{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mini-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff}
+.mini-delta{font-size:10px;font-weight:600;margin-top:3px}
+.up{color:var(--green)} .down{color:#e07b6e} .flat{color:var(--muted)} .amb{color:var(--amber)}
+
+.action-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:16px 19px;margin-bottom:11px}
+.action-card.urg{border-left-color:var(--red)}
+.action-card.med{border-left-color:var(--amber)}
+.action-card.low{border-left-color:var(--green)}
+.action-head{display:flex;align-items:center;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.action-title{font-size:14px;font-weight:600;color:#fff}
+.badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.b-urg{background:rgba(192,57,43,.18);color:#e07b6e;border:1px solid rgba(192,57,43,.35)}
+.b-med{background:rgba(232,160,32,.15);color:var(--amber);border:1px solid rgba(232,160,32,.3)}
+.b-low{background:rgba(74,158,122,.13);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.action-body{font-size:12.5px;color:#aaa;line-height:1.7}
+.action-body code{background:rgba(255,255,255,.05);padding:1px 5px;border-radius:3px;font-size:11.5px;color:var(--gold-light)}
+.action-body strong{color:var(--text)}
+
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.data-table th{text-align:left;padding:9px 13px;font-size:9.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:9px 13px;border-bottom:1px solid rgba(42,42,42,.6)}
+.data-table tr:last-child td{border-bottom:none}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+.tbl-footer{padding:10px 13px 13px;font-size:10px;color:var(--muted)}
+.num{text-align:right}
+.tbl-total td{border-top:1px solid var(--border);font-weight:600;color:var(--gold-light)}
+.gold-val{color:var(--gold-light);font-weight:600}
+.neg{color:#e07b6e}
+
+.privacy-note{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.28);border-radius:7px;padding:12px 16px;font-size:11.5px;color:#ccc;margin:10px 0 18px}
+.privacy-note strong{color:#e07b6e}
+
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:11px 15px;font-size:11.5px;color:#aaa;margin-top:9px;line-height:1.7}
+
+.check-list{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:19px 22px}
+.check-item{display:flex;gap:11px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(42,42,42,.5);font-size:12.5px;color:#bbb}
+.check-item:last-child{border-bottom:none}
+.check-box{color:var(--gold);font-size:14px;line-height:1.4;flex-shrink:0}
+.footer{border-top:1px solid var(--border);padding:22px 40px;font-size:11px;color:var(--muted);margin-top:36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<div class="banner-interno">
+  <span class="banner-label">⚠️ Uso interno Web Domus — non condividere con il cliente</span>
+  <span class="banner-desc">Contiene dati operativi, stati ordine tecnici e note di lavorazione</span>
+</div>
+
+<div class="header">
+  <div class="brand-label">Web Domus · Azioni Team</div>
+  <div class="client-name">Musto Calzature · W30</div>
+  <div class="header-period">20 – 26 Luglio 2026 · generato il 28 luglio 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- SNAPSHOT -->
+  <div class="section-title">Snapshot numeri chiave</div>
+  <div class="section-desc">Confronto W30 vs W29 (13 – 19 luglio).</div>
+  <div class="mini-grid">
+    <div class="mini-card"><div class="mini-lbl">Utenti GA4</div><div class="mini-val">5.400</div><div class="mini-delta up">▲ +99,0%</div></div>
+    <div class="mini-card"><div class="mini-lbl">Sessioni GA4</div><div class="mini-val">6.045</div><div class="mini-delta up">▲ +85,8%</div></div>
+    <div class="mini-card"><div class="mini-lbl">Ordini Shopify</div><div class="mini-val">21</div><div class="mini-delta down">▼ −27,6% (29)</div></div>
+    <div class="mini-card"><div class="mini-lbl">Incasso netto</div><div class="mini-val">€ 1.620</div><div class="mini-delta down">▼ −47,5%</div></div>
+    <div class="mini-card"><div class="mini-lbl">Lordo Shopify</div><div class="mini-val">€ 2.205</div><div class="mini-delta flat">resi −€ 971</div></div>
+    <div class="mini-card"><div class="mini-lbl">AOV</div><div class="mini-val">€ 77</div><div class="mini-delta down">▼ −27,5%</div></div>
+    <div class="mini-card"><div class="mini-lbl">Click GSC (6gg)</div><div class="mini-val">1.233</div><div class="mini-delta down">▼ −7,4%/gg</div></div>
+    <div class="mini-card"><div class="mini-lbl">Impression (6gg)</div><div class="mini-val">106.877</div><div class="mini-delta up">▲ +4,7%/gg</div></div>
+    <div class="mini-card"><div class="mini-lbl">CTR GSC</div><div class="mini-val">1,15%</div><div class="mini-delta down">▼ da 1,31%</div></div>
+    <div class="mini-card"><div class="mini-lbl">Pos. media</div><div class="mini-val">7,61</div><div class="mini-delta amb">◆ da 7,49</div></div>
+    <div class="mini-card"><div class="mini-lbl">Transazioni GA4</div><div class="mini-val">16</div><div class="mini-delta flat">= 3ª sett. a 16</div></div>
+    <div class="mini-card"><div class="mini-lbl">Organico su tot.</div><div class="mini-val">29,5%</div><div class="mini-delta amb">◆ da 34,6%</div></div>
+  </div>
+  <div class="note-box">
+    <strong>Caveat metodologici da ricordare.</strong><br>
+    1. <strong>GSC a 6 giorni.</strong> Domenica 26 non era ancora pubblicata al momento della generazione. I confronti WoW su click e impression sono normalizzati su media giornaliera e dichiarati nel report cliente. I totali assoluti (1.233 / 106.877) restano a 6 giorni.<br>
+    2. <strong>Fonte Shopify diversa dal solito.</strong> Questa settimana i dati arrivano dai CSV Analytics di Shopify (aggregato giornaliero), non dal MCP order-level: il connettore <code>e7820f47-…</code> non era disponibile in sessione. Da qui l'assenza della tabella per singolo ordine.<br>
+    3. <strong>W29 e lunedì 20 ricostruiti.</strong> Il CSV copriva 21–28 luglio; lunedì 20 e tutta la W29 sono stati estratti dalle colonne <code>previous_period</code> dello stesso file. W29 non aveva un report generato.<br>
+    4. <strong>Definizione incasso.</strong> Uso "Vendite totali" Shopify (netto resi, include spedizione e imposte). Gli storici delle barre 5 settimane sono W26 € 358,90 · W27 € 1.564,90 · W28 € 2.620,40, presi da index.html e dai report relativi, costruiti sommando gli ordini via MCP: <strong>possibile disallineamento di definizione</strong>. Da uniformare alla prossima esportazione.<br>
+    5. <strong>Incoerenza storica rilevata.</strong> Il report W28 dichiara "+87,3% vs W27" su € 2.620,40, che implicherebbe W27 = € 1.399 — in contrasto con € 1.564,90 riportato sia da index.html sia dal report W27 stesso. Ho usato € 1.564,90 (doppia conferma). <strong>Il delta dichiarato nel report W28 è probabilmente errato</strong>: da verificare.<br>
+    6. <strong>Metrica utenti.</strong> Le barre 5 settimane usano <code>totalUsers</code> per tutte e cinque le settimane, da una singola chiamata GA4 (W26 2.828 · W27 3.594 · W28 3.043 · W29 2.714 · W30 5.400). I report precedenti riportavano valori più alti (index: W26 2.945, W28 3.307), probabilmente <code>activeUsers</code>. Ho preferito la coerenza interna del grafico alla continuità con lo storico: un trend costruito su metriche miste non sarebbe leggibile. <strong>Da decidere quale metrica standardizzare.</strong><br>
+    7. <strong>Nessuna barra 5 settimane sulla spesa media:</strong> gli AOV storici W26–W28 non sono ricavabili con certezza dai file esistenti. La specifica non le richiede e il template di riferimento non le prevede.
+  </div>
+
+  <!-- AZIONI -->
+  <div class="section-title">Azioni prioritarie</div>
+  <div class="section-desc">Ordinate per urgenza operativa.</div>
+
+  <div class="action-card urg">
+    <div class="action-head"><span class="badge b-urg">Urgente</span><span class="action-title">Resi al 44% del lordo — capire se è un caso isolato</span></div>
+    <div class="action-body">
+      €&nbsp;971,12 di resi su €&nbsp;2.204,66 di lordo. Concentrati su due giorni: <strong>giovedì 23 −€&nbsp;597,65</strong> e <strong>venerdì 24 −€&nbsp;292,32</strong> (con zero ordini nuovi). Il 23 il lordo era €&nbsp;603,27 contro €&nbsp;597,65 di resi: valori quasi coincidenti, ma i resi in Shopify Analytics sono attribuiti al giorno di registrazione, quindi possono riferirsi a ordini precedenti.<br><br>
+      <strong>Da fare:</strong> estrarre l'elenco ordini con stato per 20–26 luglio e verificare se i resi si concentrano su <strong>un singolo modello o una singola taglia</strong>. Se sì, è un problema di scheda prodotto (taglia non conforme, foto fuorviante, descrizione materiale) e diventa un intervento SEO/CRO nostro. Se sono resi sparsi, è fisiologia del canale online e resta fuori dal nostro perimetro.<br><br>
+      <strong>Perimetro concordato con Carmine:</strong> nel report cliente il dato resta factuale e non commentato — Musto conosce la ragione dei propri resi meglio di noi. Noi portiamo traffico. Non trasformare questo punto in una raccomandazione al cliente se non emerge una causa legata alle pagine prodotto.
+    </div>
+  </div>
+
+  <div class="action-card urg">
+    <div class="action-head"><span class="badge b-urg">Urgente</span><span class="action-title">Capitalizzare la finestra Discover prima che si chiuda</span></div>
+    <div class="action-body">
+      <code>/blogs/trend-e-consigli/sandali-con-tacco-donna-estate-2026</code> ha fatto <strong>2.503 sessioni</strong> (+98 sulla versione <code>/en</code>) = 2.601 totali, il <strong>43% del traffico settimanale</strong>, con <strong>1 ordine da €&nbsp;109</strong> (conversione 0,04% contro lo 0,60% della home).<br><br>
+      Il traffico Discover decade tipicamente in 3–7 giorni: la finestra è <strong>ora</strong>. Interventi, in ordine:<br>
+      1. <strong>Link interni contestuali</strong> dall'articolo alle collection sandali (non solo a fondo pagina: dentro il corpo, accanto ai modelli citati).<br>
+      2. <strong>Verificare che le audience di remarketing stiano raccogliendo</strong> questi 2.481 utenti — è il valore recuperabile più concreto della settimana.<br>
+      3. <strong>Capire cosa ha funzionato</strong>: formato immagine, taglio del titolo, freschezza. Se replicabile, è un asset ricorrente, non un colpo di fortuna.<br><br>
+      <strong>Nota tecnica:</strong> il traffico Discover si è spaccato tra Direct (+1.849 sessioni WoW) e Organic Search (+690). Attenzione: quel +690 su "Organic Search" <strong>non</strong> è ricerca Google — i click GSC sono calati. Non usarlo come prova di crescita organica in nessun documento.
+    </div>
+  </div>
+
+  <div class="action-card med">
+    <div class="action-head"><span class="badge b-med">Medio</span><span class="action-title">Pagine ad alto potenziale non sfruttato — riscrittura title/meta</span></div>
+    <div class="action-body">
+      Candidate ordinate per impression sprecate:<br><br>
+      • <code>/blogs/trend-e-consigli/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento</code> — <strong>6.380 impr. / 20 click / CTR 0,31% / pos 7,58</strong>. Il caso più grave del sito: posizionata in prima pagina e praticamente non cliccata. Priorità 1.<br>
+      • <code>/collections/nero-giardini</code> — <strong>3.702 impr. / 29 click / CTR 0,78% / pos 10,44</strong>. Al confine prima/seconda pagina: qui serve anche guadagnare posizioni, non solo CTR.<br>
+      • <code>/blogs/trend-e-consigli/stivali-donna-2025-2026-tendenze-moda-stivaletti</code> — <strong>2.596 impr. / 16 click / CTR 0,62% / pos 6,20</strong>. Contenuto fuori stagione a luglio: rimandare a fine agosto.<br>
+      • <code>/blogs/trend-e-consigli/scarpe-donna-impermeabili-consigli</code> — 921 impr. / 9 click / CTR 0,98%. Anche questa stagionale.<br><br>
+      Nota: la home ha 14.640 impression con CTR 1,54% e pos 5,70 — è il maggior contributore di impression del sito e vale un test sul title.
+    </div>
+  </div>
+
+  <div class="action-card med">
+    <div class="action-head"><span class="badge b-med">Medio</span><span class="action-title">Confusione di brand con Musto (nautica UK) — inquina le metriche</span></div>
+    <div class="action-body">
+      Nella coda lunga GSC compaiono decine di query riferite al <strong>brand inglese di abbigliamento velico Musto</strong>, non al cliente: <code>scarpe vela musto</code>, <code>musto flip flops</code>, <code>musto voucher</code> (18 impr.), <code>musto fr free shipping</code>, <code>musto water shoes</code>, <code>musto sandals</code>, <code>musto clothing</code>, <code>musto boots</code>, <code>chaussures musto</code>, <code>musto schoenen</code>. Tutte a <strong>0 click</strong>.<br><br>
+      <strong>Effetto:</strong> generano impression inutili che abbassano il CTR medio e alzano la posizione media. Parte del "peggioramento" della posizione media (7,49 → 7,61) e del calo CTR è imputabile a questo rumore, non a una perdita di performance reale.<br><br>
+      <strong>Da fare:</strong> quantificare le impression totali di questo cluster e, se rilevanti, escluderle dal calcolo di CTR e posizione media nei prossimi report — altrimenti il semaforo racconta un peggioramento che non c'è. Valutare una nota metodologica fissa.
+    </div>
+  </div>
+
+  <div class="action-card low">
+    <div class="action-head"><span class="badge b-low">Basso</span><span class="action-title">Presidio branded solido — nessun intervento</span></div>
+    <div class="action-body">
+      71 click branded (5,8% del totale) su 20 query. Le principali sono tutte in <strong>posizione 1</strong> con CTR 16–38%: <code>musto calzature</code> (12 click, CTR 17,91%), <code>musto milano</code> (12, 25,53%), <code>musto calzature milano</code> (11, 16,42%), <code>musto footwear srl</code> (3, 37,50%), <code>musto scarpe</code> (2, 18,18%).<br><br>
+      Il 94,2% non-branded è un buon segnale di acquisizione. Nessuna azione necessaria: monitorare e non cannibalizzare.
+    </div>
+  </div>
+
+  <!-- DETTAGLIO VENDITE -->
+  <div class="section-title">Dettaglio vendite (dati tecnici)</div>
+  <div class="section-desc">Aggregato giornaliero da CSV Shopify Analytics. Order-level non disponibile in questa sessione.</div>
+
+  <div class="privacy-note">
+    <strong>🔒 Nota privacy — regola fissa:</strong> mai mostrare nomi/cognomi acquirenti nei report; solo numero ordine (#XXXX). Vale per report cliente, azioni-team e qualsiasi export condiviso.
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Data</th><th class="num">Orders</th><th class="num">Gross sales</th><th class="num">Returns</th><th class="num">Net sales</th><th class="num">Total sales</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2026-07-20 (lun)</td><td class="num">6</td><td class="num">€ 495,08</td><td class="num">€ 0,00</td><td class="num">€ 495,08</td><td class="num gold-val">€ 636,00</td></tr>
+        <tr><td>2026-07-21 (mar)</td><td class="num">4</td><td class="num">€ 407,14</td><td class="num neg">−€ 81,15</td><td class="num">€ 325,99</td><td class="num gold-val">€ 449,90</td></tr>
+        <tr><td>2026-07-22 (mer)</td><td class="num">4</td><td class="num">€ 381,96</td><td class="num">€ 0,00</td><td class="num">€ 381,96</td><td class="num gold-val">€ 488,00</td></tr>
+        <tr><td>2026-07-23 (gio)</td><td class="num">4</td><td class="num">€ 603,27</td><td class="num neg">−€ 597,65</td><td class="num">€ 5,62</td><td class="num gold-val">€ 10,20</td></tr>
+        <tr><td>2026-07-24 (ven)</td><td class="num">0</td><td class="num">€ 0,00</td><td class="num neg">−€ 292,32</td><td class="num neg">−€ 292,32</td><td class="num neg">−€ 366,45</td></tr>
+        <tr><td>2026-07-25 (sab)</td><td class="num">2</td><td class="num">€ 227,87</td><td class="num">€ 0,00</td><td class="num">€ 227,87</td><td class="num gold-val">€ 288,00</td></tr>
+        <tr><td>2026-07-26 (dom)</td><td class="num">1</td><td class="num">€ 89,34</td><td class="num">€ 0,00</td><td class="num">€ 89,34</td><td class="num gold-val">€ 114,00</td></tr>
+        <tr class="tbl-total"><td>W30</td><td class="num">21</td><td class="num">€ 2.204,66</td><td class="num neg">−€ 971,12</td><td class="num">€ 1.233,54</td><td class="num">€ 1.619,65</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">
+      Total sales = Net sales + spedizione + imposte. Incidenza resi su lordo: <strong>44,0%</strong>.<br>
+      Confronto W29 (13–19 lug, da colonne previous_period): 29 ordini · Total sales € 3.083,45 · AOV € 106,33.<br>
+      Discrepanza da monitorare: 21 ordini contro 17 unità lorde vendute nel CSV brand — plausibile con ordini interamente resi, ma da verificare su export order-level.
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>Ordini anomali:</strong> il CSV aggregato non espone gli stati PENDING / PARTIALLY_REFUNDED, quindi <strong>questa settimana non è stato possibile fare il controllo abituale sugli ordini in attesa di pagamento</strong>. Da recuperare al prossimo accesso al connettore Shopify: verificare se ci sono PENDING aperti dal 20 luglio in poi.
+  </div>
+
+  <!-- BRAND -->
+  <div class="section-title">Brand — unità nette W30</div>
+  <div class="section-desc">Il CSV fornito copre solo W30 (non 4 settimane) e riporta unità senza fatturato.</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Brand</th><th class="num">Unità nette</th><th class="num">W29</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>BIBI LOU</td><td class="num gold-val">5</td><td class="num">5</td><td>stabile · anche 1ª collection per click GSC (113)</td></tr>
+        <tr><td>MUSTO</td><td class="num gold-val">3</td><td class="num">1</td><td>+200% · brand proprio</td></tr>
+        <tr><td>LIU JO</td><td class="num gold-val">1</td><td class="num">2</td><td>−50%</td></tr>
+        <tr><td>LES TROPEZIENNES</td><td class="num gold-val">1</td><td class="num">2</td><td>−50% · 2ª collection per click GSC (50)</td></tr>
+        <tr><td>NEROGIARDINI</td><td class="num gold-val">1</td><td class="num">3</td><td>−66,7% · pos GSC 10,44 → azione in corso</td></tr>
+        <tr><td>BRUNATE · VIGUERA · INUOVO · GALIZIO TORRESI · LE FURLANINE · PONS QUINTANA</td><td class="num gold-val">1 cad.</td><td class="num">0–1</td><td>coda</td></tr>
+        <tr><td class="neg">SUN68 · LORENZI · BRUNO PREMI · JANET &amp; JANET</td><td class="num neg">−1 cad.</td><td class="num">1–2</td><td class="neg">saldo negativo da resi</td></tr>
+        <tr><td class="neg">(vendor non attribuito)</td><td class="num neg">−3</td><td class="num">5</td><td class="neg">da investigare: prodotti senza vendor?</td></tr>
+        <tr class="tbl-total"><td>Totale netto</td><td class="num">10</td><td class="num">—</td><td>17 unità lorde − 7 resi</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">
+      Nel report cliente sono pubblicati <strong>solo i brand con unità nette ≥ 1</strong>, senza colonna fatturato, e la sezione è stata retitolata "I brand più venduti questa settimana" (non "nell'ultimo mese"). Scelta concordata con Carmine.<br>
+      <strong>Da investigare:</strong> la riga vendor vuoto con −3 unità. Se ci sono prodotti a catalogo senza campo <em>Venditore</em> compilato, sfalsano ogni classifica brand — check su Shopify Admin.
+    </div>
+  </div>
+
+  <!-- CANALI -->
+  <div class="section-title">Canali di acquisizione — note operative</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Canale</th><th class="num">Sess. W30</th><th class="num">W29</th><th class="num">Δ</th><th class="num">Transaz.</th><th>Nota operativa</th></tr></thead>
+      <tbody>
+        <tr><td>Direct</td><td class="num">2.203</td><td class="num">354</td><td class="num up">+522%</td><td class="num">0</td><td>picco Discover senza referrer · <strong>0 transazioni</strong></td></tr>
+        <tr><td>Organic Search</td><td class="num">1.807</td><td class="num">1.117</td><td class="num up">+61,8%</td><td class="num">3</td><td>gonfiato da Discover · GSC click in calo</td></tr>
+        <tr><td>Paid Social</td><td class="num">1.054</td><td class="num">761</td><td class="num up">+38,5%</td><td class="num">1</td><td>era 4 transaz. in W29 → <strong>resa in calo</strong></td></tr>
+        <tr><td>Paid Shopping</td><td class="num">534</td><td class="num">584</td><td class="num down">−8,6%</td><td class="num">6</td><td><strong>miglior canale per conversione</strong> (1,12%)</td></tr>
+        <tr><td>Unassigned</td><td class="num">216</td><td class="num">175</td><td class="num up">+23,4%</td><td class="num">2</td><td>da indagare: tagging incompleto</td></tr>
+        <tr><td>Paid Search</td><td class="num">90</td><td class="num">68</td><td class="num up">+32,4%</td><td class="num">3</td><td>volumi bassi, conversione alta (3,33%)</td></tr>
+        <tr><td>Email</td><td class="num">12</td><td class="num">—</td><td class="num">—</td><td class="num">1</td><td>12 sessioni / 1 ordine · <strong>canale sottoutilizzato</strong></td></tr>
+        <tr><td>AI Assistant</td><td class="num">30</td><td class="num">33</td><td class="num down">−9,1%</td><td class="num">0</td><td>monitorare trend GEO</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">
+      Transazioni GA4 W30 = 16 (Shopify: 21 · GA4 sottostima ~24%). Revenue GA4 € 1.895 vs Shopify netto € 1.619,65: GA4 non registra i resi, da qui lo scarto inverso rispetto al solito.<br>
+      <strong>Segnale forte:</strong> Paid Shopping fa 6 transazioni con 534 sessioni; Direct ne fa 0 con 2.203. Il traffico Discover è a valore commerciale ~nullo nell'immediato — vale come brand awareness e bacino di remarketing, non come canale di vendita.
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-title">Checklist settimana W31</div>
+  <div class="check-list">
+    <div class="check-item"><span class="check-box">☐</span><div>Riscrivere title + meta description di <code>/blogs/.../scarpe-da-cerimonia-per-donna-...</code> (6.380 impr. / CTR 0,31%) — priorità massima</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Inserire link interni contestuali dall'articolo Discover alle collection sandali, dentro il corpo del testo</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Verificare che le audience remarketing abbiano raccolto i 2.481 utenti Discover</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Ottimizzare <code>/collections/nero-giardini</code> — obiettivo pos. media sotto 8 (ora 10,44)</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Estrarre export ordini order-level 20–26 lug: verificare concentrazione resi per modello/taglia + controllo PENDING arretrati</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Ripristinare il connettore MCP Shopify <code>e7820f47-a1b3-4066-a693-301d28c6e74b</code> — senza order-level il report perde due sezioni</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Quantificare le impression del cluster "Musto nautica UK" e decidere se escluderle dal calcolo CTR/posizione</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Uniformare la definizione di "incasso" nelle barre a 5 settimane (Total sales vs somma ordini MCP)</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Verificare i prodotti a catalogo senza campo <em>Venditore</em> (riga −3 unità non attribuite)</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Recuperare a posteriori i dati GSC di domenica 26 e correggere i totali W30 se si genera un consolidato mensile</div></div>
+    <div class="check-item"><span class="check-box">☐</span><div>Valutare se generare un report W29 retroattivo: la settimana è priva di documentazione</div></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>⚠️ USO INTERNO WEB DOMUS — NON CONDIVIDERE CON IL CLIENTE</span>
+  <span>Azioni Team W30 · Musto Calzature · 28 luglio 2026 · GA4 + GSC + Shopify CSV</span>
+</div>
+
+</body>
+</html>

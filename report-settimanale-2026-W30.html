@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musto Calzature · Report Settimanale W30 · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* === VARIABILI E RESET === */
+:root{
+  --bg:#0f0f0f; --bg2:#141209; --gold:#c9a96e; --gold-light:#e0c898;
+  --green:#4a9e7a; --red:#c0392b; --text:#e8e8e8; --muted:#888;
+  --border:#2a2a2a; --card:#181818; --card2:#1d1b14;
+  --blue:#5B9BD5; --purple:#8e7bb5; --amber:#e8a020;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+
+/* === HEADER === */
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:36px 40px 28px;position:relative;overflow:hidden}
+.header::after{content:'W30';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:110px;font-weight:700;color:rgba(201,169,110,.07);pointer-events:none}
+.brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.client-name{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff}
+.header-meta{display:flex;align-items:center;gap:16px;margin-top:10px;flex-wrap:wrap}
+.header-period{color:var(--muted);font-size:13px}
+.badge-week{display:inline-block;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.35);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+
+/* === HOWTO === */
+.howto{background:#0c0c0c;border-bottom:1px solid var(--border);padding:20px 40px}
+.howto-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.howto-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:720px){.howto-grid{grid-template-columns:1fr 1fr}}
+.howto-item{font-size:11.5px;color:#999;line-height:1.6}
+.howto-item strong{color:var(--text);display:block;margin-bottom:3px;font-size:12px}
+
+/* === LAYOUT === */
+.container{max-width:980px;margin:0 auto;padding:36px 24px}
+
+/* === SECTION EYEBROW + TITLE + DESC === */
+.section-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--gold);margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.section-desc{font-size:13px;color:#999;margin-bottom:20px;line-height:1.65;max-width:720px}
+
+/* === SEMAFORO === */
+.semaphore-legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:18px;padding:10px 14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--muted)}
+.sem-item{display:flex;align-items:center;gap:6px}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+.dot-green{background:var(--green);box-shadow:0 0 5px rgba(74,158,122,.5)}
+.dot-amber{background:var(--amber);box-shadow:0 0 5px rgba(232,160,32,.4)}
+.dot-red{background:#e07b6e;box-shadow:0 0 5px rgba(192,57,43,.4)}
+
+/* === TOOLTIP GLOSSARIO === */
+.gloss{border-bottom:1px dotted rgba(201,169,110,.5);cursor:help;position:relative;display:inline}
+.gloss::after{content:attr(data-gloss);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a1600;border:1px solid rgba(201,169,110,.4);color:var(--text);font-size:11px;font-family:'Inter',sans-serif;padding:7px 12px;border-radius:6px;white-space:normal;width:220px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:999;line-height:1.5;text-align:left}
+.gloss:hover::after{opacity:1}
+
+/* === KPI GRID === */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:18px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 18px 20px}
+.kpi-label{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.kpi-value{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px}
+.kpi-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:12px;letter-spacing:.3px}
+.kpi-pill.up{background:rgba(74,158,122,.15);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.kpi-pill.down{background:rgba(192,57,43,.13);color:#e07b6e;border:1px solid rgba(192,57,43,.3)}
+.kpi-pill.neutral{background:rgba(136,136,136,.12);color:var(--muted);border:1px solid rgba(136,136,136,.25)}
+
+/* 5-week bars */
+.kpi-compare-5{display:flex;align-items:flex-end;gap:4px;height:44px;margin-top:14px}
+.k5b{flex:1;border-radius:2px 2px 0 0;background:rgba(136,136,136,.2);position:relative;min-height:3px;transition:background .2s}
+.k5b.curr{background:var(--gold)}
+.k5b::after{content:attr(data-lbl);position:absolute;top:calc(100% + 3px);left:50%;transform:translateX(-50%);font-size:7px;color:var(--muted);white-space:nowrap}
+.k5b.curr::after{color:var(--gold-light)}
+
+/* === PLAIN-BOX === */
+.plain-box{background:rgba(201,169,110,.04);border:1px solid rgba(201,169,110,.18);border-left:3px solid var(--gold);border-radius:7px;padding:14px 18px;margin:18px 0 28px;font-size:13px;color:#ccc;line-height:1.7}
+.plain-box-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+
+/* === SOURCE NOTE === */
+.source-note{font-size:10px;color:var(--muted);text-align:right;margin-top:5px;opacity:.65}
+
+/* === CHART WRAP === */
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:8px}
+.chart-title{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.chart-canvas-wrap{position:relative;height:240px}
+
+/* === EDITORIAL === */
+.editorial{background:var(--bg2);border:1px solid rgba(201,169,110,.3);border-left:3px solid var(--gold);border-radius:10px;padding:28px 30px;margin-bottom:36px}
+.editorial-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.25);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:16px}
+.editorial-opener{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:#fff;line-height:1.4;margin-bottom:14px}
+.editorial p{font-size:13.5px;color:#bbb;line-height:1.8;margin-bottom:10px}
+.editorial p:last-child{margin-bottom:0}
+
+/* === HIGHLIGHTS === */
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+@media(max-width:700px){.highlights{grid-template-columns:1fr}}
+.hl-card{border-radius:10px;padding:16px 18px;border:1px solid var(--border);background:var(--card);display:flex;gap:12px;align-items:flex-start}
+.hl-icon{font-size:20px;line-height:1.2}
+.hl-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
+.hl-text{font-size:12px;color:#bbb;line-height:1.5}
+.hl-win .hl-title{color:var(--green)}
+.hl-watch .hl-title{color:var(--amber)}
+.hl-action .hl-title{color:var(--gold)}
+
+/* === TABELLE === */
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{text-align:left;padding:10px 14px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 14px;border-bottom:1px solid rgba(42,42,42,.6);color:var(--text)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:rgba(201,169,110,.03)}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:8px}
+.tbl-header{padding:16px 20px 0;margin-bottom:4px}
+.tbl-header-title{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.tbl-footer{padding:10px 14px 14px;font-size:10px;color:var(--muted)}
+.num{text-align:right}
+.tbl-total td{border-top:1px solid var(--border);font-weight:600;color:var(--gold-light)}
+
+/* CTR bars */
+.ctr-cell{display:flex;align-items:center;gap:8px;min-width:110px}
+.ctr-bar-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.ctr-bar-fill{height:100%;border-radius:2px;background:var(--gold)}
+.ctr-num{font-size:11px;color:var(--gold-light);font-weight:600;min-width:42px;text-align:right}
+
+/* badges */
+.badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.badge-branded{background:rgba(201,169,110,.15);color:var(--gold);border:1px solid rgba(201,169,110,.3)}
+.badge-nb{background:rgba(74,158,122,.12);color:var(--green);border:1px solid rgba(74,158,122,.25)}
+
+/* misc */
+.gold-val{color:var(--gold-light);font-weight:600}
+.rank-num{color:var(--muted);font-size:12px;font-weight:600;min-width:24px;display:inline-block}
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--muted);margin-top:8px}
+.section-divider{border:none;border-top:1px solid var(--border);margin:32px 0}
+.neg{color:#e07b6e}
+
+/* === GSC === */
+.gsc-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:10px}
+@media(max-width:640px){.gsc-overview{grid-template-columns:repeat(2,1fr)}}
+.gsc-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 18px;text-align:center}
+.gsc-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin:6px 0 4px}
+.gsc-lbl{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px}
+.gsc-trend{font-size:10px;font-weight:500;margin-top:4px}
+.gsc-note{font-size:10px;color:var(--muted);margin-top:5px;font-style:italic}
+
+/* two-col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:8px}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+
+/* === STEP CARDS === */
+.step-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.step-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+.step-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);min-width:28px;line-height:1}
+.step-content-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:5px}
+.step-content-body{font-size:12.5px;color:#999;line-height:1.6}
+
+/* === GLOSSARIO FOOTER === */
+.glossary-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-top:28px}
+.glossary-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.gloss-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:600px){.gloss-grid{grid-template-columns:1fr}}
+.gloss-row{display:flex;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px solid rgba(42,42,42,.5);font-size:12px}
+.gloss-row:last-child{border-bottom:none}
+.gloss-term{color:var(--gold-light);font-weight:600;min-width:150px;flex-shrink:0}
+.gloss-def{color:#999;line-height:1.5}
+
+/* === FOOTER === */
+.footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:40px}
+.footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:13px;font-weight:600}
+.footer-info{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="brand-label">Web Domus · Report SEO Settimanale</div>
+  <div class="client-name">Musto Calzature</div>
+  <div class="header-meta">
+    <span class="header-period">20 – 26 Luglio 2026</span>
+    <span class="badge-week">✦ W30 · 2026</span>
+  </div>
+</div>
+
+<!-- HOWTO -->
+<div class="howto">
+  <div class="howto-title">📖 Come leggere questo report</div>
+  <div class="howto-grid">
+    <div class="howto-item"><strong>Cosa contiene</strong>Traffico del sito (GA4), vendite online (Shopify) e visibilità su Google (Search Console) per la settimana 20 – 26 luglio 2026.</div>
+    <div class="howto-item"><strong>Da dove vengono i numeri</strong>Google Analytics 4 conta i visitatori; Shopify registra ordini e fatturato; Google Search Console mostra quante volte il sito appare nelle ricerche.</div>
+    <div class="howto-item"><strong>Cosa significa "vs W29"</strong>Confronto con la settimana precedente (13 – 19 luglio). Il pallino 🟢🟡🔴 indica se il dato è migliorato, stabile o peggiorato.</div>
+    <div class="howto-item"><strong>Nota stagionale</strong>I numeri possono variare per fattori stagionali (festività, meteo, saldi) non dipendenti dalle attività SEO o di marketing.</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- COMMENTO EDITORIALE -->
+  <div class="editorial">
+    <div class="editorial-badge">✦ Commento della settimana</div>
+    <div class="editorial-opener">Un articolo del blog è finito su Google Discover e ha portato al sito il traffico più alto degli ultimi due mesi.</div>
+    <p>La W30 segna il record delle ultime cinque settimane: <strong>5.400 visitatori</strong> (+99,0% rispetto alla W29) e <strong>6.045 sessioni</strong> (+85,8%). Il merito è quasi interamente di un contenuto editoriale: l'articolo <em>"Sandali con tacco donna estate 2026"</em> è stato selezionato da <strong>Google Discover</strong>, il flusso di notizie e contenuti che Google propone sugli smartphone, e da solo ha generato <strong>2.601 sessioni</strong> — il 43% di tutto il traffico settimanale. Il picco è arrivato giovedì 23 luglio con <strong>1.390 visitatori in un solo giorno</strong>, contro una media di circa 450 nei giorni precedenti.</p>
+    <p>Sul fronte vendite la settimana si chiude con <strong>21 ordini</strong> e un fatturato lordo di <strong>€&nbsp;2.204,66</strong>; l'incasso netto è di <strong>€&nbsp;1.619,65</strong> al netto dei resi registrati nel periodo. I giorni più forti sono stati lunedì 20 (6 ordini) e martedì 21 e mercoledì 22 (4 ordini ciascuno). Il brand più venduto della settimana è <strong>BIBI LOU</strong> con 5 unità, seguito da <strong>MUSTO</strong> con 3.</p>
+    <p>Su Google la visibilità continua a crescere in ampiezza — <strong>17.813 visualizzazioni al giorno</strong> in media, +4,7% sulla settimana precedente — ma il tasso di clic resta il punto su cui lavorare: 1,15% contro 1,31% della W29. Il caso più evidente è la guida <em>"Scarpe da cerimonia per donna"</em>, che raccoglie 6.380 visualizzazioni portando solo 20 clic: il contenuto è già posizionato, va reso più invitante nei risultati di ricerca. È esattamente l'intervento che abbiamo messo in agenda per la prossima settimana.</p>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="hl-card hl-win">
+      <div class="hl-icon">✦</div>
+      <div>
+        <div class="hl-title">Vittoria della settimana</div>
+        <div class="hl-text">Un articolo del blog su Google Discover: 2.601 sessioni e visitatori a +99,0%. Il traffico più alto degli ultimi due mesi.</div>
+      </div>
+    </div>
+    <div class="hl-card hl-watch">
+      <div class="hl-icon">◉</div>
+      <div>
+        <div class="hl-title">Da monitorare</div>
+        <div class="hl-text">Il tasso di clic scende a 1,15%. La guida "Scarpe da cerimonia" raccoglie 6.380 visualizzazioni ma solo 20 clic.</div>
+      </div>
+    </div>
+    <div class="hl-card hl-action">
+      <div class="hl-icon">→</div>
+      <div>
+        <div class="hl-title">Prossima azione</div>
+        <div class="hl-text">Rendere più invitanti su Google le pagine già ben posizionate e collegare l'articolo Discover alle collezioni in vendita.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ I NUMERI DELLA SETTIMANA ═══ -->
+  <div class="section-eyebrow">Google Analytics 4</div>
+  <div class="section-title">I numeri della settimana</div>
+  <div class="section-desc">Quante persone hanno visitato mustocalzature.com, quante sessioni hanno generato e quanto hanno acquistato — confronto con la settimana precedente (13 – 19 luglio).</div>
+
+  <div class="semaphore-legend">
+    <span style="font-size:10px;font-weight:600;color:var(--text);margin-right:4px">Semaforo:</span>
+    <span class="sem-item"><span class="status-dot dot-green"></span>in miglioramento vs settimana precedente</span>
+    <span class="sem-item"><span class="status-dot dot-amber"></span>stabile o da tenere d'occhio</span>
+    <span class="sem-item"><span class="status-dot dot-red"></span>in peggioramento</span>
+  </div>
+
+  <div class="kpi-grid">
+    <!-- Utenti -->
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span class="status-dot dot-green"></span>
+        <span class="gloss" data-gloss="Persone distinte che hanno visitato il sito almeno una volta nella settimana">Visitatori (Utenti)</span>
+      </div>
+      <div class="kpi-value">5.400</div>
+      <span class="kpi-pill up">▲ +99,0% vs W29</span>
+      <div class="kpi-compare-5">
+        <div class="k5b" style="height:52.4%" data-lbl="W26"></div>
+        <div class="k5b" style="height:66.6%" data-lbl="W27"></div>
+        <div class="k5b" style="height:56.4%" data-lbl="W28"></div>
+        <div class="k5b" style="height:50.3%" data-lbl="W29"></div>
+        <div class="k5b curr" style="height:100%" data-lbl="W30"></div>
+      </div>
+    </div>
+    <!-- Sessioni -->
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span class="status-dot dot-green"></span>
+        <span class="gloss" data-gloss="Ogni visita al sito: la stessa persona che torna più volte genera più sessioni">Sessioni</span>
+      </div>
+      <div class="kpi-value">6.045</div>
+      <span class="kpi-pill up">▲ +85,8% vs W29</span>
+      <div class="kpi-compare-5">
+        <div class="k5b" style="height:52.7%" data-lbl="W26"></div>
+        <div class="k5b" style="height:65.6%" data-lbl="W27"></div>
+        <div class="k5b" style="height:58.6%" data-lbl="W28"></div>
+        <div class="k5b" style="height:53.8%" data-lbl="W29"></div>
+        <div class="k5b curr" style="height:100%" data-lbl="W30"></div>
+      </div>
+    </div>
+    <!-- Incasso Shopify -->
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span class="status-dot dot-red"></span>
+        <span class="gloss" data-gloss="Vendite totali della settimana su Shopify, al netto dei resi registrati nel periodo">Incasso Shopify</span>
+      </div>
+      <div class="kpi-value">€ 1.620</div>
+      <span class="kpi-pill down">▼ −47,5% vs W29</span>
+      <div class="kpi-compare-5">
+        <div class="k5b" style="height:11.6%" data-lbl="W26"></div>
+        <div class="k5b" style="height:50.8%" data-lbl="W27"></div>
+        <div class="k5b" style="height:85.0%" data-lbl="W28"></div>
+        <div class="k5b" style="height:100%" data-lbl="W29"></div>
+        <div class="k5b curr" style="height:52.5%" data-lbl="W30"></div>
+      </div>
+    </div>
+    <!-- Spesa media -->
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span class="status-dot dot-red"></span>
+        <span class="gloss" data-gloss="Incasso totale diviso numero di ordini: quanto vale mediamente ogni acquisto">Spesa media per ordine</span>
+      </div>
+      <div class="kpi-value">€ 77</div>
+      <span class="kpi-pill down">▼ −27,5% vs W29</span>
+      <div class="gsc-note" style="text-align:left">21 ordini · era € 106 in W29</div>
+    </div>
+    <!-- Traffico organico -->
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span class="status-dot dot-amber"></span>
+        <span class="gloss" data-gloss="Percentuale di sessioni arrivate da Google senza annunci a pagamento">Traffico da Google (organico)</span>
+      </div>
+      <div class="kpi-value">29,5%</div>
+      <span class="kpi-pill neutral">1.807 sessioni</span>
+      <div class="gsc-note" style="text-align:left">era 34,6% in W29 · quota diluita dal picco Discover</div>
+    </div>
+  </div>
+
+  <div class="plain-box">
+    <div class="plain-box-label">💬 In parole semplici</div>
+    Questa settimana il sito ha ricevuto <strong>il doppio dei visitatori</strong> rispetto alla precedente, grazie a un articolo del blog che Google ha scelto di mostrare nel flusso Discover degli smartphone. È un risultato importante di visibilità, ma va letto per quello che è: chi arriva da Discover sta leggendo un contenuto di moda, non sta cercando di comprare un paio di scarpe. Per questo il traffico è raddoppiato senza che gli ordini crescessero in proporzione. La percentuale di traffico organico scende dal 34,6% al 29,5% <em>non</em> perché sia calato — in valore assoluto è cresciuto — ma perché il totale delle visite è quasi raddoppiato.
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Andamento Giornaliero Visitatori / Sessioni · 20 – 26 Luglio 2026</div>
+    <div class="chart-canvas-wrap">
+      <canvas id="trafficChart"></canvas>
+    </div>
+  </div>
+  <div class="source-note">Fonte: Google Analytics 4</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ LE VENDITE ONLINE DELLA SETTIMANA ═══ -->
+  <div class="section-eyebrow">Shopify</div>
+  <div class="section-title">Le vendite online della settimana</div>
+  <div class="section-desc">Ordini ricevuti, fatturato e andamento giorno per giorno. I dati Shopify sono più precisi di GA4, che può sottostimare gli acquisti a causa dei blocchi dei cookie.</div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Ordini e Incasso Giornaliero · 20 – 26 Luglio 2026</div>
+    <div class="chart-canvas-wrap">
+      <canvas id="ordersRevenueChart"></canvas>
+    </div>
+  </div>
+  <div class="source-note">Fonte: Shopify</div>
+
+  <div class="tbl-wrap" style="margin-top:18px">
+    <div class="tbl-header"><div class="tbl-header-title">Dettaglio giorno per giorno</div></div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Giorno</th><th class="num">Ordini</th><th class="num">Fatturato lordo</th><th class="num">Resi</th><th class="num">Incasso netto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Lunedì 20</td><td class="num">6</td><td class="num">€ 495,08</td><td class="num">—</td><td class="num gold-val">€ 636,00</td></tr>
+        <tr><td>Martedì 21</td><td class="num">4</td><td class="num">€ 407,14</td><td class="num neg">− € 81,15</td><td class="num gold-val">€ 449,90</td></tr>
+        <tr><td>Mercoledì 22</td><td class="num">4</td><td class="num">€ 381,96</td><td class="num">—</td><td class="num gold-val">€ 488,00</td></tr>
+        <tr><td>Giovedì 23</td><td class="num">4</td><td class="num">€ 603,27</td><td class="num neg">− € 597,65</td><td class="num gold-val">€ 10,20</td></tr>
+        <tr><td>Venerdì 24</td><td class="num">0</td><td class="num">€ 0,00</td><td class="num neg">− € 292,32</td><td class="num neg">− € 366,45</td></tr>
+        <tr><td>Sabato 25</td><td class="num">2</td><td class="num">€ 227,87</td><td class="num">—</td><td class="num gold-val">€ 288,00</td></tr>
+        <tr><td>Domenica 26</td><td class="num">1</td><td class="num">€ 89,34</td><td class="num">—</td><td class="num gold-val">€ 114,00</td></tr>
+        <tr class="tbl-total"><td>Totale W30</td><td class="num">21</td><td class="num">€ 2.204,66</td><td class="num neg">− € 971,12</td><td class="num">€ 1.619,65</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">21 ordini nella settimana · incasso netto € 1.619,65 · L'incasso netto include spese di spedizione e imposte, come da rendiconto Shopify. I resi sono attribuiti al giorno in cui vengono registrati, che può essere successivo alla data dell'ordine originario.</div>
+  </div>
+  <div class="source-note">Fonte: Shopify</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ DA DOVE ARRIVANO I VISITATORI ═══ -->
+  <div class="section-eyebrow">Google Analytics 4 · Canali</div>
+  <div class="section-title">Da dove arrivano i visitatori</div>
+  <div class="section-desc">Le 6.127 sessioni della settimana suddivise per canale di acquisizione.</div>
+
+  <div class="two-col">
+    <div class="chart-wrap">
+      <div class="chart-title">Distribuzione per Canale</div>
+      <div class="chart-canvas-wrap">
+        <canvas id="channelsChart"></canvas>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Canale</th><th class="num">Sessioni</th><th class="num">%</th><th class="num">Incasso stimato*</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Accesso Diretto</td><td class="num">2.203</td><td class="num">36,0%</td><td class="num gold-val">€ 582,35</td></tr>
+          <tr><td>Ricerca Google (organico)</td><td class="num">1.807</td><td class="num">29,5%</td><td class="num gold-val">€ 477,67</td></tr>
+          <tr><td>Social a Pagamento</td><td class="num">1.054</td><td class="num">17,2%</td><td class="num gold-val">€ 278,62</td></tr>
+          <tr><td>Shopping a Pagamento</td><td class="num">534</td><td class="num">8,7%</td><td class="num gold-val">€ 141,16</td></tr>
+          <tr><td>Non Classificato</td><td class="num">216</td><td class="num">3,5%</td><td class="num gold-val">€ 57,10</td></tr>
+          <tr><td>Cross-Network</td><td class="num">92</td><td class="num">1,5%</td><td class="num gold-val">€ 24,32</td></tr>
+          <tr><td>Ricerca a Pagamento</td><td class="num">90</td><td class="num">1,5%</td><td class="num gold-val">€ 23,79</td></tr>
+          <tr><td>Social Organico</td><td class="num">65</td><td class="num">1,1%</td><td class="num gold-val">€ 17,18</td></tr>
+          <tr><td>Assistenti AI (ChatGPT…)</td><td class="num">30</td><td class="num">0,5%</td><td class="num gold-val">€ 7,93</td></tr>
+          <tr><td>Shopping Organico</td><td class="num">18</td><td class="num">0,3%</td><td class="num gold-val">€ 4,76</td></tr>
+          <tr><td>Email</td><td class="num">12</td><td class="num">0,2%</td><td class="num gold-val">€ 3,17</td></tr>
+          <tr><td>Altro</td><td class="num">6</td><td class="num">0,1%</td><td class="num gold-val">€ 1,60</td></tr>
+          <tr class="tbl-total"><td>Totale</td><td class="num">6.127</td><td class="num">100%</td><td class="num">€ 1.619,65</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-footer">*Incasso stimato proporzionalmente alle sessioni su € 1.619,65 totali Shopify.</div>
+    </div>
+  </div>
+  <div class="source-note">Fonte: Google Analytics 4</div>
+
+  <div class="plain-box">
+    <div class="plain-box-label">💬 In parole semplici</div>
+    L'<strong>Accesso Diretto</strong> è il primo canale della settimana con il 36,0% delle visite, ma è un effetto tecnico del picco Discover: quando Google mostra un articolo nel flusso dello smartphone, spesso non comunica al sito da dove arriva il visitatore, e la visita finisce classificata come "diretta". La <strong>Ricerca Google organica</strong> resta la seconda fonte con 1.807 sessioni: è il traffico che non costa nulla in pubblicità e su cui lavoriamo ogni settimana. I canali a pagamento (Social e Shopping) insieme valgono il 25,9% delle visite.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ LA VISIBILITÀ SU GOOGLE ═══ -->
+  <div class="section-eyebrow">Google Search Console</div>
+  <div class="section-title">La visibilità su Google</div>
+  <div class="section-desc">Quante volte mustocalzature.com è comparso nei risultati di Google, quante persone hanno cliccato e in quale posizione media. <strong>Nota:</strong> Google Search Console pubblica i dati con due giorni di ritardo, quindi questa settimana copre 20 – 25 luglio (6 giorni). Per un confronto corretto con la W29, i valori sono rapportati alla media giornaliera.</div>
+
+  <div class="gsc-overview">
+    <div class="gsc-card">
+      <div class="gsc-lbl"><span class="status-dot dot-red"></span><span class="gloss" data-gloss="Quante volte un utente ha cliccato su un risultato di Musto nei risultati di Google, senza pubblicità">Click da Google</span></div>
+      <div class="gsc-val">1.233</div>
+      <div class="gsc-trend" style="color:#e07b6e">▼ −7,4% al giorno vs W29</div>
+      <div class="gsc-note">205 al giorno · erano 222 in W29</div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-lbl"><span class="status-dot dot-green"></span><span class="gloss" data-gloss="Quante volte il sito è apparso in una pagina di risultati Google, anche senza ricevere click">Visualizzazioni su Google</span></div>
+      <div class="gsc-val">106.877</div>
+      <div class="gsc-trend" style="color:var(--green)">▲ +4,7% al giorno vs W29</div>
+      <div class="gsc-note">17.813 al giorno · erano 17.018 in W29</div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-lbl"><span class="status-dot dot-red"></span><span class="gloss" data-gloss="Su 100 volte che il sito appare su Google, quante si traducono in un clic">Tasso di clic (CTR)</span></div>
+      <div class="gsc-val">1,15%</div>
+      <div class="gsc-trend" style="color:#e07b6e">▼ era 1,31% in W29</div>
+      <div class="gsc-note">più visibilità, meno clic in proporzione</div>
+    </div>
+    <div class="gsc-card">
+      <div class="gsc-lbl"><span class="status-dot dot-amber"></span><span class="gloss" data-gloss="In quale posizione media appare il sito nei risultati. Posizione 1 = primo risultato. Più basso il numero, meglio è">Posizione su Google</span></div>
+      <div class="gsc-val">7,61</div>
+      <div class="gsc-trend" style="color:var(--amber)">era 7,49 in W29 · lieve aumento</div>
+      <div class="gsc-note">↓ più basso è, meglio è · 7,61 ≈ prima pagina</div>
+    </div>
+  </div>
+  <div class="source-note">Fonte: Google Search Console · sc-domain:mustocalzature.com</div>
+
+  <div class="plain-box">
+    <div class="plain-box-label">💬 In parole semplici</div>
+    Il sito è stato <strong>visto più spesso</strong> su Google (+4,7% di visualizzazioni al giorno) ma è stato <strong>cliccato meno</strong>: il tasso di clic scende dall'1,31% all'1,15%. Significa che compariamo davanti a più persone, però il titolo e la descrizione che leggono nei risultati non le convincono ancora abbastanza. La posizione media passa da 7,49 a 7,61: è un peggioramento minimo e in buona parte fisiologico, perché quando un sito inizia a comparire per molte più ricerche entra anche in posizioni più basse, e questo alza la media. Restiamo comunque in <strong>prima pagina</strong>. Il lavoro della prossima settimana punta proprio a trasformare le visualizzazioni già conquistate in clic reali.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ CHI CERCA PER NOME E CHI CI SCOPRE ═══ -->
+  <div class="section-eyebrow">Google Search Console · Tipologia ricerca</div>
+  <div class="section-title">Chi cerca Musto per nome e chi lo scopre</div>
+  <div class="section-desc">Divisione tra ricerche brandizzate (chi già conosce Musto e lo cerca per nome) e ricerche generiche (nuovi potenziali clienti che cercano un prodotto).</div>
+
+  <div class="two-col">
+    <div class="chart-wrap">
+      <div class="chart-title">Ricerche Generiche vs Ricerche per Nome</div>
+      <div class="chart-canvas-wrap">
+        <canvas id="brandedChart"></canvas>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <div class="tbl-header"><div class="tbl-header-title">Come si dividono i 1.233 click</div></div>
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <td><span class="badge badge-nb">Generiche</span></td>
+            <td class="num gold-val">1.162 click</td>
+            <td class="num">94,2%</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-branded">Per nome</span></td>
+            <td class="num gold-val">71 click</td>
+            <td class="num">5,8%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note-box">Il 94,2% dei clic arriva da persone che <strong>non</strong> stavano cercando Musto, ma un prodotto: sandali, mocassini, un brand come Bibi Lou o Les Tropeziennes. È il segnale che il sito funziona come porta d'ingresso per nuovi clienti, non solo come vetrina per chi già conosce il negozio.</div>
+      <div class="note-box">Chi cerca "Musto" per nome trova il sito in <strong>prima posizione</strong> con un tasso di clic molto alto (dal 16% al 26% a seconda della variante): la presenza sul nome è solida.</div>
+    </div>
+  </div>
+  <div class="source-note">Fonte: Google Search Console</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ PAROLE CHIAVE IN PRIMA PAGINA ═══ -->
+  <div class="section-eyebrow">Google Search Console · Keyword</div>
+  <div class="section-title">Parole chiave in prima pagina (posizione 1–3)</div>
+  <div class="section-desc">Le ricerche per cui Musto compare tra i primi tre risultati di Google: sono le posizioni che generano la quota più alta di clic.</div>
+
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Parola chiave cercata</th><th class="num">Click</th><th class="num">Visualizzazioni</th><th>Tasso di clic</th><th class="num">Posiz. su Google</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rank-num">1</span></td><td>musto calzature</td><td class="num">12</td><td class="num">67</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:70%"></div></div><span class="ctr-num">17,91%</span></div></td><td class="num gold-val">1°</td></tr>
+        <tr><td><span class="rank-num">2</span></td><td>musto milano</td><td class="num">12</td><td class="num">47</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:100%"></div></div><span class="ctr-num">25,53%</span></div></td><td class="num gold-val">1°</td></tr>
+        <tr><td><span class="rank-num">3</span></td><td>musto calzature milano</td><td class="num">11</td><td class="num">67</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:64%"></div></div><span class="ctr-num">16,42%</span></div></td><td class="num gold-val">1°</td></tr>
+        <tr><td><span class="rank-num">4</span></td><td>pikolinos scarpe</td><td class="num">5</td><td class="num">115</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:17%"></div></div><span class="ctr-num">4,35%</span></div></td><td class="num gold-val">2°</td></tr>
+        <tr><td><span class="rank-num">5</span></td><td>mocassini uomo estate 2026</td><td class="num">4</td><td class="num">56</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:28%"></div></div><span class="ctr-num">7,14%</span></div></td><td class="num gold-val">1°</td></tr>
+        <tr><td><span class="rank-num">6</span></td><td>negozi scarpe milano</td><td class="num">4</td><td class="num">155</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:10%"></div></div><span class="ctr-num">2,58%</span></div></td><td class="num gold-val">3°</td></tr>
+        <tr><td><span class="rank-num">7</span></td><td>belgian loafers uomo</td><td class="num">3</td><td class="num">29</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:40%"></div></div><span class="ctr-num">10,34%</span></div></td><td class="num gold-val">3°</td></tr>
+        <tr><td><span class="rank-num">8</span></td><td>sandali flat 2026</td><td class="num">3</td><td class="num">34</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:35%"></div></div><span class="ctr-num">8,82%</span></div></td><td class="num gold-val">1°</td></tr>
+        <tr><td><span class="rank-num">9</span></td><td>scarpe pikolinos</td><td class="num">3</td><td class="num">28</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:42%"></div></div><span class="ctr-num">10,71%</span></div></td><td class="num gold-val">2°</td></tr>
+        <tr><td><span class="rank-num">10</span></td><td>scarpe harris uomo</td><td class="num">3</td><td class="num">40</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:29%"></div></div><span class="ctr-num">7,50%</span></div></td><td class="num gold-val">3°</td></tr>
+        <tr><td><span class="rank-num">11</span></td><td>walter violet scarpe</td><td class="num">3</td><td class="num">22</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:53%"></div></div><span class="ctr-num">13,64%</span></div></td><td class="num gold-val">2°</td></tr>
+        <tr><td><span class="rank-num">12</span></td><td>musto footwear srl</td><td class="num">3</td><td class="num">8</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:100%"></div></div><span class="ctr-num">37,50%</span></div></td><td class="num gold-val">1°</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Posizione 1–3 = il sito appare tra i primi 3 risultati nella prima pagina di Google. Accanto ai termini di marca, compaiono ricerche di prodotto come "mocassini uomo estate 2026" e "sandali flat 2026": sono nuovi clienti potenziali che ci trovano senza conoscerci.</div>
+  </div>
+  <div class="source-note">Fonte: Google Search Console</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ LE PAGINE PIÙ TROVATE SU GOOGLE ═══ -->
+  <div class="section-eyebrow">Google Search Console · Pagine</div>
+  <div class="section-title">Le pagine più trovate su Google</div>
+  <div class="section-desc">Le pagine del sito che raccolgono più clic dalla ricerca Google, con le visualizzazioni che generano e la posizione media.</div>
+
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Pagina</th><th class="num">Click</th><th class="num">Visualizzazioni</th><th>Tasso di clic</th><th class="num">Posiz. su Google</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rank-num">1</span></td><td>Home page</td><td class="num">226</td><td class="num">14.640</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:36%"></div></div><span class="ctr-num">1,54%</span></div></td><td class="num gold-val">5,70</td></tr>
+        <tr><td><span class="rank-num">2</span></td><td>Collezione Bibi Lou</td><td class="num">113</td><td class="num">5.224</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:50%"></div></div><span class="ctr-num">2,16%</span></div></td><td class="num gold-val">6,38</td></tr>
+        <tr><td><span class="rank-num">3</span></td><td>Collezione Les Tropeziennes</td><td class="num">50</td><td class="num">3.162</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:37%"></div></div><span class="ctr-num">1,58%</span></div></td><td class="num gold-val">7,32</td></tr>
+        <tr><td><span class="rank-num">4</span></td><td>Collezione Alma en Pena</td><td class="num">36</td><td class="num">1.644</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:51%"></div></div><span class="ctr-num">2,19%</span></div></td><td class="num gold-val">6,30</td></tr>
+        <tr><td><span class="rank-num">5</span></td><td>Collezione Nero Giardini</td><td class="num">29</td><td class="num">3.702</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:18%"></div></div><span class="ctr-num">0,78%</span></div></td><td class="num gold-val">10,44</td></tr>
+        <tr><td><span class="rank-num">6</span></td><td>Blog · Sandali flat donna 2026</td><td class="num">22</td><td class="num">1.124</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:45%"></div></div><span class="ctr-num">1,96%</span></div></td><td class="num gold-val">7,70</td></tr>
+        <tr><td><span class="rank-num">7</span></td><td>Collezione Le Bohemien</td><td class="num">22</td><td class="num">510</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:100%"></div></div><span class="ctr-num">4,31%</span></div></td><td class="num gold-val">8,66</td></tr>
+        <tr><td><span class="rank-num">8</span></td><td>Blog · Scarpe da cerimonia per donna</td><td class="num">20</td><td class="num">6.380</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:7%"></div></div><span class="ctr-num">0,31%</span></div></td><td class="num gold-val">7,58</td></tr>
+        <tr><td><span class="rank-num">9</span></td><td>Blog · Mocassini uomo 2026 · guida</td><td class="num">19</td><td class="num">714</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:62%"></div></div><span class="ctr-num">2,66%</span></div></td><td class="num gold-val">4,74</td></tr>
+        <tr><td><span class="rank-num">10</span></td><td>Collezione Cerimonia Donna</td><td class="num">19</td><td class="num">1.113</td><td><div class="ctr-cell"><div class="ctr-bar-bg"><div class="ctr-bar-fill" style="width:40%"></div></div><span class="ctr-num">1,71%</span></div></td><td class="num gold-val">7,58</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Il <strong>tasso di clic</strong> indica quante delle persone che hanno visto la pagina nei risultati l'hanno effettivamente aperta. La <strong>posizione su Google</strong> è la posizione media nei risultati: più basso è il numero, meglio è (1 = primo risultato, entro 10 = prima pagina). Le pagine con molte visualizzazioni e tasso di clic basso — come "Scarpe da cerimonia per donna" e la collezione Nero Giardini — sono le opportunità più immediate: la visibilità c'è già, va convertita in visite.</div>
+  </div>
+  <div class="source-note">Fonte: Google Search Console</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ I BRAND PIÙ VENDUTI ═══ -->
+  <div class="section-eyebrow">Shopify · Settimana 20 – 26 Luglio</div>
+  <div class="section-title">I brand più venduti questa settimana</div>
+  <div class="section-desc">Classifica dei brand per unità vendute nella settimana 20 – 26 luglio 2026.</div>
+
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Brand</th><th class="num">Unità vendute</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rank-num">1</span></td><td>BIBI LOU</td><td class="num gold-val">5</td></tr>
+        <tr><td><span class="rank-num">2</span></td><td>MUSTO</td><td class="num gold-val">3</td></tr>
+        <tr><td><span class="rank-num">3</span></td><td>LIU JO</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">4</span></td><td>BRUNATE</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">5</span></td><td>VIGUERA</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">6</span></td><td>INUOVO</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">7</span></td><td>LES TROPEZIENNES</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">8</span></td><td>GALIZIO TORRESI</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">9</span></td><td>NEROGIARDINI</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">10</span></td><td>LE FURLANINE</td><td class="num gold-val">1</td></tr>
+        <tr><td><span class="rank-num">11</span></td><td>PONS QUINTANA</td><td class="num gold-val">1</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Unità nette vendute nella settimana, ordinate per volume · Sono elencati i brand con almeno un'unità netta venduta. <strong>BIBI LOU</strong> è anche la collezione con più clic da Google dopo la home page (113 clic): la domanda di ricerca e le vendite vanno nella stessa direzione.</div>
+  </div>
+  <div class="source-note">Fonte: Shopify</div>
+
+  <hr class="section-divider">
+
+  <!-- ═══ COSA FAREMO LA PROSSIMA SETTIMANA ═══ -->
+  <div class="section-eyebrow">Prossimi passi</div>
+  <div class="section-title">Cosa faremo la prossima settimana</div>
+  <div class="section-desc">Le azioni concrete che il team Web Domus realizzerà nella settimana W31.</div>
+
+  <div class="step-cards">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-content-title">Rendiamo più invitante su Google la guida "Scarpe da cerimonia per donna"</div>
+        <div class="step-content-body">Questa pagina è comparsa 6.380 volte nei risultati di Google portando solo 20 visite: la visibilità è già conquistata, ma il titolo e la descrizione che le persone leggono non le convincono a cliccare. Riscriviamo entrambi per renderli più chiari e desiderabili. È l'intervento con il miglior rapporto tra sforzo e risultato atteso, perché non serve guadagnare posizioni: basta sfruttare meglio quelle che abbiamo già.</div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-content-title">Trasformiamo i lettori dell'articolo su Discover in visitatori delle collezioni</div>
+        <div class="step-content-body">L'articolo sui sandali con tacco ha portato oltre 2.600 visite in pochi giorni, ma chi arriva legge il contenuto e spesso si ferma lì. Inseriamo collegamenti chiari e ben posizionati dall'articolo verso le collezioni di sandali in vendita, così che chi si è appassionato al tema trovi subito i prodotti corrispondenti. Applichiamo lo stesso schema agli altri articoli del blog con più traffico.</div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-content-title">Portiamo la collezione Nero Giardini verso la prima pagina</div>
+        <div class="step-content-body">La collezione compare 3.702 volte nei risultati ma in posizione media 10,44, cioè al confine tra la prima e la seconda pagina di Google — dove i clic crollano. Interveniamo sui testi e sulla struttura della pagina per guadagnare le due o tre posizioni che servono a entrare stabilmente in prima pagina.</div>
+      </div>
+    </div>
+  </div>
+  <div class="source-note">Le attività di ottimizzazione sono incluse nel servizio SEO mensile.</div>
+
+  <!-- ═══ GLOSSARIO ═══ -->
+  <div class="glossary-box">
+    <div class="glossary-title">📖 Glossario · I termini usati in questo report</div>
+    <div class="gloss-grid">
+      <div class="gloss-row"><span class="gloss-term">Visitatori (Utenti)</span><span class="gloss-def">Persone distinte che hanno aperto il sito almeno una volta nella settimana.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Sessioni</span><span class="gloss-def">Ogni singola visita al sito; la stessa persona che torna più volte genera più sessioni.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Click da Google</span><span class="gloss-def">Quante volte un utente ha cliccato su un risultato di Musto nei risultati Google (senza pubblicità).</span></div>
+      <div class="gloss-row"><span class="gloss-term">Visualizzazioni (Impressioni)</span><span class="gloss-def">Quante volte il sito è apparso in una pagina di risultati Google, anche senza click.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Tasso di clic (CTR)</span><span class="gloss-def">Su 100 volte che il sito appare su Google, quante si traducono in un clic.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Posizione su Google</span><span class="gloss-def">In quale posizione media appare il sito. Posizione 1 = primo risultato. Più basso il numero, meglio è.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Spesa media per ordine</span><span class="gloss-def">Incasso totale diviso numero di ordini.</span></div>
+      <div class="gloss-row"><span class="gloss-term">Incasso stimato per canale</span><span class="gloss-def">Stima proporzionale: i canali con più sessioni ricevono una quota maggiore dell'incasso Shopify totale.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Web Domus</div>
+  <div class="footer-info">Report Settimanale W30 · Musto Calzature · Generato il 28 Luglio 2026 · Dati: GA4 + GSC + Shopify</div>
+</div>
+
+<script>
+// Traffic chart
+new Chart(document.getElementById('trafficChart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: ['20 Lug', '21 Lug', '22 Lug', '23 Lug', '24 Lug', '25 Lug', '26 Lug'],
+    datasets: [
+      { label: 'Visitatori', data: [417,454,567,1390,946,958,1009], borderColor:'#c9a96e', backgroundColor:'rgba(201,169,110,.1)', borderWidth:2, fill:true, tension:.4, pointBackgroundColor:'#c9a96e', pointRadius:4 },
+      { label: 'Sessioni', data: [454,512,622,1441,1011,1012,1076], borderColor:'#4a9e7a', backgroundColor:'rgba(74,158,122,.05)', borderWidth:2, fill:false, tension:.4, borderDash:[4,3], pointBackgroundColor:'#4a9e7a', pointRadius:3 }
+    ]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{ color:'#888', font:{size:11} } }, tooltip:{ mode:'index' } }, scales:{ x:{ ticks:{color:'#888',font:{size:11}}, grid:{color:'rgba(255,255,255,.04)'} }, y:{ ticks:{color:'#888',font:{size:11}}, grid:{color:'rgba(255,255,255,.04)'}, beginAtZero:false } } }
+});
+
+// Orders/Revenue chart
+new Chart(document.getElementById('ordersRevenueChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: ['20 Lug', '21 Lug', '22 Lug', '23 Lug', '24 Lug', '25 Lug', '26 Lug'],
+    datasets: [
+      { label: 'Ordini', data: [6,4,4,4,0,2,1], backgroundColor:'rgba(201,169,110,.35)', borderColor:'#c9a96e', borderWidth:1, yAxisID:'y' },
+      { label: 'Incasso netto (€)', data: [636,449.9,488,10.2,-366.45,288,114], borderColor:'#4a9e7a', backgroundColor:'transparent', borderWidth:2, type:'line', tension:.3, pointBackgroundColor:'#4a9e7a', pointRadius:4, yAxisID:'y2' }
+    ]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{ color:'#888', font:{size:11} } } }, scales:{ x:{ ticks:{color:'#888'}, grid:{color:'rgba(255,255,255,.04)'} }, y:{ ticks:{color:'#888',stepSize:1}, grid:{color:'rgba(255,255,255,.04)'}, title:{display:true,text:'Ordini',color:'#888'}, beginAtZero:true }, y2:{ position:'right', ticks:{ color:'#4a9e7a', callback: v => '€ '+v }, grid:{display:false}, title:{display:true,text:'Incasso netto (€)',color:'#4a9e7a'} } } }
+});
+
+// Channels donut
+new Chart(document.getElementById('channelsChart').getContext('2d'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Accesso Diretto', 'Ricerca Google (organico)', 'Social a Pagamento', 'Shopping a Pagamento', 'Non Classificato', 'Ricerca a Pagamento', 'Altri'],
+    datasets: [{ data: [2203,1807,1054,534,216,90,223], backgroundColor:['#8e7bb5','#c9a96e','#5B9BD5','#c0392b','#e8a020','#4a9e7a','#555'], borderWidth:0 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color:'#888', font:{size:10}, boxWidth:12, padding:7 } } } }
+});
+
+// Branded donut
+new Chart(document.getElementById('brandedChart').getContext('2d'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Ricerche generiche (94,2%)', 'Ricerche per nome (5,8%)'],
+    datasets: [{ data: [1162,71], backgroundColor:['#4a9e7a','#c9a96e'], borderWidth:0 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color:'#888', font:{size:11}, boxWidth:12 } } } }
+});
+</script>
+
+</body>
+</html>
