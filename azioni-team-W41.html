@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>USO INTERNO · Azioni Team W41 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f0f;--bg2:#141209;--gold:#c9a96e;--gold-light:#e0c898;--green:#4a9e7a;--red:#c0392b;
+--text:#e8e8e8;--muted:#888;--border:#2a2a2a;--card:#181818;--amber:#e8a020;--blue:#5B9BD5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+.warn-banner{background:var(--red);color:#fff;text-align:center;padding:12px 20px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:sticky;top:0;z-index:100}
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:30px 40px 24px}
+.brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.client-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
+.header-period{color:var(--muted);font-size:13px;margin-top:8px}
+.container{max-width:1020px;margin:0 auto;padding:32px 24px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--gold);margin:32px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.section-title:first-of-type{margin-top:0}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:8px}
+.mini-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.mini-lbl{font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mini-val{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#fff}
+.mini-delta{font-size:10px;font-weight:600;margin-top:3px}
+.up{color:var(--green)}.down{color:#e07b6e}.amb{color:var(--amber)}.flat{color:var(--muted)}
+.action-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;margin-bottom:12px}
+.action-card.urg{border-left-color:var(--red)}
+.action-card.med{border-left-color:var(--amber)}
+.action-card.low{border-left-color:var(--green)}
+.action-head{display:flex;align-items:center;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.action-title{font-size:14px;font-weight:600;color:#fff}
+.badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.b-urg{background:rgba(192,57,43,.18);color:#e07b6e;border:1px solid rgba(192,57,43,.4)}
+.b-med{background:rgba(232,160,32,.15);color:var(--amber);border:1px solid rgba(232,160,32,.35)}
+.b-low{background:rgba(74,158,122,.13);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.b-tech{background:rgba(91,155,213,.13);color:var(--blue);border:1px solid rgba(91,155,213,.3)}
+.action-body{font-size:12.5px;color:#aaa;line-height:1.7}
+.action-body code{background:#000;padding:1px 6px;border-radius:3px;font-size:11.5px;color:var(--gold-light)}
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.data-table th{text-align:left;padding:9px 12px;font-size:9.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:9px 12px;border-bottom:1px solid rgba(42,42,42,.6)}
+.data-table tr:last-child td{border-bottom:none}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.tbl-footer{padding:10px 12px 13px;font-size:10px;color:var(--muted)}
+.num{text-align:right}
+.gold-val{color:var(--gold-light);font-weight:600}
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.18);border-radius:7px;padding:13px 17px;font-size:12px;color:#aaa;margin:10px 0 18px;line-height:1.7}
+.alert-box{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.32);border-left:3px solid var(--red);border-radius:7px;padding:15px 19px;font-size:12.5px;color:#ccc;margin:10px 0 18px;line-height:1.75}
+.alert-title{font-size:12px;font-weight:700;color:#e07b6e;margin-bottom:6px;letter-spacing:.5px}
+.check{list-style:none;padding:0}
+.check li{padding:8px 0 8px 28px;position:relative;font-size:12.5px;color:#bbb;border-bottom:1px solid rgba(42,42,42,.5)}
+.check li:last-child{border-bottom:none}
+.check li::before{content:'☐';position:absolute;left:4px;top:8px;color:var(--gold);font-size:14px}
+.footer{border-top:1px solid var(--border);padding:22px 40px;font-size:11px;color:var(--muted);margin-top:36px}
+</style>
+</head><body>
+<div class="warn-banner">⚠️ Uso interno Web Domus — non condividere con il cliente</div>
+<div class="header">
+<div class="brand-label">Web Domus · Azioni Team</div>
+<div class="client-name">Musto Calzature · W41</div>
+<div class="header-period">5 Ottobre – 11 Ottobre 2026 · rigenerato il 26 Ottobre 2026 con dati Shopify</div></div>
+<div class="container">
+<div class="alert-box" style="border-left-color:var(--green);border-color:rgba(74,158,122,.35);background:rgba(74,158,122,.07)"><div class="alert-title" style="color:var(--green)">✅ REPORT RIGENERATO CON DATI SHOPIFY REALI</div>
+Il connettore Shopify è tornato attivo il 26 ottobre (<code>connected: true</code>, <code>enabledInChat: true</code>). Questo file e il report cliente W41 sono stati rigenerati con ordini, incasso e brand reali; i dati GA4 e GSC sono quelli già raccolti il 13 ottobre.<br><br>
+<strong>Regole di calcolo applicate</strong> (da template v2 approvato): incasso = ordini <code>PAID</code> + <code>PENDING</code>/<code>PARTIALLY_PAID</code> al valore corrente; esclusi <code>VOIDED</code>, <code>REFUNDED</code> e <code>PARTIALLY_REFUNDED</code> senza articoli trattenuti (resi totali, residuo = sola spedizione). Stati Shopify letti il 26 ottobre, quindi già comprensivi di resi e annullamenti avvenuti dopo la settimana. Brand dal campo <code>vendor</code> di Shopify (più affidabile della prima parola del titolo: es. «NeroGiardini …», «34M5 - Mocassini uomo - FRAU»). Settimane in ora di Roma.<br><br>
+<strong>GA4 vs Shopify:</strong> GA4 aveva tracciato 5 transazioni per € 567,45; Shopify registra 7 ordini per € 1.239,95. GA4 cattura il <strong>46%</strong> dell'incasso reale.</div>
+
+<h2 class="section-title">Snapshot numeri chiave</h2>
+<div class="mini-grid"><div class="mini-card"><div class="mini-lbl">Utenti GA4</div><div class="mini-val">2.804</div><div class="mini-delta up">+4,2% vs W40 (2.690)</div></div><div class="mini-card"><div class="mini-lbl">Sessioni GA4</div><div class="mini-val">3.382</div><div class="mini-delta up">+5,5% vs W40 (3.205)</div></div><div class="mini-card"><div class="mini-lbl">Ordini Shopify</div><div class="mini-val">7</div><div class="mini-delta down">−50,0% vs W40 (14)</div></div><div class="mini-card"><div class="mini-lbl">Incasso Shopify</div><div class="mini-val">€ 1.240</div><div class="mini-delta down">−41,7% vs W40 (€ 2.128)</div></div><div class="mini-card"><div class="mini-lbl">AOV Shopify</div><div class="mini-val">€ 177</div><div class="mini-delta up">+16,6% vs W40 (€ 152)</div></div><div class="mini-card"><div class="mini-lbl">Copertura GA4</div><div class="mini-val">46%</div><div class="mini-delta amb">GA4 5 trans. / € 567,45</div></div><div class="mini-card"><div class="mini-lbl">Click GSC (6 gg)</div><div class="mini-val">1.385</div><div class="mini-delta up">+6,9% vs W40 (1.296)</div></div><div class="mini-card"><div class="mini-lbl">Impressioni GSC (6 gg)</div><div class="mini-val">108.232</div><div class="mini-delta up">+10,3% vs W40 (98.102)</div></div><div class="mini-card"><div class="mini-lbl">CTR GSC</div><div class="mini-val">1,28%</div><div class="mini-delta down">−3,1% vs W40 (1,32%)</div></div><div class="mini-card"><div class="mini-lbl">Posizione media GSC</div><div class="mini-val">6,71</div><div class="mini-delta amb">era 6,71 in W40</div></div></div>
+<h2 class="section-title">Azioni prioritarie</h2>
+<div class="action-card med"><div class="action-head"><span class="badge b-med">medio</span><span class="action-title">Ordine #1758 reso totale (Nero Giardini, € 99,00 rimborsati)</span></div>
+<div class="action-body">Stato <code>PARTIALLY_REFUNDED</code>, articolo restituito, trattenuti solo € 5 di spedizione: escluso dall'incasso. Nessun ordine pending in W41.</div></div><div class="action-card med"><div class="action-head"><span class="badge b-med">medio</span><span class="action-title">GA4 vede solo il 46% dell'incasso reale</span></div>
+<div class="action-body">GA4 5 transazioni / € 567,45 contro Shopify 7 ordini / € 1.239,95. Il calo «−52,6%» comunicato nella prima versione del report W41 era un artefatto di tracciamento: il dato reale è −41,7% su una W40 molto alta.</div></div><div class="action-card med"><div class="action-head"><span class="badge b-med">medio</span><span class="action-title">Nero Giardini — collezione con la visibilità più sprecata</span></div>
+<div class="action-body">4.688 impressioni in 6 giorni, 45 click, CTR 0,96%, posizione 9,34. Title/meta, testo collezione, link interni.</div></div><div class="action-card med"><div class="action-head"><span class="badge b-med">medio</span><span class="action-title">Query in posizione 1–3 con CTR sotto l'1%</span></div>
+<div class="action-body"><code>mrp scarpe</code> 360 impressioni, pos 3,04, 3 click (0,83%); <code>negozi scarpe milano</code> 144 impressioni, pos 2,69, 5 click. Riscrivere title/description delle pagine che intercettano queste query.</div></div><div class="action-card low"><div class="action-head"><span class="badge b-low">basso</span><span class="action-title">Estendere il modello «tabella taglie» alle collezioni</span></div>
+<div class="action-body">tabella-frau-uomo 16,41% e tabella-cafenoir 16,04% contro collezioni sotto l'1,5%.</div></div>
+<h2 class="section-title">Dettaglio ordini Shopify</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>#</th><th>Data (Roma)</th><th>Brand</th><th class="num">Totale originale</th><th class="num">Conteggiato</th><th>Stato</th></tr></thead><tbody>
+<tr><td>#1758</td><td>05 Ott 08:00</td><td>NEROGIARDINI</td><td class="num">€ 109,00</td><td class="num">—</td><td style="color:#e07b6e;font-weight:600"><code>PARTIALLY_REFUNDED</code></td></tr><tr><td>#1759</td><td>05 Ott 09:05</td><td>NEROGIARDINI</td><td class="num">€ 116,65</td><td class="num gold-val">€ 116,65</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1760</td><td>05 Ott 12:06</td><td>BIBI LOU</td><td class="num">€ 98,90</td><td class="num gold-val">€ 98,90</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1761</td><td>06 Ott 10:47</td><td>FRAU</td><td class="num">€ 139,90</td><td class="num gold-val">€ 139,90</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1762</td><td>09 Ott 08:01</td><td>ANOTHER TREND, MUSTO</td><td class="num">€ 338,00</td><td class="num gold-val">€ 338,00</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1763</td><td>10 Ott 09:49</td><td>KAMO-GUTSU</td><td class="num">€ 243,90</td><td class="num gold-val">€ 243,90</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1764</td><td>11 Ott 07:50</td><td>JANET & JANET, MUSTO</td><td class="num">€ 176,40</td><td class="num gold-val">€ 176,40</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr><tr><td>#1765</td><td>11 Ott 11:26</td><td>BIBI LOU</td><td class="num">€ 126,20</td><td class="num gold-val">€ 126,20</td><td style="color:var(--green);font-weight:600"><code>PAID</code></td></tr>
+</tbody></table><div class="tbl-footer">Incasso € 1.239,95 su 7 ordini · AOV € 177,14 · 0 in attesa · 1 esclusi.</div></div>
+<div class="alert-box" style="border-left-color:var(--amber);border-color:rgba(232,160,32,.32);background:rgba(232,160,32,.06)"><div class="alert-title" style="color:var(--amber)">🔒 Nota privacy — vale sempre</div>
+Mai mostrare nomi/cognomi acquirenti nei report; solo numero ordine (#XXXX). In questa rigenerazione i nomi clienti non sono stati né richiesti né riportati in alcun file.</div>
+<h2 class="section-title">Canali · attribuzione proporzionale vs GA4</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>Canale</th><th class="num">Sessioni</th><th class="num">%</th><th class="num">Incasso stimato (report cliente)</th><th class="num">Revenue GA4 attribuita</th></tr></thead><tbody>
+<tr><td>Ricerca Google (organico)</td><td class="num">1.387</td><td class="num">41,0%</td><td class="num gold-val">€ 508,22</td><td class="num">€ 111,65</td></tr><tr><td>Accesso Diretto</td><td class="num">726</td><td class="num">21,5%</td><td class="num gold-val">€ 266,02</td><td class="num">—</td></tr><tr><td>Social a Pagamento</td><td class="num">558</td><td class="num">16,5%</td><td class="num gold-val">€ 204,46</td><td class="num">€ 356,80</td></tr><tr><td>Non Classificato</td><td class="num">207</td><td class="num">6,1%</td><td class="num gold-val">€ 75,85</td><td class="num">—</td></tr><tr><td>Shopping a Pagamento</td><td class="num">173</td><td class="num">5,1%</td><td class="num gold-val">€ 63,39</td><td class="num">—</td></tr><tr><td>Ricerca a Pagamento</td><td class="num">119</td><td class="num">3,5%</td><td class="num gold-val">€ 43,60</td><td class="num">€ 99,00</td></tr><tr><td>Social Organico</td><td class="num">85</td><td class="num">2,5%</td><td class="num gold-val">€ 31,15</td><td class="num">—</td></tr><tr><td>Cross-Network</td><td class="num">63</td><td class="num">1,9%</td><td class="num gold-val">€ 23,08</td><td class="num">—</td></tr><tr><td>Assistenti AI (ChatGPT…)</td><td class="num">42</td><td class="num">1,2%</td><td class="num gold-val">€ 15,39</td><td class="num">—</td></tr><tr><td>Shopping Organico</td><td class="num">12</td><td class="num">0,4%</td><td class="num gold-val">€ 4,40</td><td class="num">—</td></tr><tr><td>Altro (Referral)</td><td class="num">5</td><td class="num">0,1%</td><td class="num gold-val">€ 1,83</td><td class="num">—</td></tr><tr><td>Email</td><td class="num">4</td><td class="num">0,1%</td><td class="num gold-val">€ 1,47</td><td class="num">—</td></tr><tr><td>Altro (Paid Other)</td><td class="num">3</td><td class="num">0,1%</td><td class="num gold-val">€ 1,10</td><td class="num">—</td></tr>
+</tbody></table><div class="tbl-footer">Stima proporzionale = quota sessioni × € 1.239,95 Shopify (somma = 100%). La colonna GA4 è l'attribuzione reale di Analytics su € 567,45 tracciati: utile per capire quali canali convertono davvero, da non mostrare al cliente.</div></div>
+<h2 class="section-title">Brand ultime 4 settimane (W38–W41) · lista completa</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>#</th><th>Brand (vendor)</th><th class="num">Unità</th><th class="num">Incasso prodotti</th><th class="num">Ordini</th></tr></thead><tbody><tr><td>1</td><td>Musto</td><td class="num">7</td><td class="num">€ 1.123,50</td><td class="num">7</td></tr><tr><td>2</td><td>Nero Giardini</td><td class="num">6</td><td class="num">€ 658,35</td><td class="num">6</td></tr><tr><td>3</td><td>Bibi Lou</td><td class="num">3</td><td class="num">€ 384,30</td><td class="num">3</td></tr><tr><td>4</td><td>Janet & Janet</td><td class="num">3</td><td class="num">€ 195,00</td><td class="num">3</td></tr><tr><td>5</td><td>Kamo-Gutsu</td><td class="num">2</td><td class="num">€ 458,00</td><td class="num">2</td></tr><tr><td>6</td><td>Nannini</td><td class="num">2</td><td class="num">€ 304,00</td><td class="num">2</td></tr><tr><td>7</td><td>Frau</td><td class="num">2</td><td class="num">€ 270,00</td><td class="num">2</td></tr><tr><td>8</td><td>Alma en Pena</td><td class="num">2</td><td class="num">€ 147,00</td><td class="num">2</td></tr><tr><td>9</td><td>Le Bohémien</td><td class="num">1</td><td class="num">€ 229,00</td><td class="num">1</td></tr><tr><td>10</td><td>Exton</td><td class="num">1</td><td class="num">€ 149,00</td><td class="num">1</td></tr><tr><td>11</td><td>Kebo</td><td class="num">1</td><td class="num">€ 139,00</td><td class="num">1</td></tr><tr><td>12</td><td>Another Trend</td><td class="num">1</td><td class="num">€ 139,00</td><td class="num">1</td></tr><tr><td>13</td><td>Laura Vita</td><td class="num">1</td><td class="num">€ 135,00</td><td class="num">1</td></tr><tr><td>14</td><td>Walter Violet</td><td class="num">1</td><td class="num">€ 119,00</td><td class="num">1</td></tr><tr><td>15</td><td>Stokton</td><td class="num">1</td><td class="num">€ 115,00</td><td class="num">1</td></tr><tr><td>16</td><td>Brunate</td><td class="num">1</td><td class="num">€ 99,60</td><td class="num">1</td></tr><tr><td>17</td><td>Sun68</td><td class="num">1</td><td class="num">€ 69,00</td><td class="num">1</td></tr></tbody></table>
+<div class="tbl-footer">Solo ordini pagati con articoli trattenuti. Incasso al netto di spedizione e resi.</div></div>
+<h2 class="section-title">Analisi SEO · note di dettaglio</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>Pagina · alto potenziale non sfruttato</th><th class="num">Impr.</th><th class="num">Click</th><th class="num">CTR</th><th class="num">Pos.</th><th>Nota operativa</th></tr></thead><tbody>
+<tr><td>/collections/nero-giardini</td><td class="num">4.688</td><td class="num">45</td><td class="num">0,96%</td><td class="num gold-val">9,34</td><td style="font-size:11.5px;color:#999">Priorità 1. Massimo bacino impressioni, CTR sotto 1%, posizione peggiorata da 9,02 (W39) a 9,34.</td></tr>
+<tr><td>Blog · scarpe donna impermeabili</td><td class="num">3.087</td><td class="num">40</td><td class="num">1,30%</td><td class="num gold-val">8,36</td><td style="font-size:11.5px;color:#999">Stagionalità al massimo ora. Posizione 8,36 migliorabile: link interni + aggiornamento.</td></tr>
+<tr><td>Blog · back to work scarpe uomo</td><td class="num">2.401</td><td class="num">33</td><td class="num">1,37%</td><td class="num gold-val">6,38</td><td style="font-size:11.5px;color:#999">Posizione già discreta, CTR basso: lavorare su title/description.</td></tr>
+<tr><td>/collections/bibi-lou</td><td class="num">2.503</td><td class="num">29</td><td class="num">1,16%</td><td class="num gold-val">6,10</td><td style="font-size:11.5px;color:#999">Posizione buona (6,10) ma CTR 1,16%: snippet da riscrivere.</td></tr>
+<tr><td>Blog · mocassini uomo 2026</td><td class="num">1.023</td><td class="num">23</td><td class="num">2,25%</td><td class="num gold-val">5,82</td><td style="font-size:11.5px;color:#999">Rendimento migliore della media blog: usarlo come modello.</td></tr>
+<tr><td>/collections/le-bohemien</td><td class="num">734</td><td class="num">31</td><td class="num">4,22%</td><td class="num gold-val">9,12</td><td style="font-size:11.5px;color:#999">CTR alto (4,22%) ma posizione 9,12: qui conviene spingere il ranking, non lo snippet.</td></tr>
+</tbody></table><div class="tbl-footer">Fonte GSC, finestra 5–10 ottobre. Totale pagine con impressioni: 3.815 · click totali pagine 1.395 · impressioni 122.778.</div></div>
+<div class="note-box"><strong>Branded vs non-branded (livello query, 501 click in chiaro su 1.385 totali).</strong> Branded 113 click / 827 impressioni · non-branded 388 click / 67.829 impressioni → <strong>77,4% non-branded</strong>, in linea con W40 (77,3%). Il sito continua a intercettare domanda nuova, non solo chi lo cerca per nome. Il differenziale CTR è enorme: 13,66% sul branded contro 0,57% sul non-branded — normale, ma indica che il margine di crescita sta tutto nel non-branded.<br><br>
+<strong>Verifica di quadratura:</strong> 113 + 388 = 501 = totale click query-level ✓. La differenza con i 1.385 click aggregati è l'anonimizzazione GSC sulle query a basso volume, non un errore.</div>
+
+<h2 class="section-title">Checklist settimana W42</h2>
+<ul class="check"><li>Intervento snippet + link interni su /collections/nero-giardini</li><li>Riscrivere snippet per query in pos 1–3 con CTR &lt; 1%</li><li>Audit evento purchase GA4</li><li>Pilota blocco «tabella taglie» su 2 collezioni</li></ul>
+</div>
+<div class="footer">Web Domus · Azioni Team W41 · Musto Calzature · rigenerato il 26 Ottobre 2026 · uso interno</div>
+</body></html>
