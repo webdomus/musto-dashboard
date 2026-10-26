@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>USO INTERNO · Azioni Team W38 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f0f;--bg2:#141209;--gold:#c9a96e;--gold-light:#e0c898;--green:#4a9e7a;--red:#c0392b;
+--text:#e8e8e8;--muted:#888;--border:#2a2a2a;--card:#181818;--amber:#e8a020;--blue:#5B9BD5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+.warn-banner{background:var(--red);color:#fff;text-align:center;padding:12px 20px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:sticky;top:0;z-index:100}
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:30px 40px 24px}
+.brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.client-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
+.header-period{color:var(--muted);font-size:13px;margin-top:8px}
+.container{max-width:1020px;margin:0 auto;padding:32px 24px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--gold);margin:32px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.section-title:first-of-type{margin-top:0}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:8px}
+.mini-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.mini-lbl{font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mini-val{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#fff}
+.mini-delta{font-size:10px;font-weight:600;margin-top:3px}
+.up{color:var(--green)}.down{color:#e07b6e}.amb{color:var(--amber)}.flat{color:var(--muted)}
+.action-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;margin-bottom:12px}
+.action-card.urg{border-left-color:var(--red)}
+.action-card.med{border-left-color:var(--amber)}
+.action-card.low{border-left-color:var(--green)}
+.action-head{display:flex;align-items:center;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.action-title{font-size:14px;font-weight:600;color:#fff}
+.badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.b-urg{background:rgba(192,57,43,.18);color:#e07b6e;border:1px solid rgba(192,57,43,.4)}
+.b-med{background:rgba(232,160,32,.15);color:var(--amber);border:1px solid rgba(232,160,32,.35)}
+.b-low{background:rgba(74,158,122,.13);color:var(--green);border:1px solid rgba(74,158,122,.3)}
+.b-tech{background:rgba(91,155,213,.13);color:var(--blue);border:1px solid rgba(91,155,213,.3)}
+.action-body{font-size:12.5px;color:#aaa;line-height:1.7}
+.action-body code{background:#000;padding:1px 6px;border-radius:3px;font-size:11.5px;color:var(--gold-light)}
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.data-table th{text-align:left;padding:9px 12px;font-size:9.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:9px 12px;border-bottom:1px solid rgba(42,42,42,.6)}
+.data-table tr:last-child td{border-bottom:none}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.tbl-footer{padding:10px 12px 13px;font-size:10px;color:var(--muted)}
+.num{text-align:right}
+.gold-val{color:var(--gold-light);font-weight:600}
+.note-box{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.18);border-radius:7px;padding:13px 17px;font-size:12px;color:#aaa;margin:10px 0 18px;line-height:1.7}
+.alert-box{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.32);border-left:3px solid var(--red);border-radius:7px;padding:15px 19px;font-size:12.5px;color:#ccc;margin:10px 0 18px;line-height:1.75}
+.alert-title{font-size:12px;font-weight:700;color:#e07b6e;margin-bottom:6px;letter-spacing:.5px}
+.check{list-style:none;padding:0}
+.check li{padding:8px 0 8px 28px;position:relative;font-size:12.5px;color:#bbb;border-bottom:1px solid rgba(42,42,42,.5)}
+.check li:last-child{border-bottom:none}
+.check li::before{content:'☐';position:absolute;left:4px;top:8px;color:var(--gold);font-size:14px}
+.footer{border-top:1px solid var(--border);padding:22px 40px;font-size:11px;color:var(--muted);margin-top:36px}
+</style>
+</head><body>
+<div class="warn-banner">⚠️ Uso interno Web Domus — non condividere con il cliente</div>
+<div class="header">
+<div class="brand-label">Web Domus · Azioni Team</div>
+<div class="client-name">Musto Calzature · W38</div>
+<div class="header-period">Lunedì 14 – Domenica 20 Settembre 2026 · generato il 22 Settembre 2026</div></div>
+<div class="container">
+
+<div class="alert-box"><div class="alert-title">⛔ SHOPIFY NON DISPONIBILE — TERZA SETTIMANA CONSECUTIVA</div>
+Il connettore Shopify indicato nel task (<code>e7820f47-a1b3-4066-a693-301d28c6e74b</code>) <strong>non è presente in questa sessione</strong>. L'unico server Shopify collegato è quello generico del plugin Small Business (<code>plugin_small-business_shopify</code>) e <strong>ogni sua chiamata è stata rifiutata automaticamente</strong> perché il run schedulato non ha nessuno che possa approvarla — inclusa la verifica di quale store sia effettivamente collegato.<br><br>
+<strong>Conseguenze su questo report:</strong> mancano fatturato reale, numero ordini, spesa media reale, stati di pagamento (PAID / PENDING / REFUNDED / VOIDED), tabella ordini e classifica brand da Shopify. L'attribuzione revenue per canale è calcolata sui valori GA4 realmente attribuiti, non come stima proporzionale sul fatturato Shopify.<br><br>
+<strong>Da fare (Carmine):</strong> 1) ripristinare/collegare il server MCP Shopify Musto in Claude Desktop; 2) autorizzare preventivamente le sue tool per i run schedulati, altrimenti il problema si ripresenta ogni settimana; 3) rigenerare W38 per integrare le sezioni mancanti.</div>
+
+<div class="alert-box" style="border-left-color:var(--amber);border-color:rgba(232,160,32,.32);background:rgba(232,160,32,.06)"><div class="alert-title" style="color:var(--amber)">⏱ Nota metodologica · finestra GSC a 6 giorni</div>
+Al momento della generazione Google Search Console aveva dati fino a <strong>sabato 19 settembre</strong> (domenica 20 non ancora pubblicata, lag normale di 2–3 giorni). Per un confronto omogeneo tutte le metriche GSC di questo report usano la finestra <strong>Lun–Sab</strong>: W38 = 14–19 set, W37 = 7–12 set. Stessa convenzione usata in W36 e W37. GA4 invece copre la settimana piena 14–20 set.</div>
+
+<h2 class="section-title">Snapshot numeri chiave</h2>
+<div class="mini-grid">
+<div class="mini-card"><div class="mini-lbl">Utenti GA4</div><div class="mini-val">3.741</div><div class="mini-delta up">+33,0% vs W37 (2.813)</div></div>
+<div class="mini-card"><div class="mini-lbl">Sessioni GA4</div><div class="mini-val">4.039</div><div class="mini-delta up">+29,3% vs W37 (3.124)</div></div>
+<div class="mini-card"><div class="mini-lbl">Transazioni GA4</div><div class="mini-val">7</div><div class="mini-delta down">−36,4% vs W37 (11)</div></div>
+<div class="mini-card"><div class="mini-lbl">Revenue GA4</div><div class="mini-val">€ 807</div><div class="mini-delta down">−47,0% vs W37 (€ 1.523)</div></div>
+<div class="mini-card"><div class="mini-lbl">AOV GA4</div><div class="mini-val">€ 115</div><div class="mini-delta down">−16,7% vs W37 (€ 138)</div></div>
+<div class="mini-card"><div class="mini-lbl">Click GSC (6 gg)</div><div class="mini-val">1.369</div><div class="mini-delta up">+11,5% vs W37 (1.228)</div></div>
+<div class="mini-card"><div class="mini-lbl">Impressioni GSC (6 gg)</div><div class="mini-val">103.516</div><div class="mini-delta amb">−3,7% vs W37 (107.539)</div></div>
+<div class="mini-card"><div class="mini-lbl">CTR GSC</div><div class="mini-val">1,32%</div><div class="mini-delta up">+15,8% vs W37 (1,14%)</div></div>
+<div class="mini-card"><div class="mini-lbl">Posizione media</div><div class="mini-val">6,49</div><div class="mini-delta up">da 7,61 · −1,12 (meglio)</div></div>
+<div class="mini-card"><div class="mini-lbl">Quota organico</div><div class="mini-val">37,9%</div><div class="mini-delta amb">era 38,2% · +27,9% in assoluto</div></div>
+</div>
+<div class="note-box"><strong>Lettura sintetica.</strong> Settimana di traffico record dal Ferragosto (+33% utenti) trainata da un picco anomalo martedì 15 (908 utenti vs ~450 di baseline) e da un balzo del Diretto (577→984, +70,5%) e del Paid Social (410→671, +63,7%). Sul fronte SEO il segnale è il migliore dell'anno: posizione media 7,61→6,49 con CTR +15,8%, a fronte di impressioni in lieve calo — classica firma di un riposizionamento su query più pertinenti. Il contrasto è sulle conversioni: 7 transazioni contro 11, con revenue quasi dimezzata. Campione piccolo, ma da verificare a fondo appena Shopify torna disponibile.</div>
+
+<h2 class="section-title">Azioni prioritarie</h2>
+
+<div class="action-card urg"><div class="action-head"><span class="badge b-urg">Urgente</span><span class="action-title">Ripristinare il connettore Shopify per i run schedulati</span></div>
+<div class="action-body">Terza settimana consecutiva senza dati Shopify. Il report cliente esce con la sezione vendite basata su GA4 e senza classifica brand: accettabile una volta, non come norma. Serve (a) verificare quale MCP Shopify è collegato al progetto e ricollegare quello di Musto, (b) autorizzare le tool in modo persistente così che il run automatico del martedì non venga bloccato. Finché non è risolto, ogni confronto di fatturato settimanale resta indicativo.</div></div>
+
+<div class="action-card urg"><div class="action-head"><span class="badge b-urg">Urgente</span><span class="badge b-tech">SEO on-page</span><span class="action-title">Schede sneaker Liu Jo: 6.512 impressioni, 1 click in sei giorni</span></div>
+<div class="action-body">È l'anomalia più grave del sito e si ripete identica da W37.<br>
+• <code>/products/kylie-27-sneakers-liu-jo</code> — 4.381 impressioni, <strong>0 click</strong>, posizione media 2,9<br>
+• <code>/products/gio-sneakers-pelle-pia-302a</code> — 2.131 impressioni, <strong>0 click</strong>, posizione 8,3<br>
+• <code>/products/pia-244a-sneakers-gio</code> — 1.406 impressioni, 1 click, posizione 6,8<br>
+Lato query lo specchio è ancora più netto: <code>sneakers liu jo bianche</code> 2.288 impressioni in <strong>posizione 1,8</strong> con zero click; <code>sneakers donna platform</code> 2.348 impressioni posizione 8,1, zero click; <code>liu jo sneakers donna</code> 1.127 impressioni, zero click.<br><br>
+Essere in posizione 1,8 con CTR 0% non è normale: va escluso che si tratti di SERP occupata da immagini/Shopping, di title troncato o poco pertinente, di prezzo/disponibilità mostrati male nei rich result, o di prodotto fuori stock. <strong>Primo step diagnostico</strong>: guardare la SERP reale per quelle tre query prima di riscrivere qualsiasi cosa.</div></div>
+
+<div class="action-card med"><div class="action-head"><span class="badge b-med">Media</span><span class="action-title">Collezione Nero Giardini: prima per impressioni, CTR 1,30%</span></div>
+<div class="action-body"><code>/collections/nero-giardini</code> — 55 click, 4.218 impressioni, CTR 1,30%, posizione 8,60. È la pagina più esposta dopo la home e la posizione è il vero freno. Query collegate già in top 3: <code>nuova collezione nero giardini</code> (4 click, pos. 3,4), <code>scarpe nero giardini donna nuova collezione 2026</code> (9 click, pos. 5,0). Da lavorare: title/meta orientati a "nuova collezione 2026", testo introduttivo di collezione, link interni dagli articoli autunnali. Target realistico: posizione sotto 7 e CTR oltre 2% entro 3 settimane.</div></div>
+
+<div class="action-card med"><div class="action-head"><span class="badge b-med">Media</span><span class="action-title">Verificare il picco di martedì 15 e il salto del canale Diretto</span></div>
+<div class="action-body">Martedì 15: 908 utenti / 951 sessioni contro una baseline di ~450. Nella stessa settimana Direct passa da 577 a 984 sessioni (+70,5%) e Paid Social da 410 a 671 (+63,7%). Va capito se il picco è (a) una campagna social/adv senza UTM che ricade in Direct, (b) un'attività offline/newsletter, (c) traffico non umano. <strong>Se è adv senza UTM, il tagging va corretto subito</strong>: altrimenti continuiamo ad attribuire al Diretto traffico che stiamo pagando, e il ROI delle campagne resta illeggibile. Nota: 223 sessioni restano in "Unassigned", sintomo coerente con un problema di tagging.</div></div>
+
+<div class="action-card med"><div class="action-head"><span class="badge b-med">Media</span><span class="action-title">Conversioni in calo a fronte di traffico in crescita</span></div>
+<div class="action-body">7 transazioni (€ 807,05) contro 11 (€ 1.523,05). Il traffico cresce del 30% e le conversioni calano del 36%: il tasso di conversione GA4 passa da ~0,35% a ~0,17%. Con numeri così piccoli è statisticamente fragile, ma va incrociato con Shopify appena disponibile. Se il calo è confermato anche sul dato reale, le ipotesi da controllare sono: qualità del traffico del picco di martedì 15, disponibilità taglie sulla nuova collezione, eventuali attriti in checkout. <strong>Non menzionato come allarme nel report cliente</strong>: lì è presentato come campione piccolo da contestualizzare.</div></div>
+
+<div class="action-card low"><div class="action-head"><span class="badge b-low">Bassa</span><span class="action-title">Consolidare i contenuti autunnali che stanno già performando</span></div>
+<div class="action-body">Blog in crescita e in buona posizione: <code>scarpe-donna-impermeabili-consigli</code> (39 click, 3.043 impr., pos. 8,1), <code>back-to-work-scarpe-uomo-da-avere-in-ufficio</code> (38 click, pos. 6,5), <code>ballerine-donna-2026-come-abbinarle</code> (36 click, CTR 3,16%, pos. 5,0), <code>stivali-donna-2025-2026</code> (25 click, pos. 6,7), <code>mocassini-uomo-2026-guida</code> (16 click, pos. 5,4). Aggiornare con i modelli della nuova stagione e rafforzare i link interni verso le collezioni. Da recuperare invece <code>scarpe-da-cerimonia-per-donna</code>: 2.032 impressioni ma CTR 0,39% e posizione 8,9, e <code>mocassini-uomo-eleganza-senza-tempo</code>: 1.409 impressioni, CTR 0,28%, posizione 3,9 (secondo caso di ottima posizione con CTR irrisorio).</div></div>
+
+<div class="action-card low"><div class="action-head"><span class="badge b-low">Bassa</span><span class="action-title">Pagine tabella taglie: CTR altissimo, volume basso — opportunità</span></div>
+<div class="action-body"><code>/pages/tabella-frau-uomo</code> CTR 19,28% (pos. 2,3), <code>/pages/tabella-cafenoir</code> 16,82%, <code>/pages/tabella-frau-donna</code> 14,55%, <code>/pages/tabella-bibi-lou</code> 21,95%. Sono pagine di servizio che convertono benissimo in click ma con poche impressioni. Valutare se estenderle ad altri brand a catalogo (Nero Giardini, Kamo-Gutsu, Alma en Pena, Pikolinos) e collegarle dalle rispettive schede prodotto: traffico molto qualificato, vicino all'acquisto.</div></div>
+
+<h2 class="section-title">Dettaglio vendite (GA4 — Shopify non disponibile)</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>Giorno</th><th class="num">Utenti</th><th class="num">Sessioni</th><th class="num">Transazioni</th><th class="num">Revenue GA4</th></tr></thead><tbody>
+<tr><td>Lun 14 set</td><td class="num">590</td><td class="num">633</td><td class="num">2</td><td class="num gold-val">€ 182,55</td></tr>
+<tr><td>Mar 15 set <span class="badge b-med">picco</span></td><td class="num">908</td><td class="num">951</td><td class="num">1</td><td class="num gold-val">€ 149,00</td></tr>
+<tr><td>Mer 16 set</td><td class="num">495</td><td class="num">542</td><td class="num">1</td><td class="num gold-val">€ 145,00</td></tr>
+<tr><td>Gio 17 set</td><td class="num">409</td><td class="num">465</td><td class="num">0</td><td class="num">—</td></tr>
+<tr><td>Ven 18 set</td><td class="num">418</td><td class="num">454</td><td class="num">1</td><td class="num gold-val">€ 69,00</td></tr>
+<tr><td>Sab 19 set</td><td class="num">461</td><td class="num">505</td><td class="num">1</td><td class="num gold-val">€ 142,50</td></tr>
+<tr><td>Dom 20 set</td><td class="num">460</td><td class="num">489</td><td class="num">1</td><td class="num gold-val">€ 119,00</td></tr>
+<tr style="border-top:2px solid var(--border)"><td><strong>Totale W38</strong></td><td class="num"><strong>3.741</strong></td><td class="num"><strong>4.039</strong></td><td class="num"><strong>7</strong></td><td class="num gold-val"><strong>€ 807,05</strong></td></tr>
+</tbody></table><div class="tbl-footer">Fonte: GA4 (sottostima strutturale per cookie blocking). <strong>Stati di pagamento non verificabili</strong> — nessun ordine PENDING / REFUNDED / VOIDED può essere identificato senza Shopify. <strong>Privacy: mai mostrare nomi/cognomi acquirenti nei report; solo numero ordine (#XXXX).</strong></div></div>
+
+<div class="note-box"><strong>Brand · dato GA4 sulle ultime 4 settimane (24 ago – 20 set)</strong> — sostituisce provvisoriamente la classifica Shopify e va trattato come <em>indicativo</em>: copre solo 32 unità tracciate su un venduto reale certamente superiore. <strong>Non è stato incluso nel report cliente</strong> proprio perché il campione è troppo piccolo per una classifica credibile.</div>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>#</th><th>Brand</th><th class="num">Unità (GA4)</th><th class="num">Revenue (GA4)</th><th class="num">Valore medio unità</th></tr></thead><tbody>
+<tr><td>1</td><td>Nero Giardini</td><td class="num">4</td><td class="num gold-val">€ 542,50</td><td class="num">€ 135,63</td></tr>
+<tr><td>2</td><td>Bibi Lou</td><td class="num">4</td><td class="num gold-val">€ 349,00</td><td class="num">€ 87,25</td></tr>
+<tr><td>3</td><td>Kamo-Gutsu</td><td class="num">3</td><td class="num gold-val">€ 687,00</td><td class="num">€ 229,00</td></tr>
+<tr><td>4</td><td>Musto</td><td class="num">3</td><td class="num gold-val">€ 442,50</td><td class="num">€ 147,50</td></tr>
+<tr><td>5</td><td>Janet &amp; Janet</td><td class="num">3</td><td class="num gold-val">€ 231,40</td><td class="num">€ 77,13</td></tr>
+<tr><td>6</td><td>Le Bohémien</td><td class="num">2</td><td class="num gold-val">€ 458,00</td><td class="num">€ 229,00</td></tr>
+<tr><td>7</td><td>Callaghan</td><td class="num">2</td><td class="num gold-val">€ 218,00</td><td class="num">€ 109,00</td></tr>
+<tr><td>8</td><td>Frau</td><td class="num">2</td><td class="num gold-val">€ 198,00</td><td class="num">€ 99,00</td></tr>
+<tr><td>9</td><td>Brunate</td><td class="num">1</td><td class="num gold-val">€ 219,00</td><td class="num">€ 219,00</td></tr>
+<tr><td>10</td><td>Ecco</td><td class="num">1</td><td class="num gold-val">€ 150,00</td><td class="num">€ 150,00</td></tr>
+</tbody></table><div class="tbl-footer">Altri brand con 1 unità: Exton (€ 149), Jungla (€ 125), Walter Violet (€ 119), Gio+ (€ 129), Les Tropeziennes (€ 100), John Richmond (€ 99), Liu Jo (€ 79). Totale tracciato: 32 unità · € 4.276,40. Fonte: GA4 <code>itemBrand</code>.</div></div>
+
+<h2 class="section-title">Canali di acquisizione · note operative</h2>
+<div class="tbl-wrap"><table class="data-table"><thead><tr><th>Canale</th><th class="num">Sess. W38</th><th class="num">Sess. W37</th><th class="num">Δ</th><th class="num">Revenue GA4</th><th>Nota</th></tr></thead><tbody>
+<tr><td>Organic Search</td><td class="num">1.527</td><td class="num">1.194</td><td class="num up">+27,9%</td><td class="num gold-val">€ 291,50</td><td>Primo canale, crescita sana e coerente con GSC</td></tr>
+<tr><td>Direct</td><td class="num">984</td><td class="num">577</td><td class="num up">+70,5%</td><td class="num">—</td><td><strong>Da indagare</strong>: probabile adv senza UTM</td></tr>
+<tr><td>Paid Social</td><td class="num">671</td><td class="num">410</td><td class="num up">+63,7%</td><td class="num gold-val">€ 370,55</td><td>Canale che porta più revenue tracciata (4 tx)</td></tr>
+<tr><td>Unassigned</td><td class="num">223</td><td class="num">215</td><td class="num flat">+3,7%</td><td class="num">—</td><td>Tagging incompleto, stabile</td></tr>
+<tr><td>Paid Shopping</td><td class="num">208</td><td class="num">367</td><td class="num down">−43,3%</td><td class="num gold-val">€ 145,00</td><td>Calo netto: verificare budget/feed Shopping</td></tr>
+<tr><td>Organic Social</td><td class="num">134</td><td class="num">71</td><td class="num up">+88,7%</td><td class="num">—</td><td>Raddoppio, ma nessuna tx tracciata (in W37 erano € 273)</td></tr>
+<tr><td>Cross-network</td><td class="num">96</td><td class="num">106</td><td class="num down">−9,4%</td><td class="num">—</td><td>—</td></tr>
+<tr><td>Paid Search</td><td class="num">87</td><td class="num">98</td><td class="num down">−11,2%</td><td class="num">—</td><td>Volume marginale</td></tr>
+<tr><td>AI Assistant</td><td class="num">70</td><td class="num">53</td><td class="num up">+32,1%</td><td class="num">—</td><td>ChatGPT &amp; co. in crescita costante: monitorare per GEO</td></tr>
+<tr><td>Email</td><td class="num">11</td><td class="num">4</td><td class="num up">+175%</td><td class="num">—</td><td>Canale di fatto inattivo</td></tr>
+<tr><td>Referral</td><td class="num">9</td><td class="num">5</td><td class="num up">+80%</td><td class="num">—</td><td>—</td></tr>
+<tr><td>Organic Shopping</td><td class="num">8</td><td class="num">26</td><td class="num down">−69,2%</td><td class="num">—</td><td>—</td></tr>
+<tr><td>Paid Other</td><td class="num">1</td><td class="num">1</td><td class="num flat">=</td><td class="num">—</td><td>—</td></tr>
+</tbody></table><div class="tbl-footer">Totale sessioni per canale: 4.029 (vs totale settimanale GA4 4.039 — differenza di aggregazione GA4, 0,25%). Revenue attribuita: € 807,05 = 100% della revenue GA4 della settimana. <strong>Non è una stima proporzionale</strong>: è l'attribuzione reale GA4, perché il fatturato Shopify non è disponibile.</div></div>
+
+<h2 class="section-title">Analisi SEO · note di dettaglio</h2>
+<div class="note-box"><strong>Branded vs non-branded (query in chiaro).</strong> Su 1.369 click totali della finestra, Google espone in chiaro 497 click distribuiti su 6.423 query; i restanti 872 sono anonimizzati. Sulla parte visibile: <strong>non-branded 411 click (82,7%)</strong> su 62.700 impressioni, posizione media 7,04; <strong>branded 86 click (17,3%)</strong> su 805 impressioni, posizione media 4,56. Il rapporto è stabile rispetto a W37 (81,3% / 18,7%): il sito continua a intercettare prevalentemente domanda non di marca, che è l'obiettivo. Nota: la somma delle pagine (1.383 click) differisce di 14 click dal totale property (1.369) per il modo in cui GSC aggrega — differenza fisiologica.</div>
+<div class="note-box"><strong>Posizione media: cosa è successo davvero.</strong> 7,61 → 6,49 con impressioni a −3,7%. Il pattern (meno impressioni, posizione migliore, CTR molto migliore) indica che il sito ha perso visibilità su query marginali e guadagnato su query pertinenti, non che abbia perso terreno. Conferma a livello di pagina: home da pos. 5,89 a 5,20, Bibi Lou da 5,65 a 5,70 (stabile), Nero Giardini da 9,52 a 8,60, Le Bohemien stabile a 8,90. Da tenere d'occhio la prossima settimana: se le impressioni risalgono mantenendo la posizione, il riposizionamento è consolidato.</div>
+<div class="note-box"><strong>Top query non-branded della finestra:</strong> <code>bibi lou scarpe</code> (10 click, 396 impr., pos. 4,7) · <code>kamo gutsu</code> (9, 427, 5,3) · <code>scarpe nero giardini donna nuova collezione 2026</code> (9, 204, 5,0) · <code>alma en pena</code> (8, 1.097, 4,1 — CTR solo 0,73%) · <code>bibi lou</code> (8, 1.056, 6,3) · <code>le bohemien scarpe</code> (7, 116, 7,0) · <code>ballerine donna 2026</code> (6, 126, 2,3). Le query di marca-fornitore (Bibi Lou, Kamo-Gutsu, Alma en Pena, Nero Giardini) restano il traino principale: vale la pena curare le pagine collezione come se fossero landing page di brand.</div>
+<div class="note-box"><strong>Query ad alto potenziale non sfruttato (impressioni ≥ 500, ≤ 3 click):</strong><br>
+<code>sneakers donna platform</code> 2.348 impr. · 0 click · pos. 8,1<br>
+<code>sneakers liu jo bianche</code> 2.288 impr. · 0 click · <strong>pos. 1,8</strong><br>
+<code>liu jo sneakers donna</code> 1.127 impr. · 0 click · pos. 5,1<br>
+<code>sneakers donna liu jo</code> 1.103 impr. · 0 click · pos. 4,7<br>
+<code>where to buy shoes</code> 719 impr. · 0 click · pos. 5,0 (query generica EN, poco azionabile)<br>
+<code>ecco</code> 696 impr. · 1 click · pos. 6,0<br>
+<code>scarpe nero giardini donna</code> 503 impr. · 3 click · pos. 9,8<br>
+Il cluster Liu Jo da solo vale oltre 6.800 impressioni a zero click: è la priorità numero uno della settimana.</div>
+
+<h2 class="section-title">Checklist settimana W39</h2>
+<ul class="check">
+<li>Ripristinare il connettore MCP Shopify di Musto e autorizzarlo per i run schedulati</li>
+<li>Rigenerare W38 con i dati Shopify una volta ripristinato il collegamento</li>
+<li>Ispezionare la SERP reale di <code>sneakers liu jo bianche</code>, <code>sneakers donna platform</code>, <code>liu jo sneakers donna</code> prima di riscrivere</li>
+<li>Riscrivere title + meta description delle 3 schede sneaker Liu Jo/Gio a zero click</li>
+<li>Verificare stock e prezzo delle schede Liu Jo (possibile causa del CTR nullo)</li>
+<li>Ottimizzare title, meta e testo introduttivo di <code>/collections/nero-giardini</code></li>
+<li>Verificare con Monica la natura del picco di martedì 15 settembre</li>
+<li>Controllare il tagging UTM delle campagne social/adv (Direct +70,5%, Unassigned 223 sessioni)</li>
+<li>Verificare budget e feed di Paid Shopping (−43,3% sessioni)</li>
+<li>Aggiornare gli articoli autunnali con i modelli della nuova collezione + link interni</li>
+<li>Valutare l'estensione delle pagine tabella taglie ad altri brand a catalogo</li>
+<li>Al ritorno di Shopify: incrociare le 7 transazioni GA4 con gli ordini reali e validare il calo conversioni</li>
+</ul>
+
+<div class="note-box"><strong>Privacy · regola fissa.</strong> Mai mostrare nomi/cognomi acquirenti nei report; solo numero ordine (#XXXX). Vale sia per il report cliente sia per questo file interno.</div>
+
+</div>
+<div class="footer">Web Domus · Azioni Team W38 · Musto Calzature · Generato il 22 Settembre 2026 · Fonti: GA4 + Google Search Console (Shopify non disponibile) · USO INTERNO</div>
+</body></html>

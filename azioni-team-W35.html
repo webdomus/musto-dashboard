@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USO INTERNO · Azioni Team W35 · Musto Calzature</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f; --bg2:#141209; --gold:#c9a96e; --gold-light:#e0c898;
+  --green:#4a9e7a; --red:#c0392b; --text:#e8e8e8; --muted:#888;
+  --border:#2a2a2a; --card:#181818; --amber:#e8a020; --blue:#5B9BD5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+.banner-interno{background:rgba(192,57,43,.18);border-bottom:2px solid var(--red);padding:12px 40px;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#ff9c90}
+.header{background:linear-gradient(135deg,#0a0a0a 0%,#1a1409 100%);border-bottom:1px solid var(--gold);padding:30px 40px 24px}
+.brand-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.8}
+.client-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
+.header-period{color:var(--muted);font-size:13px;margin-top:8px}
+.container{max-width:1020px;margin:0 auto;padding:32px 24px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--gold);margin:34px 0 8px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.section-title:first-of-type{margin-top:0}
+.section-desc{font-size:12.5px;color:#999;margin-bottom:18px}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:8px}
+.mini-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.mini-lbl{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mini-val{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#fff}
+.mini-delta{font-size:10px;font-weight:600;margin-top:3px}
+.up{color:var(--green)} .down{color:#e07b6e} .flat{color:var(--muted)}
+.action-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin-bottom:12px}
+.action-card.urgente{border-left-color:var(--red)}
+.action-card.medio{border-left-color:var(--amber)}
+.action-card.basso{border-left-color:var(--blue)}
+.badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:7px}
+.b-urgente{background:rgba(192,57,43,.18);color:#ff9c90;border:1px solid rgba(192,57,43,.4)}
+.b-medio{background:rgba(232,160,32,.15);color:var(--amber);border:1px solid rgba(232,160,32,.35)}
+.b-basso{background:rgba(91,155,213,.13);color:var(--blue);border:1px solid rgba(91,155,213,.3)}
+.action-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:5px}
+.action-body{font-size:12.5px;color:#aaa;line-height:1.65}
+.action-body code{background:#000;padding:1px 5px;border-radius:3px;font-size:11.5px;color:var(--gold-light)}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.data-table th{text-align:left;padding:10px 13px;font-size:9.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.data-table td{padding:9px 13px;border-bottom:1px solid rgba(42,42,42,.6)}
+.data-table tr:last-child td{border-bottom:none}
+.gold-val{color:var(--gold-light);font-weight:600}
+.tbl-footer{padding:10px 13px 13px;font-size:10px;color:var(--muted)}
+.note{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.18);border-radius:6px;padding:12px 15px;font-size:12px;color:#bbb;margin:12px 0;line-height:1.65}
+.note.warn{background:rgba(192,57,43,.07);border-color:rgba(192,57,43,.3)}
+.note-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.note.warn .note-lbl{color:#ff9c90}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:8px 0 8px 26px;position:relative;font-size:13px;color:#ccc;border-bottom:1px solid rgba(42,42,42,.5)}
+ul.check li::before{content:'☐';position:absolute;left:0;color:var(--gold);font-size:15px}
+ul.check li:last-child{border-bottom:none}
+.footer{border-top:1px solid var(--border);padding:22px 40px;font-size:11px;color:var(--muted);margin-top:36px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="banner-interno">⚠️ Uso interno Web Domus — non condividere con il cliente</div>
+
+<div class="header">
+  <div class="brand-label">Web Domus · Azioni Team</div>
+  <div class="client-name">Musto Calzature · W35 2026</div>
+  <div class="header-period">Settimana 24 – 30 Agosto 2026 · generato il 1 Settembre 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- SNAPSHOT -->
+  <div class="section-title">Snapshot numeri chiave</div>
+  <div class="section-desc">GA4 W35 (24–30 ago) vs W34 (17–23 ago) · GSC confronto omogeneo lun–sab.</div>
+  <div class="mini-grid">
+    <div class="mini-card"><div class="mini-lbl">Utenti</div><div class="mini-val">2.301</div><div class="mini-delta down">▼ −35,1% (3.543)</div></div>
+    <div class="mini-card"><div class="mini-lbl">Sessioni</div><div class="mini-val">3.046</div><div class="mini-delta down">▼ −26,9% (4.165)</div></div>
+    <div class="mini-card"><div class="mini-lbl">Transazioni GA4</div><div class="mini-val">10</div><div class="mini-delta down">▼ da 13</div></div>
+    <div class="mini-card"><div class="mini-lbl">Revenue GA4</div><div class="mini-val">€ 1.427</div><div class="mini-delta up">▲ +3,3% (€ 1.381)</div></div>
+    <div class="mini-card"><div class="mini-lbl">AOV</div><div class="mini-val">€ 142,70</div><div class="mini-delta up">▲ +34,3% (€ 106,23)</div></div>
+    <div class="mini-card"><div class="mini-lbl">GSC click (lun–sab)</div><div class="mini-val">1.101</div><div class="mini-delta up">▲ +3,8% (1.061)</div></div>
+    <div class="mini-card"><div class="mini-lbl">GSC impressioni</div><div class="mini-val">91.650</div><div class="mini-delta down">▼ −5,3% (96.810)</div></div>
+    <div class="mini-card"><div class="mini-lbl">GSC CTR</div><div class="mini-val">1,20%</div><div class="mini-delta up">▲ da 1,10%</div></div>
+    <div class="mini-card"><div class="mini-lbl">GSC posizione</div><div class="mini-val">8,01</div><div class="mini-delta up">▲ da 8,15</div></div>
+    <div class="mini-card"><div class="mini-lbl">Organic share</div><div class="mini-val">32,9%</div><div class="mini-delta up">▲ da 31,9%</div></div>
+  </div>
+
+  <!-- AZIONI PRIORITARIE -->
+  <div class="section-title">Azioni prioritarie</div>
+
+  <div class="action-card urgente">
+    <span class="badge b-urgente">Urgente · blocco</span>
+    <div class="action-title">MCP Shopify non disponibile in questa esecuzione</div>
+    <div class="action-body">Il server <code>e7820f47-a1b3-4066-a693-301d28c6e74b</code> non è risultato collegato durante il run automatico del 1 settembre: nessun tool <code>list-orders</code> / <code>graphql_query</code> esposto. Conseguenze sul report W35:
+      <ul style="margin:8px 0 0 18px;font-size:12.5px">
+        <li>Nessuna tabella dettaglio ordini (numero ordine, importo, stato PAID/PENDING/REFUNDED).</li>
+        <li>Nessuna classifica brand ultime 4 settimane (W32–W35).</li>
+        <li>Dati vendite del report cliente ricavati da GA4 e-commerce (10 transazioni, € 1.427) invece che da Shopify.</li>
+        <li>Impossibile verificare ordini anomali (PENDING / PARTIALLY_REFUNDED) della settimana.</li>
+      </ul>
+      <strong style="color:#ff9c90">Azione: ricollegare il connettore Shopify e rigenerare la sezione vendite prima di pubblicare su Vercel.</strong>
+    </div>
+  </div>
+
+  <div class="action-card urgente">
+    <span class="badge b-urgente">Urgente</span>
+    <div class="action-title">Verificare l'anomalia Accesso Diretto della W34</div>
+    <div class="action-body">In W34 il canale <strong>Direct</strong> ha generato <strong>1.329 sessioni / 1.277 utenti</strong> (picco su lunedì 17/8: 951 utenti in giornata). In W35 lo stesso canale scende a <strong>337 sessioni / 306 utenti</strong>. Il rapporto sessioni/utenti quasi 1:1 e la concentrazione su un singolo giorno suggeriscono traffico non umano o una sorgente non taggata. Da controllare: log server, eventuali campagne offline/QR non taggate, filtri bot in GA4. <strong>Finché non è chiarito, tutti i confronti WoW che coinvolgono la W34 vanno letti con cautela.</strong></div>
+  </div>
+
+  <div class="action-card medio">
+    <span class="badge b-medio">Media priorità</span>
+    <div class="action-title">Riscrivere title + meta description di /blogs/…/scarpe-da-cerimonia-per-donna-modelli-piu-chic-del-momento</div>
+    <div class="action-body">3.580 impressioni, 24 click, <strong>CTR 0,67%</strong>, posizione media 8,67. È la pagina con il maggiore potenziale non sfruttato della settimana. Portare il CTR all'1,8% (media delle altre collection) significherebbe ~+40 click/settimana a parità di posizionamento. Rivedere anche il contenuto: la query "scarpe da cerimonia donna" porta 3 click a posizione 9,76, "scarpe eleganti da cerimonia comode" 2 click a 9,36 — c'è margine per salire in top 5 con un aggiornamento sostanziale.</div>
+  </div>
+
+  <div class="action-card medio">
+    <span class="badge b-medio">Media priorità</span>
+    <div class="action-title">Aggiornare /blogs/…/stivali-donna-2025-2026-tendenze-moda-stivaletti per la stagione</div>
+    <div class="action-body">2.549 impressioni, 18 click, <strong>CTR 0,71%</strong>, posizione 8,18. Query correlate già attive: "stivali donna 2026" (pos 5,1), "stivali 2026 inverno" (pos 10,5), "stivaletti donna autunno inverno 2026" (pos 8,8), "come abbinare gli stivaletti" (pos 21,1). La domanda cresce da settembre: aggiornare titolo con l'anno corretto, rinfrescare i modelli citati e inserire link diretti alle collection stivali.</div>
+  </div>
+
+  <div class="action-card medio">
+    <span class="badge b-medio">Media priorità</span>
+    <div class="action-title">Sfruttare il momentum di "back to work" (rientro)</div>
+    <div class="action-body">L'articolo <code>/blogs/trend-e-consigli/back-to-work-scarpe-uomo-da-avere-in-ufficio</code> è 4° per click (32 click, 1.678 impressioni, CTR 1,91%, pos 6,81). Query collegate già in top 3: "scarpe business casual uomo" (3 click, pos 3,38), "scarpe da ufficio uomo" (2 click, pos 2,95), "sneakers da ufficio uomo" (pos 4,54). Rafforzare i link interni verso le collection uomo e valutare un secondo pezzo dedicato ("scarpe da ufficio donna") per coprire il lato femminile della query.</div>
+  </div>
+
+  <div class="action-card basso">
+    <span class="badge b-basso">Bassa priorità · monitoraggio</span>
+    <div class="action-title">Nero Giardini: l'ottimizzazione di luglio ha funzionato</div>
+    <div class="action-body">La collection <code>/collections/nero-giardini</code> passa da CTR 0,41% (W27) a <strong>1,79%</strong> (78 click su 4.362 impressioni). Ora è la seconda pagina del sito per click organici. Query trainanti: "scarpe nero giardini donna nuova collezione 2026" (15 click, pos 4,76), "nero giardini nuova collezione 2026" (6, pos 5,06), "scarpe nero giardini donna nuova collezione" (6, pos 5,14). Replicare lo stesso schema di title/description sulle altre collection brand.</div>
+  </div>
+
+  <!-- DETTAGLIO ORDINI -->
+  <div class="section-title">Dettaglio ordini</div>
+  <div class="note warn">
+    <div class="note-lbl">Dati non disponibili</div>
+    Il dettaglio ordini (numero, importo, stato PAID / PENDING / REFUNDED) non è ricostruibile in questo run: il connettore Shopify non era attivo. Dati e-commerce disponibili solo in forma aggregata da GA4.
+  </div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Giorno</th><th>Transazioni GA4</th><th>Revenue GA4</th><th>Sessioni</th></tr></thead>
+      <tbody>
+        <tr><td>Lun 24 Ago</td><td>0</td><td>€ 0</td><td>421</td></tr>
+        <tr><td>Mar 25 Ago</td><td class="gold-val">2</td><td>€ 358</td><td>423</td></tr>
+        <tr><td>Mer 26 Ago</td><td class="gold-val">3</td><td>€ 407</td><td>421</td></tr>
+        <tr><td>Gio 27 Ago</td><td>0</td><td>€ 0</td><td>468</td></tr>
+        <tr><td>Ven 28 Ago</td><td class="gold-val">2</td><td>€ 234</td><td>412</td></tr>
+        <tr><td>Sab 29 Ago</td><td>0</td><td>€ 0</td><td>400</td></tr>
+        <tr><td>Dom 30 Ago</td><td class="gold-val">3</td><td>€ 428</td><td>443</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Totale 10 transazioni · € 1.427 · AOV € 142,70 · fonte GA4 (può sottostimare per consent mode). Giovedì 27 è il giorno con più sessioni (468) e zero conversioni: da verificare eventuali problemi di checkout.</div>
+  </div>
+  <div class="note">
+    <div class="note-lbl">Nota privacy</div>
+    Mai mostrare nomi/cognomi acquirenti nei report — solo numero ordine (#XXXX).
+  </div>
+
+  <!-- SEO DETTAGLIO -->
+  <div class="section-title">Pagine ad alto potenziale non sfruttato</div>
+  <div class="section-desc">Alte impressioni, CTR sotto la media del sito (1,20%).</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Pagina</th><th>Impr.</th><th>Click</th><th>CTR</th><th>Pos.</th><th>Click potenziali @1,8%</th></tr></thead>
+      <tbody>
+        <tr><td>/blogs/…/scarpe-da-cerimonia-per-donna</td><td>3.580</td><td>24</td><td class="down">0,67%</td><td>8,67</td><td class="gold-val">+40</td></tr>
+        <tr><td>/blogs/…/stivali-donna-2025-2026</td><td>2.549</td><td>18</td><td class="down">0,71%</td><td>8,18</td><td class="gold-val">+28</td></tr>
+        <tr><td>/ (Homepage)</td><td>11.652</td><td>148</td><td>1,27%</td><td>6,33</td><td class="gold-val">+62</td></tr>
+        <tr><td>/collections/nero-giardini</td><td>4.362</td><td>78</td><td class="up">1,79%</td><td>8,87</td><td>—</td></tr>
+        <tr><td>/collections/bibi-lou</td><td>3.088</td><td>65</td><td class="up">2,10%</td><td>6,38</td><td>—</td></tr>
+        <tr><td>/collections/alma-en-pena</td><td>1.428</td><td>26</td><td class="up">1,82%</td><td>5,46</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Keyword ad alto volume e basso rendimento</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Query</th><th>Impr.</th><th>Click</th><th>CTR</th><th>Pos.</th><th>Nota operativa</th></tr></thead>
+      <tbody>
+        <tr><td>bibi lou</td><td>912</td><td>11</td><td>1,21%</td><td>6,50</td><td>Brand terzo, competizione col sito ufficiale: puntare su "bibi lou italia / rivenditori".</td></tr>
+        <tr><td>décolleté</td><td>905</td><td>5</td><td class="down">0,55%</td><td>12,38</td><td>Query generica, fuori top 10: serve pagina/collection dedicata.</td></tr>
+        <tr><td>alma en pena</td><td>828</td><td>16</td><td>1,93%</td><td>4,68</td><td>Migliore keyword non-branded per click: consolidare la collection.</td></tr>
+        <tr><td>gioseppo</td><td>795</td><td>1</td><td class="down">0,13%</td><td>11,07</td><td>Brand non presidiato: valutare se è a catalogo.</td></tr>
+        <tr><td>nero giardini donna</td><td>568</td><td>4</td><td class="down">0,70%</td><td>8,32</td><td>Testa della query brand: margine su title collection.</td></tr>
+        <tr><td>birkenstock arizona uomo</td><td>445</td><td>1</td><td class="down">0,22%</td><td>5,89</td><td>Posizione buona, CTR pessimo: snippet poco pertinente.</td></tr>
+        <tr><td>scarpe impermeabili donna</td><td>384</td><td>2</td><td class="down">0,52%</td><td>12,74</td><td>Stagionale autunno: contenuto da preparare ora.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Branded vs non-branded</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Tipologia</th><th>Click</th><th>Quota</th><th>Impressioni</th><th>CTR</th></tr></thead>
+      <tbody>
+        <tr><td>Branded (contiene "musto")</td><td class="gold-val">49</td><td>11,9%</td><td>477</td><td class="up">10,27%</td></tr>
+        <tr><td>Non-branded</td><td class="gold-val">363</td><td>88,1%</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>Totale attribuito a query</strong></td><td><strong>412</strong></td><td><strong>100%</strong></td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Attenzione: GSC attribuisce a una query specifica solo 412 dei 1.101 click totali della settimana (37%); i restanti 689 sono su query anonimizzate. La quota branded/non-branded è quindi calcolata sul sottoinsieme attribuito. Query branded in posizione 1: musto calzature, musto calzature milano, musto milano, musto shoes milan, musto scarpe donna, musto footwear milan, musto milan, musto milano shoes, musto shoes women.</div>
+  </div>
+
+  <div class="section-title">Canali di acquisizione · note operative</div>
+  <div class="tbl-wrap">
+    <table class="data-table">
+      <thead><tr><th>Canale</th><th>Sess. W35</th><th>Sess. W34</th><th>Δ</th><th>Revenue W35</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Paid Social</td><td>1.168</td><td>1.037</td><td class="up">+12,6%</td><td>€ 542</td><td>Volume in crescita, revenue quasi invariata: verificare ROAS con il cliente.</td></tr>
+        <tr><td>Organic Search</td><td class="gold-val">983</td><td>1.337</td><td class="down">−26,5%</td><td class="gold-val">€ 776</td><td>Sessioni giù ma revenue da € 476 a € 776 (+63%): traffico più qualificato.</td></tr>
+        <tr><td>Direct</td><td>337</td><td>1.329</td><td class="down">−74,6%</td><td>€ 109</td><td>Vedi azione urgente: la W34 era anomala, non è un calo reale.</td></tr>
+        <tr><td>Unassigned</td><td>203</td><td>249</td><td class="down">−18,5%</td><td>—</td><td>6,8% del traffico non attribuito: controllare tagging UTM.</td></tr>
+        <tr><td>Cross-network</td><td>89</td><td>76</td><td class="up">+17,1%</td><td>—</td><td>Performance Max / campagne cross.</td></tr>
+        <tr><td>Organic Social</td><td>63</td><td>43</td><td class="up">+46,5%</td><td>—</td><td>In crescita, volumi ancora bassi.</td></tr>
+        <tr><td>AI Assistant</td><td>52</td><td>52</td><td class="flat">=</td><td>—</td><td>Stabile: canale da monitorare per GEO/AEO.</td></tr>
+        <tr><td>Paid Search</td><td>46</td><td>51</td><td class="down">−9,8%</td><td>—</td><td>Volumi marginali.</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-footer">Totale attribuito W35: 2.984 sessioni su 3.046 (62 sessioni senza canale). Revenue attribuita: € 1.427 su € 1.427.</div>
+  </div>
+
+  <div class="note">
+    <div class="note-lbl">Discrepanza GA4 vs GSC</div>
+    GSC registra 1.101 click organici in 6 giorni (≈ 1.285 su 7 giorni stimati), GA4 registra 983 sessioni organiche su 7 giorni. Gap di circa il 23%, coerente con consent mode / blocco cookie. Da tenere presente quando si commentano i due dati insieme nello stesso report.
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-title">Checklist settimana W36 (31 Ago – 6 Set)</div>
+  <ul class="check">
+    <li>Ricollegare il connettore MCP Shopify e rigenerare la sezione vendite di W35 (dettaglio ordini + brand W32–W35).</li>
+    <li>Verificare l'origine del picco Direct del 17 agosto (log server, filtri bot GA4, campagne non taggate).</li>
+    <li>Riscrivere title + meta description di <code>/blogs/…/scarpe-da-cerimonia-per-donna…</code> e aggiornare i modelli citati.</li>
+    <li>Aggiornare <code>/blogs/…/stivali-donna-2025-2026…</code> per la stagione autunno/inverno + link alle collection stivali.</li>
+    <li>Rafforzare i link interni da "back to work scarpe uomo" verso le collection uomo.</li>
+    <li>Verificare il funnel di checkout: giovedì 27 agosto, 468 sessioni e zero transazioni.</li>
+    <li>Applicare lo schema title/description di Nero Giardini alle altre collection brand (Les Tropéziennes, Pikolinos).</li>
+    <li>Controllare se Gioseppo è a catalogo (795 impressioni, 1 click) e decidere se presidiare la query.</li>
+    <li>Pubblicare il report W35 su Vercel solo dopo l'integrazione dei dati Shopify.</li>
+  </ul>
+
+</div>
+
+<div class="footer">Web Domus · Azioni Team W35 · Musto Calzature · Documento a uso interno · Generato il 1 Settembre 2026</div>
+
+</body>
+</html>
